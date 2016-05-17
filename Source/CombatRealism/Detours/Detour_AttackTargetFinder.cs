@@ -100,38 +100,6 @@ namespace Combat_Realism.Detours
                 {
                     Detour_AttackTargetFinder.tmpTargets.Add((Thing)potentialTargetsFor[i]);
                 }
-            }
-            else
-            {
-                Detour_AttackTargetFinder.tmpTargets.Clear();
-                List<IAttackTarget> potentialTargetsFor = Find.AttackTargetsCache.GetPotentialTargetsFor(searcher);
-                for (int i = 0; i < potentialTargetsFor.Count; i++)
-                {
-                    Detour_AttackTargetFinder.tmpTargets.Add((Thing)potentialTargetsFor[i]);
-                }
-                if ((byte)(flags & TargetScanFlags.NeedReachable) != 0)
-                {
-                    Predicate<Thing> oldValidator = predicate;
-                    predicate = delegate (Thing t)
-                    {
-                        if (!oldValidator(t))
-                        {
-                            return false;
-                        }
-                        if (searcherPawn != null)
-                        {
-                            if (!searcherPawn.CanReach(t, PathEndMode.Touch, Danger.Some, false, TraverseMode.ByPawn))
-                            {
-                                return false;
-                            }
-                        }
-                        else if (!searcher.Position.CanReach(t, PathEndMode.Touch, TraverseParms.For(TraverseMode.NoPassClosedDoors, Danger.Deadly, false)))
-                        {
-                            return false;
-                        }
-                        return true;
-                    };
-                }
                 Thing result = GenClosest.ClosestThing_Global(searcher.Position, Detour_AttackTargetFinder.tmpTargets, maxTargDist, predicate);
                 Detour_AttackTargetFinder.tmpTargets.Clear();
                 return result;
