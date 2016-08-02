@@ -13,7 +13,7 @@ namespace Combat_Realism
     {
         private const float maxCoverDist = 10f; //Maximum distance to run for cover to
 
-        protected override Job TryGiveTerminalJob(Pawn pawn)
+        protected override Job TryGiveJob(Pawn pawn)
         {
             //Calculate cover position
             CompSuppressable comp = pawn.TryGetComp<CompSuppressable>();
@@ -69,7 +69,7 @@ namespace Combat_Realism
                     && cell.Standable() 
                     && !Find.PawnDestinationManager.DestinationIsReserved(cell)
                     && pawn.CanReach(cell, PathEndMode.ClosestTouch, Danger.Deadly, false)
-                    && !cell.FireNearby())
+                    )
                 {
                     coverVec = (fromPosition - cell).ToVector3().normalized;    //The direction in which we want to have cover
                     coverCell = (cell.ToVector3Shifted() + coverVec).ToIntVec3();   //The cell we check for cover

@@ -226,7 +226,7 @@ namespace Combat_Realism
             {
                 thingWeight = thing.GetStatValue(StatDef.Named("WornWeight"));
                 thingBulk = thing.GetStatValue(StatDef.Named("WornBulk"));
-                if(thingWeight <= 0 && thingBulk <= 0)
+                if (thingWeight <= 0 && thingBulk <= 0)
                 {
                     count = 1;
                     return true;
@@ -280,9 +280,9 @@ namespace Combat_Realism
                 parentPawn.jobs.StopAll();
 
             // Cycle through available ranged weapons
-            foreach(ThingWithComps gun in rangedWeaponListCached)
+            foreach (ThingWithComps gun in rangedWeaponListCached)
             {
-                if(parentPawn.equipment == null || parentPawn.equipment.Primary != gun)
+                if (parentPawn.equipment == null || parentPawn.equipment.Primary != gun)
                 {
                     CompAmmoUser compAmmo = gun.TryGetComp<CompAmmoUser>();
                     if (compAmmo == null
@@ -296,11 +296,11 @@ namespace Combat_Realism
                 }
             }
             // If no ranged weapon was found, use first available melee weapons
-            if(newEq == null)
+            if (newEq == null)
                 newEq = meleeWeaponListCached.FirstOrDefault();
-            
+
             // Equip the weapon
-            if(newEq != null)
+            if (newEq != null)
             {
                 this.TrySwitchToWeapon(newEq);
             }
@@ -330,7 +330,7 @@ namespace Combat_Realism
 
         public void TrySwitchToWeapon(ThingWithComps newEq)
         {
-            if (newEq == null || parentPawn.equipment == null || !this.container.Contains(newEq) )
+            if (newEq == null || parentPawn.equipment == null || !this.container.Contains(newEq))
             {
                 return;
             }
@@ -367,7 +367,7 @@ namespace Combat_Realism
             {
                 // Find all loadout generators
                 List<LoadoutGeneratorThing> genList = new List<LoadoutGeneratorThing>();
-                foreach(Thing thing in container)
+                foreach (Thing thing in container)
                 {
                     LoadoutGeneratorThing lGenThing = thing as LoadoutGeneratorThing;
                     if (lGenThing != null && lGenThing.loadoutGenerator != null)
@@ -381,29 +381,35 @@ namespace Combat_Realism
                 });
 
                 // Generate loadouts
-                foreach(LoadoutGeneratorThing thing in genList)
+                foreach (LoadoutGeneratorThing thing in genList)
                 {
                     thing.loadoutGenerator.GenerateLoadout(this);
                     container.Remove(thing);
                 }
                 initializedLoadouts = true;
             }
-
+            //Log.Message("CR-RD :: pre-base.comptick");
             base.CompTick();
-
+            //Log.Message("CR-RD :: post-base.comptick");
             // Remove items from inventory if we're over the bulk limit
-            while(availableBulk < 0 && container.Count > 0)
+            /*
+            while (availableBulk < 0 && container.Count > 0)
             {
-                if (this.parent.Position.InBounds())
+                Log.Message("CR-RD :: Too much bulk for " + parentPawn.ToString() + ", " + (parentPawn.IsColonist ? "is colonist" : "is not colonist"));
+                if (parentPawn.IsColonist)
                 {
-                    Thing droppedThing;
-                    container.TryDrop(container.Last(), this.parent.Position, ThingPlaceMode.Near, 1, out droppedThing);
-                }
-                else
-                {
-                    container.Remove(container.Last());
+                    if (this.parent.Position.InBounds())
+                    {
+                        Thing droppedThing;
+                        container.TryDrop(container.Last(), this.parent.Position, ThingPlaceMode.Near, 1, out droppedThing);
+                    }
+                    else
+                    {
+                        container.Remove(container.Last());
+                    }
                 }
             }
+            */
         }
     }
 }

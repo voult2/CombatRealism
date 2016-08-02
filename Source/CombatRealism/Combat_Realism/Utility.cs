@@ -35,7 +35,7 @@ namespace Combat_Realism
         public static float GetMoveSpeed(Pawn pawn)
         {
             float movePerTick = 60 / pawn.GetStatValue(StatDefOf.MoveSpeed, false);    //Movement per tick
-            movePerTick += PathGrid.CalculatedCostAt(pawn.Position, false);
+            movePerTick += PathGrid.CalculatedCostAt(pawn.Position, false, pawn.Position);
             Building edifice = pawn.Position.GetEdifice();
             if (edifice != null)
             {
@@ -215,25 +215,6 @@ namespace Combat_Realism
             }
             // Check for pawn racial armor
             float pawnArmorAmount = 0f;
-            bool partCoveredByArmor = false;
-            if (part.IsInGroup(DefDatabase<BodyPartGroupDef>.GetNamed("CoveredByNaturalArmor")))
-            {
-                partCoveredByArmor = true;
-            }
-            else
-            {
-                BodyPartRecord outerPart = part;
-                while (outerPart.parent != null && outerPart.depth != BodyPartDepth.Outside)
-                {
-                    outerPart = outerPart.parent;
-                }
-                partCoveredByArmor = outerPart != part && outerPart.IsInGroup(DefDatabase<BodyPartGroupDef>.GetNamed("CoveredByNaturalArmor"));
-            }
-            if (partCoveredByArmor)
-            {
-                pawnArmorAmount = pawn.GetStatValue(deflectionStat);
-            }
-
             if (pawnArmorAmount > 0 && Utility.ApplyArmor(ref damageAmount, ref pierceAmount, pawnArmorAmount, null, damageDef))
             {
                 deflected = true;
@@ -254,7 +235,7 @@ namespace Combat_Realism
             bool deflected = false;
             DamageDef_CR damageDefCR = damageDef as DamageDef_CR;
             float penetrationChance = 1;
-            if(damageDefCR != null && damageDefCR.deflectable)
+            if (damageDefCR != null && damageDefCR.deflectable)
                 penetrationChance = Mathf.Clamp((pierceAmount - armorRating) * 6, 0, 1);
 
             //Shot is deflected

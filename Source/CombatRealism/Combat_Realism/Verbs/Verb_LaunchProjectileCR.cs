@@ -455,7 +455,7 @@ namespace Combat_Realism
             }
             if (this.projectilePropsCR.pelletCount < 1)
             {
-                Log.Error(this.ownerEquipment.LabelBaseCap + " tried firing with pelletCount less than 1.");
+                Log.Error(this.ownerEquipment.LabelCap + " tried firing with pelletCount less than 1.");
                 return false;
             }
             for (int i = 0; i < this.projectilePropsCR.pelletCount; i++)
@@ -467,7 +467,7 @@ namespace Combat_Realism
 
                 //New aiming algorithm
                 projectile.canFreeIntercept = true;
-                ShiftVecReport report = this.ShiftVecReportFor(this.currentTarget);
+                ShiftVecReport report = ShiftVecReportFor(this.currentTarget);
                 Vector3 targetVec3 = this.ShiftTarget(report);
                 projectile.shotAngle = this.shotAngle;
                 projectile.shotHeight = this.shotHeight;

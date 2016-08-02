@@ -11,7 +11,7 @@ namespace Combat_Realism
 {
     class JobGiver_HunkerDown : ThinkNode_JobGiver
     {
-        protected override Job TryGiveTerminalJob(Pawn pawn)
+        protected override Job TryGiveJob(Pawn pawn)
         {
             if (!pawn.Position.Standable() && !pawn.Position.ContainsStaticFire())
             {

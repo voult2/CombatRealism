@@ -19,13 +19,13 @@ namespace Combat_Realism.Detours
             if (item.stackCount > _this.AvailableStackSpace)
             {
                 Log.Error(string.Concat(new object[]
-		        {
-			        "Add item with stackCount=",
-			        item.stackCount,
-			        " with only ",
-			        _this.AvailableStackSpace,
-			        " in container. Splitting and adding..."
-		        }));
+                {
+                    "Add item with stackCount=",
+                    item.stackCount,
+                    " with only ",
+                    _this.AvailableStackSpace,
+                    " in container. Splitting and adding..."
+                }));
                 return _this.TryAdd(item, _this.AvailableStackSpace);
             }
 
@@ -78,25 +78,24 @@ namespace Combat_Realism.Detours
 
             return true;
         }
-
-        internal static bool TryDrop(this ThingContainer _this, Thing thing, IntVec3 dropLoc, ThingPlaceMode mode, int count, out Thing resultingThing)
+        internal static bool TryDrop(this ThingContainer _this, Thing thing, IntVec3 dropLoc, ThingPlaceMode mode, int count, out Thing resultingThing, Action<Thing, int> placedAction = null)
         {
             if (thing.stackCount < count)
             {
                 Log.Error(string.Concat(new object[]
-		        {
-			        "Tried to drop ",
-			        count,
-			        " of ",
-			        thing,
-			        " while only having ",
-			        thing.stackCount
-		        }));
+                {
+                    "Tried to drop ",
+                    count,
+                    " of ",
+                    thing,
+                    " while only having ",
+                    thing.stackCount
+                }));
                 count = thing.stackCount;
             }
             if (count == thing.stackCount)
             {
-                if (GenDrop.TryDropSpawn(thing, dropLoc, mode, out resultingThing))
+                if (GenDrop.TryDropSpawn(thing, dropLoc, mode, out resultingThing, placedAction))
                 {
                     _this.Remove(thing);
                     //Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Thing dropped, update inventory
@@ -107,7 +106,7 @@ namespace Combat_Realism.Detours
             else
             {
                 Thing thing2 = thing.SplitOff(count);
-                if (GenDrop.TryDropSpawn(thing2, dropLoc, mode, out resultingThing))
+                if (GenDrop.TryDropSpawn(thing2, dropLoc, mode, out resultingThing, placedAction))
                 {
                     Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Thing dropped, update inventory
                     return true;

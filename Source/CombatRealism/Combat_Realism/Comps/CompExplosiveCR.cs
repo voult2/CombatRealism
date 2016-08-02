@@ -28,11 +28,11 @@ namespace Combat_Realism
         /// </summary>
         /// <param name="instigator">Launcher of the projectile calling the method</param>
 		public virtual void Explode(Thing instigator)
-		{
+        {
             // Regular explosion stuff
-            if(this.Props.explosionRadius > 0 && this.Props.explosionDamage > 0)
+            if (this.Props.explosionRadius > 0 && this.Props.explosionDamage > 0)
             {
-                Explosion explosion = (Explosion)GenSpawn.Spawn(ThingDefOf.Explosion, parent.Position);
+                Explosion explosion = new Explosion();
                 explosion.radius = Props.explosionRadius;
                 explosion.damType = Props.explosionDamageDef;
                 explosion.instigator = instigator;
@@ -43,7 +43,7 @@ namespace Combat_Realism
                 explosion.postExplosionSpawnThingDef = Props.postExplosionSpawnThingDef;
                 explosion.postExplosionSpawnChance = Props.explosionSpawnChance;
                 explosion.applyDamageToExplosionCellsNeighbors = Props.damageAdjacentTiles;
-                explosion.ExplosionStart(Props.soundExplode == null ? Props.explosionDamageDef.soundExplosion : Props.soundExplode);
+                Find.Map.GetComponent<ExplosionManager>().StartExplosion(explosion, Props.soundExplode == null ? Props.explosionDamageDef.soundExplosion : Props.soundExplode);
             }
 
             // Fragmentation stuff
@@ -61,7 +61,7 @@ namespace Combat_Realism
                         {
                             ProjectileCR projectile = (ProjectileCR)ThingMaker.MakeThing(fragment.thingDef, null);
                             projectile.canFreeIntercept = true;
-                            Vector3 exactOrigin = new Vector3(0,0,0);
+                            Vector3 exactOrigin = new Vector3(0, 0, 0);
                             exactOrigin.x = this.parent.DrawPos.x;
                             exactOrigin.z = this.parent.DrawPos.z;
                             Vector3 exactTarget = exactOrigin + (new Vector3(1, 0, 1) * UnityEngine.Random.Range(0, Props.fragRange)).RotatedBy(UnityEngine.Random.Range(0, 360));
@@ -72,6 +72,6 @@ namespace Combat_Realism
                     }
                 }
             }
-		}
+        }
     }
 }

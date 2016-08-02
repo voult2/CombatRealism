@@ -97,7 +97,7 @@ namespace Combat_Realism
             {
                 if (this.Props.aimedBurstShotCount >= this.verb.verbProps.burstShotCount)
                 {
-                    Log.Warning(this.parent.LabelBaseCap + " burst fire shot count is same or higher than auto fire");
+                    Log.Warning(this.parent.LabelCap + " burst fire shot count is same or higher than auto fire");
                 }
                 else
                 {
@@ -145,7 +145,7 @@ namespace Combat_Realism
 
         public override IEnumerable<Command> CompGetGizmosExtra()
         {
-            if (this.casterPawn != null && this.casterPawn.Faction.Equals(Faction.OfColony))
+            if (this.casterPawn != null && this.casterPawn.Faction.Equals(Faction.OfPlayer))
             {
                 foreach(Command com in GenerateGizmos())
                 {

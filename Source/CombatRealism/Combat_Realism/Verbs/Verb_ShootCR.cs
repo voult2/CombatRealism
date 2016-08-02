@@ -99,7 +99,7 @@ namespace Combat_Realism
         {
             get
             {
-                return !(caster.Faction == Faction.OfColony);
+                return !(caster.Faction == Faction.OfPlayer);
             }
         }
 

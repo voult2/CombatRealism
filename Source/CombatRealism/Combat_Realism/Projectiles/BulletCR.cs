@@ -5,12 +5,63 @@ using System.Text;
 using Verse;
 using Verse.Sound;
 using RimWorld;
+using UnityEngine;
 
 namespace Combat_Realism
 {
     public class BulletCR : ProjectileCR
     {
         private const float StunChance = 0.1f;
+
+        public bool isShotgunShellDropper = false;
+        public bool isNoShellDropper = false;
+        public bool isBigGunDropper = false;
+        public string casingMoteDefname = "Mote_EmptyCasing";
+
+        public override void SpawnSetup()
+        {
+            base.SpawnSetup();
+            this.ThrowEmptyCasing(base.Position.ToVector3Shifted(), 1f);
+        }
+
+        public void ThrowEmptyCasing(Vector3 loc, float size)
+        {
+            ThingDef_CaseLeaver thingDef_CaseLeaver = this.def as ThingDef_CaseLeaver;
+            bool isShotgunShellDropper = thingDef_CaseLeaver.isShotgunShellDropper;
+            string casingMoteDefname = thingDef_CaseLeaver.casingMoteDefname;
+            if (isShotgunShellDropper)
+            {
+                casingMoteDefname = "Mote_ShotgunShell";
+            }
+            if (isBigGunDropper)
+            {
+                casingMoteDefname = "Mote_BigShell";
+            }
+            if (isNoShellDropper)
+            {
+                casingMoteDefname = "Mote_Null";
+
+            }
+            if (!loc.ShouldSpawnMotesAt() || MoteCounter.SaturatedLowPriority)
+            {
+                return;
+            }
+            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named(casingMoteDefname), null);
+            moteThrown.ScaleUniform = Rand.Range(0.5f, 0.3f) * size;
+            moteThrown.exactRotationRate = Rand.Range(-3f, 4f);
+            moteThrown.exactPosition = loc;
+            moteThrown.airTicksLeft = 60;
+            moteThrown.SetVelocityAngleSpeed((float)Rand.Range(160, 200), Rand.Range(0.020f, 0.0115f));
+            if (--moteThrown.airTicksLeft <= 35)
+            {
+                moteThrown.airTicksLeft = 0;
+                moteThrown.ExactSpeed = 0f;
+                moteThrown.exactRotationRate = 0f;
+                this.def.mote.landSound.PlayOneShot(base.Position);
+            }
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
+        }
+
         protected override void Impact(Thing hitThing)
         {
             base.Impact(hitThing);

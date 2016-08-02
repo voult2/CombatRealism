@@ -328,7 +328,7 @@ namespace Combat_Realism
                 searcher = this;
                 faction = base.Faction;
             }
-            if (this.GunCompEq.PrimaryVerb.verbProps.projectileDef.projectile.flyOverhead && faction.HostileTo(Faction.OfColony) && Rand.Value < 0.5f && Find.ListerBuildings.allBuildingsColonist.Count > 0)
+            if (this.GunCompEq.PrimaryVerb.verbProps.projectileDef.projectile.flyOverhead && faction.HostileTo(Faction.OfPlayer) && Rand.Value < 0.5f && Find.ListerBuildings.allBuildingsColonist.Count > 0)
             {
                 return Find.ListerBuildings.allBuildingsColonist.RandomElement<Building>();
             }
@@ -439,7 +439,7 @@ namespace Combat_Realism
                     yield return com;
                 }
             }
-            if (Faction == Faction.OfColony)
+            if (Faction == Faction.OfPlayer)
             {
                 // Stop forced attack gizmo
                 Gizmo stop = new Command_Action()
@@ -456,8 +456,8 @@ namespace Combat_Realism
                 };
                 yield return stop;
                 // Set forced target gizmo
-                if ((mannableComp != null && mannableComp.MannedNow && mannableComp.ManningPawn.Faction == Faction.OfColony)
-                    || (mannableComp == null && Faction == Faction.OfColony))
+                if ((mannableComp != null && mannableComp.MannedNow && mannableComp.ManningPawn.Faction == Faction.OfPlayer)
+                    || (mannableComp == null && Faction == Faction.OfPlayer))
                 {
                     Gizmo attack = new Command_VerbTarget()
                     {

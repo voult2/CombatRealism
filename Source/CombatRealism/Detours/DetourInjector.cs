@@ -5,6 +5,7 @@ using System.Text;
 using System.Reflection;
 using RimWorld;
 using Verse;
+using Verse.AI;
 using UnityEngine;
 using CommunityCoreLibrary;
 
@@ -24,9 +25,9 @@ namespace Combat_Realism.Detours
                 typeof(Detours_TooltipUtility).GetMethod("ShotCalculationTipString", BindingFlags.Static | BindingFlags.NonPublic)))
                 return false;
 
-            // Detour FloatMenuMaker
-            if(!CommunityCoreLibrary.Detours.TryDetourFromTo(typeof(FloatMenuMaker).GetMethod("ChoicesAtFor", BindingFlags.Static | BindingFlags.Public),
-                typeof(Detours_FloatMenuMaker).GetMethod("ChoicesAtFor", BindingFlags.Static | BindingFlags.NonPublic)))
+            // Detour FloatMenuMakerMap
+            if (!CommunityCoreLibrary.Detours.TryDetourFromTo(typeof(FloatMenuMakerMap).GetMethod("ChoicesAtFor", BindingFlags.Static | BindingFlags.Public),
+                typeof(Detours_FloatMenuMakerMap).GetMethod("ChoicesAtFor", BindingFlags.Static | BindingFlags.NonPublic)))
                 return false;
 
             // *************************************
@@ -40,15 +41,15 @@ namespace Combat_Realism.Detours
                 return false;
 
             MethodInfo tryDrop2Source = typeof(ThingContainer).GetMethod("TryDrop",
-                BindingFlags.Instance | BindingFlags.Public,
-                null,
-                new Type[] { typeof(Thing), typeof(IntVec3), typeof(ThingPlaceMode), typeof(int), typeof(Thing).MakeByRefType() },
-                null);
+                 BindingFlags.Instance | BindingFlags.Public,
+                 null,
+                 new Type[] { typeof(Thing), typeof(IntVec3), typeof(ThingPlaceMode), typeof(int), typeof(Thing).MakeByRefType(), typeof(Action<Thing, int>) },
+                 null);
 
             MethodInfo tryDrop2Dest = typeof(Detours_ThingContainer).GetMethod("TryDrop",
                 BindingFlags.Static | BindingFlags.NonPublic,
                 null,
-                new Type[] { typeof(ThingContainer), typeof(Thing), typeof(IntVec3), typeof(ThingPlaceMode), typeof(int), typeof(Thing).MakeByRefType() },
+                new Type[] { typeof(ThingContainer), typeof(Thing), typeof(IntVec3), typeof(ThingPlaceMode), typeof(int), typeof(Thing).MakeByRefType(), typeof(Action<Thing, int>) },
                 null);
 
             if (!CommunityCoreLibrary.Detours.TryDetourFromTo(tryDrop2Source, tryDrop2Dest))
@@ -133,6 +134,14 @@ namespace Combat_Realism.Detours
                 typeof(Detours_TradeDeal).GetMethod("UpdateCurrencyCount", BindingFlags.Static | BindingFlags.NonPublic)))
                 return false;
 
+            // *************************************
+            // ******** AI-related methods *********
+            // *************************************
+
+            // AttackTargetFinder
+            if (!CommunityCoreLibrary.Detours.TryDetourFromTo(typeof(AttackTargetFinder).GetMethod("BestAttackTarget", BindingFlags.Static | BindingFlags.Public),
+                typeof(Detour_AttackTargetFinder).GetMethod("BestAttackTarget", BindingFlags.Static | BindingFlags.NonPublic)))
+                return false;
 
             return true;
         }

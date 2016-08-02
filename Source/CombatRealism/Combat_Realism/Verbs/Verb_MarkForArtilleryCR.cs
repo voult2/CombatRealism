@@ -22,7 +22,7 @@ namespace Combat_Realism
         protected override bool TryCastShot()
         {
             ArtilleryMarker marker = ThingMaker.MakeThing(ThingDef.Named(ArtilleryMarker.MarkerDef)) as ArtilleryMarker;
-            ShiftVecReport report = this.ShiftVecReportFor(this.currentTarget);
+            ShiftVecReport report = ShiftVecReportFor(currentTarget);
             marker.aimEfficiency = report.aimEfficiency;
             marker.aimingAccuracy = report.aimingAccuracy;
             marker.lightingShift = report.lightingShift;

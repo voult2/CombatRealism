@@ -72,7 +72,7 @@ namespace Combat_Realism
                 return compInventory.ammoList.Any(x => Props.ammoSet.ammoTypes.Contains(x.def));
             }
         }
-        public bool hasMagazine => Props.magazineSize > 0;
+        public bool hasMagazine { get { return Props.magazineSize > 0; } }
         public AmmoDef currentAmmo
         {
             get
@@ -225,7 +225,7 @@ namespace Combat_Realism
                     else
                     {
                         Thing outThing;
-                        GenThing.TryDropAndSetForbidden(ammoThing, position, ThingPlaceMode.Near, out outThing, turret.Faction != Faction.OfColony);
+                        GenThing.TryDropAndSetForbidden(ammoThing, position, ThingPlaceMode.Near, out outThing, turret.Faction != Faction.OfPlayer);
                     }
                 }
                 // Check for ammo
@@ -251,7 +251,7 @@ namespace Combat_Realism
                 };
 
                 // Store the current job so we can reassign it later
-                if (this.wielder.Faction == Faction.OfColony
+                if (this.wielder.Faction == Faction.OfPlayer
                     && this.wielder.CurJob != null
                     && (this.wielder.CurJob.def == JobDefOf.AttackStatic || this.wielder.CurJob.def == JobDefOf.Goto || wielder.CurJob.def == JobDefOf.Hunt))
                 {
@@ -378,7 +378,7 @@ namespace Combat_Realism
             var ammoStatusGizmo = new GizmoAmmoStatus { compAmmo = this };
             yield return ammoStatusGizmo;
 
-            if ((this.wielder != null && wielder.Faction == Faction.OfColony) || (turret != null && turret.Faction == Faction.OfColony))
+            if ((this.wielder != null && wielder.Faction == Faction.OfPlayer) || (turret != null && turret.Faction == Faction.OfPlayer))
             {
                 Action action = null;
                 if (wielder != null) action = TryStartReload;
