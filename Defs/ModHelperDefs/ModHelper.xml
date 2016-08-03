@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ModHelperDef>
+  <CommunityCoreLibrary.ModHelperDef>
     <defName>CombatRealism</defName>
     <ModName>CombatRealism</ModName>
-    <minCCLversion>0.13.0</minCCLversion>
+        <minCCLVersion>0.14.0</minCCLVersion>
 		<SpecialInjectors>
 			<li>Combat_Realism.Detours.DetourInjector</li>
       <li>Combat_Realism.ITabInjector</li>
@@ -236,6 +236,6 @@
         </stockGenerators>
       </li>
     </TraderKinds>
-  </ModHelperDef>
+  </CommunityCoreLibrary.ModHelperDef>
 
 </Defs>

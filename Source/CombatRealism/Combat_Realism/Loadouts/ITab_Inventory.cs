@@ -11,15 +11,15 @@ namespace Combat_Realism
     {
         #region Fields
 
-        private const float _barHeight                 = 20f;
-        private const float _margin                    = 6f;
-        private const float _thingIconSize             = 28f;
-        private const float _thingLeftX                = 36f;
-        private const float _thingRowHeight            = 28f;
-        private const float _topPadding                = 20f;
-        private static readonly Color _highlightColor  = new Color(0.5f, 0.5f, 0.5f, 1f);
+        private const float _barHeight = 20f;
+        private const float _margin = 6f;
+        private const float _thingIconSize = 28f;
+        private const float _thingLeftX = 36f;
+        private const float _thingRowHeight = 28f;
+        private const float _topPadding = 20f;
+        private static readonly Color _highlightColor = new Color(0.5f, 0.5f, 0.5f, 1f);
         private static readonly Color _thingLabelColor = new Color(0.9f, 0.9f, 0.9f, 1f);
-        private Vector2 _scrollPosition                = Vector2.zero;
+        private Vector2 _scrollPosition = Vector2.zero;
 
         private float _scrollViewHeight;
 
@@ -47,16 +47,16 @@ namespace Combat_Realism
         {
             get
             {
-                if ( base.SelPawn != null )
+                if (base.SelPawn != null)
                 {
                     return base.SelPawn;
                 }
                 Corpse corpse = base.SelThing as Corpse;
-                if ( corpse != null )
+                if (corpse != null)
                 {
                     return corpse.innerPawn;
                 }
-                throw new InvalidOperationException( "Gear tab on non-pawn non-corpse " + base.SelThing );
+                throw new InvalidOperationException("Gear tab on non-pawn non-corpse " + base.SelThing);
             }
         }
 
@@ -74,54 +74,54 @@ namespace Combat_Realism
                 _margin,
                 _topPadding,
                 size.x - 2 * _margin,
-                size.y - _topPadding - _margin );
+                size.y - _topPadding - _margin);
 
-            if ( comp != null )
+            if (comp != null)
             {
                 // adjust rects if comp found
-                listRect.height -= ( _margin + _barHeight ) * 2;
-                Rect weightRect = new Rect( _margin, listRect.yMax + _margin, listRect.width, _barHeight );
-                Rect bulkRect = new Rect( _margin, weightRect.yMax + _margin, listRect.width, _barHeight );
+                listRect.height -= (_margin + _barHeight) * 2;
+                Rect weightRect = new Rect(_margin, listRect.yMax + _margin, listRect.width, _barHeight);
+                Rect bulkRect = new Rect(_margin, weightRect.yMax + _margin, listRect.width, _barHeight);
 
-                Utility_Loadouts.DrawBar( bulkRect, comp.currentBulk, comp.capacityBulk, "CR.Bulk".Translate(), SelPawn.GetBulkTip() );
-                Utility_Loadouts.DrawBar( weightRect, comp.currentWeight, comp.capacityWeight, "CR.Weight".Translate(), SelPawn.GetWeightTip() );
+                Utility_Loadouts.DrawBar(bulkRect, comp.currentBulk, comp.capacityBulk, "CR.Bulk".Translate(), SelPawn.GetBulkTip());
+                Utility_Loadouts.DrawBar(weightRect, comp.currentWeight, comp.capacityWeight, "CR.Weight".Translate(), SelPawn.GetWeightTip());
             }
 
             // start drawing list (rip from ITab_Pawn_Gear)
-            GUI.BeginGroup( listRect );
+            GUI.BeginGroup(listRect);
             Text.Font = GameFont.Small;
             GUI.color = Color.white;
-            Rect outRect = new Rect( 0f, 0f, listRect.width, listRect.height );
-            Rect viewRect = new Rect( 0f, 0f, listRect.width - 16f, this._scrollViewHeight );
-            Widgets.BeginScrollView( outRect, ref this._scrollPosition, viewRect );
+            Rect outRect = new Rect(0f, 0f, listRect.width, listRect.height);
+            Rect viewRect = new Rect(0f, 0f, listRect.width - 16f, this._scrollViewHeight);
+            Widgets.BeginScrollView(outRect, ref this._scrollPosition, viewRect);
             float curY = 0f;
-            if ( this.SelPawnForGear.equipment != null )
+            if (this.SelPawnForGear.equipment != null)
             {
-                Widgets.ListSeparator( ref curY, viewRect.width, "Equipment".Translate() );
-                foreach ( ThingWithComps current in this.SelPawnForGear.equipment.AllEquipment )
+                Widgets.ListSeparator(ref curY, viewRect.width, "Equipment".Translate());
+                foreach (ThingWithComps current in this.SelPawnForGear.equipment.AllEquipment)
                 {
-                    this.DrawThingRow( ref curY, viewRect.width, current );
+                    this.DrawThingRow(ref curY, viewRect.width, current);
                 }
             }
-            if ( this.SelPawnForGear.apparel != null )
+            if (this.SelPawnForGear.apparel != null)
             {
-                Widgets.ListSeparator( ref curY, viewRect.width, "Apparel".Translate() );
-                foreach ( Apparel current2 in from ap in this.SelPawnForGear.apparel.WornApparel
-                                              orderby ap.def.apparel.bodyPartGroups[0].listOrder descending
-                                              select ap )
+                Widgets.ListSeparator(ref curY, viewRect.width, "Apparel".Translate());
+                foreach (Apparel current2 in from ap in this.SelPawnForGear.apparel.WornApparel
+                                             orderby ap.def.apparel.bodyPartGroups[0].listOrder descending
+                                             select ap)
                 {
-                    this.DrawThingRow( ref curY, viewRect.width, current2 );
+                    this.DrawThingRow(ref curY, viewRect.width, current2);
                 }
             }
-            if ( this.SelPawnForGear.inventory != null )
+            if (this.SelPawnForGear.inventory != null)
             {
-                Widgets.ListSeparator( ref curY, viewRect.width, "Inventory".Translate() );
-                foreach ( Thing current3 in this.SelPawnForGear.inventory.container )
+                Widgets.ListSeparator(ref curY, viewRect.width, "Inventory".Translate());
+                foreach (Thing current3 in this.SelPawnForGear.inventory.container)
                 {
-                    this.DrawThingRow( ref curY, viewRect.width, current3 );
+                    this.DrawThingRow(ref curY, viewRect.width, current3);
                 }
             }
-            if ( Event.current.type == EventType.Layout )
+            if (Event.current.type == EventType.Layout)
             {
                 this._scrollViewHeight = curY + 30f;
             }
@@ -132,107 +132,107 @@ namespace Combat_Realism
             Text.Anchor = TextAnchor.UpperLeft;
         }
 
-        private void DrawThingRow( ref float y, float width, Thing thing )
+        private void DrawThingRow(ref float y, float width, Thing thing)
         {
-            Rect rect = new Rect( 0f, y, width, 28f );
-            TooltipHandler.TipRegion( rect, thing.GetWeightAndBulkTip() );
-            if ( Mouse.IsOver( rect ) )
+            Rect rect = new Rect(0f, y, width, 28f);
+            TooltipHandler.TipRegion(rect, thing.GetWeightAndBulkTip());
+            if (Mouse.IsOver(rect))
             {
                 GUI.color = _highlightColor;
-                GUI.DrawTexture( rect, TexUI.HighlightTex );
+                GUI.DrawTexture(rect, TexUI.HighlightTex);
             }
-            if ( Widgets.InvisibleButton( rect ) && Event.current.button == 1 )
+            if (Widgets.ButtonInvisible(rect) && Event.current.button == 1)
             {
                 List<FloatMenuOption> floatOptionList = new List<FloatMenuOption>();
-                floatOptionList.Add( new FloatMenuOption( "ThingInfo".Translate(), delegate
+                floatOptionList.Add(new FloatMenuOption("ThingInfo".Translate(), delegate
                 {
-                    Find.WindowStack.Add( new Dialog_InfoCard( thing ) );
-                }, MenuOptionPriority.Medium, null, null ) );
-                if ( this.CanEdit )
+                    Find.WindowStack.Add(new Dialog_InfoCard(thing));
+                }, MenuOptionPriority.Medium, null, null));
+                if (this.CanEdit)
                 {
                     // Equip option
                     ThingWithComps eq = thing as ThingWithComps;
-                    if ( eq != null && eq.TryGetComp<CompEquippable>() != null )
+                    if (eq != null && eq.TryGetComp<CompEquippable>() != null)
                     {
                         CompInventory compInventory = SelPawnForGear.TryGetComp<CompInventory>();
-                        if ( compInventory != null )
+                        if (compInventory != null)
                         {
                             FloatMenuOption equipOption;
-                            string eqLabel = GenLabel.ThingLabel( eq.def, eq.Stuff, 1 );
-                            if ( SelPawnForGear.equipment.AllEquipment.Contains( eq ) && SelPawnForGear.inventory != null )
+                            string eqLabel = GenLabel.ThingLabel(eq.def, eq.Stuff, 1);
+                            if (SelPawnForGear.equipment.AllEquipment.Contains(eq) && SelPawnForGear.inventory != null)
                             {
-                                equipOption = new FloatMenuOption( "CR_PutAway".Translate( new object[] { eqLabel } ),
-                                    new Action( delegate
-                                     {
-                                         ThingWithComps oldEq;
-                                         SelPawnForGear.equipment.TryTransferEquipmentToContainer( SelPawnForGear.equipment.Primary, SelPawnForGear.inventory.container, out oldEq );
-                                     } ) );
+                                equipOption = new FloatMenuOption("CR_PutAway".Translate(new object[] { eqLabel }),
+                                    new Action(delegate
+                                    {
+                                        ThingWithComps oldEq;
+                                        SelPawnForGear.equipment.TryTransferEquipmentToContainer(SelPawnForGear.equipment.Primary, SelPawnForGear.inventory.container, out oldEq);
+                                    }));
                             }
-                            else if ( !SelPawnForGear.health.capacities.CapableOf( PawnCapacityDefOf.Manipulation ) )
+                            else if (!SelPawnForGear.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))
                             {
-                                equipOption = new FloatMenuOption( "CannotEquip".Translate( new object[] { eqLabel } ), null );
+                                equipOption = new FloatMenuOption("CannotEquip".Translate(new object[] { eqLabel }), null);
                             }
                             else
                             {
-                                string equipOptionLabel = "Equip".Translate( new object[] { eqLabel } );
-                                if ( eq.def.IsRangedWeapon && SelPawnForGear.story != null && SelPawnForGear.story.traits.HasTrait( TraitDefOf.Brawler ) )
+                                string equipOptionLabel = "Equip".Translate(new object[] { eqLabel });
+                                if (eq.def.IsRangedWeapon && SelPawnForGear.story != null && SelPawnForGear.story.traits.HasTrait(TraitDefOf.Brawler))
                                 {
                                     equipOptionLabel = equipOptionLabel + " " + "EquipWarningBrawler".Translate();
                                 }
-                                equipOption = new FloatMenuOption( equipOptionLabel, new Action( delegate
-                                  {
-                                      compInventory.TrySwitchToWeapon( eq );
-                                  } ) );
+                                equipOption = new FloatMenuOption(equipOptionLabel, new Action(delegate
+                                {
+                                    compInventory.TrySwitchToWeapon(eq);
+                                }));
                             }
-                            floatOptionList.Add( equipOption );
+                            floatOptionList.Add(equipOption);
                         }
                     }
 
                     // Drop option
                     Action action = null;
                     Apparel ap = thing as Apparel;
-                    if ( ap != null && SelPawnForGear.apparel.WornApparel.Contains( ap ) )
+                    if (ap != null && SelPawnForGear.apparel.WornApparel.Contains(ap))
                     {
                         Apparel unused;
                         action = delegate
                         {
-                            this.SelPawnForGear.apparel.TryDrop( ap, out unused, this.SelPawnForGear.Position, true );
+                            this.SelPawnForGear.apparel.TryDrop(ap, out unused, this.SelPawnForGear.Position, true);
                         };
                     }
-                    else if ( eq != null && this.SelPawnForGear.equipment.AllEquipment.Contains( eq ) )
+                    else if (eq != null && this.SelPawnForGear.equipment.AllEquipment.Contains(eq))
                     {
                         ThingWithComps unused;
                         action = delegate
                         {
-                            this.SelPawnForGear.equipment.TryDropEquipment( eq, out unused, this.SelPawnForGear.Position, true );
+                            this.SelPawnForGear.equipment.TryDropEquipment(eq, out unused, this.SelPawnForGear.Position, true);
                         };
                     }
-                    else if ( !thing.def.destroyOnDrop )
+                    else if (!thing.def.destroyOnDrop)
                     {
                         Thing unused;
                         action = delegate
                         {
-                            this.SelPawnForGear.inventory.container.TryDrop( thing, this.SelPawnForGear.Position, ThingPlaceMode.Near, out unused );
+                            this.SelPawnForGear.inventory.container.TryDrop(thing, this.SelPawnForGear.Position, ThingPlaceMode.Near, out unused);
                         };
                     }
-                    floatOptionList.Add( new FloatMenuOption( "DropThing".Translate(), action, MenuOptionPriority.Medium, null, null ) );
+                    floatOptionList.Add(new FloatMenuOption("DropThing".Translate(), action, MenuOptionPriority.Medium, null, null));
                 }
-                FloatMenu window = new FloatMenu( floatOptionList, thing.LabelCap, false, false );
-                Find.WindowStack.Add( window );
+                FloatMenu window = new FloatMenu(floatOptionList, thing.LabelCap, false);
+                Find.WindowStack.Add(window);
             }
-            if ( thing.def.DrawMatSingle != null && thing.def.DrawMatSingle.mainTexture != null )
+            if (thing.def.DrawMatSingle != null && thing.def.DrawMatSingle.mainTexture != null)
             {
-                Widgets.ThingIcon( new Rect( 4f, y, 28f, 28f ), thing );
+                Widgets.ThingIcon(new Rect(4f, y, 28f, 28f), thing);
             }
             Text.Anchor = TextAnchor.MiddleLeft;
             GUI.color = _thingLabelColor;
-            Rect rect2 = new Rect( 36f, y, width - 36f, 28f );
+            Rect rect2 = new Rect(36f, y, width - 36f, 28f);
             string text = thing.LabelCap;
-            if ( thing is Apparel && this.SelPawnForGear.outfits != null && this.SelPawnForGear.outfits.forcedHandler.IsForced( (Apparel)thing ) )
+            if (thing is Apparel && this.SelPawnForGear.outfits != null && this.SelPawnForGear.outfits.forcedHandler.IsForced((Apparel)thing))
             {
                 text = text + ", " + "ApparelForcedLower".Translate();
             }
-            Widgets.Label( rect2, text );
+            Widgets.Label(rect2, text);
             y += 28f;
         }
 

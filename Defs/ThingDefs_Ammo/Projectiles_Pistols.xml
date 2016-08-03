@@ -3,7 +3,7 @@
 	
 	<!-- ================== .40 Rimfire ================== -->
 	
-  <ThingDef ParentName="BaseBullet">
+  <ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
     <defName>Bullet_40Rimfire</defName>
     <label>.40 Rimfire bullet</label>
     <graphicData>
@@ -20,7 +20,7 @@
 	
 	<!-- ================== .32 ACP ================== -->
 	
-  <ThingDef Name="Base32ACPBullet" ParentName="BaseBullet" Abstract="true">
+  <ThingDef Name="Base32ACPBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -60,7 +60,7 @@
 	
 	<!-- ================== 7.62x25mm Tokarev ================== -->
 	
-  <ThingDef Name="Base762x25mmTokarevBullet" ParentName="BaseBullet" Abstract="true">
+  <ThingDef Name="Base762x25mmTokarevBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -100,7 +100,7 @@
 	
 	<!-- ================== 9x19mm Parabellum ================== -->
 	
-  <ThingDef Name="Base9x19mmParaBullet" ParentName="BaseBullet" Abstract="true">
+  <ThingDef Name="Base9x19mmParaBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -140,7 +140,7 @@
 	
 	<!-- ================== .45 ACP ================== -->
 	
-  <ThingDef Name="Base45ACPBullet" ParentName="BaseBullet" Abstract="true">
+  <ThingDef Name="Base45ACPBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -180,7 +180,7 @@
 	
 	<!-- ================== .45 Colt ================== -->
 	
-  <ThingDef Name="Base45ColtBullet" ParentName="BaseBullet" Abstract="true">
+  <ThingDef Name="Base45ColtBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>

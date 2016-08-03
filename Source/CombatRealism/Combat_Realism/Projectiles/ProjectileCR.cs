@@ -281,7 +281,7 @@ namespace Combat_Realism
                         return true;
                     }
                     //Check for trees		--		HARDCODED RNG IN HERE
-                    if (thing.def.category == ThingCategory.Plant && thing.def.altitudeLayer == AltitudeLayer.BuildingTall && Rand.Value < thing.def.fillPercent * Mathf.Clamp(distFromOrigin / 40, 0f, (1f / treeCollisionChance)) * treeCollisionChance)
+                    if (thing.def.category == ThingCategory.Plant && thing.def.altitudeLayer == AltitudeLayer.Building && Rand.Value < thing.def.fillPercent * Mathf.Clamp(distFromOrigin / 40, 0f, (1f / treeCollisionChance)) * treeCollisionChance)
                     {
                         this.Impact(thing);
                         return true;

@@ -20,7 +20,7 @@ namespace Combat_Realism.Detours
 
         internal static List<IntVec3> tempSourceList = new List<IntVec3>();
 
-        internal static Thing BestAttackTarget(Thing searcher, Predicate<Thing> validator, float maxTargDist, float minTargDist, TargetScanFlags flags, IntVec3 locus = default(IntVec3), float maxTravelRadiusFromLocus = 3.40282347E+38f)
+        internal static Thing BestAttackTarget(Thing searcher, TargetScanFlags flags, Predicate<Thing> validator = null, float minDist = 0f, float maxDist = 9999f, IntVec3 locus = default(IntVec3), float maxTravelRadiusFromLocus = 3.40282347E+38f, bool canBash = false)
         {
             Pawn searcherPawn = searcher as Pawn;
             Verb attackVerb = Detour_AttackTargetFinder.GetAttackVerb(searcher);
@@ -30,7 +30,7 @@ namespace Combat_Realism.Detours
                 return null;
             }
             bool onlyTargetMachines = attackVerb != null && attackVerb.verbProps.projectileDef != null && attackVerb.verbProps.projectileDef.projectile.damageDef == DamageDefOf.EMP;
-            float minDistanceSquared = minTargDist * minTargDist;
+            float minDistanceSquared = minDist * minDist;
             float num = maxTravelRadiusFromLocus + attackVerb.verbProps.range;
             float maxLocusDistSquared = num * num;
             Predicate<Thing> predicate = delegate (Thing t)
@@ -100,17 +100,149 @@ namespace Combat_Realism.Detours
                 {
                     Detour_AttackTargetFinder.tmpTargets.Add((Thing)potentialTargetsFor[i]);
                 }
-                Thing result = GenClosest.ClosestThing_Global(searcher.Position, Detour_AttackTargetFinder.tmpTargets, maxTargDist, predicate);
+            }
+            else
+            {
+                Detour_AttackTargetFinder.tmpTargets.Clear();
+                List<IAttackTarget> potentialTargetsFor = Find.AttackTargetsCache.GetPotentialTargetsFor(searcher);
+                for (int i = 0; i < potentialTargetsFor.Count; i++)
+                {
+                    Detour_AttackTargetFinder.tmpTargets.Add((Thing)potentialTargetsFor[i]);
+                }
+                if ((byte)(flags & TargetScanFlags.NeedReachable) != 0)
+                {
+                    Predicate<Thing> oldValidator = predicate;
+                    predicate = delegate (Thing t)
+                    {
+                        if (!oldValidator(t))
+                        {
+                            return false;
+                        }
+                        if (searcherPawn != null)
+                        {
+                            if (!searcherPawn.CanReach(t, PathEndMode.Touch, Danger.Some, false, TraverseMode.ByPawn))
+                            {
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            TraverseMode mode = (!canBash) ? TraverseMode.NoPassClosedDoors : TraverseMode.PassDoors;
+                            if (!searcher.Position.CanReach(t, PathEndMode.Touch, TraverseParms.For(mode, Danger.Deadly, false)))
+                            {
+                                return false;
+                            }
+                        }
+                        return true;
+                    };
+                }
+                Thing result = GenClosest.ClosestThing_Global(searcher.Position, Detour_AttackTargetFinder.tmpTargets, maxDist, predicate);
                 Detour_AttackTargetFinder.tmpTargets.Clear();
                 return result;
+
             }
             if (searcherPawn != null && searcherPawn.mindState.duty != null && searcherPawn.mindState.duty.radius > 0f)
             {
                 Predicate<Thing> oldValidator = predicate;
                 predicate = ((Thing t) => oldValidator(t) && t.Position.InHorDistOf(searcherPawn.mindState.duty.focus.Cell, searcherPawn.mindState.duty.radius));
             }
-            int searchRegionsMax = (maxTargDist <= 800f) ? 40 : -1;
-            return GenClosest.ClosestThingReachable(searcher.Position, ThingRequest.ForGroup(ThingRequestGroup.AttackTarget), PathEndMode.Touch, TraverseParms.For(searcherPawn, Danger.Deadly, TraverseMode.ByPawn, false), maxTargDist, predicate, null, searchRegionsMax, false);
+
+            int searchRegionsMax = (maxDist <= 800f) ? 40 : -1;
+
+            /*  if (searcherPawn == null)
+              {
+                  //return null;
+                  TraverseParms temp = new TraverseParms() { canBash = false, maxDanger = Danger.Deadly, mode = TraverseMode.NoPassClosedDoors, pawn = null };
+                  return GenClosest.ClosestThingReachable(searcher.Position, ThingRequest.ForGroup(ThingRequestGroup.AttackTarget), PathEndMode.Touch, temp, maxTargDist, predicate, null, searchRegionsMax, false);
+              }
+              else */
+            {
+                IntVec3 arg_25D_0 = searcher.Position;
+                ThingRequest arg_25D_1 = ThingRequest.ForGroup(ThingRequestGroup.AttackTarget);
+                PathEndMode arg_25D_2 = PathEndMode.Touch;
+                bool canBash2 = canBash;
+                Thing thing = GenClosest.ClosestThingReachable(arg_25D_0, arg_25D_1, arg_25D_2, TraverseParms.For(searcherPawn, Danger.Deadly, TraverseMode.ByPawn, canBash2), maxDist, predicate, null, searchRegionsMax, false);
+                if (thing != null && PawnUtility.ShouldCollideWithPawns(searcherPawn))
+                {
+                    Thing thing2 = FindBestReachableMeleeTarget(predicate, searcherPawn, maxDist, canBash);
+                    if (thing2 != null)
+                    {
+                        float lengthHorizontal = (searcherPawn.Position - thing.Position).LengthHorizontal;
+                        float lengthHorizontal2 = (searcherPawn.Position - thing2.Position).LengthHorizontal;
+                        if (Mathf.Abs(lengthHorizontal - lengthHorizontal2) < 50f)
+                        {
+                            thing = thing2;
+                        }
+                    }
+                }
+                return thing;
+            }
+        }
+
+        internal static Thing FindBestReachableMeleeTarget(Predicate<Thing> validator, Pawn searcherPawn, float maxTargDist, bool canBash)
+        {
+            maxTargDist = Mathf.Min(maxTargDist, 30f);
+            Thing reachableTarget = null;
+            Func<IntVec3, Thing> bestTargetOnCell = delegate (IntVec3 x)
+            {
+                List<Thing> thingList = x.GetThingList();
+                for (int i = 0; i < thingList.Count; i++)
+                {
+                    Thing thing = thingList[i];
+                    IAttackTarget attackTarget = thing as IAttackTarget;
+                    if (attackTarget != null)
+                    {
+                        if (validator(thing))
+                        {
+                            if (searcherPawn.Position.IsAdjacentTo8WayOrInside(thing.Position, thing.Rotation, thing.def.size) || Find.AttackTargetReservations.CanReserve(searcherPawn, attackTarget))
+                            {
+                                return thing;
+                            }
+                        }
+                    }
+                }
+                return null;
+            };
+            FloodFiller.FloodFill(searcherPawn.Position, delegate (IntVec3 x)
+            {
+                if (reachableTarget != null)
+                {
+                    return false;
+                }
+                if (!x.Walkable())
+                {
+                    return false;
+                }
+                if (x.DistanceToSquared(searcherPawn.Position) > maxTargDist * maxTargDist)
+                {
+                    return false;
+                }
+                if (!canBash)
+                {
+                    Building_Door building_Door = x.GetEdifice() as Building_Door;
+                    if (building_Door != null && !building_Door.CanPhysicallyPass(searcherPawn))
+                    {
+                        return false;
+                    }
+                }
+                return !PawnUtility.AnyPawnBlockingPathAt(x, searcherPawn, true, false);
+            }, delegate (IntVec3 x)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    IntVec3 intVec = x + GenAdj.AdjacentCells[i];
+                    if (intVec.InBounds())
+                    {
+                        Thing thing = bestTargetOnCell(intVec);
+                        if (thing != null)
+                        {
+                            reachableTarget = thing;
+                            break;
+                        }
+                    }
+                }
+            });
+            return reachableTarget;
         }
 
         internal static Verb GetAttackVerb(Thing attacker)
@@ -137,6 +269,7 @@ namespace Combat_Realism.Detours
             Pawn pawn = t as Pawn;
             if (pawn == null)
             {
+                Log.TryOpenLogWindow();
                 Log.ErrorOnce("Unknown target searcher: " + t, 7547344);
                 return true;
             }
@@ -151,7 +284,8 @@ namespace Combat_Realism.Detours
 
         public static Thing BestShootTargetFromCurrentPosition(Thing searcher, Predicate<Thing> validator, float maxDistance, float minDistance, TargetScanFlags flags)
         {
-            return Detour_AttackTargetFinder.BestAttackTarget(searcher, validator, maxDistance, minDistance, flags, default(IntVec3), 3.40282347E+38f);
+            //if (searcher == null) return null;
+            return AttackTargetFinder.BestAttackTarget(searcher, flags, validator, minDistance, maxDistance, default(IntVec3), 3.40282347E+38f, false);
         }
 
         public static bool CanSee(this Thing seer, Thing target)

@@ -156,6 +156,11 @@ namespace Combat_Realism
             return vec;
         }
 
+        public static string AsPercent(float pct)
+        {
+            return Mathf.RoundToInt(100f * pct) + "%";
+        }
+
         public string GetTextReadout()
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -165,11 +170,11 @@ namespace Combat_Realism
 
                 if (lightingShift > 0)
                 {
-                    stringBuilder.AppendLine("      " + "Darkness".Translate() + "\t" + GenText.AsPercent(lightingShift));
+                    stringBuilder.AppendLine("      " + "Darkness".Translate() + "\t" + AsPercent(lightingShift));
                 }
                 if (weatherShift > 0)
                 {
-                    stringBuilder.AppendLine("      " + "Weather".Translate() + "\t" + GenText.AsPercent(weatherShift));
+                    stringBuilder.AppendLine("      " + "Weather".Translate() + "\t" + AsPercent(weatherShift));
                 }
             }
             if (leadShift > 0)

@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ThingDefs>
 
-  <ThingDef Name="BaseFragment" ParentName="BaseBullet" Abstract="True">
+  <ThingDef Name="BaseFrag" Abstract="True">
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <thingClass>Combat_Realism.BulletCR</thingClass>
+    <label>bullet</label>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+    <graphicData>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+	<projectile Class="Combat_Realism.ProjectilePropertiesCR"/>
+  </ThingDef>
+
+  <ThingDef Name="BaseFragment" ParentName="BaseFrag" Abstract="True">
 	<projectile>
 		<alwaysFreeIntercept>true</alwaysFreeIntercept>
 	</projectile>

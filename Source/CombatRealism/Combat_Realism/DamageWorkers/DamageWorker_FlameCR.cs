@@ -17,7 +17,7 @@ namespace Combat_Realism
                 victim.TryAttachFire(Rand.Range(0.15f, 0.25f));
             }
             Pawn pawn = victim as Pawn;
-            if (pawn != null && pawn.Faction == Faction.OfColony)
+            if (pawn != null && pawn.Faction == Faction.OfPlayer)
             {
                 Find.TickManager.slower.SignalForceNormalSpeedShort();
             }

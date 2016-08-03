@@ -13,7 +13,6 @@ namespace Combat_Realism
                 ShooterPawn.skills.Learn(SkillDefOf.Shooting, 100);
             }
         }*/
-
         public override ShiftVecReport ShiftVecReportFor(TargetInfo target)
         {
             ShiftVecReport report = base.ShiftVecReportFor(target);

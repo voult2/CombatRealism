@@ -60,11 +60,11 @@ namespace Combat_Realism
             }
         }
 
-        public string LabelCap => label.CapitalizeFirst();
+        public string LabelCap { get { return label.CapitalizeFirst(); } }
 
-        public int SlotCount => _slots.Count;
+        public int SlotCount { get { return _slots.Count; } }
 
-        public List<LoadoutSlot> Slots => _slots;
+        public List<LoadoutSlot> Slots { get { return _slots; } }
 
         public float Weight
         {

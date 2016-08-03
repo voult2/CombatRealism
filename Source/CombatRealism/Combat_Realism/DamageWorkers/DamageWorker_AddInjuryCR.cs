@@ -56,7 +56,7 @@ namespace Combat_Realism
 			{
 				return 0f;
 			}
-			if (!DebugSettings.enablePlayerDamage && pawn.Faction == Faction.OfColony)
+			if (!DebugSettings.enablePlayerDamage && pawn.Faction == Faction.OfPlayer)
 			{
 				return 0f;
 			}
@@ -381,10 +381,6 @@ namespace Combat_Realism
 
 		private static void InformPsychology(DamageInfo dinfo, Pawn pawn)
 		{
-			if (!pawn.Dead && pawn.needs.mood != null && pawn.thinker != null && dinfo.Def.battleWound)
-			{
-				pawn.needs.mood.thoughts.TryGainThought(ThoughtDefOf.BattleWounded);
-			}
 		}
 
 		private static bool IsHeadshot(DamageInfo dinfo, Hediff_Injury injury, Pawn pawn)
@@ -396,9 +392,9 @@ namespace Combat_Realism
 		{
 			if (dinfo.Part.Value.Part == null)
 			{
-				BodyPartRecord randomNotMissingPart = pawn.health.hediffSet.GetRandomNotMissingPart(dinfo.Part.Value.Height, dinfo.Part.Value.Depth);
-				if (randomNotMissingPart == null)
-				{
+                BodyPartRecord randomNotMissingPart = pawn.health.hediffSet.GetRandomNotMissingPart(dinfo.Def, dinfo.Part.Value.Height, dinfo.Part.Value.Depth);
+                if (randomNotMissingPart == null)
+                {
 					Log.Warning("GetRandomNotMissingPart returned null (any part).");
 				}
 				return randomNotMissingPart;

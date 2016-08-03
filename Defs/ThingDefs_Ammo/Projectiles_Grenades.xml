@@ -3,7 +3,7 @@
 
 	<!-- ================== 30x29mm Grenade ================== -->
 
-	<ThingDef Name="Base30x29mmGrenadeBullet" ParentName="BaseBullet" Abstract="true">
+	<ThingDef Name="Base30x29mmGrenadeBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
 		<thingClass>Combat_Realism.ProjectileCR_Explosive</thingClass>
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Big</texPath>
@@ -12,6 +12,7 @@
 		<projectile>
 			<speed>74</speed>
 		</projectile>
+	<isNoShellDropper>True</isNoShellDropper>
 	</ThingDef>
 
   <ThingDef ParentName="Base30x29mmGrenadeBullet">
@@ -47,7 +48,7 @@
         <explosionDamage>10</explosionDamage>
         <explosionDamageDef>Electrical</explosionDamageDef>
         <explosionRadius>2.5</explosionRadius>
-        <soundExplode>MortarEMP_Explode</soundExplode>
+        <soundExplode>Explosion_Bomb</soundExplode>
       </li>
     </comps>
   </ThingDef>
@@ -98,7 +99,7 @@
         <explosionDamage>15</explosionDamage>
         <explosionDamageDef>Electrical</explosionDamageDef>
         <explosionRadius>3.0</explosionRadius>
-        <soundExplode>MortarEMP_Explode</soundExplode>
+        <soundExplode>Explosion_Bomb</soundExplode>
       </li>
     </comps>
   </ThingDef>
