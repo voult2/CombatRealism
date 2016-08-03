@@ -3,7 +3,7 @@
 
 	<!-- ================== 81mm mortar shell ================== -->
 
-	<ThingDef Name="Base81mmMortarShell" ParentName="BaseBullet" Abstract="true">
+	<ThingDef Name="Base81mmMortarShell" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
 		<thingClass>Combat_Realism.ProjectileCR_Explosive</thingClass>
 		<graphicData>
       <shaderType>TransparentPostLight</shaderType>
@@ -15,6 +15,7 @@
       <soundAmbient>MortarRound_Ambient</soundAmbient>
       <flyOverhead>true</flyOverhead>
 		</projectile>
+	<isBigGunDropper>True</isBigGunDropper>
 	</ThingDef>
 
   <ThingDef ParentName="Base81mmMortarShell">
@@ -58,7 +59,7 @@
       <damageAmountBase>50</damageAmountBase>
       <speed>100</speed>
       <explosionRadius>3.5</explosionRadius>
-      <preExplosionSpawnThingDef>Puddle_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnThingDef>FilthFuel</preExplosionSpawnThingDef>
       <explosionSpawnChance>0.5</explosionSpawnChance>
       <soundExplode>MortarIncendiary_Explode</soundExplode>
     </projectile>
@@ -81,14 +82,14 @@
 				<explosionDamage>20</explosionDamage>
 				<explosionDamageDef>Electrical</explosionDamageDef>
 				<explosionRadius>5</explosionRadius>
-				<soundExplode>MortarEMP_Explode</soundExplode>
+				<soundExplode>Explosion_Bomb</soundExplode>
 			</li>
 		</comps>
   </ThingDef>
 
 	<!-- ================== 90mm cannon shell ================== -->
 
-	<ThingDef Name="Base90mmCannonShell" ParentName="BaseBullet" Abstract="true">
+	<ThingDef Name="Base90mmCannonShell" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
 		<graphicData>
       <shaderType>TransparentPostLight</shaderType>
 		</graphicData>
@@ -96,6 +97,7 @@
 			<speed>160</speed>
       <soundExplode>MortarBomb_Explode</soundExplode>
 		</projectile>
+	<isBigGunDropper>True</isBigGunDropper>
 	</ThingDef>
 
   <ThingDef ParentName="Base90mmCannonShell">
@@ -172,7 +174,7 @@
 				<explosionDamage>20</explosionDamage>
 				<explosionDamageDef>Electrical</explosionDamageDef>
 				<explosionRadius>5</explosionRadius>
-				<soundExplode>MortarEMP_Explode</soundExplode>
+				<soundExplode>Explosion_Bomb</soundExplode>
 			</li>
 		</comps>
   </ThingDef>

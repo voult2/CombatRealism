@@ -17,7 +17,7 @@
 	
   <!-- ==================== 30x64mm Fuel Cell ========================== -->
 	
-  <ThingDef Name="Base30x64mmFuelBullet" ParentName="BaseBullet" Abstract="true">
+  <ThingDef Name="Base30x64mmFuelBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
     <graphicData>
       <texPath>Things/Projectile/InfernoCannonShot</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -36,7 +36,7 @@
       <damageDef>Flame</damageDef>
       <damageAmountBase>50</damageAmountBase>
       <explosionRadius>2.0</explosionRadius>
-      <preExplosionSpawnThingDef>Puddle_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnThingDef>FilthFuel</preExplosionSpawnThingDef>
     </projectile>
   </ThingDef>
   
@@ -75,7 +75,7 @@
   
   <!-- ==================== 80x256mm Fuel Cell ========================== -->
   
-  <ThingDef ParentName="BaseBullet" >
+  <ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
     <defName>Bullet_80x256mmFuel_Thermobaric</defName>
     <label>inferno cannon shell</label>
     <graphicData>
@@ -98,20 +98,23 @@
 	    <damageAdjacentTiles>true</damageAdjacentTiles>
 	  </li>
 	</comps>
+	<isNoShellDropper>True</isNoShellDropper>
   </ThingDef>
   
   <!-- ==================== 6x24mm Charged ========================== -->
 
-  <ThingDef Name="Base6x24mmChargedBullet" ParentName="BaseBullet" Abstract="true">
+  <ThingDef Name="Base6x24mmChargedBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
     <graphicData>
       <texPath>Things/Projectile/Charge_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
 	  <damageDef>Bullet</damageDef>
-      <speed>180</speed>
+      <speed>170</speed>
     </projectile>
+	<isNoShellDropper>True</isNoShellDropper>
   </ThingDef>
+
 
   <ThingDef ParentName="Base6x24mmChargedBullet">
     <defName>Bullet_6x24mmCharged</defName>
@@ -164,7 +167,7 @@
   
   <!-- ==================== 5x35mm Charged ========================== -->
 
-  <ThingDef ParentName="BaseBullet">
+  <ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
     <defName>Bullet_5x35mmCharged</defName>
     <label>charge lance shot</label>
     <graphicData>
@@ -185,11 +188,12 @@
 	  </secondaryDamage>
 	  <armorPenetration>0.95</armorPenetration>
     </projectile>
+	<isNoShellDropper>True</isNoShellDropper>
   </ThingDef>
   
   <!-- ==================== 12x64mm Charged ========================== -->
 
-  <ThingDef ParentName="BaseBullet">
+  <ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
     <defName>Bullet_12x64mmCharged</defName>
     <label>charge blaster shot</label>
     <graphicData>
@@ -209,6 +213,7 @@
 	  </secondaryDamage>
 	  <armorPenetration>1.2</armorPenetration>
     </projectile>
+	<isNoShellDropper>True</isNoShellDropper>
   </ThingDef>
 
 </ThingDefs>
