@@ -1,0 +1,28 @@
+﻿Merge branch 'master' into pr/5
+
+# Conflicts:
+#	Assemblies/CombatRealism.dll
+#	Source/CombatRealism/Detours/DetourInjector.cs
+#	Source/CombatRealism/Detours/Detour_AttackTargetFinder.cs
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch pr/5
+# All conflicts fixed but you are still merging.
+#
+# Changes not staged for commit:
+#	modified:   Assemblies/CombatRealism.dll
+#	modified:   Source/CombatRealism/Combat_Realism.csproj
+#
+# Untracked files:
+#	.gitignore
+#	CombatRealism Defence/
+#	Source/CombatRealism/obj/
+#
+
