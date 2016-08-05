@@ -213,8 +213,26 @@ namespace Combat_Realism
                     }
                 }
             }
-            // Check for pawn racial armor
             float pawnArmorAmount = 0f;
+            bool partCoveredByArmor = false;
+            if (part.IsInGroup(DefDatabase<BodyPartGroupDef>.GetNamed("CoveredByNaturalArmor")))
+            {
+                partCoveredByArmor = true;
+            }
+            else
+            {
+                BodyPartRecord outerPart = part;
+                while (outerPart.parent != null && outerPart.depth != BodyPartDepth.Outside)
+                {
+                    outerPart = outerPart.parent;
+                }
+                partCoveredByArmor = outerPart != part && outerPart.IsInGroup(DefDatabase<BodyPartGroupDef>.GetNamed("CoveredByNaturalArmor"));
+            }
+            if (partCoveredByArmor)
+            {
+                pawnArmorAmount = pawn.GetStatValue(deflectionStat);
+            }
+
             if (pawnArmorAmount > 0 && Utility.ApplyArmor(ref damageAmount, ref pierceAmount, pawnArmorAmount, null, damageDef))
             {
                 deflected = true;
