@@ -17,6 +17,7 @@ namespace Combat_Realism
         public bool isBigGunDropper = false;
         public string casingMoteDefname = "Mote_EmptyCasing";
 
+
         public override void SpawnSetup()
         {
             base.SpawnSetup();

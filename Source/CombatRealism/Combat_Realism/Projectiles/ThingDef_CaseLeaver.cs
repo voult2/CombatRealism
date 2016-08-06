@@ -10,7 +10,6 @@ namespace Combat_Realism
     {
         public bool isShotgunShellDropper = false;
         public bool isBigGunDropper = false;
-        public bool isBasicWeapon = false;
-        public string casingMoteDefname = null;
+        public string casingMoteDefname = "Mote_EmptyCasing";
     }
 }
