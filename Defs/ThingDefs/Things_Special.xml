@@ -5,7 +5,6 @@
     <defName>FilthFuel</defName>
     <label>fuel puddle</label>
     <description>Burns on the ground.</description>
-    <thingClass>Combat_Realism.IncendiaryFuel</thingClass>
     <useHitPoints>true</useHitPoints>
     <tickerType>Normal</tickerType>
     <statBases>

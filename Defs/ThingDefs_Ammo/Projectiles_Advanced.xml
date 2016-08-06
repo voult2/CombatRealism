@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ThingDefs>
+ 
 
   <ThingDef Name="BaseBullet" Abstract="True">
     <category>Projectile</category>
     <tickerType>Normal</tickerType>
     <altitudeLayer>Projectile</altitudeLayer>
     <thingClass>Combat_Realism.BulletCR</thingClass>
+    <label>bullet1</label>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+    <graphicData>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+	<projectile Class="Combat_Realism.ProjectilePropertiesCR"/>
+  </ThingDef>
+  
+ 
+  <!-- A temporary solution. without case leaver -->
+  <ThingDef Name="BaseBulletv" Abstract="True">
+    <defName>BaseBulletv</defName>
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <thingClass>Combat_Realism.BulletCRV</thingClass>
     <label>bullet</label>
     <useHitPoints>False</useHitPoints>
     <neverMultiSelect>True</neverMultiSelect>
@@ -14,10 +32,10 @@
     </graphicData>
 	<projectile Class="Combat_Realism.ProjectilePropertiesCR"/>
   </ThingDef>
-	
+  
   <!-- ==================== 30x64mm Fuel Cell ========================== -->
 	
-  <ThingDef Name="Base30x64mmFuelBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+  <ThingDef Name="Base30x64mmFuelBullet" ParentName="BaseBulletv" Abstract="true">
     <graphicData>
       <texPath>Things/Projectile/InfernoCannonShot</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -75,7 +93,7 @@
   
   <!-- ==================== 80x256mm Fuel Cell ========================== -->
   
-  <ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
+  <ThingDef ParentName="BaseBulletv">
     <defName>Bullet_80x256mmFuel_Thermobaric</defName>
     <label>inferno cannon shell</label>
     <graphicData>
@@ -98,12 +116,11 @@
 	    <damageAdjacentTiles>true</damageAdjacentTiles>
 	  </li>
 	</comps>
-	<isNoShellDropper>True</isNoShellDropper>
   </ThingDef>
   
   <!-- ==================== 6x24mm Charged ========================== -->
 
-  <ThingDef Name="Base6x24mmChargedBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+  <ThingDef Name="Base6x24mmChargedBullet" ParentName="BaseBulletv">
     <graphicData>
       <texPath>Things/Projectile/Charge_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -112,7 +129,6 @@
 	  <damageDef>Bullet</damageDef>
       <speed>170</speed>
     </projectile>
-	<isNoShellDropper>True</isNoShellDropper>
   </ThingDef>
 
 
@@ -167,7 +183,7 @@
   
   <!-- ==================== 5x35mm Charged ========================== -->
 
-  <ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
+  <ThingDef ParentName="BaseBulletv">
     <defName>Bullet_5x35mmCharged</defName>
     <label>charge lance shot</label>
     <graphicData>
@@ -188,12 +204,11 @@
 	  </secondaryDamage>
 	  <armorPenetration>0.95</armorPenetration>
     </projectile>
-	<isNoShellDropper>True</isNoShellDropper>
   </ThingDef>
   
   <!-- ==================== 12x64mm Charged ========================== -->
 
-  <ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
+  <ThingDef ParentName="BaseBulletv">
     <defName>Bullet_12x64mmCharged</defName>
     <label>charge blaster shot</label>
     <graphicData>
@@ -213,7 +228,6 @@
 	  </secondaryDamage>
 	  <armorPenetration>1.2</armorPenetration>
     </projectile>
-	<isNoShellDropper>True</isNoShellDropper>
   </ThingDef>
 
 </ThingDefs>

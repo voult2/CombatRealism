@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ThingDefs>
 
-
-  
   <!-- ================== Arrows ================== -->
 
-  <ThingDef Name="BaseArrowProjectile" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+  <ThingDef Name="BaseArrowProjectile" ParentName="BaseBulletv">
     <graphicData>
       <texPath>Things/Projectile/Arrow_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -14,7 +12,6 @@
       <damageDef>Arrow</damageDef>
       <speed>44</speed>
     </projectile>
-	<isNoShellDropper>True</isNoShellDropper>
   </ThingDef>
 
   <ThingDef ParentName="BaseArrowProjectile">
@@ -46,7 +43,7 @@
   
   <!-- ================== Great Arrows ================== -->
 
-  <ThingDef Name="BaseGreatArrowProjectile" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+  <ThingDef Name="BaseGreatArrowProjectile" ParentName="BaseBulletv" Abstract="true">
     <graphicData>
       <texPath>Things/Projectile/Arrow_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -55,7 +52,6 @@
       <damageDef>Arrow</damageDef>
       <speed>49</speed>
     </projectile>
-	<isNoShellDropper>True</isNoShellDropper>
   </ThingDef>
 
   <ThingDef ParentName="BaseGreatArrowProjectile">

@@ -186,7 +186,6 @@
       <li>PlaceWorker_NotUnderRoof</li>
     </placeWorkers>
     <researchPrerequisites><li>Mortars</li></researchPrerequisites>
-    <designationCategory>Security</designationCategory>
   </ThingDef>
 
   <!--=============== Mortar turret ===============-->
@@ -199,6 +198,7 @@
         <li>Artillery_BaseDestroyer</li>
       </buildingTags>
     </building>
+    <designationCategory>Security</designationCategory>
     <designationHotKey>Misc3</designationHotKey>
   </ThingDef>
 
