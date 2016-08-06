@@ -100,15 +100,6 @@ namespace Combat_Realism.Detours
                 {
                     Detour_AttackTargetFinder.tmpTargets.Add((Thing)potentialTargetsFor[i]);
                 }
-            }
-            else
-            {
-                Detour_AttackTargetFinder.tmpTargets.Clear();
-                List<IAttackTarget> potentialTargetsFor = Find.AttackTargetsCache.GetPotentialTargetsFor(searcher);
-                for (int i = 0; i < potentialTargetsFor.Count; i++)
-                {
-                    Detour_AttackTargetFinder.tmpTargets.Add((Thing)potentialTargetsFor[i]);
-                }
                 if ((byte)(flags & TargetScanFlags.NeedReachable) != 0)
                 {
                     Predicate<Thing> oldValidator = predicate;
@@ -120,7 +111,7 @@ namespace Combat_Realism.Detours
                         }
                         if (searcherPawn != null)
                         {
-                            if (!searcherPawn.CanReach(t, PathEndMode.Touch, Danger.Some, false, TraverseMode.ByPawn))
+                            if (!searcherPawn.CanReach(t, PathEndMode.Touch, Danger.Some, canBash, TraverseMode.ByPawn))
                             {
                                 return false;
                             }
@@ -141,22 +132,12 @@ namespace Combat_Realism.Detours
                 return result;
 
             }
-            if (searcherPawn != null && searcherPawn.mindState.duty != null && searcherPawn.mindState.duty.radius > 0f)
-            {
-                Predicate<Thing> oldValidator = predicate;
-                predicate = ((Thing t) => oldValidator(t) && t.Position.InHorDistOf(searcherPawn.mindState.duty.focus.Cell, searcherPawn.mindState.duty.radius));
-            }
-
-            int searchRegionsMax = (maxDist <= 800f) ? 40 : -1;
-
-            /*  if (searcherPawn == null)
-              {
-                  //return null;
-                  TraverseParms temp = new TraverseParms() { canBash = false, maxDanger = Danger.Deadly, mode = TraverseMode.NoPassClosedDoors, pawn = null };
-                  return GenClosest.ClosestThingReachable(searcher.Position, ThingRequest.ForGroup(ThingRequestGroup.AttackTarget), PathEndMode.Touch, temp, maxTargDist, predicate, null, searchRegionsMax, false);
-              }
-              else */
-            {
+                if (searcherPawn != null && searcherPawn.mindState.duty != null && searcherPawn.mindState.duty.radius > 0f)
+                {
+                    Predicate<Thing> oldValidator = predicate;
+                    predicate = ((Thing t) => oldValidator(t) && t.Position.InHorDistOf(searcherPawn.mindState.duty.focus.Cell, searcherPawn.mindState.duty.radius));
+                }
+                int searchRegionsMax = (maxDist <= 800f) ? 40 : -1;
                 IntVec3 arg_25D_0 = searcher.Position;
                 ThingRequest arg_25D_1 = ThingRequest.ForGroup(ThingRequestGroup.AttackTarget);
                 PathEndMode arg_25D_2 = PathEndMode.Touch;
@@ -164,7 +145,7 @@ namespace Combat_Realism.Detours
                 Thing thing = GenClosest.ClosestThingReachable(arg_25D_0, arg_25D_1, arg_25D_2, TraverseParms.For(searcherPawn, Danger.Deadly, TraverseMode.ByPawn, canBash2), maxDist, predicate, null, searchRegionsMax, false);
                 if (thing != null && PawnUtility.ShouldCollideWithPawns(searcherPawn))
                 {
-                    Thing thing2 = FindBestReachableMeleeTarget(predicate, searcherPawn, maxDist, canBash);
+                Thing thing2 = FindBestReachableMeleeTarget(predicate, searcherPawn, maxDist, canBash);
                     if (thing2 != null)
                     {
                         float lengthHorizontal = (searcherPawn.Position - thing.Position).LengthHorizontal;
@@ -176,7 +157,6 @@ namespace Combat_Realism.Detours
                     }
                 }
                 return thing;
-            }
         }
 
         internal static Thing FindBestReachableMeleeTarget(Predicate<Thing> validator, Pawn searcherPawn, float maxTargDist, bool canBash)
