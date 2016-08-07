@@ -51,7 +51,6 @@
   </ThingDef>
 
 
-
   <!-- ==================== Frag grenade ========================== -->
 
   <ThingDef ParentName="BaseGrenadeProjectile">
@@ -130,15 +129,16 @@
   <ThingDef ParentName="BaseGrenadeProjectile">
     <defName>Proj_GrenadeMolotov</defName>
     <label>molotov cocktail</label>
+    <thingClass>Combat_Realism.Projectile_FireTrail</thingClass>
     <graphicData>
       <texPath>Things/Projectile/Grenades/Molotov</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
-      <explosionRadius>1.5</explosionRadius >
+      <explosionRadius>1.5</explosionRadius>
       <damageDef>Flame</damageDef>
       <damageAmountBase>30</damageAmountBase>
-      <preExplosionSpawnThingDef>FilthFuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnThingDef>Puddle_Fuel</preExplosionSpawnThingDef>
     </projectile>
   </ThingDef>
 

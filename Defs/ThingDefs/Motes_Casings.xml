@@ -74,5 +74,19 @@
 	<growthRate>0.15</growthRate>
   </mote>
  </ThingDef>
+ 
+      <ThingDef ParentName="MoteBase">
+    <defName>Mote_Firetrail</defName>
+    <graphicData>
+      <texPath>Things/Mote/Mote_FireSmoked</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+	  <fadeInDuration>5</fadeInDuration>
+      <ticksBeforeStartFadeout>5</ticksBeforeStartFadeout>
+      <fadeoutDuration>60</fadeoutDuration>
+	  <growthRate>0.035</growthRate>
+    </mote>
+  </ThingDef>
   
 </Defs>
