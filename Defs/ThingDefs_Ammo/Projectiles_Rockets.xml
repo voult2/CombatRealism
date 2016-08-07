@@ -3,11 +3,10 @@
 
 	<!-- ================== RPG-7 Grenade ================== -->
 
-	<ThingDef Name="BaseRPG7Grenade" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="BaseRPG7Grenade" ParentName="BaseBulletv" Abstract="true">
 		<projectile>
-			<speed>60</speed>
+			<speed>80</speed>
 		</projectile>
-	<isNoShellDropper>True</isNoShellDropper>
 	</ThingDef>
 
   <ThingDef ParentName="BaseRPG7Grenade">

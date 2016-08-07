@@ -54,7 +54,7 @@
     <defName>MakeMolotovCocktail</defName>
     <label>make molotov cocktails x10</label>
     <description>Craft 10 molotov cocktails.</description>
-    <jobString>Making frag grenades.</jobString>
+    <jobString>Making molotov cocktails.</jobString>
     <ingredients>
       <li>
         <filter>
@@ -75,7 +75,7 @@
     </ingredients>
     <fixedIngredientFilter>
       <thingDefs>
-        <li>Steel</li>
+        <li>Cloth</li>
         <li>Prometheum</li>
       </thingDefs>
     </fixedIngredientFilter>
