@@ -27,12 +27,13 @@ namespace Combat_Realism
         /// Additionally handles fragmentation effects if defined.
         /// </summary>
         /// <param name="instigator">Launcher of the projectile calling the method</param>
-		public virtual void Explode(Thing instigator)
+		public virtual void Explode(Thing instigator, Verse.IntVec3 pos)
         {
             // Regular explosion stuff
             if (this.Props.explosionRadius > 0 && this.Props.explosionDamage > 0)
             {
                 Explosion explosion = new Explosion();
+                explosion.position = pos;
                 explosion.radius = Props.explosionRadius;
                 explosion.damType = Props.explosionDamageDef;
                 explosion.instigator = instigator;
@@ -53,17 +54,19 @@ namespace Combat_Realism
                 {
                     Log.Error(this.parent.LabelCap + " has fragments but no fragRange");
                 }
+
                 else
                 {
+                    Vector3 exactOrigin = new Vector3(0, 0, 0);
+                    exactOrigin.x = this.parent.DrawPos.x;
+                    exactOrigin.z = this.parent.DrawPos.z;
+
                     foreach (ThingCount fragment in Props.fragments)
                     {
                         for (int i = 0; i < fragment.count; i++)
                         {
                             ProjectileCR projectile = (ProjectileCR)ThingMaker.MakeThing(fragment.thingDef, null);
                             projectile.canFreeIntercept = true;
-                            Vector3 exactOrigin = new Vector3(0, 0, 0);
-                            exactOrigin.x = this.parent.DrawPos.x;
-                            exactOrigin.z = this.parent.DrawPos.z;
                             Vector3 exactTarget = exactOrigin + (new Vector3(1, 0, 1) * UnityEngine.Random.Range(0, Props.fragRange)).RotatedBy(UnityEngine.Random.Range(0, 360));
                             TargetInfo targetCell = exactTarget.ToIntVec3();
                             GenSpawn.Spawn(projectile, this.parent.Position);
