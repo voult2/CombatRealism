@@ -39,6 +39,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
+			<damageDef>Thermobaric</damageDef>
 			<damageAmountBase>200</damageAmountBase>
 		</projectile>
 		<comps>
