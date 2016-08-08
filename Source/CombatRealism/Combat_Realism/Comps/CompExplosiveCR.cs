@@ -27,12 +27,13 @@ namespace Combat_Realism
         /// Additionally handles fragmentation effects if defined.
         /// </summary>
         /// <param name="instigator">Launcher of the projectile calling the method</param>
-		public virtual void Explode(Thing instigator)
+		public virtual void Explode(Thing instigator, Verse.IntVec3 pos)
         {
             // Regular explosion stuff
             if (this.Props.explosionRadius > 0 && this.Props.explosionDamage > 0)
             {
                 Explosion explosion = new Explosion();
+                explosion.position = pos;
                 explosion.radius = Props.explosionRadius;
                 explosion.damType = Props.explosionDamageDef;
                 explosion.instigator = instigator;

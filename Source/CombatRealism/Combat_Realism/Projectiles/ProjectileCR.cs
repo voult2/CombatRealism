@@ -449,7 +449,7 @@ namespace Combat_Realism
             CompExplosiveCR comp = this.TryGetComp<CompExplosiveCR>();
             if (comp != null)
             {
-                comp.Explode(this.launcher);
+                comp.Explode(this.launcher, this.Position);
             }
             this.Destroy(DestroyMode.Vanish);
         }

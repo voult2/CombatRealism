@@ -1,0 +1,3 @@
+C:\Users\mckin\Documents\CombatRealism\Assemblies\CombatRealism.dll
+C:\Users\mckin\Documents\CombatRealism\Source\CombatRealism\obj\Debug\CombatRealism.dll
+C:\Users\mckin\Documents\CombatRealism\Source\CombatRealism\obj\Debug\Combat_Realism.csprojResolveAssemblyReference.cache

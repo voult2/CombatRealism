@@ -113,39 +113,27 @@
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef ParentName="Base303BritishBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
 		<defName>Bullet_303British_FMJ</defName>
 		<label>.303 British bullet (FMJ)</label>
-		<graphicData>
-			<texPath>Things/Projectile/Bullet_Small</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
 		<projectile>
 			<damageAmountBase>18</damageAmountBase>
 			<armorPenetration>0.6</armorPenetration>
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef ParentName="Base303BritishBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
 		<defName>Bullet_303British_AP</defName>
 		<label>.303 British bullet (AP)</label>
-		<graphicData>
-			<texPath>Things/Projectile/Bullet_Small</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
 		<projectile>
 			<damageAmountBase>15</damageAmountBase>
 			<armorPenetration>0.7</armorPenetration>
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef ParentName="Base303BritishBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
 		<defName>Bullet_303British_HP</defName>
 		<label>.303 British bullet (HP)</label>
-		<graphicData>
-			<texPath>Things/Projectile/Bullet_Small</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
 		<projectile>
 			<damageAmountBase>21</damageAmountBase>
 			<armorPenetration>0.45</armorPenetration>

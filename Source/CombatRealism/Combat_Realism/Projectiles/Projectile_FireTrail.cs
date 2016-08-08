@@ -64,7 +64,7 @@ namespace Combat_Realism
             CompExplosiveCR comp = this.TryGetComp<CompExplosiveCR>();
             if (comp != null)
             {
-                comp.Explode(launcher);
+                comp.Explode(launcher, this.Position);
             }
         }
         public static void ThrowFireTrail(Vector3 loc, float size)
