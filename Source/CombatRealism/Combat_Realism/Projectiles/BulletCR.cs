@@ -12,7 +12,7 @@ namespace Combat_Realism
     public class BulletCR : ProjectileCR
     {
         private const float StunChance = 0.1f;
-
+        
         public bool isShotgunShellDropper = false;
         public bool isBigGunDropper = false;
         public string casingMoteDefname = "Mote_EmptyCasing";
@@ -21,7 +21,11 @@ namespace Combat_Realism
         public override void SpawnSetup()
         {
             base.SpawnSetup();
-            this.ThrowEmptyCasing(base.Position.ToVector3Shifted(), 1f);
+            ProjectilePropertiesCR propsCR = def.projectile as ProjectilePropertiesCR;
+            if (propsCR.DropsCasings == true)
+            {
+                this.ThrowEmptyCasing(base.Position.ToVector3Shifted(), 1f);
+            }
         }
 
         public void ThrowEmptyCasing(Vector3 loc, float size)
