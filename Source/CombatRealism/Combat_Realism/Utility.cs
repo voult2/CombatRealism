@@ -5,6 +5,7 @@ using System.Text;
 using RimWorld;
 using Verse;
 using Verse.AI;
+using Verse.Sound;
 using UnityEngine;
 
 namespace Combat_Realism
@@ -93,6 +94,23 @@ namespace Combat_Realism
 
         #endregion Misc
 
+        #region MoteThrower
+        public static void ThrowEmptyCasing(Vector3 loc, ThingDef casingMoteDef, float size = 1f)
+        {
+            if (!loc.ShouldSpawnMotesAt() || MoteCounter.SaturatedLowPriority)
+            {
+                return;
+            }
+            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(casingMoteDef, null);
+            moteThrown.ScaleUniform = Rand.Range(0.5f, 0.3f) * size;
+            moteThrown.exactRotationRate = Rand.Range(-3f, 4f);
+            moteThrown.exactPosition = loc;
+            moteThrown.airTicksLeft = 60;
+            moteThrown.SetVelocityAngleSpeed((float)Rand.Range(160, 200), Rand.Range(0.020f, 0.0115f));
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
+        }
+        #endregion
+        
         #region Physics
 
         public const float gravityConst = 9.8f;

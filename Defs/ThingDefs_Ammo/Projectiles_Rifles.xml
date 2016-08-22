@@ -5,7 +5,7 @@
 
 	<!-- ================== 5.56x45mm NATO ================== -->
 
-	<ThingDef Name="Base556x45mmNATOBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="Base556x45mmNATOBullet" ParentName="BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -13,7 +13,7 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<speed>188</speed>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 
@@ -48,7 +48,7 @@
 	<!-- ================== 7.62x39mm Soviet ================== -->
 
 	
-	<ThingDef Name="Base762x39mmSovietBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="Base762x39mmSovietBullet" ParentName="BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -56,7 +56,7 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<speed>146</speed>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 	
@@ -101,7 +101,7 @@
 
 	<!-- ================== .303 British ================== -->
 	
-	<ThingDef Name="Base303BritishBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="Base303BritishBullet" ParentName="BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -109,11 +109,11 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<speed>169</speed>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="Base303BritishBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef ParentName="Base303BritishBullet">
 		<defName>Bullet_303British_FMJ</defName>
 		<label>.303 British bullet (FMJ)</label>
 		<projectile>
@@ -122,7 +122,7 @@
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="Base303BritishBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef ParentName="Base303BritishBullet">
 		<defName>Bullet_303British_AP</defName>
 		<label>.303 British bullet (AP)</label>
 		<projectile>
@@ -131,7 +131,7 @@
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="Base303BritishBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef ParentName="Base303BritishBullet">
 		<defName>Bullet_303British_HP</defName>
 		<label>.303 British bullet (HP)</label>
 		<projectile>
@@ -142,7 +142,7 @@
 
 	<!-- ================== 7.62x51mm NATO ================== -->
 
-	<ThingDef Name="Base762x51mmNATOBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="Base762x51mmNATOBullet" ParentName="BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -150,7 +150,7 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<speed>167</speed>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 
@@ -183,7 +183,7 @@
 
 	<!-- ================== 7.62x54mmR ================== -->
 
-	<ThingDef Name="Base762x54mmRBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="Base762x54mmRBullet" ParentName="BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -191,7 +191,7 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<speed>157</speed>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 
