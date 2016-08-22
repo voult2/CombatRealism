@@ -72,7 +72,7 @@ namespace Combat_Realism
                 return compInventory.ammoList.Any(x => Props.ammoSet.ammoTypes.Contains(x.def));
             }
         }
-        public bool hasMagazine => Props.magazineSize > 0;
+        public bool hasMagazine { get { return Props.magazineSize > 0; } }
         public AmmoDef currentAmmo
         {
             get

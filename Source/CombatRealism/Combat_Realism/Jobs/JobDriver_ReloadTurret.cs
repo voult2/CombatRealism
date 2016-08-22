@@ -28,15 +28,8 @@ namespace Combat_Realism
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.FailOnDestroyedOrNull(TargetIndex.A);
-            this.FailOnDestroyedOrNull(TargetIndex.B);
-            if (pawn.IsColonist)
-            {
-                this.FailOnForbidden(TargetIndex.A);
-                this.FailOnForbidden(TargetIndex.B);
-            }
-
-            //     if (pawn.Faction != Faction.OfPlayer) TargetThingB.SetForbidden(false, false);
+            this.FailOnDestroyedNullOrForbidden(TargetIndex.A);
+            this.FailOnDestroyedNullOrForbidden(TargetIndex.B);
 
 
             // Haul ammo
