@@ -3,7 +3,7 @@
 
 	<!-- ================== .40 Rimfire ================== -->
 
-	<ThingDef ParentName="BaseBullet" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef ParentName="BaseBullet">
 		<defName>Bullet_40Rimfire</defName>
 		<label>.40 Rimfire bullet</label>
 		<graphicData>
@@ -15,13 +15,13 @@
 			<speed>71</speed>
 			<damageAmountBase>6</damageAmountBase>
 			<armorPenetration>0.1</armorPenetration>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 
 	<!-- ================== .32 ACP ================== -->
 
-	<ThingDef Name="Base32ACPBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="Base32ACPBullet" ParentName="BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -29,7 +29,7 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<speed>62</speed>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 
@@ -62,7 +62,7 @@
 
 	<!-- ================== 7.62x25mm Tokarev ================== -->
 
-	<ThingDef Name="Base762x25mmTokarevBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="Base762x25mmTokarevBullet" ParentName="BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -70,7 +70,7 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<speed>82</speed>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 
@@ -103,7 +103,7 @@
 
 	<!-- ================== 9x19mm Parabellum ================== -->
 
-	<ThingDef Name="Base9x19mmParaBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="Base9x19mmParaBullet" ParentName="BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -111,7 +111,7 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<speed>78</speed>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 
@@ -144,7 +144,7 @@
 
 	<!-- ================== .45 ACP ================== -->
 
-	<ThingDef Name="Base45ACPBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="Base45ACPBullet" ParentName="BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -152,7 +152,7 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<speed>67</speed>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 
@@ -185,7 +185,7 @@
 
 	<!-- ================== .45 Colt ================== -->
 
-	<ThingDef Name="Base45ColtBullet" ParentName="BaseBullet" Abstract="true" Class="Combat_Realism.ThingDef_CaseLeaver">
+	<ThingDef Name="Base45ColtBullet" ParentName="BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -193,7 +193,7 @@
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<speed>50</speed>
-			<DropsCasings>true</DropsCasings>
+			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
 

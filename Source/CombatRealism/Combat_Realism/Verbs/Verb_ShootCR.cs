@@ -208,6 +208,7 @@ namespace Combat_Realism
 
         protected override bool TryCastShot()
         {
+        	//Reduce ammunition
             if (compAmmo != null)
             {
                 if (!compAmmo.TryReduceAmmoCount())
@@ -217,7 +218,16 @@ namespace Combat_Realism
                     return false;
                 }
             }
-            return base.TryCastShot();
+            if (base.TryCastShot())
+            {
+	            //Drop casings
+	            if (verbPropsCR.ejectsCasings && projectilePropsCR.dropsCasings)
+	            {
+	            	Utility.ThrowEmptyCasing(this.caster.DrawPos, ThingDef.Named(this.projectilePropsCR.casingMoteDefname));
+	            }
+            	return true;
+            }
+            return false;
         }
     }
 }

@@ -1,2 +1,8 @@
 C:\Users\mckin\Documents\CombatRealism\Assemblies\CombatRealism.dll
 C:\Users\mckin\Documents\CombatRealism\Source\CombatRealism\obj\Debug\CombatRealism.dll
+C:\Games\RimWorld1249Win\Mods\CombatRealism\Source\CombatRealism\obj\Debug\Combat_Realism.csprojResolveAssemblyReference.cache
+C:\Games\RimWorld1249Win\Mods\CombatRealism\Source\CombatRealism\obj\Debug\CombatRealism.dll
+C:\Games\RimWorld1249Win\Mods\CombatRealism\Assemblies\CombatRealism.dll
+C:\Users\tijn\Documents\CombatRealism\Assemblies\CombatRealism.dll
+C:\Users\tijn\Documents\CombatRealism\Source\CombatRealism\obj\Debug\Combat_Realism.csprojResolveAssemblyReference.cache
+C:\Users\tijn\Documents\CombatRealism\Source\CombatRealism\obj\Debug\CombatRealism.dll

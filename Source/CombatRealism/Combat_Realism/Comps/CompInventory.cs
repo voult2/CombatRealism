@@ -194,14 +194,14 @@ namespace Combat_Realism
                     }
                     else
                     {
-                        // Update ammo list
-                        if (thing.def is AmmoDef)
-                        {
-                            ammoListCached.Add(thing);
-                        }
                         // Add item weight
                         newBulk += thing.GetStatValue(StatDef.Named("Bulk")) * thing.stackCount;
                         newWeight += thing.GetStatValue(StatDef.Named("Weight")) * thing.stackCount;
+                    }
+                    // Update ammo list
+                    if (thing.def is AmmoDef)
+                    {
+                        ammoListCached.Add(thing);
                     }
                 }
             }

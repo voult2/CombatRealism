@@ -123,7 +123,7 @@ namespace Combat_Realism
             Scribe_Values.LookValue<float>(ref this.shotSpeed, "shotSpeed", 0f, true);
         }
 
-        public float GetProjectileHeight(float zeroheight, float distance, float angle, float velocity)
+        public static float GetProjectileHeight(float zeroheight, float distance, float angle, float velocity)
         {
             const float gravity = Utility.gravityConst;
 			float height = (float)(zeroheight + ((distance * Math.Tan(angle)) - (gravity * Math.Pow(distance, 2)) / (2 * Math.Pow(velocity * Math.Cos(angle), 2))));

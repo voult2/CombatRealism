@@ -18,6 +18,7 @@
     <NoStdLib>False</NoStdLib>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <CscToolPath>$(MSBuildProgramFiles32)\MSBuild\14.0\Bin</CscToolPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -69,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Combat_Realism\Projectiles\Projectile_FireTrail.cs" />
-    <Compile Include="Combat_Realism\Projectiles\ThingDef_CaseLeaver.cs" />
     <Compile Include="Combat_Realism\RecoilPattern.cs" />
     <Compile Include="Combat_Realism\AimMode.cs" />
     <Compile Include="Combat_Realism\AmmoInjector.cs" />
