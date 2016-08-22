@@ -134,15 +134,6 @@ namespace Combat_Realism.Detours
                 typeof(Detours_TradeDeal).GetMethod("UpdateCurrencyCount", BindingFlags.Static | BindingFlags.NonPublic)))
                 return false;
 
-            // *************************************
-            // ******** AI-related methods *********
-            // *************************************
-
-            // AttackTargetFinder
-            if (!CommunityCoreLibrary.Detours.TryDetourFromTo(typeof(AttackTargetFinder).GetMethod("BestAttackTarget", BindingFlags.Static | BindingFlags.Public),
-                typeof(Detour_AttackTargetFinder).GetMethod("BestAttackTarget", BindingFlags.Static | BindingFlags.NonPublic)))
-                return false;
-
             return true;
         }
     }

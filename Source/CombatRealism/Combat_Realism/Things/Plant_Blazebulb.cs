@@ -11,7 +11,7 @@ namespace Combat_Realism
     class Plant_Blazebulb : Plant
     {
         private const int ignitionTemp = 21;                    // Temperature (in Celsius) above which the plant will start catching fire
-        private const string fuelDefName = "Puddle_Fuel";       // Name of the def to use for fuel puddles spawned when damaged
+        private const string fuelDefName = "Napalm_Fuel";       // Name of the def to use for fuel puddles spawned when damaged
 
         public override void TickLong()
         {
