@@ -548,6 +548,16 @@ namespace Combat_Realism.Detours
                                     pawn.drafter.TakeOrderedJob(job);
                                 }));
                             opts.Add(pickUpStackOption);
+
+                            FloatMenuOption pickUpHalfStackOption = new FloatMenuOption("CE_PickUpHalf" + " " + item.LabelShort + " x" + (numToCarry / 2).ToString(),
+                               new Action(delegate
+                               {
+                                   item.SetForbidden(false);
+                                   Job job = new Job(JobDefOf.TakeInventory, item) { maxNumToCarry = numToCarry / 2 };
+                                   job.playerForced = true;
+                                   pawn.drafter.TakeOrderedJob(job);
+                               }));
+                            opts.Add(pickUpHalfStackOption);
                         }
                     }
                 }

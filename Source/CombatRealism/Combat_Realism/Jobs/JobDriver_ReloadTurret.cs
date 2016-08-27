@@ -28,10 +28,18 @@ namespace Combat_Realism
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.FailOnDestroyedNullOrForbidden(TargetIndex.A);
-            this.FailOnDestroyedNullOrForbidden(TargetIndex.B);
-
-
+            if (pawn.Faction != Faction.OfPlayer)
+            {
+                TargetThingB.SetForbidden(false, false);
+                this.FailOnDestroyedOrNull(TargetIndex.A);
+                this.FailOnDestroyedOrNull(TargetIndex.B);
+            }
+            else
+            {
+                this.FailOnDestroyedNullOrForbidden(TargetIndex.A);
+                this.FailOnDestroyedNullOrForbidden(TargetIndex.B);
+            }
+            
             // Haul ammo
             yield return Toils_Reserve.Reserve(TargetIndex.A, 1);
             yield return Toils_Reserve.Reserve(TargetIndex.B, 1);
