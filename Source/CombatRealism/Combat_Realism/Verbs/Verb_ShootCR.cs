@@ -7,7 +7,7 @@ using Verse.AI;
 
 namespace Combat_Realism
 {
-	public class Verb_ShootCR : Verb_LaunchProjectileCR
+    public class Verb_ShootCR : Verb_LaunchProjectileCR
     {
         protected override int ShotsPerBurst
         {
@@ -19,7 +19,7 @@ namespace Combat_Realism
                     {
                         return 1;
                     }
-                    if ((this.compFireModes.currentFireMode == FireMode.BurstFire || (useDefaultModes && this.compFireModes.Props.aiUseBurstMode)) 
+                    if ((this.compFireModes.currentFireMode == FireMode.BurstFire || (useDefaultModes && this.compFireModes.Props.aiUseBurstMode))
                         && this.compFireModes.Props.aimedBurstShotCount > 0)
                     {
                         return this.compFireModes.Props.aimedBurstShotCount;
@@ -73,7 +73,7 @@ namespace Combat_Realism
         private int xpTicks = 0;                        // Tracker to see how much xp should be awarded for time spent aiming + bursting
 
         // How much time to spend on aiming
-        private const int aimTicksMin = 30;             
+        private const int aimTicksMin = 30;
         private const int aimTicksMax = 240;
 
         // XP amounts
@@ -200,7 +200,7 @@ namespace Combat_Realism
         public override bool CanHitTargetFrom(IntVec3 root, TargetInfo targ)
         {
             if (CasterIsPawn && !CasterPawn.health.capacities.CapableOf(PawnCapacityDefOf.Sight)) return false;
-            if (this.compFireModes != null && this.compFireModes.currentAimMode == AimMode.HoldFire 
+            if (this.compFireModes != null && this.compFireModes.currentAimMode == AimMode.HoldFire
                 && (!CasterIsPawn || CasterPawn.CurJob == null || CasterPawn.CurJob.def != JobDefOf.Hunt))
                 return false;
             return base.CanHitTargetFrom(root, targ);
@@ -208,7 +208,7 @@ namespace Combat_Realism
 
         protected override bool TryCastShot()
         {
-        	//Reduce ammunition
+            //Reduce ammunition
             if (compAmmo != null)
             {
                 if (!compAmmo.TryReduceAmmoCount())
@@ -220,12 +220,12 @@ namespace Combat_Realism
             }
             if (base.TryCastShot())
             {
-	            //Drop casings
-	            if (verbPropsCR.ejectsCasings && projectilePropsCR.dropsCasings)
-	            {
-	            	Utility.ThrowEmptyCasing(this.caster.DrawPos, ThingDef.Named(this.projectilePropsCR.casingMoteDefname));
-	            }
-            	return true;
+                //Drop casings
+                if (verbPropsCR.ejectsCasings && projectilePropsCR.dropsCasings)
+                {
+                    Utility.ThrowEmptyCasing(this.caster.DrawPos, ThingDef.Named(this.projectilePropsCR.casingMoteDefname));
+                }
+                return true;
             }
             return false;
         }

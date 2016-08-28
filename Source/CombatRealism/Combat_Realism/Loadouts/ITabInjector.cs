@@ -14,6 +14,8 @@ namespace Combat_Realism
             var itabs = ThingDefOf.Human.inspectorTabs;
             var itabsResolved = ThingDefOf.Human.inspectorTabsResolved;
 
+            /*
+
 #if DEBUG
             Log.Message( "Inspector tab types on humans:" );
             foreach ( var tab in itabs )
@@ -26,6 +28,7 @@ namespace Combat_Realism
                 Log.Message( "\t" + tab.labelKey.Translate() );
             }
 #endif
+            */
 
             // replace ITab in the unresolved list
             var index = itabs.IndexOf( typeof( ITab_Pawn_Gear ) );

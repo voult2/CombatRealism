@@ -110,7 +110,7 @@ namespace Combat_Realism
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
         }
         #endregion
-        
+
         #region Physics
 
         public const float gravityConst = 9.8f;

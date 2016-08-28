@@ -60,7 +60,7 @@
       <damageAmountBase>50</damageAmountBase>
       <speed>100</speed>
       <explosionRadius>3.5</explosionRadius>
-      <preExplosionSpawnThingDef>Puddle_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnThingDef>Napalm_Fuel</preExplosionSpawnThingDef>
       <explosionSpawnChance>0.5</explosionSpawnChance>
       <soundExplode>MortarIncendiary_Explode</soundExplode>
     </projectile>

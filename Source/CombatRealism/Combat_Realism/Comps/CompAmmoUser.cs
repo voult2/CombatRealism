@@ -13,7 +13,7 @@ namespace Combat_Realism
     public class CompAmmoUser : CommunityCoreLibrary.CompRangedGizmoGiver
     {
         #region Fields
-        
+
         private int curMagCountInt;
         private TargetInfo storedTarget = null;
         private JobDef storedJobDef = null;
@@ -307,7 +307,7 @@ namespace Combat_Realism
                 {
                     newMagCount = Props.magazineSize;
                     ammoThing.stackCount -= Props.magazineSize;
-                    if(compInventory != null) compInventory.UpdateInventory();
+                    if (compInventory != null) compInventory.UpdateInventory();
                 }
                 else
                 {
@@ -346,7 +346,7 @@ namespace Combat_Realism
             {
                 return true;
             }
-            
+
             // Try finding ammo from different type
             foreach (AmmoDef ammoDef in Props.ammoSet.ammoTypes)
             {

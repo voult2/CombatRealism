@@ -22,7 +22,7 @@ namespace Combat_Realism
         protected int ticksToImpact;
         private Sustainer ambientSustainer;
         private static List<IntVec3> checkedCells = new List<IntVec3>();
-        
+
         public Thing AssignedMissTarget
         {
             get
@@ -42,7 +42,7 @@ namespace Combat_Realism
         {
             get
             {
-            	int num = Mathf.RoundToInt((float)((this.origin - this.destination).magnitude / (Math.Cos(this.shotAngle) * this.shotSpeed / 100f)));
+                int num = Mathf.RoundToInt((float)((this.origin - this.destination).magnitude / (Math.Cos(this.shotAngle) * this.shotSpeed / 100f)));
                 if (num < 1)
                 {
                     num = 1;
@@ -87,14 +87,14 @@ namespace Combat_Realism
         public float shotSpeed = -1f;
         private float distanceFromOrigin
         {
-        	get
-        	{
-                Vector3 currentPos = Vector3.Scale(this.ExactPosition, new Vector3(1,0,1));
+            get
+            {
+                Vector3 currentPos = Vector3.Scale(this.ExactPosition, new Vector3(1, 0, 1));
                 return (float)((currentPos - this.origin).magnitude);
-        	}
+            }
         }
 
-        
+
         /*
          * *** End of class variables ***
         */
@@ -126,11 +126,11 @@ namespace Combat_Realism
         public static float GetProjectileHeight(float zeroheight, float distance, float angle, float velocity)
         {
             const float gravity = Utility.gravityConst;
-			float height = (float)(zeroheight + ((distance * Math.Tan(angle)) - (gravity * Math.Pow(distance, 2)) / (2 * Math.Pow(velocity * Math.Cos(angle), 2))));
+            float height = (float)(zeroheight + ((distance * Math.Tan(angle)) - (gravity * Math.Pow(distance, 2)) / (2 * Math.Pow(velocity * Math.Cos(angle), 2))));
 
-        	return height;
+            return height;
         }
-        
+
         //Added new calculations for downed pawns, destination
         public virtual void Launch(Thing launcher, Vector3 origin, TargetInfo targ, Thing equipment = null)
         {
@@ -193,7 +193,7 @@ namespace Combat_Realism
             }
             //Check for minimum collision distance
             float distToTarget = this.assignedTarget != null ? (this.assignedTarget.DrawPos - this.origin).MagnitudeHorizontal() : (this.destination - this.origin).MagnitudeHorizontal();
-            if (this.def.projectile.alwaysFreeIntercept 
+            if (this.def.projectile.alwaysFreeIntercept
                 || distToTarget <= 1f ? this.origin.ToIntVec3().DistanceToSquared(newPos) > 1f : this.origin.ToIntVec3().DistanceToSquared(newPos) > Mathf.Min(12f, distToTarget / 2))
             {
 
@@ -236,7 +236,7 @@ namespace Combat_Realism
             //Check for minimum collision distance
             float distFromOrigin = (cell.ToVector3Shifted() - this.origin).MagnitudeHorizontal();
             float distToTarget = this.assignedTarget != null ? (this.assignedTarget.DrawPos - this.origin).MagnitudeHorizontal() : (this.destination - this.origin).MagnitudeHorizontal();
-            if (!this.def.projectile.alwaysFreeIntercept 
+            if (!this.def.projectile.alwaysFreeIntercept
                 && distToTarget <= 1f ? distFromOrigin < 1f : distFromOrigin < Mathf.Min(12f, distToTarget / 2))
             {
                 return false;
@@ -250,7 +250,7 @@ namespace Combat_Realism
             //Check if bullet is going north-south or west-east
             if (Math.Abs(shotVec.x) < Math.Abs(shotVec.z))
             {
-                adjList = GenAdj.CellsAdjacentCardinal(cell, this.Rotation, new IntVec2(0,1)).ToList<IntVec3>();
+                adjList = GenAdj.CellsAdjacentCardinal(cell, this.Rotation, new IntVec2(0, 1)).ToList<IntVec3>();
             }
             else
             {
@@ -335,10 +335,10 @@ namespace Combat_Realism
             if (thing.def.fillPercent > 0 || thing.def.Fillage == FillCategory.Full)
             {
                 if (height < Utility.GetCollisionHeight(thing) || thing.def.Fillage == FillCategory.Full)
-            	{
-            		this.Impact(thing);
-            		return true;
-            	}
+                {
+                    this.Impact(thing);
+                    return true;
+                }
             }
             return false;
         }
@@ -357,7 +357,7 @@ namespace Combat_Realism
                     return;
                 }
             }
-            
+
             //Modified
             if (this.assignedTarget != null && this.assignedTarget.Position == this.Position)	//it was aimed at something and that something is still there
             {
@@ -374,14 +374,15 @@ namespace Combat_Realism
                 }
                 List<Thing> list = Find.ThingGrid.ThingsListAt(base.Position);
                 float height = (list.Count > 0) ? GetProjectileHeight(this.shotHeight, this.distanceFromOrigin, this.shotAngle, this.shotSpeed) : 0;
-                if (height > 0) {
-	                for (int i = 0; i < list.Count; i++)
-	                {
-	                    Thing thing2 = list[i];
-	                    bool impacted = this.ImpactThroughBodySize(thing2, height);
-	                    if (impacted)
-	                    	return;
-	                }
+                if (height > 0)
+                {
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        Thing thing2 = list[i];
+                        bool impacted = this.ImpactThroughBodySize(thing2, height);
+                        if (impacted)
+                            return;
+                    }
                 }
                 this.Impact(null);
                 return;

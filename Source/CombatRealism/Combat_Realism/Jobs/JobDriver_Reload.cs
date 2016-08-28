@@ -27,7 +27,7 @@ namespace Combat_Realism
             return comp != null && comp.useAmmo && !comp.hasAmmo;
         }
 
-        protected override IEnumerable< Toil > MakeNewToils()
+        protected override IEnumerable<Toil> MakeNewToils()
         {
             if (compReloader == null)
             {
@@ -35,10 +35,10 @@ namespace Combat_Realism
                 yield return null;
             }
 
-            this.FailOnDespawnedOrNull( TargetIndex.A );
+            this.FailOnDespawnedOrNull(TargetIndex.A);
             this.FailOnMentalState(TargetIndex.A);
             this.FailOn(HasNoGunOrAmmo);
-            
+
             //Toil of do-nothing		
             var waitToil = new Toil();
             waitToil.initAction = () => waitToil.actor.pather.StopDead();
@@ -48,7 +48,7 @@ namespace Combat_Realism
 
             //Actual reloader
             var reloadToil = new Toil();
-            reloadToil.AddFinishAction( () => compReloader.LoadAmmo() );
+            reloadToil.AddFinishAction(() => compReloader.LoadAmmo());
             yield return reloadToil;
 
             //Continue previous job if possible

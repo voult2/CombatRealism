@@ -34,19 +34,19 @@ namespace Combat_Realism
                     Pawn pawn = hitThing as Pawn;
                     if (pawn != null && def.projectile.damageDef.workerClass == typeof(DamageWorker_AddInjuryCR))
                     {
-                        dinfo = new DamageInfo(dinfo.Def, 
-                            dinfo.Amount, 
-                            dinfo.Instigator, 
-                            dinfo.Angle, 
-                            new BodyPartDamageInfo(DamageWorker_AddInjuryCR.GetExactPartFromDamageInfo(dinfo, pawn), false, (HediffDef)null), 
+                        dinfo = new DamageInfo(dinfo.Def,
+                            dinfo.Amount,
+                            dinfo.Instigator,
+                            dinfo.Angle,
+                            new BodyPartDamageInfo(DamageWorker_AddInjuryCR.GetExactPartFromDamageInfo(dinfo, pawn), false, (HediffDef)null),
                             dinfo.Source);
                     }
                     List<DamageInfo> dinfoList = new List<DamageInfo>() { dinfo };
-                    foreach(SecondaryDamage secDamage in propsCR.secondaryDamage)
+                    foreach (SecondaryDamage secDamage in propsCR.secondaryDamage)
                     {
                         dinfoList.Add(new DamageInfo(secDamage.def, secDamage.amount, dinfo.Instigator, dinfo.Part, dinfo.Source));
                     }
-                    foreach(DamageInfo curDinfo in dinfoList)
+                    foreach (DamageInfo curDinfo in dinfoList)
                     {
                         hitThing.TakeDamage(curDinfo);
                     }

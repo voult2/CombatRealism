@@ -37,7 +37,7 @@
 			<damageDef>Flame</damageDef>
 			<damageAmountBase>50</damageAmountBase>
 			<explosionRadius>2.0</explosionRadius>
-			<preExplosionSpawnThingDef>Puddle_Fuel</preExplosionSpawnThingDef>
+			<preExplosionSpawnThingDef>Napalm_Fuel</preExplosionSpawnThingDef>
 		</projectile>
 	</ThingDef>
 
