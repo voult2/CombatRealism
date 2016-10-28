@@ -124,7 +124,7 @@ namespace Combat_Realism
             }
 
             // fetch the filter we're moving
-            var temp = _slots[fromIndex];
+            LoadoutSlot temp = _slots[fromIndex];
 
             // remove from old location
             _slots.RemoveAt( fromIndex );

@@ -74,10 +74,10 @@ namespace Combat_Realism
                 return;
             }
             MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named("Mote_Firetrail"), null);
-            moteThrown.ScaleUniform = Rand.Range(1.5f, 2.5f) * size;
-            moteThrown.exactRotationRate = Rand.Range(-0.5f, 0.5f);
+            moteThrown.Scale = Rand.Range(1.5f, 2.5f) * size;
+            moteThrown.exactRotation = Rand.Range(-0.5f, 0.5f);
             moteThrown.exactPosition = loc;
-            moteThrown.SetVelocityAngleSpeed((float)Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
+            moteThrown.SetVelocity((float)Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
         }
     }

@@ -263,7 +263,7 @@ namespace Combat_Realism
                 if (adjList[i].InBounds() && !adjList[i].Equals(cell))
                 {
                     List<Thing> thingList = new List<Thing>(Find.ThingGrid.ThingsListAt(adjList[i]));
-                    var pawns = thingList.Where(thing => thing.def.category == ThingCategory.Pawn && !mainThingList.Contains(thing)).ToList();
+                    List<Thing> pawns = thingList.Where(thing => thing.def.category == ThingCategory.Pawn && !mainThingList.Contains(thing)).ToList();
                     mainThingList.AddRange(pawns);
                 }
             }

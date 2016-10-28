@@ -24,10 +24,10 @@
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
-      <ticksBeforeStartFadeout>188</ticksBeforeStartFadeout>
-      <fadeoutDuration>55</fadeoutDuration>
+      <solidTime>188</solidTime>
+      <fadeOutTime>55</fadeOutTime>
 	  <landSound>C_Impact_BulletCasing</landSound>
-	  <useCollision>true</useCollision>
+	  <collide>true</collide>
     </mote>
   </ThingDef>
 
@@ -39,10 +39,10 @@
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
-      <ticksBeforeStartFadeout>188</ticksBeforeStartFadeout>
-      <fadeoutDuration>55</fadeoutDuration>
+      <solidTime>188</solidTime>
+      <fadeOutTime>55</fadeOutTime>
 	  <landSound>C_Impact_ShotgunCasingImpact</landSound>
-	  <useCollision>true</useCollision>
+	  <collide>true</collide>
     </mote>
   </ThingDef>
   
@@ -54,10 +54,10 @@
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
-      <ticksBeforeStartFadeout>188</ticksBeforeStartFadeout>
-      <fadeoutDuration>55</fadeoutDuration>
+      <solidTime>188</solidTime>
+      <fadeOutTime>55</fadeOutTime>
 	  <landSound>C_Impact_ShotgunCasingImpact</landSound>
-	  <useCollision>true</useCollision>
+	  <collide>true</collide>
     </mote>
   </ThingDef>
   
@@ -69,10 +69,10 @@
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
-      <ticksBeforeStartFadeout>188</ticksBeforeStartFadeout>
-      <fadeoutDuration>55</fadeoutDuration>
+      <solidTime>188</solidTime>
+      <fadeOutTime>55</fadeOutTime>
 	  <landSound>C_Impact_BulletCasing</landSound>
-	  <useCollision>true</useCollision>
+	  <collide>true</collide>
     </mote>
   </ThingDef>
   
@@ -83,9 +83,9 @@
   </graphicData>
   <altitudeLayer>MoteOverhead</altitudeLayer>
   <mote>
-	<fadeinDuration>1</fadeinDuration>
-	<ticksBeforeStartFadeout>40</ticksBeforeStartFadeout>
-	<fadeoutDuration>45</fadeoutDuration>
+	<fadeInTime>1</fadeInTime>
+	<solidTime>40</solidTime>
+	<fadeOutTime>45</fadeOutTime>
 	<growthRate>0.15</growthRate>
   </mote>
  </ThingDef>
@@ -97,9 +97,9 @@
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
-	  <fadeInDuration>5</fadeInDuration>
-      <ticksBeforeStartFadeout>5</ticksBeforeStartFadeout>
-      <fadeoutDuration>60</fadeoutDuration>
+	  <fadeInTime>5</fadeInTime>
+      <solidTime>5</solidTime>
+      <fadeOutTime>60</fadeOutTime>
 	  <growthRate>0.035</growthRate>
     </mote>
   </ThingDef>

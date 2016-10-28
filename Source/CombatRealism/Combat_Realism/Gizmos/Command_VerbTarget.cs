@@ -14,7 +14,7 @@ namespace Combat_Realism
     {
         public Verb verb;
 
-        protected override Color IconDrawColor
+        public override Color IconDrawColor
         {
             get
             {
@@ -46,3 +46,4 @@ namespace Combat_Realism
         }
     }
 }
+

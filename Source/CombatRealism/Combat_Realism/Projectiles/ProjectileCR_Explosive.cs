@@ -71,10 +71,10 @@ namespace Combat_Realism
                 return;
             }
             MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named("Mote_BigExplode"), null);
-            moteThrown.ScaleUniform = Rand.Range(5f, 6f) * size;
-            moteThrown.exactRotationRate = Rand.Range(0f, 0f);
+            moteThrown.Scale = Rand.Range(5f, 6f) * size;
+            moteThrown.exactRotation = Rand.Range(0f, 0f);
             moteThrown.exactPosition = loc;
-            moteThrown.SetVelocityAngleSpeed((float)Rand.Range(6, 8), Rand.Range(0.002f, 0.003f));
+            moteThrown.SetVelocity((float)Rand.Range(6, 8), Rand.Range(0.002f, 0.003f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
         }
     }

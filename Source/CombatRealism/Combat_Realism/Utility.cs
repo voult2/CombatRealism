@@ -94,7 +94,7 @@ namespace Combat_Realism
 
         #endregion Misc
 
-        #region MoteThrower
+        #region MoteMaker
         public static void ThrowEmptyCasing(Vector3 loc, ThingDef casingMoteDef, float size = 1f)
         {
             if (!loc.ShouldSpawnMotesAt() || MoteCounter.SaturatedLowPriority)
@@ -102,11 +102,12 @@ namespace Combat_Realism
                 return;
             }
             MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(casingMoteDef, null);
-            moteThrown.ScaleUniform = Rand.Range(0.5f, 0.3f) * size;
-            moteThrown.exactRotationRate = Rand.Range(-3f, 4f);
+            moteThrown.Scale = Rand.Range(0.5f, 0.3f) * size;
+            moteThrown.exactRotation = Rand.Range(-3f, 4f);
             moteThrown.exactPosition = loc;
-            moteThrown.airTicksLeft = 60;
-            moteThrown.SetVelocityAngleSpeed((float)Rand.Range(160, 200), Rand.Range(0.020f, 0.0115f));
+            moteThrown.airTimeLeft = 60;
+            moteThrown.SetVelocity((float)Rand.Range(160, 200), Rand.Range(0.020f, 0.0115f));
+       //     moteThrown.SetVelocityAngleSpeed((float)Rand.Range(160, 200), Rand.Range(0.020f, 0.0115f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
         }
         #endregion

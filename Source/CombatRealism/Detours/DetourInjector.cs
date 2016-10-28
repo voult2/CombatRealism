@@ -11,6 +11,7 @@ using CommunityCoreLibrary;
 
 namespace Combat_Realism.Detours
 {
+    [SpecialInjectorSequencer(InjectionSequence.MainLoad, InjectionTiming.SpecialInjectors)]
     class DetourInjector : SpecialInjector
     {
         public override bool Inject()

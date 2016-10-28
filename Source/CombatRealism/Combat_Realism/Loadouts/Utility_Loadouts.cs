@@ -116,7 +116,7 @@ namespace Combat_Realism
 
         public static string GetBulkTip(this Pawn pawn)
         {
-            var comp = pawn.TryGetComp<CompInventory>();
+            CompInventory comp = pawn.TryGetComp<CompInventory>();
             if (comp != null)
                 return "CR.DetailedBulkTip".Translate(CarryBulk.ValueToString(comp.capacityBulk, CarryBulk.toStringNumberSense),
                                                        CarryBulk.ValueToString(comp.currentBulk, CarryBulk.toStringNumberSense),
@@ -205,7 +205,7 @@ namespace Combat_Realism
 
         public static string GetWeightTip(this Pawn pawn)
         {
-            var comp = pawn.TryGetComp<CompInventory>();
+            CompInventory comp = pawn.TryGetComp<CompInventory>();
             if (comp != null)
                 return "CR.DetailedWeightTip".Translate(CarryWeight.ValueToString(comp.capacityWeight, CarryWeight.toStringNumberSense),
                                                      CarryWeight.ValueToString(comp.currentWeight, CarryWeight.toStringNumberSense),

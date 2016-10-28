@@ -152,7 +152,7 @@ namespace Combat_Realism
                 (canvas.width - _margin) / 2f,
                 canvas.height - 24f - _topAreaHeight - _margin * 3);
 
-            var loadouts = LoadoutManager.Loadouts;
+            List<Loadout> loadouts = LoadoutManager.Loadouts;
 
             // DRAW CONTENTS
             // buttons
@@ -178,7 +178,7 @@ namespace Combat_Realism
             // create loadout
             if (Widgets.ButtonText(newRect, "CR.NewLoadout".Translate()))
             {
-                var loadout = new Loadout();
+                Loadout loadout = new Loadout();
                 LoadoutManager.AddLoadout(loadout);
                 CurrentLoadout = loadout;
             }
@@ -422,7 +422,7 @@ namespace Combat_Realism
                     {
                         List<FloatMenuOption> options = new List<FloatMenuOption>();
 
-                        foreach (var ammo in ((ammoSet == null) ? null : ammoSet.ammoTypes))
+                        foreach (ThingDef ammo in ((ammoSet == null) ? null : ammoSet.ammoTypes))
                         {
                             options.Add(new FloatMenuOption(ammo.LabelCap, delegate
                             {
@@ -559,7 +559,7 @@ namespace Combat_Realism
                 Widgets.DrawHighlightIfMouseover(row);
                 if (Widgets.ButtonInvisible(row))
                 {
-                    var slot = new LoadoutSlot(_source[i], 1);
+                    LoadoutSlot slot = new LoadoutSlot(_source[i], 1);
                     CurrentLoadout.AddSlot(slot);
                 }
             }

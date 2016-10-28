@@ -239,13 +239,13 @@ namespace Combat_Realism
             // Throw mote
             if (Props.throwMote)
             {
-                MoteThrower.ThrowText(position.ToVector3Shifted(), "CR_ReloadingMote".Translate());
+                MoteMaker.ThrowText(position.ToVector3Shifted(), "CR_ReloadingMote".Translate());
             }
 
             // Issue reload job
             if (wielder != null)
             {
-                var reloadJob = new Job(DefDatabase<JobDef>.GetNamed("ReloadWeapon"), wielder, parent)
+                Job reloadJob = new Job(DefDatabase<JobDef>.GetNamed("ReloadWeapon"), wielder, parent)
                 {
                     playerForced = true
                 };
@@ -271,7 +271,7 @@ namespace Combat_Realism
         {
             if (Props.throwMote)
             {
-                MoteThrower.ThrowText(position.ToVector3Shifted(), "CR_OutOfAmmo".Translate() + "!");
+                MoteMaker.ThrowText(position.ToVector3Shifted(), "CR_OutOfAmmo".Translate() + "!");
             }
             if (wielder != null && compInventory != null && (wielder.jobs == null || wielder.CurJob.def != JobDefOf.Hunt)) compInventory.SwitchToNextViableWeapon();
         }
@@ -329,7 +329,7 @@ namespace Combat_Realism
             curMagCountInt = newMagCount;
             if (turret != null) turret.isReloading = false;
             if (parent.def.soundInteract != null) parent.def.soundInteract.PlayOneShot(SoundInfo.InWorld(position));
-            if (Props.throwMote) MoteThrower.ThrowText(position.ToVector3Shifted(), "CR_ReloadedMote".Translate());
+            if (Props.throwMote) MoteMaker.ThrowText(position.ToVector3Shifted(), "CR_ReloadedMote".Translate());
         }
 
         private bool TryFindAmmoInInventory(out Thing ammoThing)
@@ -375,7 +375,7 @@ namespace Combat_Realism
 
         public override IEnumerable<Command> CompGetGizmosExtra()
         {
-            var ammoStatusGizmo = new GizmoAmmoStatus { compAmmo = this };
+            GizmoAmmoStatus ammoStatusGizmo = new GizmoAmmoStatus { compAmmo = this };
             yield return ammoStatusGizmo;
 
             if ((this.wielder != null && wielder.Faction == Faction.OfPlayer) || (turret != null && turret.Faction == Faction.OfPlayer))
@@ -384,7 +384,7 @@ namespace Combat_Realism
                 if (wielder != null) action = TryStartReload;
                 else if (turret != null && turret.GetMannableComp() != null) action = turret.OrderReload;
 
-                var reloadCommandGizmo = new Command_Reload
+                Command_Reload reloadCommandGizmo = new Command_Reload
                 {
                     compAmmo = this,
                     action = action,

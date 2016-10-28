@@ -40,19 +40,19 @@ namespace Combat_Realism
             this.FailOn(HasNoGunOrAmmo);
 
             //Toil of do-nothing		
-            var waitToil = new Toil();
+            Toil waitToil = new Toil();
             waitToil.initAction = () => waitToil.actor.pather.StopDead();
             waitToil.defaultCompleteMode = ToilCompleteMode.Delay;
             waitToil.defaultDuration = Mathf.CeilToInt(compReloader.Props.reloadTicks / pawn.GetStatValue(StatDef.Named("ReloadSpeed")));
             yield return waitToil.WithProgressBarToilDelay(TargetIndex.A);
 
             //Actual reloader
-            var reloadToil = new Toil();
+            Toil reloadToil = new Toil();
             reloadToil.AddFinishAction(() => compReloader.LoadAmmo());
             yield return reloadToil;
 
             //Continue previous job if possible
-            var continueToil = new Toil();
+            Toil continueToil = new Toil();
             continueToil.initAction = () => compReloader.TryContinuePreviousJob();
             continueToil.defaultCompleteMode = ToilCompleteMode.Instant;
             yield return continueToil;

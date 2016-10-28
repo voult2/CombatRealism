@@ -59,7 +59,7 @@ namespace Combat_Realism
             else
             {
                 SoundDefOf.BulletImpactGround.PlayOneShot(base.Position);
-                MoteThrower.ThrowStatic(this.ExactPosition, ThingDefOf.Mote_ShotHit_Dirt, 1f);
+                MoteMaker.MakeStaticMote(this.ExactPosition, ThingDefOf.Mote_ShotHit_Dirt, 1f);
             }
         }
     }

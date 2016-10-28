@@ -50,11 +50,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Community Core Library">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Community Core Library\Assemblies\Community Core Library.dll</HintPath>
+      <HintPath>..\..\..\Community Core Library\Assemblies\Community Core Library.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -64,7 +64,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -157,7 +157,7 @@
     <Compile Include="Detours\Detours_VerbTracker.cs" />
     <Compile Include="Detours\Detours_WorkGiver_HunterHunt.cs" />
     <Compile Include="Detours\Detours_WorkGiver_InteractAnimal.cs" />
-    <Compile Include="Detours\Detour_AttackTargetFinder.cs" />
+    <None Include="Detours\Detour_AttackTargetFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Combat_Realism\Verbs\Verb_ShootCR.cs" />
     <Compile Include="Combat_Realism\Comps\CompAmmoUser.cs" />
@@ -166,6 +166,81 @@
     <Compile Include="Combat_Realism\SecondaryDamage.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\..\About\About.xml">
+      <Link>Defs\About\About.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ModHelperDefs\ModHelper.xml">
+      <Link>Defs\ModHelperDefs\ModHelper.xml</Link>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="..\..\Defs\ModHelperDefs\SequencedInjectionSet.xml">
+      <Link>Defs\ModHelperDefs\SequencedInjectionSet.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ModHelperDefs\SequencedInjectionSet_ThingComp.xml">
+      <Link>Defs\ModHelperDefs\SequencedInjectionSet_ThingComp.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Apparel_Carrying.xml">
+      <Link>Defs\ThingDefs\Apparel_Carrying.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Apparel_Hats.xml">
+      <Link>Defs\ThingDefs\Apparel_Hats.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Apparel_Shield.xml">
+      <Link>Defs\ThingDefs\Apparel_Shield.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Apparel_Various.xml">
+      <Link>Defs\ThingDefs\Apparel_Various.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Motes_Casings.xml">
+      <Link>Defs\ThingDefs\Motes_Casings.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Plants_Cultivated.xml">
+      <Link>Defs\ThingDefs\Plants_Cultivated.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Races_Mechanoid.xml">
+      <Link>Defs\ThingDefs\Races_Mechanoid.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Things_Special.xml">
+      <Link>Defs\ThingDefs\Things_Special.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Various_Stone.xml">
+      <Link>Defs\ThingDefs\Various_Stone.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Weapons_Artillery.xml">
+      <Link>Defs\ThingDefs\Weapons_Artillery.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Weapons_Grenades.xml">
+      <Link>Defs\ThingDefs\Weapons_Grenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Weapons_Guns.xml">
+      <Link>Defs\ThingDefs\Weapons_Guns.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Weapons_Melee.xml">
+      <Link>Defs\ThingDefs\Weapons_Melee.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Weapons_RangedNeolithic.xml">
+      <Link>Defs\ThingDefs\Weapons_RangedNeolithic.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs\Weapons_Spotting.xml">
+      <Link>Defs\ThingDefs\Weapons_Spotting.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Items\Items_Food.xml">
+      <Link>Defs\ThingDefs_Items\Items_Food.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Items\Items_Resource_Manufactured.xml">
+      <Link>Defs\ThingDefs_Items\Items_Resource_Manufactured.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Items\Items_Resource_RawPlant.xml">
+      <Link>Defs\ThingDefs_Items\Items_Resource_RawPlant.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Items\Items_Resource_Stuff.xml">
+      <Link>Defs\ThingDefs_Items\Items_Resource_Stuff.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Items\Items_Unfinished.xml">
+      <Link>Defs\ThingDefs_Items\Items_Unfinished.xml</Link>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -101,7 +101,7 @@ namespace Combat_Realism
 			}
 			if (localInjuryResult.headshot && pawn.Spawned)
 			{
-				MoteThrower.ThrowText(new Vector3((float)pawn.Position.x + 1f, (float)pawn.Position.y, (float)pawn.Position.z + 1f), "Headshot".Translate(), Color.white, -1);
+				MoteMaker.ThrowText(new Vector3((float)pawn.Position.x + 1f, (float)pawn.Position.y, (float)pawn.Position.z + 1f), "Headshot".Translate(), Color.white, -1);
 				if (dinfo.Instigator != null)
 				{
 					Pawn pawn2 = dinfo.Instigator as Pawn;

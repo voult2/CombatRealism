@@ -49,7 +49,7 @@ namespace Combat_Realism
             yield return Toils_Haul.PlaceHauledThingInCell(TargetIndex.A, null, false);
 
             // Wait in place
-            var waitToil = new Toil();
+            Toil waitToil = new Toil();
             waitToil.initAction = new Action(delegate
             {
                 waitToil.actor.pather.StopDead();
@@ -60,7 +60,7 @@ namespace Combat_Realism
             yield return waitToil.WithProgressBarToilDelay(TargetIndex.A);
 
             //Actual reloader
-            var reloadToil = new Toil();
+            Toil reloadToil = new Toil();
             reloadToil.defaultCompleteMode = ToilCompleteMode.Instant;
             reloadToil.initAction = new Action(delegate
             {

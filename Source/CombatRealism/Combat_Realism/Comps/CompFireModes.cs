@@ -156,7 +156,7 @@ namespace Combat_Realism
 
         public IEnumerable<Command> GenerateGizmos()
         {
-            var toggleFireModeGizmo = new Command_Action
+            Command_Action toggleFireModeGizmo = new Command_Action
             {
                 action = this.ToggleFireMode,
                 defaultLabel = ("CR_" + this.currentFireMode.ToString() + "Label").Translate(),
@@ -165,7 +165,7 @@ namespace Combat_Realism
             };
             yield return toggleFireModeGizmo;
 
-            var toggleAimModeGizmo = new Command_Action
+            Command_Action toggleAimModeGizmo = new Command_Action
             {
                 action = this.ToggleAimMode,
                 defaultLabel = ("CR_" + this.currentAimMode.ToString() + "Label").Translate(),

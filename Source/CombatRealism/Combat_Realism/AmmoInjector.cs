@@ -9,6 +9,7 @@ using CommunityCoreLibrary;
 
 namespace Combat_Realism
 {
+    [SpecialInjectorSequencer(InjectionSequence.MainLoad, InjectionTiming.SpecialInjectors)]
     public class AmmoInjector : SpecialInjector
     {
         private const string enableTradeTag = "CR_AutoEnableTrade";             // The trade tag which designates ammo defs for being automatically switched to Tradeability.Stockable
@@ -42,7 +43,7 @@ namespace Combat_Realism
             // Find all ammo using guns
             foreach (ThingDef weaponDef in Utility.allWeaponDefs)
             {
-                CompProperties_AmmoUser props = weaponDef.GetCompProperty<CompProperties_AmmoUser>();
+                CompProperties_AmmoUser props = weaponDef.GetCompProperties<CompProperties_AmmoUser>();
                 if (props != null && props.ammoSet != null && !props.ammoSet.ammoTypes.NullOrEmpty())
                 {
                     foreach(ThingDef curDef in props.ammoSet.ammoTypes)
