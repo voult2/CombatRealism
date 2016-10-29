@@ -15,7 +15,7 @@ namespace Combat_Realism.Detours
         private static readonly FieldInfo innerListFieldInfo = typeof(ThingContainer).GetField("innerList", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo maxStacksFieldInfo = typeof(ThingContainer).GetField("maxStacks", BindingFlags.Instance | BindingFlags.NonPublic);
 
-        //     [DetourClassMethod(typeof(ThingContainer), "TryAdd", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+        [DetourClassMethod(typeof(ThingContainer), "TryAdd", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static bool TryAdd(this ThingContainer _this, Thing item)
         {
             if (item.stackCount > _this.AvailableStackSpace)
@@ -120,7 +120,7 @@ namespace Combat_Realism.Detours
             }
         }
 
-        //    [DetourClassMethod(typeof(ThingContainer), "Get", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+        [DetourClassMethod(typeof(ThingContainer), "Get", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static Thing Get(this ThingContainer _this, Thing thing, int count)
         {
             if (count > thing.stackCount)
@@ -147,7 +147,7 @@ namespace Combat_Realism.Detours
             return thing2;
         }
 
-        //  [DetourClassMethod(typeof(ThingContainer), "Remove", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+        [DetourClassMethod(typeof(ThingContainer), "Remove", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static void Remove(this ThingContainer _this, Thing item)
         {
             if (item.holder == _this)

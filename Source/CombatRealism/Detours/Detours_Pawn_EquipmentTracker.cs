@@ -15,7 +15,7 @@ namespace Combat_Realism.Detours
         private static readonly FieldInfo pawnFieldInfo = typeof(Pawn_EquipmentTracker).GetField("pawn", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo primaryIntFieldInfo = typeof(Pawn_EquipmentTracker).GetField("primaryInt", BindingFlags.Instance | BindingFlags.NonPublic);
 
-        //    [DetourClassMethod(typeof(Pawn_EquipmentTracker), "AddEquipment", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+        [DetourClassMethod(typeof(Pawn_EquipmentTracker), "AddEquipment", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static void AddEquipment(this Pawn_EquipmentTracker _this, ThingWithComps newEq)
         {
             SlotGroupUtility.Notify_TakingThing(newEq);
@@ -63,7 +63,7 @@ namespace Combat_Realism.Detours
             Utility.TryUpdateInventory(pawn);   // Added equipment, update inventory
         }
 
-        //    [DetourClassMethod(typeof(Pawn_EquipmentTracker), "Notify_PrimaryDestroyed", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+        [DetourClassMethod(typeof(Pawn_EquipmentTracker), "Notify_PrimaryDestroyed", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static void Notify_PrimaryDestroyed(this Pawn_EquipmentTracker _this)
         {
             // Fetch private fields
@@ -83,7 +83,7 @@ namespace Combat_Realism.Detours
                 inventory.SwitchToNextViableWeapon(false);
         }
 
-        //    [DetourClassMethod(typeof(Pawn_EquipmentTracker), "TryDropEquipment", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+        [DetourClassMethod(typeof(Pawn_EquipmentTracker), "TryDropEquipment", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static bool TryDropEquipment(this Pawn_EquipmentTracker _this, ThingWithComps eq, out ThingWithComps resultingEq, IntVec3 pos, bool forbid = true)
         {
             // Fetch private fields
@@ -130,7 +130,7 @@ namespace Combat_Realism.Detours
             return flag;
         }
 
-        //   [DetourClassMethod(typeof(Pawn_EquipmentTracker), "TryTransferEquipmentToContainer", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+        [DetourClassMethod(typeof(Pawn_EquipmentTracker), "TryTransferEquipmentToContainer", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static bool TryTransferEquipmentToContainer(this Pawn_EquipmentTracker _this, ThingWithComps eq, ThingContainer container, out ThingWithComps resultingEq)
         {
             // Fetch private fields
@@ -166,7 +166,7 @@ namespace Combat_Realism.Detours
             return resultingEq == null;
         }
 
-        //   [DetourClassMethod(typeof(Pawn_EquipmentTracker), "TryStartAttack", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+        [DetourClassMethod(typeof(Pawn_EquipmentTracker), "TryStartAttack", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static bool TryStartAttack(this Pawn_EquipmentTracker _this, TargetInfo targ)
         {
             Pawn pawn = (Pawn)pawnFieldInfo.GetValue(_this);

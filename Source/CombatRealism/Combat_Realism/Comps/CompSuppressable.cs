@@ -114,10 +114,10 @@ namespace Combat_Realism
                         return true;
                     }
                     // Removing suppression log
-            /*        else
-                    {
-                        Log.Warning("Hunkering without suppression, this should never happen");
-                    } */
+                    /*        else
+                            {
+                                Log.Warning("Hunkering without suppression, this should never happen");
+                            } */
                 }
                 return false;
             }
@@ -155,6 +155,8 @@ namespace Combat_Realism
             //Assign suppressed status and interrupt activity if necessary
             /*
              * Disabled because suppression works counter-intuitively
+             * Re-enabled
+             */
             if (!this.isSuppressed && this.currentSuppressionInt > this.suppressionThreshold)
             {
                 this.isSuppressed = true;
@@ -171,6 +173,8 @@ namespace Combat_Realism
                     Log.Error("Trying to suppress non-pawn " + this.parent.ToString() + ", this should never happen");
                 }
             }
+            /*
+
             */
         }
 

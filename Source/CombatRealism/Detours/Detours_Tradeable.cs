@@ -19,7 +19,7 @@ namespace Combat_Realism.Detours
             new CurvePoint(200000f, 0.2f)
         };
 
-        //    [DetourClassMethod(typeof(Tradeable), "PriceFor", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+            [DetourClassMethod(typeof(Tradeable), "PriceFor", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static float PriceFor(this Tradeable _this, TradeAction action)
         {
             float num = TradeSession.trader.TraderKind.PriceTypeFor(_this.ThingDef, action).PriceMultiplier();

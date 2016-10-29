@@ -11,7 +11,7 @@ namespace Combat_Realism.Detours
 {
     internal static class Detours_VerbTracker
     {
-        //   [DetourClassMethod(typeof(VerbTracker), "VerbsTick", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+           [DetourClassMethod(typeof(VerbTracker), "VerbsTick", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static void VerbsTick(this VerbTracker _this)
         {
             if (_this.AllVerbs == null)

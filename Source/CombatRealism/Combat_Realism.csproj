@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Combat_Realism\Projectiles\ProjectileCR_Explosive.cs" />
     <Compile Include="Combat_Realism\Projectiles\Projectile_FireTrail.cs" />
     <Compile Include="Combat_Realism\RecoilPattern.cs" />
     <Compile Include="Combat_Realism\AimMode.cs" />
@@ -117,7 +118,7 @@
     <Compile Include="Combat_Realism\DamageWorkers\DamageWorker_AddInjuryCR.cs" />
     <Compile Include="Combat_Realism\Defs\AmmoCategoryDef.cs" />
     <Compile Include="Combat_Realism\Loadouts\Utility_Loadouts.cs" />
-    <Compile Include="Combat_Realism\ThinkNodes\ThinkNode_ConditionalNoJob.cs" />
+    <None Include="Combat_Realism\ThinkNodes\ThinkNode_ConditionalNoJob.cs" />
     <Compile Include="Combat_Realism\TurretTop.cs" />
     <Compile Include="Detours\DetourInjector.cs" />
     <Compile Include="Combat_Realism\FireMode.cs" />
@@ -131,7 +132,6 @@
     <Compile Include="Combat_Realism\Jobs\JobGiver_HunkerDown.cs" />
     <Compile Include="Combat_Realism\Jobs\JobGiver_RunForCover.cs" />
     <Compile Include="Combat_Realism\Projectiles\ProjectileCR.cs" />
-    <Compile Include="Combat_Realism\Projectiles\ProjectileCR_Explosive.cs" />
     <Compile Include="Combat_Realism\Projectiles\ProjectilePropertiesCR.cs" />
     <Compile Include="Combat_Realism\ShiftVecReport.cs" />
     <Compile Include="Combat_Realism\StatWorkers\StatWorker_MoveSpeed.cs" />
@@ -157,7 +157,6 @@
     <Compile Include="Detours\Detours_VerbTracker.cs" />
     <Compile Include="Detours\Detours_WorkGiver_HunterHunt.cs" />
     <Compile Include="Detours\Detours_WorkGiver_InteractAnimal.cs" />
-    <None Include="Detours\Detour_AttackTargetFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Combat_Realism\Verbs\Verb_ShootCR.cs" />
     <Compile Include="Combat_Realism\Comps\CompAmmoUser.cs" />
@@ -170,15 +169,222 @@
     <Content Include="..\..\About\About.xml">
       <Link>Defs\About\About.xml</Link>
     </Content>
+    <Content Include="..\..\Defs\AmmoCategoryDefs\AmmoCategories_Advanced.xml">
+      <Link>Defs\AmmoCategoryDefs\AmmoCategories_Advanced.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoCategoryDefs\AmmoCategories_General.xml">
+      <Link>Defs\AmmoCategoryDefs\AmmoCategories_General.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoCategoryDefs\AmmoCategories_Grenades.xml">
+      <Link>Defs\AmmoCategoryDefs\AmmoCategories_Grenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoCategoryDefs\AmmoCategories_Neolithic.xml">
+      <Link>Defs\AmmoCategoryDefs\AmmoCategories_Neolithic.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoCategoryDefs\AmmoCategories_Rockets.xml">
+      <Link>Defs\AmmoCategoryDefs\AmmoCategories_Rockets.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoCategoryDefs\AmmoCategories_Shotgun.xml">
+      <Link>Defs\AmmoCategoryDefs\AmmoCategories_Shotgun.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoSetDefs\AmmoSets_Advanced.xml">
+      <Link>Defs\AmmoSetDefs\AmmoSets_Advanced.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoSetDefs\AmmoSets_Grenades.xml">
+      <Link>Defs\AmmoSetDefs\AmmoSets_Grenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoSetDefs\AmmoSets_HighCaliber.xml">
+      <Link>Defs\AmmoSetDefs\AmmoSets_HighCaliber.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoSetDefs\AmmoSets_Neolithic.xml">
+      <Link>Defs\AmmoSetDefs\AmmoSets_Neolithic.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoSetDefs\AmmoSets_Pistols.xml">
+      <Link>Defs\AmmoSetDefs\AmmoSets_Pistols.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoSetDefs\AmmoSets_Rifles.xml">
+      <Link>Defs\AmmoSetDefs\AmmoSets_Rifles.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoSetDefs\AmmoSets_Rockets.xml">
+      <Link>Defs\AmmoSetDefs\AmmoSets_Rockets.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoSetDefs\AmmoSets_Shells.xml">
+      <Link>Defs\AmmoSetDefs\AmmoSets_Shells.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\AmmoSetDefs\AmmoSets_Shotgun.xml">
+      <Link>Defs\AmmoSetDefs\AmmoSets_Shotgun.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\BodyDefs\Bodies_Animal_Insect.xml">
+      <Link>Defs\BodyDefs\Bodies_Animal_Insect.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\BodyDefs\Bodies_Humanlike.xml">
+      <Link>Defs\BodyDefs\Bodies_Humanlike.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\BodyDefs\Bodies_Mechanoid.xml">
+      <Link>Defs\BodyDefs\Bodies_Mechanoid.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\BodyDefs\Bodies_Turtle.xml">
+      <Link>Defs\BodyDefs\Bodies_Turtle.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\BodyPartDefs\BodyParts_General.xml">
+      <Link>Defs\BodyPartDefs\BodyParts_General.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\BodyPartDefs\BodyParts_Humanoid.xml">
+      <Link>Defs\BodyPartDefs\BodyParts_Humanoid.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\BodyPartDefs\BodyParts_Mechanoid.xml">
+      <Link>Defs\BodyPartDefs\BodyParts_Mechanoid.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\BodyPartDefs\BodyParts_Mechanoid_Internal.xml">
+      <Link>Defs\BodyPartDefs\BodyParts_Mechanoid_Internal.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\BodyPartDefs\BodyParts_Organs.xml">
+      <Link>Defs\BodyPartDefs\BodyParts_Organs.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\BodyPartGroupDefs\BodyPartGroups.xml">
+      <Link>Defs\BodyPartGroupDefs\BodyPartGroups.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\DamageDefs\Damages_LocalInjury.xml">
+      <Link>Defs\DamageDefs\Damages_LocalInjury.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\DamageDefs\Damages_Misc.xml">
+      <Link>Defs\DamageDefs\Damages_Misc.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\FactionDefs\Factions.xml">
+      <Link>Defs\FactionDefs\Factions.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\HediffDefs\Hediffs_GlobalMisc.xml">
+      <Link>Defs\HediffDefs\Hediffs_GlobalMisc.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\HediffDefs\Hediffs_Injuries.xml">
+      <Link>Defs\HediffDefs\Hediffs_Injuries.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\JobDefs\Jobs_CR.xml">
+      <Link>Defs\JobDefs\Jobs_CR.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\MainTabDefs\OutfitsAndLoadouts.xml">
+      <Link>Defs\MainTabDefs\OutfitsAndLoadouts.xml</Link>
+    </Content>
     <Content Include="..\..\Defs\ModHelperDefs\ModHelper.xml">
       <Link>Defs\ModHelperDefs\ModHelper.xml</Link>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="..\..\Defs\ModHelperDefs\SequencedInjectionSet.xml">
-      <Link>Defs\ModHelperDefs\SequencedInjectionSet.xml</Link>
+    <Content Include="..\..\Defs\PawnKindDefs\PawnKinds_Mechanoid.xml">
+      <Link>Defs\PawnKindDefs\PawnKinds_Mechanoid.xml</Link>
     </Content>
-    <Content Include="..\..\Defs\ModHelperDefs\SequencedInjectionSet_ThingComp.xml">
-      <Link>Defs\ModHelperDefs\SequencedInjectionSet_ThingComp.xml</Link>
+    <Content Include="..\..\Defs\PawnKindDefs\PawnKinds_Mercenary.xml">
+      <Link>Defs\PawnKindDefs\PawnKinds_Mercenary.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\PawnKindDefs\PawnKinds_Outlander.xml">
+      <Link>Defs\PawnKindDefs\PawnKinds_Outlander.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\PawnKindDefs\PawnKinds_Pirate.xml">
+      <Link>Defs\PawnKindDefs\PawnKinds_Pirate.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\PawnKindDefs\PawnKinds_Spacer.xml">
+      <Link>Defs\PawnKindDefs\PawnKinds_Spacer.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\PawnKindDefs\PawnKinds_Tribal.xml">
+      <Link>Defs\PawnKindDefs\PawnKinds_Tribal.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs\Recipes_Production.xml">
+      <Link>Defs\RecipeDefs\Recipes_Production.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs_Ammo\Recipes_AmmoAdvanced.xml">
+      <Link>Defs\RecipeDefs_Ammo\Recipes_AmmoAdvanced.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs_Ammo\Recipes_AmmoHighCaliber.xml">
+      <Link>Defs\RecipeDefs_Ammo\Recipes_AmmoHighCaliber.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs_Ammo\Recipes_AmmoNeolithic.xml">
+      <Link>Defs\RecipeDefs_Ammo\Recipes_AmmoNeolithic.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs_Ammo\Recipes_AmmoPistols.xml">
+      <Link>Defs\RecipeDefs_Ammo\Recipes_AmmoPistols.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs_Ammo\Recipes_AmmoRifles.xml">
+      <Link>Defs\RecipeDefs_Ammo\Recipes_AmmoRifles.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs_Ammo\Recipes_AmmoShotgun.xml">
+      <Link>Defs\RecipeDefs_Ammo\Recipes_AmmoShotgun.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs_Ammo\Recipes_Grenades.xml">
+      <Link>Defs\RecipeDefs_Ammo\Recipes_Grenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs_Ammo\Recipes_HandGrenades.xml">
+      <Link>Defs\RecipeDefs_Ammo\Recipes_HandGrenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs_Ammo\Recipes_Rockets.xml">
+      <Link>Defs\RecipeDefs_Ammo\Recipes_Rockets.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\RecipeDefs_Ammo\Recipes_Shells.xml">
+      <Link>Defs\RecipeDefs_Ammo\Recipes_Shells.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ResearchProjectDefs\ResearchProjects_Tier2_Misc.xml">
+      <Link>Defs\ResearchProjectDefs\ResearchProjects_Tier2_Misc.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\SoundDefs\CasingSounds.xml">
+      <Link>Defs\SoundDefs\CasingSounds.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\StatDefs\Stats_Apparel.xml">
+      <Link>Defs\StatDefs\Stats_Apparel.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\StatDefs\Stats_Basics_Inventory.xml">
+      <Link>Defs\StatDefs\Stats_Basics_Inventory.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\StatDefs\Stats_Pawns_Combat.xml">
+      <Link>Defs\StatDefs\Stats_Pawns_Combat.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\StatDefs\Stats_Pawns_General.xml">
+      <Link>Defs\StatDefs\Stats_Pawns_General.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\StatDefs\Stats_Pawns_Inventory.xml">
+      <Link>Defs\StatDefs\Stats_Pawns_Inventory.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\StatDefs\Stats_Pawns_WorkGeneral.xml">
+      <Link>Defs\StatDefs\Stats_Pawns_WorkGeneral.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\StatDefs\Stats_Weapons_Melee.xml">
+      <Link>Defs\StatDefs\Stats_Weapons_Melee.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\StatDefs\Stats_Weapons_Ranged.xml">
+      <Link>Defs\StatDefs\Stats_Weapons_Ranged.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\StuffCategoryDefs\StuffCategories.xml">
+      <Link>Defs\StuffCategoryDefs\StuffCategories.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories_Advanced.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories_Advanced.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories_Grenades.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories_Grenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories_HighCaliber.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories_HighCaliber.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories_Neolithic.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories_Neolithic.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories_Pistols.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories_Pistols.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories_Rifles.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories_Rifles.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories_Rockets.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories_Rockets.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories_Shells.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories_Shells.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories_Shotgun.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories_Shotgun.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories_SK.xml">
+      <Link>Defs\ThingCategoryDefs\ThingCategories_SK.xml</Link>
     </Content>
     <Content Include="..\..\Defs\ThingDefs\Apparel_Carrying.xml">
       <Link>Defs\ThingDefs\Apparel_Carrying.xml</Link>
@@ -225,8 +431,81 @@
     <Content Include="..\..\Defs\ThingDefs\Weapons_Spotting.xml">
       <Link>Defs\ThingDefs\Weapons_Spotting.xml</Link>
     </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Ammo_Advanced.xml">
+      <Link>Defs\ThingDefs_Ammo\Ammo_Advanced.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Ammo_Grenades.xml">
+      <Link>Defs\ThingDefs_Ammo\Ammo_Grenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Ammo_HighCaliber.xml">
+      <Link>Defs\ThingDefs_Ammo\Ammo_HighCaliber.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Ammo_Neolithic.xml">
+      <Link>Defs\ThingDefs_Ammo\Ammo_Neolithic.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Ammo_Pistols.xml">
+      <Link>Defs\ThingDefs_Ammo\Ammo_Pistols.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Ammo_Rifles.xml">
+      <Link>Defs\ThingDefs_Ammo\Ammo_Rifles.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Ammo_Rockets.xml">
+      <Link>Defs\ThingDefs_Ammo\Ammo_Rockets.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Ammo_Shells.xml">
+      <Link>Defs\ThingDefs_Ammo\Ammo_Shells.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Ammo_Shotgun.xml">
+      <Link>Defs\ThingDefs_Ammo\Ammo_Shotgun.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Projectiles_Advanced.xml">
+      <Link>Defs\ThingDefs_Ammo\Projectiles_Advanced.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Projectiles_Fragments.xml">
+      <Link>Defs\ThingDefs_Ammo\Projectiles_Fragments.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Projectiles_Grenades.xml">
+      <Link>Defs\ThingDefs_Ammo\Projectiles_Grenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Projectiles_HighCaliber.xml">
+      <Link>Defs\ThingDefs_Ammo\Projectiles_HighCaliber.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Projectiles_Neolithic.xml">
+      <Link>Defs\ThingDefs_Ammo\Projectiles_Neolithic.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Projectiles_Pistols.xml">
+      <Link>Defs\ThingDefs_Ammo\Projectiles_Pistols.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Projectiles_Rifles.xml">
+      <Link>Defs\ThingDefs_Ammo\Projectiles_Rifles.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Projectiles_Rockets.xml">
+      <Link>Defs\ThingDefs_Ammo\Projectiles_Rockets.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Projectiles_Shells.xml">
+      <Link>Defs\ThingDefs_Ammo\Projectiles_Shells.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Ammo\Projectiles_Shotgun.xml">
+      <Link>Defs\ThingDefs_Ammo\Projectiles_Shotgun.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Buildings\Buildings_Exotic.xml">
+      <Link>Defs\ThingDefs_Buildings\Buildings_Exotic.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Buildings\Buildings_Natural.xml">
+      <Link>Defs\ThingDefs_Buildings\Buildings_Natural.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Buildings\Buildings_Production.xml">
+      <Link>Defs\ThingDefs_Buildings\Buildings_Production.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Buildings\Buildings_Security.xml">
+      <Link>Defs\ThingDefs_Buildings\Buildings_Security.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Buildings\Buildings_Structure.xml">
+      <Link>Defs\ThingDefs_Buildings\Buildings_Structure.xml</Link>
+    </Content>
     <Content Include="..\..\Defs\ThingDefs_Items\Items_Food.xml">
       <Link>Defs\ThingDefs_Items\Items_Food.xml</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\..\Defs\ThingDefs_Items\Items_Resource_Manufactured.xml">
       <Link>Defs\ThingDefs_Items\Items_Resource_Manufactured.xml</Link>
@@ -239,6 +518,33 @@
     </Content>
     <Content Include="..\..\Defs\ThingDefs_Items\Items_Unfinished.xml">
       <Link>Defs\ThingDefs_Items\Items_Unfinished.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_LoadoutGen\LoadoutGen_Mechanoid.xml">
+      <Link>Defs\ThingDefs_LoadoutGen\LoadoutGen_Mechanoid.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_LoadoutGen\LoadoutGen_Mercenary.xml">
+      <Link>Defs\ThingDefs_LoadoutGen\LoadoutGen_Mercenary.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_LoadoutGen\LoadoutGen_Outlander.xml">
+      <Link>Defs\ThingDefs_LoadoutGen\LoadoutGen_Outlander.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_LoadoutGen\LoadoutGen_Pirate.xml">
+      <Link>Defs\ThingDefs_LoadoutGen\LoadoutGen_Pirate.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_LoadoutGen\LoadoutGen_Tribal.xml">
+      <Link>Defs\ThingDefs_LoadoutGen\LoadoutGen_Tribal.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThinkTreeDefs\Humanlike.xml">
+      <Link>Defs\ThinkTreeDefs\Humanlike.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThinkTreeDefs\SubTrees_CR.xml">
+      <Link>Defs\ThinkTreeDefs\SubTrees_CR.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThoughtDefs\Thoughts_CR.xml">
+      <Link>Defs\ThoughtDefs\Thoughts_CR.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\WorkGiverDefs\WorkGivers.xml">
+      <Link>Defs\WorkGiverDefs\WorkGivers.xml</Link>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

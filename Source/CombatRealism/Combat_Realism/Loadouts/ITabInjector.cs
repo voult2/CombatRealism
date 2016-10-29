@@ -7,7 +7,7 @@ using Verse;
 namespace Combat_Realism
 {
     [SpecialInjectorSequencer(InjectionSequence.MainLoad, InjectionTiming.SpecialInjectors)]
-    public class ITabInjector : SpecialInjector
+    public class TabInjector : SpecialInjector
     {
         #region Methods
 

@@ -12,7 +12,7 @@ namespace Combat_Realism.Detours
 {
     internal static class Detours_WorkGiver_InteractAnimal
     {
-        //    [DetourClassMethod(typeof(WorkGiver_InteractAnimal), "TakeFoodForAnimalInteractJob", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+        [DetourClassMethod(typeof(WorkGiver_InteractAnimal), "TakeFoodForAnimalInteractJob", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static Job TakeFoodForAnimalInteractJob(this WorkGiver_InteractAnimal _this, Pawn pawn, Pawn tamee)
         {
             float reqNutrition = JobDriver_InteractAnimal.RequiredNutritionPerFeed(tamee) * 2f * 4f;

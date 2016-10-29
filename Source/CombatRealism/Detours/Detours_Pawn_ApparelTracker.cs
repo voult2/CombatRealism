@@ -35,7 +35,7 @@ namespace Combat_Realism.Detours
             return flag;
         }
 
-        //   [DetourClassMethod(typeof(Pawn_ApparelTracker), "Wear", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+           [DetourClassMethod(typeof(Pawn_ApparelTracker), "Wear", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static void Wear(this Pawn_ApparelTracker _this, Apparel newApparel, bool dropReplacedApparel = true)
         {
             SlotGroupUtility.Notify_TakingThing(newApparel);
@@ -87,7 +87,7 @@ namespace Combat_Realism.Detours
             LongEventHandler.ExecuteWhenFinished(new Action(_this.ApparelChanged));
         }
 
-        //  [DetourClassMethod(typeof(Pawn_ApparelTracker), "Notify_WornApparelDestroyed", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+          [DetourClassMethod(typeof(Pawn_ApparelTracker), "Notify_WornApparelDestroyed", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static void Notify_WornApparelDestroyed(this Pawn_ApparelTracker _this, Apparel apparel)
         {
             _this.WornApparel.Remove(apparel);

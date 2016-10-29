@@ -12,7 +12,7 @@ namespace Combat_Realism.Detours
 {
     internal static class Detours_WorkGiver_HunterHunt
     {
-        //   [DetourClassMethod(typeof(WorkGiver_HunterHunt), "HasHuntingWeapon", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+           [DetourClassMethod(typeof(WorkGiver_HunterHunt), "HasHuntingWeapon", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static bool HasHuntingWeapon(Pawn p)
         {
             if (p.equipment.Primary != null)

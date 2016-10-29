@@ -11,7 +11,7 @@ namespace Combat_Realism.Detours
 {
     internal static class Detours_TooltipUtility
     {
-        //    [DetourClassMethod(typeof(TooltipUtility), "ShotCalculationTipString", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+            [DetourClassMethod(typeof(TooltipUtility), "ShotCalculationTipString", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static string ShotCalculationTipString(Thing target)
         {
             StringBuilder stringBuilder = new StringBuilder();
