@@ -37,9 +37,9 @@ namespace Combat_Realism.Detours
 
             // ThingContainer
 
-          //MethodInfo tryAddSource = typeof(ThingContainer).GetMethod("TryAdd", BindingFlags.Instance | BindingFlags.Public, null, new Type[] { typeof(Thing) }, null);
-          //if (!CommunityCoreLibrary.Detours.TryDetourFromTo(tryAddSource, typeof(Detours_ThingContainer).GetMethod("TryAdd", BindingFlags.Static | BindingFlags.NonPublic)))
-          //    return false;
+            MethodInfo tryAddSource = typeof(ThingContainer).GetMethod("TryAdd", BindingFlags.Instance | BindingFlags.Public, null, new Type[] { typeof(Thing) }, null);
+            if (!CommunityCoreLibrary.Detours.TryDetourFromTo(tryAddSource, typeof(Detours_ThingContainer).GetMethod("TryAdd", BindingFlags.Static | BindingFlags.NonPublic)))
+                return false;
 
             MethodInfo tryDrop2Source = typeof(ThingContainer).GetMethod("TryDrop",
                  BindingFlags.Instance | BindingFlags.Public,

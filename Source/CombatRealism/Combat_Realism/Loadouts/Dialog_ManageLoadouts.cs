@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Combat_Realism.Combat_Realism.Defs;
 using UnityEngine;
 using Verse;
 
@@ -234,8 +235,8 @@ namespace Combat_Realism
             // bars
             if (CurrentLoadout != null)
             {
-                Utility_Loadouts.DrawBar(weightBarRect, CurrentLoadout.Weight, StatDef.Named("CarryWeight").defaultBaseValue, "CR.Weight".Translate(), CurrentLoadout.GetWeightTip());
-                Utility_Loadouts.DrawBar(bulkBarRect, CurrentLoadout.Bulk, StatDef.Named("CarryBulk").defaultBaseValue, "CR.Bulk".Translate(), CurrentLoadout.GetBulkTip());
+                Utility_Loadouts.DrawBar(weightBarRect, CurrentLoadout.Weight, CR_StatDefOf.CarryWeight.defaultBaseValue, "CR.Weight".Translate(), CurrentLoadout.GetWeightTip());
+                Utility_Loadouts.DrawBar(bulkBarRect, CurrentLoadout.Bulk, CR_StatDefOf.CarryBulk.defaultBaseValue, "CR.Bulk".Translate(), CurrentLoadout.GetBulkTip());
             }
 
             // done!

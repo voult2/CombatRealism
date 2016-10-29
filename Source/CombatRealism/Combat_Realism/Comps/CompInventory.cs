@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Combat_Realism.Combat_Realism.Defs;
 using RimWorld;
 using Verse;
 using Verse.Sound;
@@ -39,7 +40,7 @@ namespace Combat_Realism
         {
             get
             {
-                return parentPawn.GetStatValue(StatDef.Named("CarryWeight")) - currentWeight;
+                return parentPawn.GetStatValue(CR_StatDefOf.CarryWeight) - currentWeight;
             }
         }
         private float availableBulk
@@ -53,14 +54,14 @@ namespace Combat_Realism
         {
             get
             {
-                return parentPawn.GetStatValue(StatDef.Named("CarryBulk"));
+                return parentPawn.GetStatValue(CR_StatDefOf.CarryBulk);
             }
         }
         public float capacityWeight
         {
             get
             {
-                return parentPawn.GetStatValue(StatDef.Named("CarryWeight"));
+                return parentPawn.GetStatValue(CR_StatDefOf.CarryWeight);
             }
         }
         private Pawn parentPawnInt = null;
@@ -79,7 +80,7 @@ namespace Combat_Realism
         {
             get
             {
-                return Mathf.Lerp(1f, 0.75f, currentWeight / parentPawn.GetStatValue(StatDef.Named("CarryWeight")));
+                return Mathf.Lerp(1f, 0.75f, currentWeight / parentPawn.GetStatValue(CR_StatDefOf.CarryWeight));
             }
         }
         public float workSpeedFactor
@@ -96,7 +97,7 @@ namespace Combat_Realism
                 float penalty = 0f;
                 if (availableWeight < 0)
                 {
-                    penalty = currentWeight / parentPawn.GetStatValue(StatDef.Named("CarryWeight")) - 1;
+                    penalty = currentWeight / parentPawn.GetStatValue(CR_StatDefOf.CarryWeight) - 1;
                 }
                 return penalty;
             }
@@ -157,8 +158,8 @@ namespace Combat_Realism
             {
                 foreach (Thing apparel in parentPawn.apparel.WornApparel)
                 {
-                    float apparelBulk = apparel.GetStatValue(StatDef.Named("WornBulk"));
-                    float apparelWeight = apparel.GetStatValue(StatDef.Named("WornWeight"));
+                    float apparelBulk = apparel.GetStatValue(CR_StatDefOf.WornBulk);
+                    float apparelWeight = apparel.GetStatValue(CR_StatDefOf.WornWeight);
                     newBulk += apparelBulk;
                     newWeight += apparelWeight;
                 }
@@ -195,8 +196,8 @@ namespace Combat_Realism
                     else
                     {
                         // Add item weight
-                        newBulk += thing.GetStatValue(StatDef.Named("Bulk")) * thing.stackCount;
-                        newWeight += thing.GetStatValue(StatDef.Named("Weight")) * thing.stackCount;
+                        newBulk += thing.GetStatValue(CR_StatDefOf.Bulk) * thing.stackCount;
+                        newWeight += thing.GetStatValue(CR_StatDefOf.Weight) * thing.stackCount;
                     }
                     // Update ammo list
                     if (thing.def is AmmoDef)
@@ -224,21 +225,21 @@ namespace Combat_Realism
 
             if (useApparelCalculations)
             {
-                thingWeight = thing.GetStatValue(StatDef.Named("WornWeight"));
-                thingBulk = thing.GetStatValue(StatDef.Named("WornBulk"));
+                thingWeight = thing.GetStatValue(CR_StatDefOf.WornWeight);
+                thingBulk = thing.GetStatValue(CR_StatDefOf.WornBulk);
                 if (thingWeight <= 0 && thingBulk <= 0)
                 {
                     count = 1;
                     return true;
                 }
                 // Subtract the stat offsets we get from wearing this
-                thingWeight -= thing.def.equippedStatOffsets.GetStatOffsetFromList(StatDef.Named("CarryWeight"));
-                thingBulk -= thing.def.equippedStatOffsets.GetStatOffsetFromList(StatDef.Named("CarryBulk"));
+                thingWeight -= thing.def.equippedStatOffsets.GetStatOffsetFromList(CR_StatDefOf.CarryWeight);
+                thingBulk -= thing.def.equippedStatOffsets.GetStatOffsetFromList(CR_StatDefOf.CarryBulk);
             }
             else
             {
-                thingWeight = thing.GetStatValue(StatDef.Named("Weight"));
-                thingBulk = thing.GetStatValue(StatDef.Named("Bulk"));
+                thingWeight = thing.GetStatValue(CR_StatDefOf.Weight);
+                thingBulk = thing.GetStatValue(CR_StatDefOf.Bulk);
             }
             // Subtract weight of currently equipped weapon
             float eqBulk = 0f;
@@ -257,13 +258,13 @@ namespace Combat_Realism
 
         public static void GetEquipmentStats(ThingWithComps eq, out float weight, out float bulk)
         {
-            weight = eq.GetStatValue(StatDef.Named("Weight"));
-            bulk = eq.GetStatValue(StatDef.Named("Bulk"));
+            weight = eq.GetStatValue(CR_StatDefOf.Weight);
+            bulk = eq.GetStatValue(CR_StatDefOf.Bulk);
             CompAmmoUser comp = eq.TryGetComp<CompAmmoUser>();
             if (comp != null && comp.currentAmmo != null)
             {
-                weight += comp.currentAmmo.GetStatValueAbstract(StatDef.Named("Weight")) * comp.curMagCount;
-                bulk += comp.currentAmmo.GetStatValueAbstract(StatDef.Named("Bulk")) * comp.curMagCount;
+                weight += comp.currentAmmo.GetStatValueAbstract(CR_StatDefOf.Weight) * comp.curMagCount;
+                bulk += comp.currentAmmo.GetStatValueAbstract(CR_StatDefOf.Bulk) * comp.curMagCount;
             }
         }
 

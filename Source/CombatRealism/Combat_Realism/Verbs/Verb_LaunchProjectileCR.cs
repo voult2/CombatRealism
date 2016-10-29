@@ -35,7 +35,7 @@ namespace Combat_Realism
                 {
                     return CasterPawn;
                 }
-                return Utility.TryGetTurretOperator(caster);
+                return CR_Utility.TryGetTurretOperator(caster);
             }
         }
 
@@ -171,7 +171,7 @@ namespace Combat_Realism
         /// <returns>lower arc angle in radians</returns>
         private float GetShotAngle(float velocity, float range, float heightDifference)
         {
-            const float gravity = Utility.gravityConst;
+            const float gravity = CR_Utility.gravityConst;
             float angle = 0;
             angle = (float)Math.Atan((Math.Pow(velocity, 2) + (projectileDef.projectile.flyOverhead ? 1 : -1) * Math.Sqrt(Math.Pow(velocity, 4) - gravity * (gravity * Math.Pow(range, 2) + 2 * heightDifference * Math.Pow(velocity, 2)))) / (gravity * range));
             return angle;
@@ -186,7 +186,7 @@ namespace Combat_Realism
         /// <returns>distance in cells projectile will fly at given arc</returns>
         private float GetDistanceTraveled(float velocity, float angle, float shotHeight)
         {
-            const float gravity = Utility.gravityConst;
+            const float gravity = CR_Utility.gravityConst;
             float distance = (float)((velocity * Math.Cos(angle)) / gravity) * (float)(velocity * Math.Sin(angle) + Math.Sqrt(Math.Pow(velocity * Math.Sin(angle), 2) + 2 * gravity * shotHeight));
             return distance;
         }
@@ -243,15 +243,15 @@ namespace Combat_Realism
             // Projectiles with flyOverhead target the ground below the target and ignore cover
             if (!projectileDef.projectile.flyOverhead)
             {
-                targetableHeight = Utility.GetCollisionHeight(currentTarget.Thing);
+                targetableHeight = CR_Utility.GetCollisionHeight(currentTarget.Thing);
                 if (report.cover != null)
                 {
-                    targetableHeight += Utility.GetCollisionHeight(report.cover);
+                    targetableHeight += CR_Utility.GetCollisionHeight(report.cover);
                 }
                 heightDifference += targetableHeight * 0.5f;    //Optimal hit level is halfway
             }
 
-            shotHeight = Utility.GetCollisionHeight(caster);
+            shotHeight = CR_Utility.GetCollisionHeight(caster);
             if (CasterPawn != null)
             {
                 shotHeight *= shotHeightFactor;
@@ -417,8 +417,8 @@ namespace Combat_Realism
                 Thing coverTarg;
                 if (GetPartialCoverBetween(root.ToVector3Shifted(), targ.Cell.ToVector3Shifted(), out coverTarg))
                 {
-                    float targetHeight = Utility.GetCollisionHeight(targ.Thing);
-                    if (targetHeight <= Utility.GetCollisionHeight(coverTarg))
+                    float targetHeight = CR_Utility.GetCollisionHeight(targ.Thing);
+                    if (targetHeight <= CR_Utility.GetCollisionHeight(coverTarg))
                     {
                         return false;
                     }
@@ -427,12 +427,12 @@ namespace Combat_Realism
                 Thing coverShoot;
                 if (GetPartialCoverBetween(targ.Cell.ToVector3Shifted(), root.ToVector3Shifted(), out coverShoot))
                 {
-                    float shotHeight = Utility.GetCollisionHeight(caster);
+                    float shotHeight = CR_Utility.GetCollisionHeight(caster);
                     if (CasterPawn != null)
                     {
                         shotHeight *= shotHeightFactor;
                     }
-                    if (shotHeight <= Utility.GetCollisionHeight(coverShoot))
+                    if (shotHeight <= CR_Utility.GetCollisionHeight(coverShoot))
                     {
                         return false;
                     }

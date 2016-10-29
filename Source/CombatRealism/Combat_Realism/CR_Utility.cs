@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Combat_Realism
 {
-    static class Utility
+   public static class CR_Utility
     {
         #region Misc
 

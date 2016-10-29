@@ -15,7 +15,7 @@ namespace Combat_Realism.Detours
         private static readonly FieldInfo innerListFieldInfo = typeof(ThingContainer).GetField("innerList", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo maxStacksFieldInfo = typeof(ThingContainer).GetField("maxStacks", BindingFlags.Instance | BindingFlags.NonPublic);
 
-        [DetourClassMethod(typeof(ThingContainer), "TryAdd", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+    //    [DetourClassMethod(typeof(ThingContainer), "TryAdd", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static bool TryAdd(this ThingContainer _this, Thing item)
         {
             if (item.stackCount > _this.AvailableStackSpace)
@@ -53,7 +53,7 @@ namespace Combat_Realism.Detours
                     }
                     if (item.Destroyed)
                     {
-                        Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Item has been added, notify CompInventory
+                        CR_Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Item has been added, notify CompInventory
                         return true;
                     }
                 }
@@ -76,7 +76,7 @@ namespace Combat_Realism.Detours
             item.holder = _this;
             innerList.Add(item);
 
-            Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Item has been added, notify CompInventory
+            CR_Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Item has been added, notify CompInventory
 
             return true;
         }
@@ -112,7 +112,7 @@ namespace Combat_Realism.Detours
                 Thing thing2 = thing.SplitOff(count);
                 if (GenDrop.TryDropSpawn(thing2, dropLoc, mode, out resultingThing, placedAction))
                 {
-                    Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Thing dropped, update inventory
+                    CR_Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Thing dropped, update inventory
                     return true;
                 }
                 thing.stackCount += thing2.stackCount;
@@ -143,7 +143,7 @@ namespace Combat_Realism.Detours
             }
             Thing thing2 = thing.SplitOff(count);
             thing2.holder = null;
-            Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Item was taken from inventory, update
+            CR_Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Item was taken from inventory, update
             return thing2;
         }
 
@@ -156,7 +156,7 @@ namespace Combat_Realism.Detours
             }
             List<Thing> innerList = (List<Thing>)innerListFieldInfo.GetValue(_this);    // Fetch innerList through reflection
             innerList.Remove(item);
-            Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);           // Item was removed, update inventory
+            CR_Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);           // Item was removed, update inventory
         }
     }
 }

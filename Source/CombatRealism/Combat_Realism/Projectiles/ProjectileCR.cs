@@ -125,7 +125,7 @@ namespace Combat_Realism
 
         public static float GetProjectileHeight(float zeroheight, float distance, float angle, float velocity)
         {
-            const float gravity = Utility.gravityConst;
+            const float gravity = CR_Utility.gravityConst;
             float height = (float)(zeroheight + ((distance * Math.Tan(angle)) - (gravity * Math.Pow(distance, 2)) / (2 * Math.Pow(velocity * Math.Cos(angle), 2))));
 
             return height;
@@ -321,10 +321,10 @@ namespace Combat_Realism
                 Vector3 pawnPos = pawn.DrawPos;
                 float closestDistToPawn = Math.Abs((dest.z - orig.z) * pawnPos.x - (dest.x - orig.x) * pawnPos.z + dest.x * orig.z - dest.z * orig.x)
                     / (float)Math.Sqrt((dest.z - orig.z) * (dest.z - orig.z) + (dest.x - orig.x) * (dest.x - orig.x));
-                if (closestDistToPawn <= Utility.GetCollisionWidth(pawn))
+                if (closestDistToPawn <= CR_Utility.GetCollisionWidth(pawn))
                 {
                     //Check vertical distance
-                    float pawnHeight = Utility.GetCollisionHeight(pawn);
+                    float pawnHeight = CR_Utility.GetCollisionHeight(pawn);
                     if (height < pawnHeight)
                     {
                         Impact(thing);
@@ -334,7 +334,7 @@ namespace Combat_Realism
             }
             if (thing.def.fillPercent > 0 || thing.def.Fillage == FillCategory.Full)
             {
-                if (height < Utility.GetCollisionHeight(thing) || thing.def.Fillage == FillCategory.Full)
+                if (height < CR_Utility.GetCollisionHeight(thing) || thing.def.Fillage == FillCategory.Full)
                 {
                     Impact(thing);
                     return true;

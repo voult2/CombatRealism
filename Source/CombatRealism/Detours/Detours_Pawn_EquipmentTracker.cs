@@ -60,7 +60,7 @@ namespace Combat_Realism.Detours
                 current.Notify_PickedUp();
             }
 
-            Utility.TryUpdateInventory(pawn);   // Added equipment, update inventory
+            CR_Utility.TryUpdateInventory(pawn);   // Added equipment, update inventory
         }
 
         [DetourClassMethod(typeof(Pawn_EquipmentTracker), "Notify_PrimaryDestroyed", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
@@ -75,7 +75,7 @@ namespace Combat_Realism.Detours
             if (pawn.Spawned)
                 pawn.stances.CancelBusyStanceSoft();
 
-            Utility.TryUpdateInventory(pawn);   // Equipment was destroyed, update inventory
+            CR_Utility.TryUpdateInventory(pawn);   // Equipment was destroyed, update inventory
 
             // Try switching to the next available weapon
             CompInventory inventory = pawn.TryGetComp<CompInventory>();
@@ -121,7 +121,7 @@ namespace Combat_Realism.Detours
             }
             pawn.meleeVerbs.Notify_EquipmentLost();
 
-            Utility.TryUpdateInventory(pawn);       // Dropped equipment, update inventory
+            CR_Utility.TryUpdateInventory(pawn);       // Dropped equipment, update inventory
 
             // Cancel current job (use verb, etc.)
             if (pawn.Spawned)
@@ -157,7 +157,7 @@ namespace Combat_Realism.Detours
             }
             pawn.meleeVerbs.Notify_EquipmentLost();
 
-            Utility.TryUpdateInventory(pawn);   // Equipment was stored away, update inventory
+            CR_Utility.TryUpdateInventory(pawn);   // Equipment was stored away, update inventory
 
             // Cancel current job (use verb, etc.)
             if (pawn.Spawned)

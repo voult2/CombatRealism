@@ -223,7 +223,7 @@ namespace Combat_Realism
                 //Drop casings
                 if (verbPropsCR.ejectsCasings && projectilePropsCR.dropsCasings)
                 {
-                    Utility.ThrowEmptyCasing(caster.DrawPos, ThingDef.Named(projectilePropsCR.casingMoteDefname));
+                    CR_Utility.ThrowEmptyCasing(caster.DrawPos, ThingDef.Named(projectilePropsCR.casingMoteDefname));
                 }
                 return true;
             }

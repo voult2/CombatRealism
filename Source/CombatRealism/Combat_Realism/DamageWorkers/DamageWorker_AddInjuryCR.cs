@@ -196,7 +196,7 @@ namespace Combat_Realism
 
 			if (involveArmor)
             {
-                damageAmount = Utility.GetAfterArmorDamage(pawn, dinfo.Amount, exactPartFromDamageInfo, dinfo, true, ref result.deflected);
+                damageAmount = CR_Utility.GetAfterArmorDamage(pawn, dinfo.Amount, exactPartFromDamageInfo, dinfo, true, ref result.deflected);
             }
 			if ((double)damageAmount < 0.001)
 			{
@@ -209,7 +209,7 @@ namespace Combat_Realism
             if (damageDefCR != null 
                 && damageDefCR.deflectable 
                 && result.deflected
-                && dinfo.Def != Utility.absorbDamageDef)
+                && dinfo.Def != CR_Utility.absorbDamageDef)
             {
                 // Get outer parent of struck part
                 BodyPartRecord currentPart = exactPartFromDamageInfo;
@@ -217,7 +217,7 @@ namespace Combat_Realism
                 {
                     currentPart = currentPart.parent;
                 }
-                DamageInfo dinfo2 = new DamageInfo(Utility.absorbDamageDef, damageAmount, dinfo.Instigator, new BodyPartDamageInfo(currentPart, false), dinfo.Source);
+                DamageInfo dinfo2 = new DamageInfo(CR_Utility.absorbDamageDef, damageAmount, dinfo.Instigator, new BodyPartDamageInfo(currentPart, false), dinfo.Source);
                 ApplyDamagePartial(dinfo2, pawn, ref result);
                 return;
             }
