@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Combat_Realism\TexButton.cs" />
     <Compile Include="Combat_Realism\Projectiles\ProjectileCR_Explosive.cs" />
     <Compile Include="Combat_Realism\Projectiles\Projectile_FireTrail.cs" />
     <Compile Include="Combat_Realism\RecoilPattern.cs" />

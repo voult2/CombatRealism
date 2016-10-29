@@ -23,6 +23,7 @@ namespace Combat_Realism
         private static Texture2D _iconEdit = ContentFinder<Texture2D>.Get("UI/Icons/edit");
         private float _buttonSize = 16f;
         private float _margin = 6f;
+        private const float _spaceBetweenOutfitsAndDrugPolicy = 10f;
         private float _rowHeight = 30f;
         private float _topArea = 45f;
 
@@ -34,7 +35,7 @@ namespace Combat_Realism
         {
             get
             {
-                return new Vector2(1010f, 45f + (float)base.PawnsCount * _rowHeight + 65f);
+                return new Vector2(1010f, 65f + (float)PawnsCount * _rowHeight + 65f);
             }
         }
 
@@ -48,8 +49,6 @@ namespace Combat_Realism
             Text.Font = GameFont.Small;
 
             base.DoWindowContents(canvas);
-
-            //   DoTopArea(canvas);
 
             // available space
             Rect header = new Rect(165f + 24f + _margin, _topArea - _rowHeight, canvas.width - 165f - 24f - _margin - 16f, _rowHeight);
@@ -105,7 +104,7 @@ namespace Combat_Realism
 
             // weight + bulk indicators
             Rect weightRect = new Rect(loadoutRect.xMax, header.yMin, header.width * (1f / 8f) - _margin, header.height).ContractedBy(_margin / 2f);
-            Rect bulkRect = new Rect(weightRect.xMax, header.yMin, header.width * (1f / 8f) - _margin, header.height).ContractedBy(_margin / 2f);
+            Rect bulkRect = new Rect(weightRect.xMax + _margin, header.yMin, header.width * (1f / 8f) - _margin, header.height).ContractedBy(_margin / 2f);
 
             // draw headers
             Text.Anchor = TextAnchor.LowerCenter;
@@ -138,7 +137,7 @@ namespace Combat_Realism
 
             // draw the rows
             canvas.yMin += 45f;
-            base.DrawRows(canvas);
+            DrawRows(canvas);
         }
 
         protected override void DrawPawnRow(Rect rect, Pawn p)
@@ -207,7 +206,7 @@ namespace Combat_Realism
 
             // weight + bulk indicators
             Rect weightRect = new Rect(loadoutRect.xMax, rowRect.yMin, rowRect.width * (1f / 8f) - _margin, rowRect.height).ContractedBy(_margin / 2f);
-            Rect bulkRect = new Rect(weightRect.xMax, rowRect.yMin, rowRect.width * (1f / 8f) - _margin, rowRect.height).ContractedBy(_margin / 2f);
+            Rect bulkRect = new Rect(weightRect.xMax + _margin, rowRect.yMin, rowRect.width * (1f / 8f) - _margin, rowRect.height).ContractedBy(_margin / 2f);
 
             // OUTFITS
             // main button
@@ -230,7 +229,7 @@ namespace Combat_Realism
             TooltipHandler.TipRegion(editOutfitRect, "CR.EditX".Translate("CR.outfit".Translate() + " " + p.outfits.CurrentOutfit.label));
             if (Widgets.ButtonImage(editOutfitRect, _iconEdit))
             {
-                Text.Font=GameFont.Small;
+                Text.Font = GameFont.Small;
                 Find.WindowStack.Add(new Dialog_ManageOutfits(p.outfits.CurrentOutfit));
             }
 
@@ -284,7 +283,7 @@ namespace Combat_Realism
             TooltipHandler.TipRegion(editDrugRect, "CR.EditX".Translate("CR.drugs".Translate() + " " + p.drugs.CurrentPolicy.label));
             if (Widgets.ButtonImage(editDrugRect, _iconEdit))
             {
-                Text.Font=GameFont.Small;
+                Text.Font = GameFont.Small;
                 Find.WindowStack.Add(new Dialog_ManageDrugPolicies(p.drugs.CurrentPolicy));
                 PlayerKnowledgeDatabase.KnowledgeDemonstrated(ConceptDefOf.DrugPolicies, KnowledgeAmount.Total);
             }

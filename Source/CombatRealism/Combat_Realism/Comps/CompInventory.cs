@@ -15,7 +15,7 @@ namespace Combat_Realism
         {
             get
             {
-                return (CompProperties_Inventory)this.props;
+                return (CompProperties_Inventory)props;
             }
         }
 
@@ -39,7 +39,7 @@ namespace Combat_Realism
         {
             get
             {
-                return this.parentPawn.GetStatValue(StatDef.Named("CarryWeight")) - currentWeight;
+                return parentPawn.GetStatValue(StatDef.Named("CarryWeight")) - currentWeight;
             }
         }
         private float availableBulk
@@ -53,14 +53,14 @@ namespace Combat_Realism
         {
             get
             {
-                return this.parentPawn.GetStatValue(StatDef.Named("CarryBulk"));
+                return parentPawn.GetStatValue(StatDef.Named("CarryBulk"));
             }
         }
         public float capacityWeight
         {
             get
             {
-                return this.parentPawn.GetStatValue(StatDef.Named("CarryWeight"));
+                return parentPawn.GetStatValue(StatDef.Named("CarryWeight"));
             }
         }
         private Pawn parentPawnInt = null;
@@ -70,7 +70,7 @@ namespace Combat_Realism
             {
                 if (parentPawnInt == null)
                 {
-                    parentPawnInt = this.parent as Pawn;
+                    parentPawnInt = parent as Pawn;
                 }
                 return parentPawnInt;
             }
@@ -79,7 +79,7 @@ namespace Combat_Realism
         {
             get
             {
-                return Mathf.Lerp(1f, 0.75f, currentWeight / this.parentPawn.GetStatValue(StatDef.Named("CarryWeight")));
+                return Mathf.Lerp(1f, 0.75f, currentWeight / parentPawn.GetStatValue(StatDef.Named("CarryWeight")));
             }
         }
         public float workSpeedFactor
@@ -96,7 +96,7 @@ namespace Combat_Realism
                 float penalty = 0f;
                 if (availableWeight < 0)
                 {
-                    penalty = currentWeight / this.parentPawn.GetStatValue(StatDef.Named("CarryWeight")) - 1;
+                    penalty = currentWeight / parentPawn.GetStatValue(StatDef.Named("CarryWeight")) - 1;
                 }
                 return penalty;
             }
@@ -140,7 +140,7 @@ namespace Combat_Realism
         {
             if (parentPawn == null)
             {
-                Log.Error("CompInventory on non-pawn " + this.parent.ToString());
+                Log.Error("CompInventory on non-pawn " + parent.ToString());
                 return;
             }
             float newBulk = 0f;
@@ -205,8 +205,8 @@ namespace Combat_Realism
                     }
                 }
             }
-            this.currentBulkCached = newBulk;
-            this.currentWeightCached = newWeight;
+            currentBulkCached = newBulk;
+            currentWeightCached = newWeight;
         }
 
         /// <summary>
@@ -243,9 +243,9 @@ namespace Combat_Realism
             // Subtract weight of currently equipped weapon
             float eqBulk = 0f;
             float eqWeight = 0f;
-            if (ignoreEquipment && this.parentPawn.equipment != null && this.parentPawn.equipment.Primary != null)
+            if (ignoreEquipment && parentPawn.equipment != null && parentPawn.equipment.Primary != null)
             {
-                ThingWithComps eq = this.parentPawn.equipment.Primary;
+                ThingWithComps eq = parentPawn.equipment.Primary;
                 GetEquipmentStats(eq, out eqWeight, out eqBulk);
             }
             // Calculate how many items we can fit into our inventory
@@ -302,7 +302,7 @@ namespace Combat_Realism
             // Equip the weapon
             if (newEq != null)
             {
-                this.TrySwitchToWeapon(newEq);
+                TrySwitchToWeapon(newEq);
             }
             else if (useFists && parentPawn.equipment?.Primary != null)
             {
@@ -330,7 +330,7 @@ namespace Combat_Realism
 
         public void TrySwitchToWeapon(ThingWithComps newEq)
         {
-            if (newEq == null || parentPawn.equipment == null || !this.container.Contains(newEq))
+            if (newEq == null || parentPawn.equipment == null || !container.Contains(newEq))
             {
                 return;
             }

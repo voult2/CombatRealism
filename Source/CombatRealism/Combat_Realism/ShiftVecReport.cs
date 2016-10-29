@@ -15,7 +15,7 @@ namespace Combat_Realism
         {
             get
             {
-                return this.target.Thing as Pawn;
+                return target.Thing as Pawn;
             }
         }
         public float aimingAccuracy = 1f;
@@ -28,7 +28,7 @@ namespace Combat_Realism
             {
                 if (accuracyFactorInt < 0)
                 {
-                    accuracyFactorInt = (1.5f - this.aimingAccuracy) / this.aimEfficiency;
+                    accuracyFactorInt = (1.5f - aimingAccuracy) / aimEfficiency;
                 }
                 return accuracyFactorInt;
             }
@@ -59,7 +59,7 @@ namespace Combat_Realism
         {
             get
             {
-                return this.targetPawn != null && this.targetPawn.pather != null && this.targetPawn.pather.Moving;
+                return targetPawn != null && targetPawn.pather != null && targetPawn.pather.Moving;
             }
         }
         private float leadDistInt = -1f;
@@ -72,7 +72,7 @@ namespace Combat_Realism
                     if (targetIsMoving)
                     {
                         float targetSpeed = Utility.GetMoveSpeed(targetPawn);
-                        float timeToTarget = this.shotDist / this.shotSpeed;
+                        float timeToTarget = shotDist / shotSpeed;
                         leadDistInt = targetSpeed * timeToTarget;
                     }
                     else
@@ -109,18 +109,18 @@ namespace Combat_Realism
         // Copy-constructor
         public ShiftVecReport(ShiftVecReport report)
         {
-            this.target = report.target;
-            this.aimEfficiency = report.aimEfficiency;
-            this.aimingAccuracy = report.aimingAccuracy;
-            this.circularMissRadius = report.circularMissRadius;
-            this.indirectFireShift = report.indirectFireShift;
-            this.lightingShift = report.lightingShift;
-            this.shotSpeed = report.shotSpeed;
-            this.shotDist = report.shotDist;
-            this.isAiming = report.isAiming;
-            this.swayDegrees = report.swayDegrees;
-            this.spreadDegrees = report.spreadDegrees;
-            this.cover = report.cover;
+            target = report.target;
+            aimEfficiency = report.aimEfficiency;
+            aimingAccuracy = report.aimingAccuracy;
+            circularMissRadius = report.circularMissRadius;
+            indirectFireShift = report.indirectFireShift;
+            lightingShift = report.lightingShift;
+            shotSpeed = report.shotSpeed;
+            shotDist = report.shotDist;
+            isAiming = report.isAiming;
+            swayDegrees = report.swayDegrees;
+            spreadDegrees = report.spreadDegrees;
+            cover = report.cover;
         }
 
         public ShiftVecReport()

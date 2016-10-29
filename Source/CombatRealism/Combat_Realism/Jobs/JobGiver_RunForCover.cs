@@ -26,7 +26,7 @@ namespace Combat_Realism
             IntVec3 coverPosition;
 
             //Try to find cover position to move up to
-            if (!this.GetCoverPositionFrom(pawn, comp.suppressorLoc, maxCoverDist, out coverPosition))
+            if (!GetCoverPositionFrom(pawn, comp.suppressorLoc, maxCoverDist, out coverPosition))
             {
                 return null;
             }
