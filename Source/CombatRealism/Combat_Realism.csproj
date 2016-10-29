@@ -164,7 +164,9 @@
     <Compile Include="Combat_Realism\Jobs\JobDriver_Reload.cs" />
     <Compile Include="Combat_Realism\SecondaryDamage.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Languages\German\Keyed\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\About\About.xml">
       <Link>Defs\About\About.xml</Link>
@@ -545,6 +547,180 @@
     </Content>
     <Content Include="..\..\Defs\WorkGiverDefs\WorkGivers.xml">
       <Link>Defs\WorkGiverDefs\WorkGivers.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\English\Keyed\BulkAndWeight.xml">
+      <Link>Languages\English\Keyed\BulkAndWeight.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\English\Keyed\Descriptions.xml">
+      <Link>Languages\English\Keyed\Descriptions.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\English\Keyed\Keys.xml">
+      <Link>Languages\English\Keyed\Keys.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Korean\defInjected\DamageDefs\Damages_CR.xml">
+      <Link>Languages\Korean\defInjected\Damages_CR.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Korean\defInjected\JobDefs\Jobs_Misc.xml">
+      <Link>Languages\Korean\defInjected\Jobs_Misc.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Korean\defInjected\RecipeDefs\Recipes_Turret.xml">
+      <Link>Languages\Korean\defInjected\Recipes_Turret.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Korean\defInjected\StatDefs\Stats_Pawns_Combat.xml">
+      <Link>Languages\Korean\defInjected\Stats_Pawns_Combat.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Korean\defInjected\ThingCategoryDefs\ThingCategories.xml">
+      <Link>Languages\Korean\defInjected\ThingCategories.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Korean\defInjected\ThingDefs\Kits_Turrets.xml">
+      <Link>Languages\Korean\defInjected\Kits_Turrets.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Korean\defInjected\ThingDefs\Projectiles_Fragments.xml">
+      <Link>Languages\Korean\defInjected\Projectiles_Fragments.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Korean\Keyed\Keys.xml">
+      <Link>Languages\Korean\Keyed\Keys.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\DamageDefs\Damages_LocalInjury.xml">
+      <Link>Languages\Russian\NewFolder1\Damages_LocalInjury.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\HediffDefs\Hediffs_GlobalMisc.xml">
+      <Link>Languages\Russian\defInjected\Hediffs_GlobalMisc.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\JobDefs\Jobs_CR.xml">
+      <Link>Languages\Russian\defInjected\Jobs_CR.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoAdvanced.xml">
+      <Link>Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoAdvanced.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoHighCaliber.xml">
+      <Link>Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoHighCaliber.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoNeolithic.xml">
+      <Link>Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoNeolithic.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoPistols.xml">
+      <Link>Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoPistols.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoRifles.xml">
+      <Link>Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoRifles.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoShotgun.xml">
+      <Link>Languages\Russian\defInjected\RecipeDefs\Recipes_AmmoShotgun.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\RecipeDefs\Recipes_Grenades.xml">
+      <Link>Languages\Russian\defInjected\RecipeDefs\Recipes_Grenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\RecipeDefs\Recipes_HandGrenades.xml">
+      <Link>Languages\Russian\defInjected\RecipeDefs\Recipes_HandGrenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\RecipeDefs\Recipes_Rockets.xml">
+      <Link>Languages\Russian\defInjected\RecipeDefs\Recipes_Rockets.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\RecipeDefs\Recipes_Shells.xml">
+      <Link>Languages\Russian\defInjected\RecipeDefs\Recipes_Shells.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\StatDefs\Stats_Apparel.xml">
+      <Link>Languages\Russian\defInjected\StatDefs\Stats_Apparel.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\StatDefs\Stats_Basics_Inventory.xml">
+      <Link>Languages\Russian\defInjected\StatDefs\Stats_Basics_Inventory.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\StatDefs\Stats_Pawns_Combat.xml">
+      <Link>Languages\Russian\defInjected\StatDefs\Stats_Pawns_Combat.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\StatDefs\Stats_Pawns_Inventory.xml">
+      <Link>Languages\Russian\defInjected\StatDefs\Stats_Pawns_Inventory.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\StatDefs\Stats_Weapons_Ranged.xml">
+      <Link>Languages\Russian\defInjected\StatDefs\Stats_Weapons_Ranged.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories_Advanced.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories_Advanced.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories_Grenades.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories_Grenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories_HighCaliber.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories_HighCaliber.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories_Neolithic.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories_Neolithic.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories_Pistols.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories_Pistols.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories_Rifles.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories_Rifles.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories_Rockets.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories_Rockets.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories_Shells.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories_Shells.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories_Shotgun.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories_Shotgun.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingCategoryDefs\ThingCategories_SK.xml">
+      <Link>Languages\Russian\ThingCategoryDefs\ThingCategories_SK.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\Ammo_Advanced.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\Ammo_Advanced.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\Ammo_Grenades.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\Ammo_Grenades.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\Ammo_HighCaliber.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\Ammo_HighCaliber.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\Ammo_Neolithic.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\Ammo_Neolithic.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\Ammo_Pistols.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\Ammo_Pistols.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\Ammo_Rifles.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\Ammo_Rifles.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\Ammo_Rockets.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\Ammo_Rockets.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\Ammo_Shells.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\Ammo_Shells.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\Ammo_Shotgun.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\Ammo_Shotgun.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\FG.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\FG.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\LoadoutGen_SK.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\LoadoutGen_SK.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThingDefs\Weapons_Artillery.xml">
+      <Link>Languages\Russian\defInjected\ThingDefs\Weapons_Artillery.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\ThoughtDefs\Thoughts_CR.xml">
+      <Link>Languages\Russian\defInjected\Thoughts_CR.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\defInjected\WorkGiverDefs\WorkgiverCR.xml">
+      <Link>Languages\Russian\defInjected\WorkgiverCR.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\Keyed\BulkAndWeight.xml">
+      <Link>Languages\Russian\Keyed\BulkAndWeight.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\Keyed\Descriptions.xml">
+      <Link>Languages\Russian\Keyed\Descriptions.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\Keyed\Expression_SK.xml">
+      <Link>Languages\Russian\Keyed\Expression_SK.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\Keyed\Keys.xml">
+      <Link>Languages\Russian\Keyed\Keys.xml</Link>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

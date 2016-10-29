@@ -49,13 +49,15 @@ namespace Combat_Realism
 
             base.DoWindowContents(canvas);
 
+            //   DoTopArea(canvas);
+
             // available space
-            Rect header = new Rect(175f + 24f + _margin, _topArea - _rowHeight, canvas.width - 175f - 24f - _margin - 16f, _rowHeight);
+            Rect header = new Rect(165f + 24f + _margin, _topArea - _rowHeight, canvas.width - 165f - 24f - _margin - 16f, _rowHeight);
 
             // label + buttons for outfit
             Rect outfitRect = new Rect(header.xMin,
                                         header.yMin,
-                                        header.width * (1f / 3f) + (_margin + _buttonSize) / 2f,
+                                        header.width * (1f / 4f) + (_margin + _buttonSize) / 2f,
                                         header.height);
             Rect labelOutfitRect = new Rect(outfitRect.xMin,
                                              outfitRect.yMin,
@@ -71,10 +73,25 @@ namespace Combat_Realism
                                               _buttonSize,
                                               _buttonSize);
 
+            // label + button for drugs
+            Rect drugRect = new Rect(outfitRect.xMax,
+                                  header.yMin,
+                                  header.width * (1f / 4f) - (_margin + _buttonSize) / 2f,
+                                  header.height);
+            Rect labelDrugRect = new Rect(drugRect.xMin,
+                                              drugRect.yMin,
+                                              drugRect.width - _margin * 2 - _buttonSize,
+                                              drugRect.height)
+                                              .ContractedBy(_margin / 2f);
+            Rect editDrugRect = new Rect(labelDrugRect.xMax + _margin,
+                                             drugRect.yMin + ((drugRect.height - _buttonSize) / 2),
+                                             _buttonSize,
+                                             _buttonSize);
+
             // label + button for loadout
-            Rect loadoutRect = new Rect(outfitRect.xMax,
+            Rect loadoutRect = new Rect(drugRect.xMax,
                                          header.yMin,
-                                         header.width * (1f / 3f) - (_margin + _buttonSize) / 2f,
+                                         header.width * (1f / 4f) - (_margin + _buttonSize) / 2f,
                                          header.height);
             Rect labelLoadoutRect = new Rect(loadoutRect.xMin,
                                               loadoutRect.yMin,
@@ -87,17 +104,28 @@ namespace Combat_Realism
                                              _buttonSize);
 
             // weight + bulk indicators
-            Rect weightRect = new Rect(loadoutRect.xMax, header.yMin, header.width * (1f / 6f) - _margin, header.height).ContractedBy(_margin / 2f);
-            Rect bulkRect = new Rect(weightRect.xMax, header.yMin, header.width * (1f / 6f) - _margin, header.height).ContractedBy(_margin / 2f);
+            Rect weightRect = new Rect(loadoutRect.xMax, header.yMin, header.width * (1f / 8f) - _margin, header.height).ContractedBy(_margin / 2f);
+            Rect bulkRect = new Rect(weightRect.xMax, header.yMin, header.width * (1f / 8f) - _margin, header.height).ContractedBy(_margin / 2f);
 
             // draw headers
             Text.Anchor = TextAnchor.LowerCenter;
             Widgets.Label(labelOutfitRect, "CurrentOutfit".Translate());
+
             TooltipHandler.TipRegion(editOutfitRect, "CR.EditX".Translate("CR.Outfits".Translate()));
             if (Widgets.ButtonImage(editOutfitRect, _iconEdit))
             {
                 Find.WindowStack.Add(new Dialog_ManageOutfits(null));
+                PlayerKnowledgeDatabase.KnowledgeDemonstrated(ConceptDefOf.Outfits, KnowledgeAmount.Total);
             }
+
+            Widgets.Label(labelDrugRect, "CurrentDrugPolicies".Translate());
+            TooltipHandler.TipRegion(editDrugRect, "ManageDrugPolicies".Translate("ButtonAssignDrugs"));
+            if (Widgets.ButtonImage(editDrugRect, _iconEdit))
+            {
+                Find.WindowStack.Add(new Dialog_ManageDrugPolicies(null));
+                PlayerKnowledgeDatabase.KnowledgeDemonstrated(ConceptDefOf.DrugPolicies, KnowledgeAmount.Total);
+            }
+
             Widgets.Label(labelLoadoutRect, "CR.CurrentLoadout".Translate());
             TooltipHandler.TipRegion(editLoadoutRect, "CR.EditX".Translate("CR.Loadouts".Translate()));
             if (Widgets.ButtonImage(editLoadoutRect, _iconEdit))
@@ -116,7 +144,7 @@ namespace Combat_Realism
         protected override void DrawPawnRow(Rect rect, Pawn p)
         {
             // available space for row
-            Rect rowRect = new Rect(rect.x + 175f, rect.y, rect.width - 175f, rect.height);
+            Rect rowRect = new Rect(rect.x + 165f, rect.y, rect.width - 165f, rect.height);
 
             // response button rect
             Vector2 responsePos = new Vector2(rowRect.xMin, rowRect.yMin + (rowRect.height - 24f) / 2f);
@@ -127,7 +155,7 @@ namespace Combat_Realism
             // label + buttons for outfit
             Rect outfitRect = new Rect(rowRect.xMin,
                                         rowRect.yMin,
-                                        rowRect.width * (1f / 3f) + (_margin + _buttonSize) / 2f,
+                                        rowRect.width * (1f / 4f) + (_margin + _buttonSize) / 2f,
                                         rowRect.height);
 
             Rect labelOutfitRect = new Rect(outfitRect.xMin,
@@ -144,10 +172,25 @@ namespace Combat_Realism
                                               _buttonSize,
                                               _buttonSize);
 
-            // label + button for loadout
-            Rect loadoutRect = new Rect(outfitRect.xMax,
+            // drucg policy
+            Rect drugRect = new Rect(outfitRect.xMax,
                                          rowRect.yMin,
-                                         rowRect.width * (1f / 3f) - (_margin + _buttonSize) / 2f,
+                                         rowRect.width * (1f / 4f) - (_margin + _buttonSize) / 2f,
+                                         rowRect.height);
+            Rect labelDrugRect = new Rect(drugRect.xMin,
+                                              drugRect.yMin,
+                                              drugRect.width - _margin * 2 - _buttonSize,
+                                              drugRect.height)
+                                              .ContractedBy(_margin / 2f);
+            Rect editDrugRect = new Rect(labelDrugRect.xMax + _margin,
+                                             drugRect.yMin + ((drugRect.height - _buttonSize) / 2),
+                                             _buttonSize,
+                                             _buttonSize);
+
+            // label + button for loadout
+            Rect loadoutRect = new Rect(drugRect.xMax,
+                                         rowRect.yMin,
+                                         rowRect.width * (1f / 4f) - (_margin + _buttonSize) / 2f,
                                          rowRect.height);
             Rect labelLoadoutRect = new Rect(loadoutRect.xMin,
                                               loadoutRect.yMin,
@@ -163,8 +206,8 @@ namespace Combat_Realism
             HostilityResponseModeUtility.DrawResponseButton(responsePos, p);
 
             // weight + bulk indicators
-            Rect weightRect = new Rect(loadoutRect.xMax, rowRect.yMin, rowRect.width * (1f / 6f) - _margin, rowRect.height).ContractedBy(_margin / 2f);
-            Rect bulkRect = new Rect(weightRect.xMax, rowRect.yMin, rowRect.width * (1f / 6f) - _margin, rowRect.height).ContractedBy(_margin / 2f);
+            Rect weightRect = new Rect(loadoutRect.xMax, rowRect.yMin, rowRect.width * (1f / 8f) - _margin, rowRect.height).ContractedBy(_margin / 2f);
+            Rect bulkRect = new Rect(weightRect.xMax, rowRect.yMin, rowRect.width * (1f / 8f) - _margin, rowRect.height).ContractedBy(_margin / 2f);
 
             // OUTFITS
             // main button
@@ -187,6 +230,7 @@ namespace Combat_Realism
             TooltipHandler.TipRegion(editOutfitRect, "CR.EditX".Translate("CR.outfit".Translate() + " " + p.outfits.CurrentOutfit.label));
             if (Widgets.ButtonImage(editOutfitRect, _iconEdit))
             {
+                Text.Font=GameFont.Small;
                 Find.WindowStack.Add(new Dialog_ManageOutfits(p.outfits.CurrentOutfit));
             }
 
@@ -207,6 +251,42 @@ namespace Combat_Realism
                     }
                     return text;
                 }, p.GetHashCode() * 612));
+            }
+
+            // DRUG POLICY
+            // main button
+            string textDrug = p.drugs.CurrentPolicy.label;
+            if (p.story != null && p.story.traits != null)
+            {
+                Trait trait = p.story.traits.GetTrait(TraitDefOf.DrugDesire);
+                if (trait != null)
+                {
+                    textDrug = textDrug + " (" + trait.Label + ")";
+                }
+            }
+            if (Widgets.ButtonText(labelDrugRect, textDrug, true, false, true))
+            {
+                List<FloatMenuOption> list = new List<FloatMenuOption>();
+                foreach (DrugPolicy current in Current.Game.drugPolicyDatabase.AllPolicies)
+                {
+                    DrugPolicy localAssignedDrugs = current;
+                    list.Add(new FloatMenuOption(current.label, delegate
+                    {
+                        p.drugs.CurrentPolicy = localAssignedDrugs;
+                    }, MenuOptionPriority.Medium, null, null, 0f, null));
+                }
+                Find.WindowStack.Add(new FloatMenu(list));
+                PlayerKnowledgeDatabase.KnowledgeDemonstrated(ConceptDefOf.DrugPolicies, KnowledgeAmount.Total);
+            }
+
+
+            // edit button
+            TooltipHandler.TipRegion(editDrugRect, "CR.EditX".Translate("CR.drugs".Translate() + " " + p.drugs.CurrentPolicy.label));
+            if (Widgets.ButtonImage(editDrugRect, _iconEdit))
+            {
+                Text.Font=GameFont.Small;
+                Find.WindowStack.Add(new Dialog_ManageDrugPolicies(p.drugs.CurrentPolicy));
+                PlayerKnowledgeDatabase.KnowledgeDemonstrated(ConceptDefOf.DrugPolicies, KnowledgeAmount.Total);
             }
 
             // LOADOUTS

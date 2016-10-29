@@ -7,12 +7,14 @@
         <minCCLVersion>0.15.0</minCCLVersion>
     
     <SequencedInjectionSets>
-    <!--
-    <li Class="CommunityCoreLibrary.SequencedInjectionSet_ITab">
+   <!--<li Class="CommunityCoreLibrary.SequencedInjectionSet_ITab">
         <newITab>Combat_Realism.ITab_Inventory</newITab> 
-        <replaceITab>ITab_Pawn_Gear</replaceITab> 
-      </li>
-      -->
+        <replaceITab>ITab_Pawn_Gear</replaceITab>
+      <targetDefs>
+        <li>Human</li>
+      </targetDefs>
+    </li>
+    -->
       <li Class="CommunityCoreLibrary.SequencedInjectionSet_ThingComp">
         <compProps>
           <compClass>CommunityCoreLibrary.CompPawnGizmo</compClass>
