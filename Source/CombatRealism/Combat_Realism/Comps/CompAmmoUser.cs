@@ -171,7 +171,8 @@ namespace Combat_Realism
 
                     ammo.Destroy();
                     compInventory.UpdateInventory();
-                    if (!hasAmmo) DoOutOfAmmoAction();
+                    if (!hasAmmo)
+                        DoOutOfAmmoAction();
                 }
                 return true;
             }
@@ -245,7 +246,7 @@ namespace Combat_Realism
             // Issue reload job
             if (wielder != null)
             {
-                Job reloadJob = new Job(DefDatabase<JobDef>.GetNamed("ReloadWeapon"), wielder, parent)
+                Job reloadJob = new Job(CR_JobDefOf.ReloadWeapon, wielder, parent)
                 {
                     playerForced = true
                 };
@@ -253,9 +254,10 @@ namespace Combat_Realism
                 // Store the current job so we can reassign it later
                 if (wielder.Faction == Faction.OfPlayer
                     && wielder.CurJob != null
-                    && (wielder.CurJob.def == JobDefOf.AttackStatic || wielder.CurJob.def == JobDefOf.Goto || wielder.CurJob.def == JobDefOf.Hunt))
+                       && (wielder.CurJob.def == JobDefOf.AttackStatic || wielder.CurJob.def == JobDefOf.Goto || wielder.CurJob.def == JobDefOf.Hunt))
                 {
-                    storedTarget = wielder.CurJob.targetA.HasThing ? new TargetInfo(wielder.CurJob.targetA.Thing) : new TargetInfo(wielder.CurJob.targetA.Cell);
+                    if (wielder.CurJob.targetA.HasThing) storedTarget = new TargetInfo(wielder.CurJob.targetA.Thing);
+                    else storedTarget = new TargetInfo(wielder.CurJob.targetA.Cell);
                     storedJobDef = wielder.CurJob.def;
                 }
                 else
@@ -266,6 +268,61 @@ namespace Combat_Realism
                 AssignJobToWielder(reloadJob);
             }
         }
+
+        public Job ReloadJob()
+        {
+            if (!hasMagazine)
+            {
+                return null;
+            }
+            IntVec3 position = wielder.Position;
+
+            if (useAmmo)
+            {
+                // Add remaining ammo back to inventory
+                if (curMagCountInt > 0)
+                {
+                    Thing ammoThing = ThingMaker.MakeThing(currentAmmoInt);
+                    ammoThing.stackCount = curMagCountInt;
+                    curMagCountInt = 0;
+
+                    if (compInventory != null)
+                    {
+                        compInventory.container.TryAdd(ammoThing, ammoThing.stackCount);
+                    }
+                    else
+                    {
+                        Thing outThing;
+                        GenThing.TryDropAndSetForbidden(ammoThing, position, ThingPlaceMode.Near, out outThing, turret.Faction != Faction.OfPlayer);
+                    }
+                }
+                // Check for ammo
+                if (wielder != null && !hasAmmo)
+                {
+                    DoOutOfAmmoAction();
+                    return null;
+                }
+            }
+
+            // Throw mote
+            if (Props.throwMote)
+            {
+                MoteMaker.ThrowText(position.ToVector3Shifted(), "CR_ReloadingMote".Translate());
+            }
+
+            // Issue reload job
+            if (wielder != null)
+            {
+                Job reloadJob = new Job(CR_JobDefOf.ReloadWeapon, wielder, parent)
+                {
+                    playerForced = true
+                };
+
+                return reloadJob;
+            }
+            return null;
+        }
+
 
         private void DoOutOfAmmoAction()
         {

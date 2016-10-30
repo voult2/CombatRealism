@@ -105,7 +105,7 @@ namespace Combat_Realism
                 // Aim is influenced by turret operator if one exists
                 if (ShooterPawn != null)
                 {
-                    return ShooterPawn.GetStatValue(StatDef.Named("AimingAccuracy"));
+                    return ShooterPawn.GetStatValue(CR_StatDefOf.AimingAccuracy);
                 }
                 return 0.75f;
             }
@@ -114,14 +114,14 @@ namespace Combat_Realism
         {
             get
             {
-                return (3 - ownerEquipment.GetStatValue(StatDef.Named("AimEfficiency")));
+                return (3 - ownerEquipment.GetStatValue(CR_StatDefOf.AimEfficiency));
             }
         }
         protected virtual float swayAmplitude
         {
             get
             {
-                return (4.5f - shootingAccuracy) * ownerEquipment.GetStatValue(StatDef.Named("SwayFactor"));
+                return (4.5f - shootingAccuracy) * ownerEquipment.GetStatValue(CR_StatDefOf.SwayFactor);
             }
         }
 
@@ -339,7 +339,7 @@ namespace Combat_Realism
             }
             report.shotSpeed = shotSpeed;
             report.swayDegrees = swayAmplitude;
-            report.spreadDegrees = ownerEquipment.GetStatValue(StatDef.Named("ShotSpread")) * projectilePropsCR.spreadMult;
+            report.spreadDegrees = ownerEquipment.GetStatValue(CR_StatDefOf.ShotSpread) * projectilePropsCR.spreadMult;
             Thing cover;
             GetPartialCoverBetween(caster.Position.ToVector3Shifted(), targetCell.ToVector3Shifted(), out cover);
             report.cover = cover;

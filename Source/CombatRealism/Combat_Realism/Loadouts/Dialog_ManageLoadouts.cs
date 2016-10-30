@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Combat_Realism.Combat_Realism.Defs;
 using UnityEngine;
 using Verse;
 
@@ -545,6 +544,11 @@ namespace Combat_Realism
             Widgets.BeginScrollView(canvas, ref _availableScrollPosition, viewRect.AtZero());
             for (int i = 0; i < _source.Count; i++)
             {
+                // gray out weapons not in stock
+                Color baseColor = GUI.color;
+                if (Find.ListerThings.AllThings.FindAll(x => x.def == _source[i]).Count <= 0)
+                    GUI.color = Color.gray;
+
                 Rect row = new Rect(0f, i * _rowHeight, canvas.width, _rowHeight);
                 Rect labelRect = new Rect(row);
                 TooltipHandler.TipRegion(row, _source[i].GetWeightAndBulkTip());
@@ -563,6 +567,8 @@ namespace Combat_Realism
                     LoadoutSlot slot = new LoadoutSlot(_source[i], 1);
                     CurrentLoadout.AddSlot(slot);
                 }
+                // revert to original color
+                GUI.color = baseColor;
             }
             Widgets.EndScrollView();
         }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Combat_Realism.Combat_Realism.Defs;
 using RimWorld;
 using Verse;
 using Verse.Sound;

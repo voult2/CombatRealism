@@ -402,7 +402,7 @@ namespace Combat_Realism
                     if (compAmmo.currentAmmo == compAmmo.selectedAmmo) amount -= compAmmo.curMagCount;
                     if (inventory.container.TryDrop(ammo, Position, ThingPlaceMode.Direct, Mathf.Min(ammo.stackCount, amount), out droppedAmmo))
                     {
-                        reloadJob = new Job(DefDatabase<JobDef>.GetNamed("ReloadTurret"), this, droppedAmmo) { maxNumToCarry = droppedAmmo.stackCount };
+                        reloadJob = new Job(CR_JobDefOf.ReloadTurret, this, droppedAmmo) { maxNumToCarry = droppedAmmo.stackCount };
                     }
                 }
             }

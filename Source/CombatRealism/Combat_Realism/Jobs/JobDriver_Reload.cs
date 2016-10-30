@@ -43,7 +43,7 @@ namespace Combat_Realism
             Toil waitToil = new Toil();
             waitToil.initAction = () => waitToil.actor.pather.StopDead();
             waitToil.defaultCompleteMode = ToilCompleteMode.Delay;
-            waitToil.defaultDuration = Mathf.CeilToInt(compReloader.Props.reloadTicks / pawn.GetStatValue(StatDef.Named("ReloadSpeed")));
+            waitToil.defaultDuration = Mathf.CeilToInt(compReloader.Props.reloadTicks / pawn.GetStatValue(CR_StatDefOf.ReloadSpeed));
             yield return waitToil.WithProgressBarToilDelay(TargetIndex.A);
 
             //Actual reloader
@@ -52,9 +52,11 @@ namespace Combat_Realism
             yield return reloadToil;
 
             //Continue previous job if possible
-            Toil continueToil = new Toil();
-            continueToil.initAction = () => compReloader.TryContinuePreviousJob();
-            continueToil.defaultCompleteMode = ToilCompleteMode.Instant;
+            Toil continueToil = new Toil
+            {
+                initAction = () => compReloader.TryContinuePreviousJob(),
+                defaultCompleteMode = ToilCompleteMode.Instant
+            };
             yield return continueToil;
         }
     }

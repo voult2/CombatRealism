@@ -21,9 +21,9 @@ namespace Combat_Realism
 
         // --------------- Global constants ---------------
 
-        public const float minSuppressionDist = 10f;        //Minimum distance to be suppressed from, so melee won't be suppressed if it closes within this distance
-        private const float maxSuppression = 100f;          //Cap to prevent suppression from building indefinitely
-        private const float suppressionDecayRate = 7.5f;    //How much suppression decays per second
+        public const float minSuppressionDist = 15f;        //Minimum distance to be suppressed from, so melee won't be suppressed if it closes within this distance
+        private const float maxSuppression = 200f;          //Cap to prevent suppression from building indefinitely
+        private const float suppressionDecayRate = 15f;    //How much suppression decays per second
         private const int ticksPerMote = 150;               //How many ticks between throwing a mote
 
         // --------------- Location calculations ---------------
@@ -114,10 +114,10 @@ namespace Combat_Realism
                         return true;
                     }
                     // Removing suppression log
-                    /*        else
+                            else
                             {
                                 Log.Warning("Hunkering without suppression, this should never happen");
-                            } */
+                            } 
                 }
                 return false;
             }
@@ -155,8 +155,8 @@ namespace Combat_Realism
             //Assign suppressed status and interrupt activity if necessary
             /*
              * Disabled because suppression works counter-intuitively
-             * Re-enabled
-             */
+            */
+
             if (!isSuppressed && currentSuppressionInt > suppressionThreshold)
             {
                 isSuppressed = true;
