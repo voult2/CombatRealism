@@ -49,6 +49,6 @@
 	<CR_OutOfAmmo>Out of ammo</CR_OutOfAmmo>
 	<CR_PutAway>Put away {0}</CR_PutAway>
 	<CR_TamerInventoryFull>can't do taming job because of a full inventory.</CR_TamerInventoryFull>
-	<DropThingHaul>Drop for haul</DropThingHaul>
+	<DropThingHaul>Drop and haul</DropThingHaul>
 	
 </LanguageData>

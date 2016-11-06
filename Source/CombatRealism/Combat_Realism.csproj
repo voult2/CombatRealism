@@ -196,7 +196,6 @@
     <Compile Include="Combat_Realism\SecondaryDamage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Languages\German\Keyed\" />
     <Folder Include="_DLLs\" />
   </ItemGroup>
   <ItemGroup>
@@ -590,6 +589,12 @@
     <Content Include="..\..\Languages\English\Keyed\Keys.xml">
       <Link>Languages\English\Keyed\Keys.xml</Link>
     </Content>
+    <Content Include="..\..\Languages\English\Keyed\Text.xml">
+      <Link>Languages\English\Keyed\Text.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\German\Keyed\Text.xml">
+      <Link>Languages\German\Keyed\Text.xml</Link>
+    </Content>
     <Content Include="..\..\Languages\Korean\defInjected\DamageDefs\Damages_CR.xml">
       <Link>Languages\Korean\defInjected\Damages_CR.xml</Link>
     </Content>
@@ -754,6 +759,9 @@
     </Content>
     <Content Include="..\..\Languages\Russian\Keyed\Keys.xml">
       <Link>Languages\Russian\Keyed\Keys.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Swedish\Keyed\Text.xml">
+      <Link>Languages\Swedish\Keyed\Text.xml</Link>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -147,10 +147,6 @@ namespace Combat_Realism
 
         // New methods
 
-        public CompMannable GetMannableComp()
-        {
-            return mannableComp;
-        }
 
         public override IEnumerable<Gizmo> GetGizmos()
         {

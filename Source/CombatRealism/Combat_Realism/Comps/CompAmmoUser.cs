@@ -20,7 +20,7 @@ namespace Combat_Realism
         private AmmoDef currentAmmoInt = null;
         public AmmoDef selectedAmmo;
 
-        public Building_TurretGunCR turret;         // Cross-linked from CR turret
+        public Building_Reloadable turret;         // Cross-linked from CR turret
 
         #endregion
 
