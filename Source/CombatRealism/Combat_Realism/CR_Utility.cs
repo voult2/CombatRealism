@@ -118,7 +118,9 @@ namespace Combat_Realism
         public const float collisionHeightFactor = 1.0f;
         public const float collisionWidthFactor = 0.5f;
         public const float collisionWidthFactorHumanoid = 0.25f;
-        public static readonly String[] humanoidBodyList = { "Human", "Scyther" };
+
+        // added support Diana's Orassans & hardcore sk bodies. 
+        public static readonly String[] humanoidBodyList = { "Human", "Scyther", "Orassan", "Ogre", "HumanoidTerminator" };
         /// <summary>
         /// Returns the collision height of a Thing
         /// </summary>

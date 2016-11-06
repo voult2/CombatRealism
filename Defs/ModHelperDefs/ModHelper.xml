@@ -2,8 +2,8 @@
 <Defs>
   
   <CommunityCoreLibrary.ModHelperDef>
-    <defName>CombatRealismKF</defName>
-    <ModName>Combat Realism KF</ModName>
+    <defName>CombatRealism</defName>
+    <ModName>Combat Realism Core</ModName>
         <minCCLVersion>0.15.0</minCCLVersion>
     
     <SequencedInjectionSets>
