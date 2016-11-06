@@ -42,8 +42,8 @@ namespace AchtungModCR
 
 		static Tools()
 		{
-			markerMaterial = MaterialPool.MatFrom("Marker", ShaderDatabase.MoteGlow);
-			lineMaterial = MaterialPool.MatFrom("Line", ShaderDatabase.MoteGlow);
+			markerMaterial = MaterialPool.MatFrom("UI/Achtung/Marker", ShaderDatabase.MoteGlow);
+			lineMaterial = MaterialPool.MatFrom("UI/Achtung/Line", ShaderDatabase.MoteGlow);
 			goHereLabel = "GoHere".Translate();
 		}
 
