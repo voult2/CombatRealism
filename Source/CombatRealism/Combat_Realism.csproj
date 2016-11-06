@@ -74,6 +74,7 @@
     <None Include="Combat_Realism\Designators\Designator_PutInInventory.cs" />
     <None Include="Combat_Realism\Gizmos\Gizmo_BackpackEquipment.cs" />
     <Compile Include="Combat_Realism\Jobs\JobGiver_ConfigurableHostilityResponse.cs" />
+    <Compile Include="Combat_Realism\Projectiles\ProjectileCR_Explosive_RL.cs" />
     <Compile Include="Combat_Realism\TexButton.cs" />
     <Compile Include="Combat_Realism\Projectiles\ProjectileCR_Explosive.cs" />
     <Compile Include="Combat_Realism\Projectiles\Projectile_FireTrail.cs" />
