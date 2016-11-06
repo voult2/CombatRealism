@@ -106,7 +106,7 @@ namespace Combat_Realism
             moteThrown.exactRotation = Rand.Range(-3f, 4f);
             moteThrown.exactPosition = loc;
             moteThrown.airTimeLeft = 60;
-            moteThrown.SetVelocity((float)Rand.Range(160, 200), Rand.Range(0.020f, 0.0115f));
+            moteThrown.SetVelocity((float)Rand.Range(160, 200), Rand.Range(0.7f, 0.5f));
        //     moteThrown.SetVelocityAngleSpeed((float)Rand.Range(160, 200), Rand.Range(0.020f, 0.0115f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
         }

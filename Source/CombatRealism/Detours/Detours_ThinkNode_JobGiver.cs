@@ -7,13 +7,13 @@ using CommunityCoreLibrary;
 
 namespace Combat_Realism
 {
-    public abstract class _ThinkNode_JobGiver : ThinkNode
+    public abstract class Detours_ThinkNode_JobGiver : ThinkNode
     {
         protected abstract Job TryGiveJob(Pawn pawn);
         public static readonly String[] robotBodyList = { "AIRobot, HumanoidTerminator" };
 
 
-        [DetourClassMethod(typeof(FloatMenuMakerMap), "TryIssueJobPackage", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
+        [DetourClassMethod(typeof(ThinkNode_JobGiver), "TryIssueJobPackage", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         public override ThinkResult TryIssueJobPackage(Pawn pawn)
         {
             Job job = this.TryGiveJob(pawn);
