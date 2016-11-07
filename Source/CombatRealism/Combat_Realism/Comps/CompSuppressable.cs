@@ -114,10 +114,10 @@ namespace Combat_Realism
                         return true;
                     }
                     // Removing suppression log
-                            else
-                            {
-                                Log.Warning("Hunkering without suppression, this should never happen");
-                            } 
+                    else
+                    {
+                        Log.Warning("Hunkering without suppression, this should never happen");
+                    }
                 }
                 return false;
             }
@@ -153,9 +153,6 @@ namespace Combat_Realism
             }
 
             //Assign suppressed status and interrupt activity if necessary
-            /*
-             * Disabled because suppression works counter-intuitively
-            */
 
             if (!isSuppressed && currentSuppressionInt > suppressionThreshold)
             {
@@ -163,9 +160,12 @@ namespace Combat_Realism
                 Pawn pawn = parent as Pawn;
                 if (pawn != null)
                 {
-                    if (pawn.jobs != null)
+                    if (pawn.MentalState.def != MentalStateDefOf.Berserk && pawn.MentalState.def != MentalStateDefOf.PanicFlee)
                     {
-                        pawn.jobs.StopAll(false);
+                        if (pawn.jobs != null)
+                        {
+                            pawn.jobs.StopAll(false);
+                        }
                     }
                 }
                 else

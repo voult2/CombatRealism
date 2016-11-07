@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using Verse.AI;
-using UnityEngine;
 
 namespace Combat_Realism
 {
@@ -46,29 +42,29 @@ namespace Combat_Realism
 
 
 
-            Toil shootInPanic = new Toil()
+            Toil shootInPanic = new Toil
             {
                 initAction = delegate
                 {
-                    Pawn pawnAgressor = this.TargetThingA as Pawn;
+                    Pawn pawnAgressor = TargetThingA as Pawn;
                     if (pawnAgressor != null)
                     {
-                        this.startedIncapacitated = pawnAgressor.Downed;
+                        startedIncapacitated = pawnAgressor.Downed;
                     }
-                    this.pawn.pather.StopDead();
+                    pawn.pather.StopDead();
                 },
                 tickAction = delegate
                 {
-                    if (this.TargetA.HasThing)
+                    if (TargetA.HasThing)
                     {
-                        Pawn pawn = this.TargetA.Thing as Pawn;
-                        if (this.TargetA.Thing.Destroyed || (pawn != null && !this.startedIncapacitated && pawn.Downed))
+                        Pawn pawn = TargetA.Thing as Pawn;
+                        if (TargetA.Thing.Destroyed || (pawn != null && !startedIncapacitated && pawn.Downed))
                         {
-                            this.EndJobWith(JobCondition.Succeeded);
+                            EndJobWith(JobCondition.Succeeded);
                             return;
                         }
                     }
-                    this.pawn.equipment.TryStartAttack(this.TargetA);
+                    this.pawn.equipment.TryStartAttack(TargetA);
                 },
                 defaultDuration = 5,
                 defaultCompleteMode = ToilCompleteMode.Delay
