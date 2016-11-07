@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Combat_Realism.Combat_Realism.DefOfs;
 using RimWorld;
 using Verse;
 using Verse.AI;
+using static Combat_Realism.DefOfs.CR_TaleDefOf;
 
 namespace Combat_Realism
 {
@@ -9,11 +11,16 @@ namespace Combat_Realism
     {
         private const int getUpCheckInterval = 10;
         private bool startedIncapacitated;
+        private int ticksLeft;
+        private int maxTicks;
+        private bool hasPeed = false;
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.LookValue<bool>(ref this.startedIncapacitated, "startedIncapacitated", false, false);
+            Scribe_Values.LookValue<bool>(ref startedIncapacitated, "startedIncapacitated", false, false);
+            Scribe_Values.LookValue<int>(ref this.ticksLeft, "ticksLeft", 0, false);
+            Scribe_Values.LookValue<int>(ref this.maxTicks, "ticksLeft", 0, false);
         }
 
         public override PawnPosture Posture
@@ -35,10 +42,38 @@ namespace Combat_Realism
                 toilWait.actor.pather.StopDead();
             };
 
-            Toil toilNothing = new Toil();
+            Toil toilNothing = new Toil
+            {
+                defaultCompleteMode = ToilCompleteMode.Delay,
+                //        defaultDuration = getUpCheckInterval
+            };
+
+            toilNothing.initAction = delegate
+            {
+                ticksLeft = Rand.Range(10, 50);
+                maxTicks = ticksLeft;
+            };
+
+            toilNothing.tickAction = delegate
+            {
+                if (maxTicks > 30)
+                {
+                    if ((float)ticksLeft / maxTicks > 0.5f)
+                    {
+                        FilthMaker.MakeFilth(pawn.Position, CR_ThingDefOf.FilthPee, pawn.LabelIndefinite(), 3);
+                    }
+                    hasPeed = true;
+                }
+                ticksLeft--;
+                if (ticksLeft <= 0)
+                {
+                    ReadyForNextToil();
+                    if (hasPeed)
+                        TaleRecorder.RecordTale(WetHimself, pawn);
+                }
+            };
+
             //toilNothing.initAction = () => {};
-            toilNothing.defaultCompleteMode = ToilCompleteMode.Delay;
-            toilNothing.defaultDuration = getUpCheckInterval;
 
 
 
@@ -57,22 +92,21 @@ namespace Combat_Realism
                 {
                     if (TargetA.HasThing)
                     {
-                        Pawn pawn = TargetA.Thing as Pawn;
                         if (TargetA.Thing.Destroyed || (pawn != null && !startedIncapacitated && pawn.Downed))
                         {
                             EndJobWith(JobCondition.Succeeded);
                             return;
                         }
                     }
-                    this.pawn.equipment.TryStartAttack(TargetA);
+                    pawn.equipment.TryStartAttack(TargetA);
                 },
                 defaultDuration = 5,
                 defaultCompleteMode = ToilCompleteMode.Delay
             };
 
             // Start Toil
-  //          yield return Toils_Misc.ThrowColonistAttackingMote(TargetIndex.A);
-    //        yield return shootInPanic;
+            //          yield return Toils_Misc.ThrowColonistAttackingMote(TargetIndex.A);
+            //        yield return shootInPanic;
             yield return toilWait;
             yield return toilNothing;
             yield return Toils_Jump.JumpIf(toilNothing, () =>
@@ -90,5 +124,7 @@ namespace Combat_Realism
                 return comp.isHunkering;
             });
         }
+
+
     }
 }

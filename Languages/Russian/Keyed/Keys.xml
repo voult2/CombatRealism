@@ -49,7 +49,7 @@
 	<CR_OutOfAmmo>Нет патронов</CR_OutOfAmmo>
 	<CR_PutAway>Убрать [{0}]</CR_PutAway>
 	<CR_TamerInventoryFull>невозможно заняться приручением, так как инвентарь полон.</CR_TamerInventoryFull>
-	<DropThingHaul>Выложить</DropThingHaul>
+	<CR_DropThingHaul>Выложить</CR_DropThingHaul>
 	
 
 </LanguageData>

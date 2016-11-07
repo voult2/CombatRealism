@@ -11,7 +11,8 @@
     <AssemblyName>CombatRealism</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <NoWin32Manifest>False</NoWin32Manifest>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
@@ -76,7 +77,7 @@
     <Compile Include="Achtung\Injection\HookInjector.cs" />
     <Compile Include="Achtung\Injection\Logger.cs" />
     <Compile Include="Achtung\Injection\Platform.cs" />
-    <Compile Include="Achtung\JobDriver_AutoCombat.cs" />
+    <None Include="Achtung\JobDriver_AutoCombat.cs" />
     <Compile Include="Achtung\JobDriver_CleanRoom.cs" />
     <Compile Include="Achtung\JobDriver_FightFire.cs" />
     <Compile Include="Achtung\JobDriver_SowAll.cs" />
@@ -93,7 +94,8 @@
     <Compile Include="Combat_Realism\DefOfs\CR_JobDefOf.cs" />
     <Compile Include="Combat_Realism\DefOfs\CR_StatDefOf.cs" />
     <None Include="Combat_Realism\Designators\Designator_PutInInventory.cs" />
-    <None Include="Combat_Realism\Gizmos\Gizmo_BackpackEquipment.cs" />
+    <Compile Include="Combat_Realism\DefOfs\CR_TaleDefoOf.cs" />
+    <Compile Include="Combat_Realism\DefOfs\CR_ThingDefOf.cs" />
     <Compile Include="Combat_Realism\Jobs\JobGiver_ConfigurableHostilityResponse.cs" />
     <Compile Include="Combat_Realism\Projectiles\ProjectileCR_Explosive_RL.cs" />
     <Compile Include="Combat_Realism\TexButton.cs" />
@@ -386,6 +388,9 @@
     <Content Include="..\..\Defs\StuffCategoryDefs\StuffCategories.xml">
       <Link>Defs\StuffCategoryDefs\StuffCategories.xml</Link>
     </Content>
+    <Content Include="..\..\Defs\TaleDefs\Tales_SinglePawn.xml">
+      <Link>Defs\TaleDefs\Tales_SinglePawn.xml</Link>
+    </Content>
     <Content Include="..\..\Defs\ThingCategoryDefs\ThingCategories.xml">
       <Link>Defs\ThingCategoryDefs\ThingCategories.xml</Link>
     </Content>
@@ -567,6 +572,9 @@
     </Content>
     <Content Include="..\..\Defs\ThingDefs_LoadoutGen\LoadoutGen_Tribal.xml">
       <Link>Defs\ThingDefs_LoadoutGen\LoadoutGen_Tribal.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\ThingDefs_Misc\Filth_Various.xml">
+      <Link>Defs\ThingDefs_Misc\Filth_Various.xml</Link>
     </Content>
     <Content Include="..\..\Defs\ThinkTreeDefs\Humanlike.xml">
       <Link>Defs\ThinkTreeDefs\Humanlike.xml</Link>

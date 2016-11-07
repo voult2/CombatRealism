@@ -296,7 +296,7 @@ namespace Combat_Realism
                         InterfaceDropHaul(thing);
                     };
                     floatOptionList.Add(new FloatMenuOption("DropThing".Translate(), dropApparel));
-                    floatOptionList.Add(new FloatMenuOption("DropThingHaul".Translate(), dropApparelHaul));
+                    floatOptionList.Add(new FloatMenuOption("CR_DropThingHaul".Translate(), dropApparelHaul));
 
                   //Action action = null;
                   //Apparel ap = thing as Apparel;

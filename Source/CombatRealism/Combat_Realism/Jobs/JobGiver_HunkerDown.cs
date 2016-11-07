@@ -18,7 +18,10 @@ namespace Combat_Realism
                 return null;
             }
 
-            return new Job(CR_JobDefOf.HunkerDown, pawn) { playerForced = true };
+            return new Job(CR_JobDefOf.HunkerDown, pawn)
+            {
+                playerForced = true
+            };
         }
     }
 }

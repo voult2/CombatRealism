@@ -138,7 +138,7 @@ namespace AchtungModCR
 	{
 		static Main()
 		{
-			var injector = new HookInjector();
+			HookInjector injector = new HookInjector();
 			injector.Inject(typeof(RootMap), "Start", typeof(RootMap_Patch));
 			injector.Inject(typeof(MapIniterUtility), "FinalizeMapInit", typeof(MapIniterUtility_Patch));
 			injector.Inject(typeof(MainTabsRoot), "HandleLowPriorityShortcuts", typeof(MainTabsRoot_Patch));

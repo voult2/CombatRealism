@@ -53,7 +53,7 @@ namespace Combat_Realism
                 x => !x.IsForbidden(pawn) && pawn.CanReserve(x));
 
             if (ammo == null) return null;
-            var amountNeeded = turret.compAmmo.Props.magazineSize;
+            int amountNeeded = turret.compAmmo.Props.magazineSize;
             if (turret.compAmmo.currentAmmo == turret.compAmmo.selectedAmmo)
                 amountNeeded -= turret.compAmmo.curMagCount;
             return new Job(CR_JobDefOf.ReloadTurret, t, ammo) {maxNumToCarry = Mathf.Min(amountNeeded, ammo.stackCount)};
