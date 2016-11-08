@@ -54,7 +54,7 @@
     </statBases>
     <graphicData>
       <texPath>Things/Filth/Spatter</texPath>
-      <color>(180, 140, 100, 50)</color>
+      <color>(180, 140, 100, 140)</color>
     </graphicData>
     <filth>
       <rainWashes>true</rainWashes>

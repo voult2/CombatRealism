@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 using Verse.AI;
-using UnityEngine;
 
 namespace Combat_Realism
 {
@@ -13,6 +8,12 @@ namespace Combat_Realism
     {
         protected override Job TryGiveJob(Pawn pawn)
         {
+
+            //if (pawn.TryGetComp<CompSuppressable>().isHunkering && pawn.GetPosture() != PawnPosture.Standing)
+            //{
+            //    return null;
+            //}
+
             if (!pawn.Position.Standable() && !pawn.Position.ContainsStaticFire())
             {
                 return null;
@@ -20,7 +21,7 @@ namespace Combat_Realism
 
             return new Job(CR_JobDefOf.HunkerDown, pawn)
             {
-                playerForced = true
+//                playerForced = true,
             };
         }
     }

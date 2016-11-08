@@ -17,7 +17,8 @@ namespace AchtungModCR
         public bool isDragging;
         public bool relativeMovement;
         public bool drawColonistPreviews;
-        public static Dictionary<ProjectileCR, ProjectileInfo> projectiles = new Dictionary<ProjectileCR, ProjectileInfo>();
+        // bug removed for now
+        //public static Dictionary<ProjectileCR, ProjectileInfo> projectiles = new Dictionary<ProjectileCR, ProjectileInfo>();
 
         public static HashSet<ScoredPosition> debugPositions = new HashSet<ScoredPosition>();
         public static bool debugPositionNeedsClear = true;
@@ -268,7 +269,8 @@ namespace AchtungModCR
                 });
             }
 
-            UpdateProjectiles();
+            // bug removed for now
+            //UpdateProjectiles();
         }
 
         public void HandleDrawingOnGUI()
@@ -317,30 +319,31 @@ namespace AchtungModCR
             }
         }
 
-        public void AddProjectile(ProjectileCR projectile, Thing launcher, Vector3 origin, TargetInfo targ, Thing equipment)
-        {
-            ProjectileCR bullet = projectile as ProjectileCR;
-            if (bullet != null)
-            {
-                projectiles.Add(projectile, new ProjectileInfo(launcher, origin, targ, equipment));
-            }
-        }
+        // bug removed for now
+      //public void AddProjectile(ProjectileCR projectile, Thing launcher, Vector3 origin, TargetInfo targ, Thing equipment)
+      //{
+      //    ProjectileCR bullet = projectile as ProjectileCR;
+      //    if (bullet != null)
+      //    {
+      //        projectiles.Add(projectile, new ProjectileInfo(launcher, origin, targ, equipment));
+      //    }
+      //}
 
-        public void UpdateProjectiles()
-        {
-            HashSet<ProjectileCR> activeProjectiles = new HashSet<ProjectileCR>();
-
-            Find.MapPawns.AllPawnsSpawned
-                 .Where(p => p.Spawned == true && p.Destroyed == false && p.Downed == false && p.Dead == false)
-                 .DoIf(p => p.equipment != null && p.equipment.Primary != null, p =>
-                 {
-                     ThingDef def = p.equipment.PrimaryEq.PrimaryVerb.verbProps.projectileDef;
-                     if (def != null) activeProjectiles.UnionWith(Find.ListerThings.ThingsOfDef(def).Cast<ProjectileCR>());
-                 });
-
-            Dictionary<ProjectileCR, ProjectileInfo> remaining = new Dictionary<ProjectileCR, ProjectileInfo>();
-            projectiles.Keys.DoIf(p => activeProjectiles.Contains(p), p => remaining.Add(p, projectiles[p]));
-            projectiles = remaining;
-        }
+     // public void UpdateProjectiles()
+     // {
+     //     HashSet<ProjectileCR> activeProjectiles = new HashSet<ProjectileCR>();
+     //
+     //     Find.MapPawns.AllPawnsSpawned
+     //          .Where(p => p.Spawned == true && p.Destroyed == false && p.Downed == false && p.Dead == false)
+     //          .DoIf(p => p.equipment != null && p.equipment.Primary != null, p =>
+     //          {
+     //              ThingDef def = p.equipment.PrimaryEq.PrimaryVerb.verbProps.projectileDef;
+     //              if (def != null) activeProjectiles.UnionWith(Find.ListerThings.ThingsOfDef(def).Cast<ProjectileCR>());
+     //          });
+     //
+     //     Dictionary<ProjectileCR, ProjectileInfo> remaining = new Dictionary<ProjectileCR, ProjectileInfo>();
+     //     projectiles.Keys.DoIf(p => activeProjectiles.Contains(p), p => remaining.Add(p, projectiles[p]));
+     //     projectiles = remaining;
+     // }
     }
 }

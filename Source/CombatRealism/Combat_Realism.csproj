@@ -86,7 +86,7 @@
     <Compile Include="Achtung\MultiAction.cs" />
     <Compile Include="Achtung\MultiActions.cs" />
     <Compile Include="Achtung\PreferenceDialog.cs" />
-    <Compile Include="Achtung\ProjectileInfo.cs" />
+    <None Include="Achtung\ProjectileInfo.cs" />
     <Compile Include="Achtung\ScoredPosition.cs" />
     <Compile Include="Achtung\Settings.cs" />
     <Compile Include="Achtung\Tools.cs" />
@@ -284,6 +284,12 @@
     </Content>
     <Content Include="..\..\Defs\DamageDefs\Damages_Misc.xml">
       <Link>Defs\DamageDefs\Damages_Misc.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\Effects\Effecter_Misc.xml">
+      <Link>Defs\Effects\Effecter_Misc.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\Effects\Motes_CR.xml">
+      <Link>Defs\Effects\Motes_CR.xml</Link>
     </Content>
     <Content Include="..\..\Defs\FactionDefs\Factions.xml">
       <Link>Defs\FactionDefs\Factions.xml</Link>

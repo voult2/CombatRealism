@@ -9,25 +9,26 @@ namespace Combat_Realism
 {
     class JobDriver_HunkerDown : JobDriver
     {
-        private const int getUpCheckInterval = 10;
+        private Toil toilHunkerDown;
         private bool startedIncapacitated;
         private int ticksLeft;
         private int maxTicks;
-        private bool hasPeed = false;
+        private bool willPee;
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.LookValue<bool>(ref startedIncapacitated, "startedIncapacitated", false, false);
-            Scribe_Values.LookValue<int>(ref this.ticksLeft, "ticksLeft", 0, false);
-            Scribe_Values.LookValue<int>(ref this.maxTicks, "ticksLeft", 0, false);
+            Scribe_Values.LookValue(ref startedIncapacitated, "startedIncapacitated", false, false);
+            Scribe_Values.LookValue(ref ticksLeft, "ticksLeft", 0, false);
+            Scribe_Values.LookValue(ref maxTicks, "maxTicks", 0, false);
+            Scribe_Values.LookValue(ref willPee, "willPee", false, false);
         }
 
         public override PawnPosture Posture
         {
             get
             {
-                return PawnPosture.LayingAny;
+                return (CurToil != toilHunkerDown) ? PawnPosture.Standing : PawnPosture.LayingAny;
             }
         }
 
@@ -36,93 +37,56 @@ namespace Combat_Realism
             this.FailOnDespawnedOrNull(TargetIndex.A);
 
             //Define Toil
-            Toil toilWait = new Toil();
-            toilWait.initAction = () =>
-            {
-                toilWait.actor.pather.StopDead();
-            };
 
-            Toil toilNothing = new Toil
-            {
-                defaultCompleteMode = ToilCompleteMode.Delay,
-                //        defaultDuration = getUpCheckInterval
-            };
-
-            toilNothing.initAction = delegate
-            {
-                ticksLeft = Rand.Range(10, 50);
-                maxTicks = ticksLeft;
-            };
-
-            toilNothing.tickAction = delegate
-            {
-                if (maxTicks > 30)
-                {
-                    if ((float)ticksLeft / maxTicks > 0.5f)
-                    {
-                        FilthMaker.MakeFilth(pawn.Position, CR_ThingDefOf.FilthPee, pawn.LabelIndefinite(), 3);
-                    }
-                    hasPeed = true;
-                }
-                ticksLeft--;
-                if (ticksLeft <= 0)
-                {
-                    ReadyForNextToil();
-                    if (hasPeed)
-                        TaleRecorder.RecordTale(WetHimself, pawn);
-                }
-            };
-
-            //toilNothing.initAction = () => {};
-
-
-
-            Toil shootInPanic = new Toil
+            toilHunkerDown = new Toil
             {
                 initAction = delegate
                 {
-                    Pawn pawnAgressor = TargetThingA as Pawn;
-                    if (pawnAgressor != null)
-                    {
-                        startedIncapacitated = pawnAgressor.Downed;
-                    }
-                    pawn.pather.StopDead();
+                    maxTicks = Rand.Range(60, 240);
+                    ticksLeft = maxTicks;
+                    willPee = maxTicks>35;
+                    toilHunkerDown.actor.pather.StopDead();
                 },
                 tickAction = delegate
                 {
-                    if (TargetA.HasThing)
+                    ticksLeft--;
+                    if (willPee)
                     {
-                        if (TargetA.Thing.Destroyed || (pawn != null && !startedIncapacitated && pawn.Downed))
+                        if (ticksLeft % maxTicks == maxTicks - 1)
                         {
-                            EndJobWith(JobCondition.Succeeded);
-                            return;
+                      //      MoteMaker.ThrowMetaIcon(pawn.Position, ThingDefOf.Mote_Heart);
+                            FilthMaker.MakeFilth(pawn.Position, CR_ThingDefOf.FilthPee, pawn.LabelIndefinite(), 1);
                         }
                     }
-                    pawn.equipment.TryStartAttack(TargetA);
+                    if (ticksLeft <= 0)
+                    {
+                        ReadyForNextToil();
+                        if (willPee)
+                            TaleRecorder.RecordTale(WetHimself, pawn);
+                        
+                    }
                 },
-                defaultDuration = 5,
-                defaultCompleteMode = ToilCompleteMode.Delay
+                defaultCompleteMode = ToilCompleteMode.Never,
+                
             };
 
-            // Start Toil
-            //          yield return Toils_Misc.ThrowColonistAttackingMote(TargetIndex.A);
-            //        yield return shootInPanic;
-            yield return toilWait;
-            yield return toilNothing;
-            yield return Toils_Jump.JumpIf(toilNothing, () =>
+
+            CompSuppressable comp = pawn.TryGetComp<CompSuppressable>();
+            toilHunkerDown.FailOn(() => comp == null);
+            if (comp != null)
             {
-                CompSuppressable comp = pawn.TryGetComp<CompSuppressable>();
-                if (comp == null)
-                {
-                    return false;
-                }
                 float distToSuppressor = (pawn.Position - comp.suppressorLoc).LengthHorizontal;
-                if (distToSuppressor < CompSuppressable.minSuppressionDist)
-                {
-                    return false;
-                }
-                return comp.isHunkering;
-            });
+                toilHunkerDown.FailOn(() => distToSuppressor < CompSuppressable.minSuppressionDist);
+                toilHunkerDown.FailOn(() => !comp.isHunkering);
+            }
+
+            if (willPee)
+                toilHunkerDown.WithEffect("Pee", TargetIndex.A);
+
+
+            // Start Toil
+
+            yield return toilHunkerDown;
         }
 
 

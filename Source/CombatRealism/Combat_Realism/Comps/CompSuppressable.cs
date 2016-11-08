@@ -23,7 +23,7 @@ namespace Combat_Realism
 
         public const float minSuppressionDist = 10f;        //Minimum distance to be suppressed from, so melee won't be suppressed if it closes within this distance
         private const float maxSuppression = 100f;          //Cap to prevent suppression from building indefinitely
-        private const float suppressionDecayRate = 10f;    //How much suppression decays per second
+        private const float suppressionDecayRate = 7.5f;    //How much suppression decays per second
         private const int ticksPerMote = 150;               //How many ticks between throwing a mote
 
         // --------------- Location calculations ---------------
@@ -134,50 +134,48 @@ namespace Combat_Realism
 
         public void AddSuppression(float amount, IntVec3 origin)
         {
-            Pawn pawn = parent as Pawn;
-            if (pawn != null)
+            //Add suppression to global suppression counter
+            currentSuppressionInt += amount;
+            if (currentSuppressionInt > maxSuppression)
             {
-                Debug.LogWarning("01 - Pawn: " + pawn);
+                currentSuppressionInt = maxSuppression;
+            }
 
-                Debug.LogWarning(currentSuppressionInt + " - " + amount + " - " + maxSuppression);
-                //Add suppression to global suppression counter
-                currentSuppressionInt += amount;
-                if (currentSuppressionInt > maxSuppression)
+            //Add suppression to current suppressor location if appropriate
+            if (suppressorLocInt == origin)
+            {
+                locSuppressionAmount += amount;
+            }
+            else if (locSuppressionAmount < suppressionThreshold)
+            {
+                suppressorLocInt = origin;
+                locSuppressionAmount = currentSuppressionInt;
+            }
+
+            //Assign suppressed status and interrupt activity if necessary
+
+            if (!isSuppressed && currentSuppressionInt > suppressionThreshold)
+            {
+                isSuppressed = true;
+                Pawn pawn = parent as Pawn;
+                if (pawn != null)
                 {
-                    currentSuppressionInt = maxSuppression;
-                }
-
-                //Add suppression to current suppressor location if appropriate
-                if (suppressorLocInt == origin)
-                {
-                    Debug.LogWarning(suppressorLocInt + " - " + origin + " - " + locSuppressionAmount + " - " + amount);
-                    locSuppressionAmount += amount;
-                }
-                else if (locSuppressionAmount < suppressionThreshold)
-                {
-                    Debug.LogWarning(locSuppressionAmount + " - " + suppressionThreshold + " - " + suppressorLocInt + " - " + currentSuppressionInt);
-                    suppressorLocInt = origin;
-                    locSuppressionAmount = currentSuppressionInt;
-                }
-
-                //Assign suppressed status and interrupt activity if necessary
-
-                if (pawn.MentalState.def == MentalStateDefOf.Berserk ||
-                    pawn.MentalState.def == MentalStateDefOf.PanicFlee) return;
-
-                if (!isSuppressed)
-                {
-                    if (currentSuppressionInt > suppressionThreshold)
+                    if (pawn.MentalState.def != MentalStateDefOf.Berserk && pawn.MentalState.def != MentalStateDefOf.PanicFlee)
                     {
-                        isSuppressed = true;
-                        pawn.jobs?.StopAll();
+                        if (pawn.jobs != null)
+                        {
+                            pawn.jobs.StopAll(false);
+                        }
                     }
-                    else
-                    {
-                        Log.Error("Trying to suppress non-pawn " + parent.ToString() + ", this should never happen");
-                    }
+                }
+                else
+                {
+                    Log.Error("Trying to suppress non-pawn " + parent.ToString() + ", this should never happen");
                 }
             }
+            /*
+
+            */
         }
 
         public override void CompTick()
@@ -217,9 +215,15 @@ namespace Combat_Realism
             //Throw mote at set interval
             if (Gen.IsHashIntervalTick(parent, ticksPerMote))
             {
-                if (isSuppressed)
+                // todo remove currentSuppressionInt - debug only
+
+                if (isHunkering)
                 {
-                    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_SuppressedMote".Translate());
+                    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_HunkeringMote".Translate() + currentSuppressionInt);
+                }
+                else if (isSuppressed)
+                {
+                    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_SuppressedMote".Translate() + currentSuppressionInt);
                 }
             }
         }
