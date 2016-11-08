@@ -85,7 +85,7 @@ namespace AchtungModCR
 
 		public void Inject(Type sourceType, MethodInfo sourceMethod, Type targetType, MethodInfo targetMethod)
 		{
-			var pi = new PatchInfo();
+			PatchInfo pi = new PatchInfo();
 
 			pi.SourceType = sourceType;
 			pi.TargetType = targetType;
@@ -104,30 +104,30 @@ namespace AchtungModCR
 
 		void PatchAll()
 		{
-			foreach (var pi in _patches) Patch(pi);
+			foreach (PatchInfo pi in _patches) Patch(pi);
 			_isInitialized = true;
 			_logger.Info("Processed {0} methods.", _patches.Count);
 		}
 
 		private bool Patch(PatchInfo pi)
 		{
-			var hookPtr = new IntPtr(_memPtr.ToInt64() + _offset);
+			IntPtr hookPtr = new IntPtr(_memPtr.ToInt64() + _offset);
 
 			_logger.Debug("Patching via hook @ {0:X}:", hookPtr.ToInt64());
 			_logger.Debug("    Source: {0}.{1} @ {2:X}", pi.SourceType.Name, pi.SourceMethod.Name, pi.SourcePtr.ToInt64());
 			_logger.Debug("    Target: {0}.{1} @ {2:X}", pi.TargetType.Name, pi.TargetMethod.Name, pi.TargetPtr.ToInt64());
 
-			var s = new AsmHelper(hookPtr);
+			AsmHelper s = new AsmHelper(hookPtr);
 
 			// Main proc
 			s.WriteJmp(pi.TargetPtr);
-			var mainPtr = s.ToIntPtr();
+			IntPtr mainPtr = s.ToIntPtr();
 
-			var src = new AsmHelper(pi.SourcePtr);
+			AsmHelper src = new AsmHelper(pi.SourcePtr);
 
 			// Check if already patched
-			var isAlreadyPatched = false;
-			var jmpLoc = src.PeekJmp();
+			bool isAlreadyPatched = false;
+			long jmpLoc = src.PeekJmp();
 			if (jmpLoc != 0)
 			{
 				_logger.Debug("    Method already patched, rerouting.");
@@ -136,8 +136,8 @@ namespace AchtungModCR
 			}
 
 			// Jump to detour if called from outside of detour
-			var startAddress = pi.TargetPtr.ToInt64();
-			var endAddress = startAddress + pi.TargetSize;
+			long startAddress = pi.TargetPtr.ToInt64();
+			long endAddress = startAddress + pi.TargetSize;
 
 			s.WriteMovImmRax(startAddress);
 			s.WriteCmpRaxRsp();
@@ -155,14 +155,14 @@ namespace AchtungModCR
 			else
 			{
 				// Copy source proc stack alloc instructions
-				var stackAlloc = src.PeekStackAlloc();
+				byte[] stackAlloc = src.PeekStackAlloc();
 
 				if (stackAlloc.Length < 5)
 				{
 					_logger.Debug("    Stack alloc too small to be patched, attempting full copy.");
 
-					var size = (Platform.GetJitMethodSize(pi.SourcePtr));
-					var bytes = new byte[size];
+					int size = (Platform.GetJitMethodSize(pi.SourcePtr));
+					byte[] bytes = new byte[size];
 					Marshal.Copy(pi.SourcePtr, bytes, 0, size);
 					s.Write(bytes);
 
@@ -178,7 +178,7 @@ namespace AchtungModCR
 					if (stackAlloc.Length < 12) src.WriteJmpRel32(mainPtr);
 					else src.WriteJmp(mainPtr);
 
-					var srcOffset = (int)(src.ToInt64() - pi.SourcePtr.ToInt64());
+					int srcOffset = (int)(src.ToInt64() - pi.SourcePtr.ToInt64());
 					src.WriteNop(stackAlloc.Length - srcOffset);
 				}
 			}

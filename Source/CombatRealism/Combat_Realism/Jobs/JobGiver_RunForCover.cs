@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
-using UnityEngine;
 
 namespace Combat_Realism
 {
     class JobGiver_RunForCover : ThinkNode_JobGiver
     {
-        private const float maxCoverDist = 15f; //Maximum distance to run for cover to
+        public const float maxCoverDist = 15f; //Maximum distance to run for cover to
 
         protected override Job TryGiveJob(Pawn pawn)
         {
@@ -46,7 +43,7 @@ namespace Combat_Realism
             };
         }
 
-        private bool GetCoverPositionFrom(Pawn pawn, IntVec3 fromPosition, float maxDist, out IntVec3 coverPosition)
+        public static bool GetCoverPositionFrom(Pawn pawn, IntVec3 fromPosition, float maxDist, out IntVec3 coverPosition)
         {
             //First check if we have cover already
             Vector3 coverVec = (fromPosition - pawn.Position).ToVector3().normalized;

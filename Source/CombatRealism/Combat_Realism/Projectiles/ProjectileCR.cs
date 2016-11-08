@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Verse;
-using Verse.Sound;
 using RimWorld;
 using UnityEngine;
+using Verse;
+using Verse.Sound;
 
 namespace Combat_Realism
 {
@@ -25,10 +24,7 @@ namespace Combat_Realism
 
         public Thing AssignedMissTarget
         {
-            get
-            {
-                return assignedMissTargetInt;
-            }
+            get { return assignedMissTargetInt; }
             set
             {
                 if (value.def.Fillage == FillCategory.Full)
@@ -38,11 +34,13 @@ namespace Combat_Realism
                 assignedMissTargetInt = value;
             }
         }
+
         protected int StartingTicksToImpact
         {
             get
             {
-                int num = Mathf.RoundToInt((float)((origin - destination).magnitude / (Math.Cos(shotAngle) * shotSpeed / 100f)));
+                int num =
+                    Mathf.RoundToInt((float)((origin - destination).magnitude / (Math.Cos(shotAngle) * shotSpeed / 100f)));
                 if (num < 1)
                 {
                     num = 1;
@@ -50,6 +48,7 @@ namespace Combat_Realism
                 return num;
             }
         }
+
         protected IntVec3 DestinationCell
         {
             get
@@ -57,14 +56,16 @@ namespace Combat_Realism
                 return new IntVec3(destination);
             }
         }
+
         public virtual Vector3 ExactPosition
         {
             get
             {
-                Vector3 b = (destination - origin) * (1f - (float)ticksToImpact / (float)StartingTicksToImpact);
+                Vector3 b = (destination - origin) * (1f - ticksToImpact / (float)StartingTicksToImpact);
                 return origin + b + Vector3.up * def.Altitude;
             }
         }
+
         public virtual Quaternion ExactRotation
         {
             get
@@ -72,6 +73,7 @@ namespace Combat_Realism
                 return Quaternion.LookRotation(destination - origin);
             }
         }
+
         public override Vector3 DrawPos
         {
             get
@@ -79,18 +81,18 @@ namespace Combat_Realism
                 return ExactPosition;
             }
         }
-
         //New variables
         private const float treeCollisionChance = 0.5f; //Tree collision chance is multiplied by this factor
-        public float shotAngle = 0f;
+        public float shotAngle;
         public float shotHeight = 0f;
         public float shotSpeed = -1f;
+
         private float distanceFromOrigin
         {
             get
             {
                 Vector3 currentPos = Vector3.Scale(ExactPosition, new Vector3(1, 0, 1));
-                return (float)((currentPos - origin).magnitude);
+                return (currentPos - origin).magnitude;
             }
         }
 
@@ -107,26 +109,29 @@ namespace Combat_Realism
             {
                 launcher = null;
             }
-            Scribe_Values.LookValue<Vector3>(ref origin, "origin", default(Vector3), false);
-            Scribe_Values.LookValue<Vector3>(ref destination, "destination", default(Vector3), false);
-            Scribe_References.LookReference<Thing>(ref assignedTarget, "assignedTarget");
-            Scribe_Values.LookValue<bool>(ref canFreeIntercept, "canFreeIntercept", false, false);
-            Scribe_Defs.LookDef<ThingDef>(ref equipmentDef, "equipmentDef");
-            Scribe_References.LookReference<Thing>(ref launcher, "launcher");
-            Scribe_References.LookReference<Thing>(ref assignedMissTargetInt, "assignedMissTarget");
-            Scribe_Values.LookValue<bool>(ref landed, "landed", false, false);
-            Scribe_Values.LookValue<int>(ref ticksToImpact, "ticksToImpact", 0, false);
+            Scribe_Values.LookValue(ref origin, "origin", default(Vector3), false);
+            Scribe_Values.LookValue(ref destination, "destination", default(Vector3), false);
+            Scribe_References.LookReference(ref assignedTarget, "assignedTarget");
+            Scribe_Values.LookValue(ref canFreeIntercept, "canFreeIntercept", false, false);
+            Scribe_Defs.LookDef(ref equipmentDef, "equipmentDef");
+            Scribe_References.LookReference(ref launcher, "launcher");
+            Scribe_References.LookReference(ref assignedMissTargetInt, "assignedMissTarget");
+            Scribe_Values.LookValue(ref landed, "landed", false, false);
+            Scribe_Values.LookValue(ref ticksToImpact, "ticksToImpact", 0, false);
 
             //Here be new variables
-            Scribe_Values.LookValue<float>(ref shotAngle, "shotAngle", 0f, true);
-            Scribe_Values.LookValue<float>(ref shotAngle, "shotHeight", 0f, true);
-            Scribe_Values.LookValue<float>(ref shotSpeed, "shotSpeed", 0f, true);
+            Scribe_Values.LookValue(ref shotAngle, "shotAngle", 0f, true);
+            Scribe_Values.LookValue(ref shotAngle, "shotHeight", 0f, true);
+            Scribe_Values.LookValue(ref shotSpeed, "shotSpeed", 0f, true);
         }
 
         public static float GetProjectileHeight(float zeroheight, float distance, float angle, float velocity)
         {
             const float gravity = CR_Utility.gravityConst;
-            float height = (float)(zeroheight + ((distance * Math.Tan(angle)) - (gravity * Math.Pow(distance, 2)) / (2 * Math.Pow(velocity * Math.Cos(angle), 2))));
+            float height =
+                (float)
+                    (zeroheight +
+                     (distance * Math.Tan(angle) - gravity * Math.Pow(distance, 2) / (2 * Math.Pow(velocity * Math.Cos(angle), 2))));
 
             return height;
         }
@@ -156,7 +161,8 @@ namespace Combat_Realism
             //Checking if a new destination was set
             if (destination == null)
             {
-                destination = targ.Cell.ToVector3Shifted() + new Vector3(Rand.Range(-0.3f, 0.3f), 0f, Rand.Range(-0.3f, 0.3f));
+                destination = targ.Cell.ToVector3Shifted() +
+                              new Vector3(Rand.Range(-0.3f, 0.3f), 0f, Rand.Range(-0.3f, 0.3f));
             }
 
             ticksToImpact = StartingTicksToImpact;
@@ -192,11 +198,14 @@ namespace Combat_Realism
                 return CheckForFreeIntercept(newPos);
             }
             //Check for minimum collision distance
-            float distToTarget = assignedTarget != null ? (assignedTarget.DrawPos - origin).MagnitudeHorizontal() : (destination - origin).MagnitudeHorizontal();
+            float distToTarget = assignedTarget != null
+                ? (assignedTarget.DrawPos - origin).MagnitudeHorizontal()
+                : (destination - origin).MagnitudeHorizontal();
             if (def.projectile.alwaysFreeIntercept
-                || distToTarget <= 1f ? origin.ToIntVec3().DistanceToSquared(newPos) > 1f : origin.ToIntVec3().DistanceToSquared(newPos) > Mathf.Min(12f, distToTarget / 2))
+                || distToTarget <= 1f
+                ? origin.ToIntVec3().DistanceToSquared(newPos) > 1f
+                : origin.ToIntVec3().DistanceToSquared(newPos) > Mathf.Min(12f, distToTarget / 2))
             {
-
                 Vector3 currentExactPos = lastExactPos;
                 Vector3 flightVec = newExactPos - lastExactPos;
                 Vector3 sectionVec = flightVec.normalized * 0.2f;
@@ -235,9 +244,13 @@ namespace Combat_Realism
         {
             //Check for minimum collision distance
             float distFromOrigin = (cell.ToVector3Shifted() - origin).MagnitudeHorizontal();
-            float distToTarget = assignedTarget != null ? (assignedTarget.DrawPos - origin).MagnitudeHorizontal() : (destination - origin).MagnitudeHorizontal();
+            float distToTarget = assignedTarget != null
+                ? (assignedTarget.DrawPos - origin).MagnitudeHorizontal()
+                : (destination - origin).MagnitudeHorizontal();
             if (!def.projectile.alwaysFreeIntercept
-                && distToTarget <= 1f ? distFromOrigin < 1f : distFromOrigin < Mathf.Min(12f, distToTarget / 2))
+                && distToTarget <= 1f
+                ? distFromOrigin < 1f
+                : distFromOrigin < Mathf.Min(12f, distToTarget / 2))
             {
                 return false;
             }
@@ -250,11 +263,11 @@ namespace Combat_Realism
             //Check if bullet is going north-south or west-east
             if (Math.Abs(shotVec.x) < Math.Abs(shotVec.z))
             {
-                adjList = GenAdj.CellsAdjacentCardinal(cell, Rotation, new IntVec2(0, 1)).ToList<IntVec3>();
+                adjList = GenAdj.CellsAdjacentCardinal(cell, Rotation, new IntVec2(0, 1)).ToList();
             }
             else
             {
-                adjList = GenAdj.CellsAdjacentCardinal(cell, Rotation, new IntVec2(1, 0)).ToList<IntVec3>();
+                adjList = GenAdj.CellsAdjacentCardinal(cell, Rotation, new IntVec2(1, 0)).ToList();
             }
 
             //Iterate through adjacent cells and find all the pawns
@@ -263,7 +276,10 @@ namespace Combat_Realism
                 if (adjList[i].InBounds() && !adjList[i].Equals(cell))
                 {
                     List<Thing> thingList = new List<Thing>(Find.ThingGrid.ThingsListAt(adjList[i]));
-                    List<Thing> pawns = thingList.Where(thing => thing.def.category == ThingCategory.Pawn && !mainThingList.Contains(thing)).ToList();
+                    List<Thing> pawns =
+                        thingList.Where(
+                            thing => thing.def.category == ThingCategory.Pawn && !mainThingList.Contains(thing))
+                            .ToList();
                     mainThingList.AddRange(pawns);
                 }
             }
@@ -275,19 +291,23 @@ namespace Combat_Realism
                 for (int i = 0; i < mainThingList.Count; i++)
                 {
                     Thing thing = mainThingList[i];
-                    if (thing.def.Fillage == FillCategory.Full)	//ignore height
+                    if (thing.def.Fillage == FillCategory.Full) //ignore height
                     {
                         Impact(thing);
                         return true;
                     }
                     //Check for trees		--		HARDCODED RNG IN HERE
-                    if (thing.def.category == ThingCategory.Plant && thing.def.altitudeLayer == AltitudeLayer.Building && Rand.Value < thing.def.fillPercent * Mathf.Clamp(distFromOrigin / 40, 0f, (1f / treeCollisionChance)) * treeCollisionChance)
+                    if (thing.def.category == ThingCategory.Plant && thing.def.altitudeLayer == AltitudeLayer.Building &&
+                        Rand.Value <
+                        thing.def.fillPercent * Mathf.Clamp(distFromOrigin / 40, 0f, 1f / treeCollisionChance) *
+                        treeCollisionChance)
                     {
                         Impact(thing);
                         return true;
                     }
                     //Checking for pawns/cover
-                    else if (thing.def.category == ThingCategory.Pawn || (ticksToImpact < StartingTicksToImpact / 2 && thing.def.fillPercent > 0)) //Need to check for fillPercent here or else will be impacting things like motes, etc.
+                    if (thing.def.category == ThingCategory.Pawn ||
+                        (ticksToImpact < StartingTicksToImpact / 2 && thing.def.fillPercent > 0)) //Need to check for fillPercent here or else will be impacting things like motes, etc.
                     {
                         return ImpactThroughBodySize(thing, height);
                     }
@@ -297,30 +317,50 @@ namespace Combat_Realism
         }
 
         /// <summary>
-        /// Takes into account the target being downed and the projectile having been fired while the target was downed, and the target's bodySize
+        ///     Takes into account the target being downed and the projectile having been fired while the target was downed, and
+        ///     the target's bodySize
         /// </summary>
         private bool ImpactThroughBodySize(Thing thing, float height)
         {
             Pawn pawn = thing as Pawn;
             if (pawn != null)
             {
+                PersonalShield shield = null;
+                // check for shield user
+                List<Apparel> wornApparel = pawn.apparel.WornApparel;
+                for (int i = 0; i < wornApparel.Count; i++)
+                {
+                    if (wornApparel[i] is PersonalShield)
+                    {
+                        shield = (PersonalShield)wornApparel[i];
+                        break;
+                    }
+                }
+
                 //Add suppression
                 CompSuppressable compSuppressable = pawn.TryGetComp<CompSuppressable>();
                 if (compSuppressable != null)
                 {
-                    float suppressionAmount = def.projectile.damageAmountBase;
-                    ProjectilePropertiesCR propsCR = def.projectile as ProjectilePropertiesCR;
-                    float penetrationAmount = propsCR == null ? 0f : propsCR.armorPenetration;
-                    suppressionAmount *= 1 - Mathf.Clamp(compSuppressable.parentArmor - penetrationAmount, 0, 1);
-                    compSuppressable.AddSuppression(suppressionAmount, origin.ToIntVec3());
+                    if (shield == null || (shield != null && shield?.ShieldState == ShieldState.Resetting))
+                    {
+                        float suppressionAmount = def.projectile.damageAmountBase;
+                        ProjectilePropertiesCR propsCR = def.projectile as ProjectilePropertiesCR;
+                        float penetrationAmount = propsCR == null ? 0f : propsCR.armorPenetration;
+                        suppressionAmount *= 1 - Mathf.Clamp(compSuppressable.parentArmor - penetrationAmount, 0, 1);
+                        compSuppressable.AddSuppression(suppressionAmount, origin.ToIntVec3());
+                    }
                 }
 
                 //Check horizontal distance
                 Vector3 dest = destination;
                 Vector3 orig = origin;
                 Vector3 pawnPos = pawn.DrawPos;
-                float closestDistToPawn = Math.Abs((dest.z - orig.z) * pawnPos.x - (dest.x - orig.x) * pawnPos.z + dest.x * orig.z - dest.z * orig.x)
-                    / (float)Math.Sqrt((dest.z - orig.z) * (dest.z - orig.z) + (dest.x - orig.x) * (dest.x - orig.x));
+                float closestDistToPawn = Math.Abs((dest.z - orig.z) * pawnPos.x - (dest.x - orig.x) * pawnPos.z +
+                                                 dest.x * orig.z - dest.z * orig.x)
+                                        /
+                                        (float)
+                                            Math.Sqrt((dest.z - orig.z) * (dest.z - orig.z) +
+                                                      (dest.x - orig.x) * (dest.x - orig.x));
                 if (closestDistToPawn <= CR_Utility.GetCollisionWidth(pawn))
                 {
                     //Check vertical distance
@@ -359,21 +399,25 @@ namespace Combat_Realism
             }
 
             //Modified
-            if (assignedTarget != null && assignedTarget.Position == Position)	//it was aimed at something and that something is still there
+            if (assignedTarget != null && assignedTarget.Position == Position)
+            //it was aimed at something and that something is still there
             {
-                ImpactThroughBodySize(assignedTarget, GetProjectileHeight(shotHeight, distanceFromOrigin, shotAngle, shotSpeed));
-                return;
+                ImpactThroughBodySize(assignedTarget,
+                    GetProjectileHeight(shotHeight, distanceFromOrigin, shotAngle, shotSpeed));
             }
             else
             {
                 Thing thing = Find.ThingGrid.ThingAt(Position, ThingCategory.Pawn);
                 if (thing != null)
                 {
-                    ImpactThroughBodySize(thing, GetProjectileHeight(shotHeight, distanceFromOrigin, shotAngle, shotSpeed));
+                    ImpactThroughBodySize(thing,
+                        GetProjectileHeight(shotHeight, distanceFromOrigin, shotAngle, shotSpeed));
                     return;
                 }
                 List<Thing> list = Find.ThingGrid.ThingsListAt(Position);
-                float height = (list.Count > 0) ? GetProjectileHeight(shotHeight, distanceFromOrigin, shotAngle, shotSpeed) : 0;
+                float height = list.Count > 0
+                    ? GetProjectileHeight(shotHeight, distanceFromOrigin, shotAngle, shotSpeed)
+                    : 0;
                 if (height > 0)
                 {
                     for (int i = 0; i < list.Count; i++)
@@ -385,7 +429,6 @@ namespace Combat_Realism
                     }
                 }
                 Impact(null);
-                return;
             }
         }
 
@@ -413,12 +456,14 @@ namespace Combat_Realism
                 return;
             }
             Vector3 exactPosition2 = ExactPosition;
-            if (!def.projectile.flyOverhead && canFreeIntercept && CheckForFreeInterceptBetween(exactPosition, exactPosition2))
+            if (!def.projectile.flyOverhead && canFreeIntercept &&
+                CheckForFreeInterceptBetween(exactPosition, exactPosition2))
             {
                 return;
             }
             Position = ExactPosition.ToIntVec3();
-            if ((float)ticksToImpact == 60f && Find.TickManager.CurTimeSpeed == TimeSpeed.Normal && def.projectile.soundImpactAnticipate != null)
+            if (ticksToImpact == 60f && Find.TickManager.CurTimeSpeed == TimeSpeed.Normal &&
+                def.projectile.soundImpactAnticipate != null)
             {
                 def.projectile.soundImpactAnticipate.PlayOneShot(this);
             }

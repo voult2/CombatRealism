@@ -46,7 +46,7 @@ namespace AchtungModCR
 		public override void DoWindowContents(Rect rect)
 		{
 			rect.height = 2000f;
-			var listing = new Listing_Standard(rect);
+			Listing_Standard listing = new Listing_Standard(rect);
 			{
 				Text.Font = GameFont.Medium;
 				listing.Label("AchtungSettingsTitle".Translate());

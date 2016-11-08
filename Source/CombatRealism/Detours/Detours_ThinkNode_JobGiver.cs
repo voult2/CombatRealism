@@ -10,7 +10,12 @@ namespace Combat_Realism
     public abstract class Detours_ThinkNode_JobGiver : ThinkNode
     {
         protected abstract Job TryGiveJob(Pawn pawn);
-        public static readonly String[] robotBodyList = { "AIRobot, HumanoidTerminator" };
+
+        public static readonly string[] robotBodyList =
+        {
+            "AIRobot, " +
+            "HumanoidTerminator"
+        };
 
 
         [DetourClassMethod(typeof(ThinkNode_JobGiver), "TryIssueJobPackage", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
