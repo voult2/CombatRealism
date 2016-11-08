@@ -103,7 +103,7 @@ namespace Combat_Realism
 
             // bug can get the willPee if it's initialized, define the bool more accessable
             if (willPee)
-                toilHunkerDown.WithEffect("Pee", TargetIndex.B);
+                toilHunkerDown.WithEffect("Pee", TargetIndex.A);
 
             // Start Toil
 
@@ -123,7 +123,7 @@ namespace Combat_Realism
 
                     // Shame, shame, shame, shame!
                     if (willPee)
-                        toil.WithEffect("Pee", TargetIndex.B);
+                        toil.WithEffect("Pee", TargetIndex.A);
 
                     yield return toil;
 
