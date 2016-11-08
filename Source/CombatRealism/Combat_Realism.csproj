@@ -291,6 +291,9 @@
     <Content Include="..\..\Defs\Effects\Motes_CR.xml">
       <Link>Defs\Effects\Motes_CR.xml</Link>
     </Content>
+    <Content Include="..\..\Defs\Effects\Mote_Visual.xml">
+      <Link>Defs\Effects\Mote_Visual.xml</Link>
+    </Content>
     <Content Include="..\..\Defs\FactionDefs\Factions.xml">
       <Link>Defs\FactionDefs\Factions.xml</Link>
     </Content>

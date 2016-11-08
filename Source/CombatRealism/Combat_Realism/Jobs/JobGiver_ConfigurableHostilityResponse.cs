@@ -80,7 +80,7 @@ namespace Combat_Realism
                         }
                         else if (compAmmo.curMagCount <= 0)
                         {
-                            Job job = compAmmo.ReloadJob();
+                            Job job = new Job(CR_JobDefOf.ReloadWeapon, pawn, pawn.equipment.Primary);
                             if (job != null)
                                 return job;
                         }

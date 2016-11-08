@@ -4,6 +4,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 using static Combat_Realism.DefOfs.CR_TaleDefOf;
+using static Combat_Realism.JobGiver_RunForCover;
 
 namespace Combat_Realism
 {
@@ -14,6 +15,7 @@ namespace Combat_Realism
         private int ticksLeft;
         private int maxTicks;
         private bool willPee;
+        IntVec3 coverPosition;
 
         public override void ExposeData()
         {
@@ -28,7 +30,7 @@ namespace Combat_Realism
         {
             get
             {
-                return (CurToil != toilHunkerDown) ? PawnPosture.Standing : PawnPosture.LayingAny;
+                return CurToil != toilHunkerDown ? PawnPosture.Standing : PawnPosture.LayingAny;
             }
         }
 
@@ -38,13 +40,33 @@ namespace Combat_Realism
 
             //Define Toil
 
+            maxTicks = Rand.Range(60, 600);
+            ticksLeft = maxTicks;
+            willPee = maxTicks > 500;
+
             toilHunkerDown = new Toil
             {
                 initAction = delegate
                 {
-                    maxTicks = Rand.Range(60, 240);
-                    ticksLeft = maxTicks;
-                    willPee = maxTicks>35;
+                    //int num = 0;
+                    //IntVec3 intVec;
+                    //while (true)
+                    //{
+                    //    intVec = pawn.Position + GenAdj.AdjacentCellsAndInside[Rand.Range(0, 9)];
+                    //    num++;
+                    //    if (num > 12)
+                    //    {
+                    //        intVec = pawn.Position;
+                    //        break;
+                    //    }
+                    //    if (intVec.InBounds() && intVec.Standable())
+                    //    {
+                    //        break;
+                    //    }
+                    //}
+                    //pawn.CurJob.targetB = intVec;
+                    //pawn.Drawer.rotator.FaceCell(intVec);
+
                     toilHunkerDown.actor.pather.StopDead();
                 },
                 tickAction = delegate
@@ -54,7 +76,8 @@ namespace Combat_Realism
                     {
                         if (ticksLeft % maxTicks == maxTicks - 1)
                         {
-                      //      MoteMaker.ThrowMetaIcon(pawn.Position, ThingDefOf.Mote_Heart);
+                            //      MoteMaker.ThrowMetaIcon(pawn.Position, ThingDefOf.Mote_Heart);
+                            //     FilthMaker.MakeFilth(pawn.CurJob.targetB.Cell, CR_ThingDefOf.FilthPee, pawn.LabelIndefinite(), 1);
                             FilthMaker.MakeFilth(pawn.Position, CR_ThingDefOf.FilthPee, pawn.LabelIndefinite(), 1);
                         }
                     }
@@ -63,11 +86,9 @@ namespace Combat_Realism
                         ReadyForNextToil();
                         if (willPee)
                             TaleRecorder.RecordTale(WetHimself, pawn);
-                        
                     }
                 },
                 defaultCompleteMode = ToilCompleteMode.Never,
-                
             };
 
 
@@ -80,13 +101,35 @@ namespace Combat_Realism
                 toilHunkerDown.FailOn(() => !comp.isHunkering);
             }
 
+            // bug can get the willPee if it's initialized, define the bool more accessable
             if (willPee)
-                toilHunkerDown.WithEffect("Pee", TargetIndex.A);
-
+                toilHunkerDown.WithEffect("Pee", TargetIndex.B);
 
             // Start Toil
 
             yield return toilHunkerDown;
+            if (GetCoverPositionFrom(pawn, comp.suppressorLoc, maxCoverDist * 1.5f, out coverPosition) && Rand.Value>0.5)
+            {
+                if (coverPosition != pawn.Position)
+                {
+                    Toil toil = new Toil();
+                    toil.initAction = delegate
+                    {
+                        Pawn actor = toil.actor;
+                        Find.PawnDestinationManager.ReserveDestinationFor(pawn, coverPosition);
+                        actor.pather.StartPath(coverPosition, PathEndMode.OnCell);
+                    };
+                    toil.defaultCompleteMode = ToilCompleteMode.PatherArrival;
+
+                    // Shame, shame, shame, shame!
+                    if (willPee)
+                        toil.WithEffect("Pee", TargetIndex.B);
+
+                    yield return toil;
+
+                }
+            }
+            yield break;
         }
 
 

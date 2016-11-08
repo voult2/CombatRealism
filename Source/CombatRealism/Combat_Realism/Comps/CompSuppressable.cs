@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using RimWorld;
 using Verse;
 using UnityEngine;
@@ -52,6 +51,7 @@ namespace Combat_Realism
                 return currentSuppressionInt;
             }
         }
+
         public float parentArmor
         {
             get
@@ -81,6 +81,7 @@ namespace Combat_Realism
                 return armorValue;
             }
         }
+
         private float suppressionThreshold
         {
             get
@@ -92,7 +93,7 @@ namespace Combat_Realism
                     //Get morale
                     float hardBreakThreshold = pawn.GetStatValue(StatDefOf.MentalBreakThreshold) + 0.15f;
                     float currentMood = pawn.needs != null && pawn.needs.mood != null ? pawn.needs.mood.CurLevel : 0.5f;
-                    threshold = Mathf.Max(0, (currentMood - hardBreakThreshold));
+                    threshold = Mathf.Max(0, currentMood - hardBreakThreshold);
                 }
                 else
                 {
@@ -153,29 +154,28 @@ namespace Combat_Realism
             }
 
             //Assign suppressed status and interrupt activity if necessary
-
             if (!isSuppressed && currentSuppressionInt > suppressionThreshold)
             {
                 isSuppressed = true;
                 Pawn pawn = parent as Pawn;
                 if (pawn != null)
                 {
-                    if (pawn.MentalState.def != MentalStateDefOf.Berserk && pawn.MentalState.def != MentalStateDefOf.PanicFlee)
+                    if (pawn.MentalState.def != MentalStateDefOf.Berserk || pawn.MentalState.def != MentalStateDefOf.PanicFlee)
                     {
-                        if (pawn.jobs != null)
+                        if (pawn.jobs != null &&
+                            (pawn.CurJob.def != CR_JobDefOf.HunkerDown || pawn.CurJob.def != CR_JobDefOf.RunForCover))
                         {
                             pawn.jobs.StopAll(false);
                         }
                     }
+                    else currentSuppressionInt = 0f;
                 }
                 else
                 {
                     Log.Error("Trying to suppress non-pawn " + parent.ToString() + ", this should never happen");
                 }
             }
-            /*
 
-            */
         }
 
         public override void CompTick()
@@ -183,7 +183,7 @@ namespace Combat_Realism
             base.CompTick();
 
             //Apply decay once per second
-            if (Gen.IsHashIntervalTick(parent, 60))
+            if (parent.IsHashIntervalTick(60))
             {
                 //Decay global suppression
                 if (currentSuppressionInt > suppressionDecayRate)
@@ -219,11 +219,13 @@ namespace Combat_Realism
 
                 if (isHunkering)
                 {
-                    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_HunkeringMote".Translate() + currentSuppressionInt);
+                    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(),
+                        "CR_HunkeringMote".Translate() + currentSuppressionInt);
                 }
                 else if (isSuppressed)
                 {
-                    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_SuppressedMote".Translate() + currentSuppressionInt);
+                    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(),
+                        "CR_SuppressedMote".Translate() + currentSuppressionInt);
                 }
             }
         }
