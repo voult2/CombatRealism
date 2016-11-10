@@ -51,7 +51,6 @@ namespace Combat_Realism
                 return currentSuppressionInt;
             }
         }
-
         public float parentArmor
         {
             get
@@ -81,7 +80,6 @@ namespace Combat_Realism
                 return armorValue;
             }
         }
-
         private float suppressionThreshold
         {
             get
@@ -154,13 +152,14 @@ namespace Combat_Realism
             }
 
             //Assign suppressed status and interrupt activity if necessary
+
             if (!isSuppressed && currentSuppressionInt > suppressionThreshold)
             {
                 isSuppressed = true;
                 Pawn pawn = parent as Pawn;
                 if (pawn != null)
                 {
-                    if (pawn.MentalState.def != MentalStateDefOf.Berserk || pawn.MentalState.def != MentalStateDefOf.PanicFlee)
+                    if (pawn.MentalStateDef != null && (pawn.MentalState.def != MentalStateDefOf.Berserk || pawn.MentalState.def != MentalStateDefOf.PanicFlee))
                     {
                         if (pawn.jobs != null &&
                             (pawn.CurJob.def != CR_JobDefOf.HunkerDown || pawn.CurJob.def != CR_JobDefOf.RunForCover))
@@ -168,14 +167,19 @@ namespace Combat_Realism
                             pawn.jobs.StopAll(false);
                         }
                     }
-                    else currentSuppressionInt = 0f;
+                    else 
+                    {
+                        currentSuppressionInt = 0f;
+                    }
                 }
                 else
                 {
                     Log.Error("Trying to suppress non-pawn " + parent.ToString() + ", this should never happen");
                 }
             }
+            /*
 
+            */
         }
 
         public override void CompTick()
@@ -215,17 +219,19 @@ namespace Combat_Realism
             //Throw mote at set interval
             if (Gen.IsHashIntervalTick(parent, ticksPerMote))
             {
-                // todo remove currentSuppressionInt - debug only
-
-                if (isHunkering)
+                if (isHunkering || isSuppressed)
                 {
-                    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(),
-                        "CR_HunkeringMote".Translate() + currentSuppressionInt);
-                }
-                else if (isSuppressed)
-                {
-                    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(),
-                        "CR_SuppressedMote".Translate() + currentSuppressionInt);
+                    // suppressed expression
+                    if (parent.def.race.Humanlike)
+                    {
+                        AGAIN: string rndswearsuppressed = RulePackDef.Named("SuppressedMote").Rules.RandomElement().Generate();
+                        if (rndswearsuppressed == "[suppressed]" || rndswearsuppressed == "" || rndswearsuppressed == " ")
+                        {
+                            goto AGAIN;
+                        }
+                        if (Gen.IsHashIntervalTick(this.parent, 240)) MoteMaker.ThrowText(this.parent.Position.ToVector3Shifted(), rndswearsuppressed);
+                    }
+                    //standart    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_SuppressedMote".Translate());
                 }
             }
         }
