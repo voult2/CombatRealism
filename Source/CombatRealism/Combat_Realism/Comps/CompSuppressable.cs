@@ -170,6 +170,7 @@ namespace Combat_Realism
                     else 
                     {
                         currentSuppressionInt = 0f;
+                        isSuppressed = false;
                     }
                 }
                 else
@@ -229,7 +230,7 @@ namespace Combat_Realism
                         {
                             goto AGAIN;
                         }
-                        if (Gen.IsHashIntervalTick(this.parent, 240)) MoteMaker.ThrowText(this.parent.Position.ToVector3Shifted(), rndswearsuppressed);
+                        if (Gen.IsHashIntervalTick(this.parent, 400)) MoteMaker.ThrowText(this.parent.Position.ToVector3Shifted(), rndswearsuppressed);
                     }
                     //standart    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_SuppressedMote".Translate());
                 }

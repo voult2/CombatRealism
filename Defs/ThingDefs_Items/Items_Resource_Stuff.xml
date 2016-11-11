@@ -3,7 +3,6 @@
 
   <!--=============== Pure stuffs: Basics ====================-->
 
-
   <ThingDef ParentName="ResourceBase">
     <defName>Silver</defName>
     <label>silver</label>
@@ -29,11 +28,13 @@
     </thingCategories>
     <stackLimit>500</stackLimit>
     <smallVolume>true</smallVolume>
+    <deepCommonality>1</deepCommonality>
     <stuffProps>
       <categories>
         <li>Metallic</li>
       </categories>
       <color>(180,173,150)</color>
+      <commonality>0.05</commonality>
       <constructEffect>ConstructMetal</constructEffect>
       <soundImpactStuff>BulletImpactMetal</soundImpactStuff>
       <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
@@ -76,11 +77,13 @@
     </thingCategories>
     <stackLimit>500</stackLimit>
     <smallVolume>true</smallVolume>
+    <deepCommonality>0.5</deepCommonality>
     <stuffProps>
       <stuffAdjective>golden</stuffAdjective>
       <categories>
         <li>Metallic</li>
       </categories>
+      <commonality>0.02</commonality>
       <color>(255,235,122)</color>
       <constructEffect>ConstructMetal</constructEffect>
       <soundImpactStuff>BulletImpactMetal</soundImpactStuff>
@@ -125,12 +128,14 @@
     <thingCategories>
       <li>ResourcesRaw</li>
     </thingCategories>
+    <deepCommonality>4</deepCommonality>
     <stuffProps>
       <categories>
         <li>Metallic_Weapon</li>
         <li>Metallic</li>
         <li>Steeled</li>
       </categories>
+      <commonality>1.00</commonality>
       <constructEffect>ConstructMetal</constructEffect>
       <color>(102,102,105)</color>
       <soundImpactStuff>BulletImpactMetal</soundImpactStuff>
@@ -168,12 +173,14 @@
     <thingCategories>
       <li>ResourcesRaw</li>
     </thingCategories>
+    <deepCommonality>1</deepCommonality>
     <stuffProps>
       <categories>
         <li>Metallic_Weapon</li>
         <li>Metallic</li>
         <li>Steeled</li>
       </categories>
+      <commonality>0.25</commonality>
       <constructEffect>ConstructMetal</constructEffect>
       <color>(160,178,181)</color>
       <soundImpactStuff>BulletImpactMetal</soundImpactStuff>
@@ -230,6 +237,7 @@
       <categories>
         <li>Woody</li>
       </categories>
+      <commonality>1.00</commonality>
       <color>(133,97,67)</color>
       <constructEffect>ConstructWood</constructEffect>
       <appearance>Planks</appearance>
@@ -288,11 +296,13 @@
     </thingCategories>
     <stackLimit>500</stackLimit>
     <smallVolume>true</smallVolume>
+    <deepCommonality>0.5</deepCommonality>
     <stuffProps>
       <categories>
         <li>Metallic_Weapon</li>
         <li>Metallic</li>
       </categories>
+      <commonality>0.05</commonality>
       <color>(100,100,100)</color>
       <constructEffect>ConstructMetal</constructEffect>
       <soundImpactStuff>BulletImpactMetal</soundImpactStuff>
@@ -335,10 +345,12 @@
     </thingCategories>
     <stackLimit>500</stackLimit>
     <smallVolume>true</smallVolume>
+    <deepCommonality>0.5</deepCommonality>
     <stuffProps>
       <categories>
         <li>Stony</li>
       </categories>
+      <commonality>0.05</commonality>
       <color>(85,118,69)</color>
       <constructEffect>ConstructMetal</constructEffect>
       <soundImpactStuff>BulletImpactMetal</soundImpactStuff>
@@ -387,6 +399,7 @@
       <categories>
         <li>Fabric</li>
       </categories>
+      <commonality>0.35</commonality>
       <color>(180,60,60)</color>
       <statOffsets>
         <ArmorRating_Blunt>0.05</ArmorRating_Blunt>
@@ -438,6 +451,7 @@
       <categories>
         <li>Fabric</li>
       </categories>
+      <commonality>0.18</commonality>
       <color>(0,106,126)</color>
       <statOffsets>
         <ArmorRating_Blunt>0.03</ArmorRating_Blunt>
@@ -478,6 +492,7 @@
     </statBases>
     <stuffProps>
       <color>(189,161,116)</color>
+      <commonality>0.15</commonality>
       <statOffsets>
         <ArmorRating_Heat>0.08</ArmorRating_Heat>
         <ArmorRating_Electric>0.02</ArmorRating_Electric>

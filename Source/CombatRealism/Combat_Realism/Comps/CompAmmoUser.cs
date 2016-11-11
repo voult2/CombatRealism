@@ -10,7 +10,7 @@ using Verse.Sound;
 
 namespace Combat_Realism
 {
-    public class CompAmmoUser : CommunityCoreLibrary.CompRangedGizmoGiver
+    public class CompAmmoUser : CompRangedGizmoGiver
     {
         #region Fields
 
@@ -447,7 +447,7 @@ namespace Combat_Realism
                     action = action,
                     defaultLabel = hasMagazine ? "CR_ReloadLabel".Translate() : "",
                     defaultDesc = "CR_ReloadDesc".Translate(),
-                    icon = currentAmmo == null ? ContentFinder<Texture2D>.Get("UI/Buttons/Reload", true) : CommunityCoreLibrary.Def_Extensions.IconTexture(selectedAmmo)
+                    icon = currentAmmo == null ? ContentFinder<Texture2D>.Get("UI/Buttons/Reload", true) : Def_Extensions.IconTexture(selectedAmmo)
                 };
                 yield return reloadCommandGizmo;
             }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
-using CommunityCoreLibrary;
 using RimWorld;
 using Verse;
 using UnityEngine;
@@ -12,7 +11,6 @@ namespace Combat_Realism.Detours
 {
     internal static class Detours_Pawn_ApparelTracker
     {
-        //   [DetourClassMethod(typeof(Pawn_ApparelTracker), "TryDrop", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static bool TryDrop(this Pawn_ApparelTracker _this, Apparel ap, out Apparel resultingAp, IntVec3 pos, bool forbid = true)
         {
             if (!_this.WornApparel.Contains(ap))
@@ -35,7 +33,6 @@ namespace Combat_Realism.Detours
             return flag;
         }
 
-        [DetourClassMethod(typeof(Pawn_ApparelTracker), "Wear", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static void Wear(this Pawn_ApparelTracker _this, Apparel newApparel, bool dropReplacedApparel = true)
         {
             SlotGroupUtility.Notify_TakingThing(newApparel);
@@ -87,7 +84,6 @@ namespace Combat_Realism.Detours
             LongEventHandler.ExecuteWhenFinished(new Action(_this.ApparelChanged));
         }
 
-        [DetourClassMethod(typeof(Pawn_ApparelTracker), "Notify_WornApparelDestroyed", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static void Notify_WornApparelDestroyed(this Pawn_ApparelTracker _this, Apparel apparel)
         {
             _this.WornApparel.Remove(apparel);
