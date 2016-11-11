@@ -6,6 +6,7 @@ using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace Combat_Realism.Detours
 {
@@ -142,6 +143,17 @@ namespace Combat_Realism.Detours
             // TradeDeal
             if (!Detours.TryDetourFromTo(typeof(TradeDeal).GetMethod("UpdateCurrencyCount", BindingFlags.Instance | BindingFlags.Public),
                 typeof(Detours_TradeDeal).GetMethod("UpdateCurrencyCount", BindingFlags.Static | BindingFlags.NonPublic)))
+                return false;
+
+
+
+            // *************************************
+            // *** Detour additional methods ***
+            // *************************************
+
+            // RightTools
+            if (!Detours.TryDetourFromTo(typeof(ThinkNode_JobGiver).GetMethod("TryIssueJobPackage", BindingFlags.Instance | BindingFlags.Public),
+                typeof(Detours_ThinkNode_JobGiver).GetMethod("TryIssueJobPackage", BindingFlags.Instance | BindingFlags.Public)))
                 return false;
 
             return true;
