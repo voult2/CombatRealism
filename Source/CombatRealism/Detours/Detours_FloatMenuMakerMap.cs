@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CommunityCoreLibrary;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -17,7 +16,6 @@ namespace Combat_Realism.Detours
             return pawn.IsColonistPlayerControlled && pawn.drafter.CanTakeOrderedJob();
         }
 
-        [DetourClassMethod(typeof(FloatMenuMakerMap), "ChoicesAtFor", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static List<FloatMenuOption> ChoicesAtFor(Vector3 clickPos, Pawn pawn)
         {
             IntVec3 clickCell = IntVec3.FromVector3(clickPos);
@@ -551,7 +549,7 @@ namespace Combat_Realism.Detours
                                 }));
                             opts.Add(pickUpStackOption);
 
-                            FloatMenuOption pickUpHalfStackOption = new FloatMenuOption("CE_PickUpHalf" + " " + item.LabelShort + " x" + (numToCarry / 2).ToString(),
+                            FloatMenuOption pickUpHalfStackOption = new FloatMenuOption("CR_PickUpHalf" + " " + item.LabelShort + " x" + (numToCarry / 2).ToString(),
                                new Action(delegate
                                {
                                    item.SetForbidden(false);

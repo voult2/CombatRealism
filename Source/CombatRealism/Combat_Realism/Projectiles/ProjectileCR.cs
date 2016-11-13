@@ -18,6 +18,7 @@ namespace Combat_Realism
         protected Thing launcher;
         private Thing assignedMissTargetInt;
         protected bool landed;
+        private float suppressionAmount;
         protected int ticksToImpact;
         private Sustainer ambientSustainer;
         private static List<IntVec3> checkedCells = new List<IntVec3>();
@@ -81,6 +82,7 @@ namespace Combat_Realism
                 return ExactPosition;
             }
         }
+
         //New variables
         private const float treeCollisionChance = 0.5f; //Tree collision chance is multiplied by this factor
         public float shotAngle;
@@ -316,6 +318,8 @@ namespace Combat_Realism
             return false;
         }
 
+
+
         /// <summary>
         ///     Takes into account the target being downed and the projectile having been fired while the target was downed, and
         ///     the target's bodySize
@@ -323,40 +327,44 @@ namespace Combat_Realism
         private bool ImpactThroughBodySize(Thing thing, float height)
         {
             Pawn pawn = thing as Pawn;
+
             if (pawn != null)
             {
                 PersonalShield shield = null;
                 if (pawn.RaceProps.Humanlike)
                 {
                     // check for shield user
-                    if (pawn.equipment.Primary == null || pawn.equipment.Primary != null && !pawn.equipment.Primary.def.IsRangedWeapon)
+
+                    List<Apparel> wornApparel = pawn.apparel.WornApparel;
+                    for (int i = 0; i < wornApparel.Count; i++)
                     {
-                        List<Apparel> wornApparel = pawn.apparel.WornApparel;
-                        for (int i = 0; i < wornApparel.Count; i++)
+                        if (wornApparel[i] is PersonalShield)
                         {
-                            if (wornApparel[i] is PersonalShield)
-                            {
-                                shield = (PersonalShield)wornApparel[i];
-                                break;
-                            }
+                            shield = (PersonalShield)wornApparel[i];
+                            break;
                         }
                     }
                 }
-
                 //Add suppression
                 CompSuppressable compSuppressable = pawn.TryGetComp<CompSuppressable>();
-                if (compSuppressable != null && !pawn.Downed)
+                if (compSuppressable != null)
                 {
                     if (shield == null || (shield != null && shield?.ShieldState == ShieldState.Resetting))
                     {
-                        float suppressionAmount = def.projectile.damageAmountBase;
+                        /*
+                        if (pawn.skills.GetSkill(SkillDefOf.Shooting).level >= 1)
+                        {
+                            suppressionAmount = (def.projectile.damageAmountBase * (1f - ((pawn.skills.GetSkill(SkillDefOf.Shooting).level) / 100) * 3));
+                        }
+                        else suppressionAmount = def.projectile.damageAmountBase;
+                        */
+                        suppressionAmount = def.projectile.damageAmountBase;
                         ProjectilePropertiesCR propsCR = def.projectile as ProjectilePropertiesCR;
                         float penetrationAmount = propsCR == null ? 0f : propsCR.armorPenetration;
                         suppressionAmount *= 1 - Mathf.Clamp(compSuppressable.parentArmor - penetrationAmount, 0, 1);
                         compSuppressable.AddSuppression(suppressionAmount, origin.ToIntVec3());
                     }
                 }
-
 
                 //Check horizontal distance
                 Vector3 dest = destination;
@@ -486,6 +494,18 @@ namespace Combat_Realism
             if (ambientSustainer != null)
             {
                 ambientSustainer.Maintain();
+            }
+
+            // attack shooting expression
+                AGAIN: string rndswear = RulePackDef.Named("AttackMote").Rules.RandomElement().Generate();
+                if (rndswear == "[swear]" || rndswear == "" || rndswear == " ")
+                {
+                    goto AGAIN;
+                }
+
+            if (Rand.Value > 0.7 && this.launcher.def.race.Humanlike && (this.assignedTarget != null && this.assignedTarget.def.race.Humanlike))
+            {
+                if (Gen.IsHashIntervalTick(this.launcher, 120)) MoteMaker.ThrowText(this.launcher.Position.ToVector3Shifted(), rndswear);
             }
         }
 

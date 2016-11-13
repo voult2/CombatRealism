@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using CommunityCoreLibrary;
+using Combat_Realism.Detours;
 using RimWorld;
 using Verse;
 
 namespace Combat_Realism
 {
-    [SpecialInjectorSequencer(InjectionSequence.MainLoad, InjectionTiming.SpecialInjectors)]
     public class TabInjector : SpecialInjector
     {
         #region Methods
