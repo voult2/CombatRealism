@@ -72,7 +72,6 @@ namespace Combat_Realism
                 tickAction = delegate
                 {
                     ticksLeft--;
-                    // Shame, shame, shame, shame!
                     if (willPee)
                     {
                         if (ticksLeft % maxTicks == maxTicks - 1)
@@ -122,6 +121,9 @@ namespace Combat_Realism
                     };
                     toil.defaultCompleteMode = ToilCompleteMode.PatherArrival;
 
+                    // Shame, shame, shame, shame!
+                    if (willPee)
+                        toil.WithEffect("Pee", TargetIndex.A);
 
                     yield return toil;
 

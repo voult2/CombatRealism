@@ -28,11 +28,6 @@ namespace Combat_Realism
                 return null;
             }
 
-            if (GenAI.EnemyIsNear(pawn, 4f))
-            {
-                return null;
-            }
-
             //Sanity check
             if (pawn.Position == coverPosition)
             {

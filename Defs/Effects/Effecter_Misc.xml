@@ -7,8 +7,8 @@
       <li>
         <subEffecterClass>SubEffecter_SprayerContinuous</subEffecterClass>
         <scale>
-          <min>0.2</min>
-          <max>0.4</max>
+          <min>0.1</min>
+          <max>0.25</max>
         </scale>
         <ticksBetweenMotes>5</ticksBetweenMotes>
         <positionLerpFactor>0.35</positionLerpFactor>

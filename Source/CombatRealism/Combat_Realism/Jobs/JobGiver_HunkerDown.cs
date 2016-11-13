@@ -19,14 +19,9 @@ namespace Combat_Realism
                 return null;
             }
 
-            if (GenAI.EnemyIsNear(pawn, 4f))
-            {
-                return null;
-            }
-
             return new Job(CR_JobDefOf.HunkerDown, pawn)
             {
-                //                playerForced = true,
+//                playerForced = true,
             };
         }
     }
