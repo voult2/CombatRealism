@@ -312,6 +312,7 @@
     </Content>
     <Content Include="..\..\Defs\JobDefs\Jobs_CR.xml">
       <Link>Defs\JobDefs\Jobs_CR.xml</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\..\Defs\MainTabDefs\OutfitsAndLoadouts.xml">
       <Link>Defs\MainTabDefs\OutfitsAndLoadouts.xml</Link>
@@ -616,6 +617,12 @@
     <Content Include="..\..\Languages\English\Keyed\Text.xml">
       <Link>Languages\English\Keyed\Text.xml</Link>
     </Content>
+    <Content Include="..\..\Languages\English\Strings\NameBanks\SwearLibrary.txt">
+      <Link>Languages\English\Strings\NameBanks\SwearLibrary.txt</Link>
+    </Content>
+    <Content Include="..\..\Languages\English\Strings\NameBanks\SwearLibrarySuppressed.txt">
+      <Link>Languages\English\Strings\NameBanks\SwearLibrarySuppressed.txt</Link>
+    </Content>
     <Content Include="..\..\Languages\German\Keyed\Text.xml">
       <Link>Languages\German\Keyed\Text.xml</Link>
     </Content>
@@ -644,7 +651,7 @@
       <Link>Languages\Korean\Keyed\Keys.xml</Link>
     </Content>
     <Content Include="..\..\Languages\Russian\defInjected\DamageDefs\Damages_LocalInjury.xml">
-      <Link>Languages\Russian\NewFolder1\Damages_LocalInjury.xml</Link>
+      <Link>Languages\Russian\DamageDefs\Damages_LocalInjury.xml</Link>
     </Content>
     <Content Include="..\..\Languages\Russian\defInjected\HediffDefs\Hediffs_GlobalMisc.xml">
       <Link>Languages\Russian\defInjected\Hediffs_GlobalMisc.xml</Link>
@@ -783,6 +790,12 @@
     </Content>
     <Content Include="..\..\Languages\Russian\Keyed\Keys.xml">
       <Link>Languages\Russian\Keyed\Keys.xml</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\Strings\NameBanks\SwearLibrary.txt">
+      <Link>Languages\Russian\Strings\SwearLibrary.txt</Link>
+    </Content>
+    <Content Include="..\..\Languages\Russian\Strings\NameBanks\SwearLibrarySuppressed.txt">
+      <Link>Languages\Russian\Strings\SwearLibrarySuppressed.txt</Link>
     </Content>
     <Content Include="..\..\Languages\Swedish\Keyed\Text.xml">
       <Link>Languages\Swedish\Keyed\Text.xml</Link>
