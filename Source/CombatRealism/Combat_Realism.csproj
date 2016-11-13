@@ -152,7 +152,6 @@
     <None Include="Combat_Realism\ThinkNodes\ThinkNode_ConditionalNoJob.cs" />
     <Compile Include="Combat_Realism\Tools\Tools.cs" />
     <Compile Include="Combat_Realism\TurretTop.cs" />
-    <Compile Include="Detours\DetourInjector.cs" />
     <Compile Include="Combat_Realism\FireMode.cs" />
     <Compile Include="Combat_Realism\Projectiles\BulletCR.cs" />
     <Compile Include="Combat_Realism\Comps\CompFireModes.cs" />
@@ -558,6 +557,7 @@
     </Content>
     <Content Include="..\..\Defs\ThingDefs_Items\Items_Resource_Manufactured.xml">
       <Link>Defs\ThingDefs_Items\Items_Resource_Manufactured.xml</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\..\Defs\ThingDefs_Items\Items_Resource_RawPlant.xml">
       <Link>Defs\ThingDefs_Items\Items_Resource_RawPlant.xml</Link>
