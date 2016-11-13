@@ -55,6 +55,10 @@
       <HintPath>_DLLs\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Community Core Library">
+      <HintPath>_DLLs\Community Core Library.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -148,17 +152,6 @@
     <None Include="Combat_Realism\ThinkNodes\ThinkNode_ConditionalNoJob.cs" />
     <Compile Include="Combat_Realism\Tools\Tools.cs" />
     <Compile Include="Combat_Realism\TurretTop.cs" />
-    <Compile Include="DetoursCore\Comps\CompMilkableRenameable.cs" />
-    <Compile Include="DetoursCore\Comps\CompRangedGizmoGiver.cs" />
-    <Compile Include="DetoursCore\Comps\CompPawnGizmo.cs" />
-    <Compile Include="DetoursCore\Comps\CompProperties_MilkableRenameable.cs" />
-    <Compile Include="DetoursCore\Comps\CompProperties_ShearableRenameable.cs" />
-    <Compile Include="DetoursCore\Comps\Def_Extensions.cs" />
-    <Compile Include="DetoursCore\Comps\CompShearableRenameable.cs" />
-    <Compile Include="DetoursCore\SpecialInjector.cs" />
-    <Compile Include="DetoursCore\Detours.cs" />
-    <Compile Include="DetoursCore\Initializer.cs" />
-    <Compile Include="DetoursCore\InitializerBehaviour.cs" />
     <Compile Include="Detours\DetourInjector.cs" />
     <Compile Include="Combat_Realism\FireMode.cs" />
     <Compile Include="Combat_Realism\Projectiles\BulletCR.cs" />

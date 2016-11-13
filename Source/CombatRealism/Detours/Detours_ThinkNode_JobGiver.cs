@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using Verse;
 using Verse.AI;
+using CommunityCoreLibrary;
 
 namespace Combat_Realism
 {
@@ -17,6 +18,7 @@ namespace Combat_Realism
         };
 
 
+        [DetourClassMethod(typeof(ThinkNode_JobGiver), "TryIssueJobPackage", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         public override ThinkResult TryIssueJobPackage(Pawn pawn)
         {
             Job job = this.TryGiveJob(pawn);

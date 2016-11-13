@@ -215,6 +215,7 @@
       </buildingTags>
     </building>
 		<menuHidden>true</menuHidden>
+    <researchPrerequisites><li>CommunityCoreLibraryResearchLocker</li></researchPrerequisites>
   </ThingDef>
 
 
@@ -230,6 +231,7 @@
       </buildingTags>
     </building>
 		<menuHidden>true</menuHidden>
+    <researchPrerequisites><li>CommunityCoreLibraryResearchLocker</li></researchPrerequisites>
   </ThingDef>
 
   <!--==================== Traps ======================== -->

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using CommunityCoreLibrary;
 using RimWorld;
 using Verse;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Combat_Realism.Detours
         private static readonly FieldInfo innerListFieldInfo = typeof(ThingContainer).GetField("innerList", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo maxStacksFieldInfo = typeof(ThingContainer).GetField("maxStacks", BindingFlags.Instance | BindingFlags.NonPublic);
 
+    //    [DetourClassMethod(typeof(ThingContainer), "TryAdd", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static bool TryAdd(this ThingContainer _this, Thing item)
         {
             if (item.stackCount > _this.AvailableStackSpace)
@@ -79,6 +81,7 @@ namespace Combat_Realism.Detours
             return true;
         }
 
+        //   [DetourClassMethod(typeof(ThingContainer), "TryDrop", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static bool TryDrop(this ThingContainer _this, Thing thing, IntVec3 dropLoc, ThingPlaceMode mode, int count, out Thing resultingThing, Action<Thing, int> placedAction = null)
         {
             if (thing.stackCount < count)
@@ -117,6 +120,7 @@ namespace Combat_Realism.Detours
             }
         }
 
+        [DetourClassMethod(typeof(ThingContainer), "Get", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static Thing Get(this ThingContainer _this, Thing thing, int count)
         {
             if (count > thing.stackCount)
@@ -143,6 +147,7 @@ namespace Combat_Realism.Detours
             return thing2;
         }
 
+        [DetourClassMethod(typeof(ThingContainer), "Remove", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static void Remove(this ThingContainer _this, Thing item)
         {
             if (item.holder == _this)

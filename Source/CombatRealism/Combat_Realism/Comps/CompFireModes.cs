@@ -8,7 +8,7 @@ using Verse;
 
 namespace Combat_Realism
 {
-    public class CompFireModes : CompRangedGizmoGiver
+    public class CompFireModes : CommunityCoreLibrary.CompRangedGizmoGiver
     {
         public CompProperties_FireModes Props
         {

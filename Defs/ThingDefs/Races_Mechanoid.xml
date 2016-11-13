@@ -14,8 +14,8 @@
       <li>ITab_Pawn_Health</li>
       <li>ITab_Pawn_Needs</li>
       <li>ITab_Pawn_Character</li>
-	  <li>Combat_Realism.ITab_Inventory</li>
       <li>ITab_Pawn_Training</li>
+      <li>ITab_Pawn_Gear</li>
       <li>ITab_Pawn_Guest</li>
       <li>ITab_Pawn_Prisoner</li>
       <li>ITab_Pawn_Social</li>
@@ -23,16 +23,7 @@
     <comps>
       <li>
         <compClass>CompAttachBase</compClass>
-	 </li>
-      <li>
-        <compClass>Combat_Realism.CompPawnGizmo</compClass>
-	 </li>
-      <li>
-        <compClass>Combat_Realism.CompSuppressable</compClass>	
-	 </li>
-      <li>
-        <compClass>Combat_Realism.CompInventory</compClass>
-	 </li>
+      </li>
     </comps>
     <drawGUIOverlay>true</drawGUIOverlay>
   </ThingDef>

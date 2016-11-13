@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CommunityCoreLibrary;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -16,6 +17,7 @@ namespace Combat_Realism.Detours
             return pawn.IsColonistPlayerControlled && pawn.drafter.CanTakeOrderedJob();
         }
 
+        [DetourClassMethod(typeof(FloatMenuMakerMap), "ChoicesAtFor", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static List<FloatMenuOption> ChoicesAtFor(Vector3 clickPos, Pawn pawn)
         {
             IntVec3 clickCell = IntVec3.FromVector3(clickPos);

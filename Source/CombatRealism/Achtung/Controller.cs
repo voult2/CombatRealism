@@ -63,7 +63,7 @@ namespace AchtungModCR
         {
             Messages.Message("AchtungOptions".Translate(), MessageSound.Benefit);
             string state = Settings.instance.modActive ? "" : "AchtungOff".Translate();
-         //   Messages.Message("AchtungVersion".Translate(Tools.Version, state), MessageSound.Silent);
+            Messages.Message("AchtungVersion".Translate(Tools.Version, state), MessageSound.Silent);
         }
 
         public void InstallJobDefs()

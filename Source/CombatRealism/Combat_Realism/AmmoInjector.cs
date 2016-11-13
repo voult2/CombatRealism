@@ -5,10 +5,11 @@ using System.Text;
 using RimWorld;
 using Verse;
 using UnityEngine;
-using Combat_Realism.Detours;
+using CommunityCoreLibrary;
 
 namespace Combat_Realism
 {
+    [SpecialInjectorSequencer(InjectionSequence.MainLoad, InjectionTiming.SpecialInjectors)]
     public class AmmoInjector : SpecialInjector
     {
         private const string enableTradeTag = "CR_AutoEnableTrade";             // The trade tag which designates ammo defs for being automatically switched to Tradeability.Stockable
