@@ -160,7 +160,7 @@ namespace Combat_Realism
                 Pawn pawn = parent as Pawn;
                 if (pawn != null)
                 {
-                    if (pawn.MentalState.def != MentalStateDefOf.Berserk || pawn.MentalState.def != MentalStateDefOf.PanicFlee)
+                    if (pawn.MentalStateDef != null && (pawn.MentalState.def != MentalStateDefOf.Berserk || pawn.MentalState.def != MentalStateDefOf.PanicFlee))
                     {
                         if (pawn.jobs != null &&
                             (pawn.CurJob.def != CR_JobDefOf.HunkerDown || pawn.CurJob.def != CR_JobDefOf.RunForCover))

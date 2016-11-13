@@ -98,6 +98,7 @@ namespace Combat_Realism
                 return 2f;
             }
         }
+
         protected float aimingAccuracy
         {
             get
@@ -110,6 +111,7 @@ namespace Combat_Realism
                 return 0.75f;
             }
         }
+
         protected float aimEfficiency
         {
             get

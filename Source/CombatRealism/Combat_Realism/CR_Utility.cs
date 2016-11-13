@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Combat_Realism
 {
-   public static class CR_Utility
+    public static class CR_Utility
     {
         #region Misc
 
@@ -107,7 +107,7 @@ namespace Combat_Realism
             moteThrown.exactPosition = loc;
             moteThrown.airTimeLeft = 60;
             moteThrown.SetVelocity((float)Rand.Range(160, 200), Rand.Range(0.7f, 0.5f));
-       //     moteThrown.SetVelocityAngleSpeed((float)Rand.Range(160, 200), Rand.Range(0.020f, 0.0115f));
+            //     moteThrown.SetVelocityAngleSpeed((float)Rand.Range(160, 200), Rand.Range(0.020f, 0.0115f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
         }
         #endregion
@@ -120,7 +120,14 @@ namespace Combat_Realism
         public const float collisionWidthFactorHumanoid = 0.25f;
 
         // added support Diana's Orassans & hardcore sk bodies. 
-        public static readonly String[] humanoidBodyList = { "Human", "Scyther", "Orassan", "Ogre", "HumanoidTerminator" };
+        public static readonly string[] humanoidBodyList =
+            {
+            "Human",
+            "Scyther",
+            "Orassan",
+            "Ogre",
+            "HumanoidTerminator"
+        };
         /// <summary>
         /// Returns the collision height of a Thing
         /// </summary>

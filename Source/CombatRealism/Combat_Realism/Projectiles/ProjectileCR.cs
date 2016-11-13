@@ -326,20 +326,26 @@ namespace Combat_Realism
             if (pawn != null)
             {
                 PersonalShield shield = null;
-                // check for shield user
-                List<Apparel> wornApparel = pawn.apparel.WornApparel;
-                for (int i = 0; i < wornApparel.Count; i++)
+                if (pawn.RaceProps.Humanlike)
                 {
-                    if (wornApparel[i] is PersonalShield)
+                    // check for shield user
+                    if (pawn.equipment.Primary == null || pawn.equipment.Primary != null && !pawn.equipment.Primary.def.IsRangedWeapon)
                     {
-                        shield = (PersonalShield)wornApparel[i];
-                        break;
+                        List<Apparel> wornApparel = pawn.apparel.WornApparel;
+                        for (int i = 0; i < wornApparel.Count; i++)
+                        {
+                            if (wornApparel[i] is PersonalShield)
+                            {
+                                shield = (PersonalShield)wornApparel[i];
+                                break;
+                            }
+                        }
                     }
                 }
 
                 //Add suppression
                 CompSuppressable compSuppressable = pawn.TryGetComp<CompSuppressable>();
-                if (compSuppressable != null)
+                if (compSuppressable != null && !pawn.Downed)
                 {
                     if (shield == null || (shield != null && shield?.ShieldState == ShieldState.Resetting))
                     {
@@ -350,6 +356,7 @@ namespace Combat_Realism
                         compSuppressable.AddSuppression(suppressionAmount, origin.ToIntVec3());
                     }
                 }
+
 
                 //Check horizontal distance
                 Vector3 dest = destination;
