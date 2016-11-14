@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Combat_Realism.Combat_Realism;
 using RimWorld;
 using Verse;
 using UnityEngine;
+using Verse.AI;
 
 namespace Combat_Realism
 {
@@ -167,7 +169,7 @@ namespace Combat_Realism
                             pawn.jobs.StopAll(false);
                         }
                     }
-                    else 
+                    else
                     {
                         currentSuppressionInt = 0f;
                     }
@@ -219,19 +221,28 @@ namespace Combat_Realism
             //Throw mote at set interval
             if (Gen.IsHashIntervalTick(parent, ticksPerMote))
             {
-                if (isHunkering || isSuppressed)
+                // suppressed expression
+                if (parent.def.race.Humanlike)
                 {
-                    // suppressed expression
-                    if (parent.def.race.Humanlike)
+                    if (isHunkering || isSuppressed)
                     {
-                        AGAIN: string rndswearsuppressed = RulePackDef.Named("SuppressedMote").Rules.RandomElement().Generate();
-                        if (rndswearsuppressed == "[suppressed]" || rndswearsuppressed == "" || rndswearsuppressed == " ")
+                        Color color = Color.Lerp(new Color(0.8f, 0.8f, 0, 1f), new Color(0.8f, 0.3f, 0, 1), currentSuppression);
+
+                        if (Gen.IsHashIntervalTick(parent, 80))
                         {
-                            goto AGAIN;
+                            CR_MoteMaker.ThrowSwearIcon(parent, Motes_Swearing.SwearList.RandomElement(), color);
+                       //todo: make this work
+                            //      CR_MoteMaker.ThrowSwearIcon(parent, suppressorLoc.GetFirstPawn(), Motes_Swearing.SwearList.RandomElement(), color);
                         }
-                        if (Gen.IsHashIntervalTick(this.parent, 240)) MoteMaker.ThrowText(this.parent.Position.ToVector3Shifted(), rndswearsuppressed);
+                        //AGAIN:string rndswearsuppressed = CR_RulePackDefOf.SuppressedMote.Rules.RandomElement().Generate();
+
+                        //if (rndswearsuppressed == "[suppressed]" || rndswearsuppressed == "" || rndswearsuppressed == " ")
+                        //{
+                        //    goto AGAIN;
+                        //}
+                        //   if (Gen.IsHashIntervalTick(this.parent, 240)) MoteMaker.ThrowText(this.parent.Position.ToVector3Shifted(), rndswearsuppressed);
                     }
-                    //standart    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_SuppressedMote".Translate());
+                    //standard    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_SuppressedMote".Translate());
                 }
             }
         }

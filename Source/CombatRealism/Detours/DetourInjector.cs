@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using Combat_Realism.Combat_Realism;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -16,20 +17,25 @@ namespace Combat_Realism.Detours
     {
         public override bool Inject()
         {
-          //// Detour VerbsTick
-          //if (!CommunityCoreLibrary.Detours.TryDetourFromTo(typeof(VerbTracker).GetMethod("VerbsTick", BindingFlags.Instance | BindingFlags.Public),
-          //    typeof(Detours_VerbTracker).GetMethod("VerbsTick", BindingFlags.Static | BindingFlags.NonPublic)))
-          //    return false;
+            if (Motes_Swearing.SwearList.Count == 0)
+            {
+                Motes_Swearing.InitializeSwearList();
+            }
 
-          //// Detour TooltipUtility
-          //if (!CommunityCoreLibrary.Detours.TryDetourFromTo(typeof(TooltipUtility).GetMethod("ShotCalculationTipString", BindingFlags.Static | BindingFlags.Public),
-          //    typeof(Detours_TooltipUtility).GetMethod("ShotCalculationTipString", BindingFlags.Static | BindingFlags.NonPublic)))
-          //    return false;
+            //// Detour VerbsTick
+            //if (!CommunityCoreLibrary.Detours.TryDetourFromTo(typeof(VerbTracker).GetMethod("VerbsTick", BindingFlags.Instance | BindingFlags.Public),
+            //    typeof(Detours_VerbTracker).GetMethod("VerbsTick", BindingFlags.Static | BindingFlags.NonPublic)))
+            //    return false;
 
-          //// Detour FloatMenuMakerMap
-          //if (!CommunityCoreLibrary.Detours.TryDetourFromTo(typeof(FloatMenuMakerMap).GetMethod("ChoicesAtFor", BindingFlags.Static | BindingFlags.Public),
-          //    typeof(Detours_FloatMenuMakerMap).GetMethod("ChoicesAtFor", BindingFlags.Static | BindingFlags.NonPublic)))
-          //    return false;
+            //// Detour TooltipUtility
+            //if (!CommunityCoreLibrary.Detours.TryDetourFromTo(typeof(TooltipUtility).GetMethod("ShotCalculationTipString", BindingFlags.Static | BindingFlags.Public),
+            //    typeof(Detours_TooltipUtility).GetMethod("ShotCalculationTipString", BindingFlags.Static | BindingFlags.NonPublic)))
+            //    return false;
+
+            //// Detour FloatMenuMakerMap
+            //if (!CommunityCoreLibrary.Detours.TryDetourFromTo(typeof(FloatMenuMakerMap).GetMethod("ChoicesAtFor", BindingFlags.Static | BindingFlags.Public),
+            //    typeof(Detours_FloatMenuMakerMap).GetMethod("ChoicesAtFor", BindingFlags.Static | BindingFlags.NonPublic)))
+            //    return false;
 
             // *************************************
             // *** Detour Inventory methods ***

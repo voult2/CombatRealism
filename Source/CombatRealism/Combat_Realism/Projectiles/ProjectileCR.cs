@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Combat_Realism.Combat_Realism;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -503,9 +504,10 @@ namespace Combat_Realism
                     goto AGAIN;
                 }
 
-            if (Rand.Value > 0.7 && this.launcher.def.race.Humanlike && (this.assignedTarget != null && this.assignedTarget.def.race.Humanlike))
+            if (Rand.Value > 0.7 && launcher.def.race.Humanlike && (assignedTarget != null && assignedTarget.def.race.Humanlike))
             {
-                if (Gen.IsHashIntervalTick(this.launcher, 120)) MoteMaker.ThrowText(this.launcher.Position.ToVector3Shifted(), rndswear);
+                if (Gen.IsHashIntervalTick(launcher, 120)) CR_MoteMaker.ThrowSwearIcon(launcher, Motes_Swearing.SwearList.RandomElement(), Color.white);
+                //   if (Gen.IsHashIntervalTick(launcher, 120)) MoteMaker.ThrowText(launcher.Position.ToVector3Shifted(), rndswear);
             }
         }
 
