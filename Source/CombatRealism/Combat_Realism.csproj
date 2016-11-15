@@ -94,7 +94,6 @@
     <Compile Include="Combat_Realism\DefOfs\CR_JobDefOf.cs" />
     <Compile Include="Combat_Realism\DefOfs\CR_RulePackDefoOf.cs" />
     <Compile Include="Combat_Realism\DefOfs\CR_StatDefOf.cs" />
-    <None Include="Combat_Realism\Designators\Designator_PutInInventory.cs" />
     <Compile Include="Combat_Realism\DefOfs\CR_TaleDefoOf.cs" />
     <Compile Include="Combat_Realism\DefOfs\CR_ThingDefOf.cs" />
     <Compile Include="Combat_Realism\Jobs\JobGiver_ConfigurableHostilityResponse.cs" />
