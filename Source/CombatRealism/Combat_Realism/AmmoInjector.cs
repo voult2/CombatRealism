@@ -9,7 +9,8 @@ using Combat_Realism.Detours;
 
 namespace Combat_Realism
 {
-    public class AmmoInjector : SpecialInjector
+    [StaticConstructorOnStartup]
+    internal static class AmmoInjector
     {
         private const string enableTradeTag = "CR_AutoEnableTrade";             // The trade tag which designates ammo defs for being automatically switched to Tradeability.Stockable
         private const string enableCraftingTag = "CR_AutoEnableCrafting";        // The trade tag which designates ammo defs for having their crafting recipes automatically added to the crafting table
@@ -24,7 +25,18 @@ namespace Combat_Realism
             }
         }
 
-        public override bool Inject()
+        static AmmoInjector()
+        {
+            LongEventHandler.QueueLongEvent(Inject, "LibraryStartup", false, null);
+        }
+
+        public static void Inject()
+        {
+            if (InjectAmmos()) Log.Message("Detour Core injected.");
+            else Log.Error("Detour Core failed to get injected.");
+        }
+
+        public static bool InjectAmmos()
         {
             // Initialize list of all weapons so we don't have to iterate through all the defs, all the time
             CR_Utility.allWeaponDefs.Clear();

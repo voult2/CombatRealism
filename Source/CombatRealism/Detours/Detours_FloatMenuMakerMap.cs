@@ -549,7 +549,7 @@ namespace Combat_Realism.Detours
                                 }));
                             opts.Add(pickUpStackOption);
 
-                            FloatMenuOption pickUpHalfStackOption = new FloatMenuOption("CR_PickUpHalf" + " " + item.LabelShort + " x" + (numToCarry / 2).ToString(),
+                            FloatMenuOption pickUpHalfStackOption = new FloatMenuOption("CR_PickUpHalf".Translate() + " " + item.LabelShort + " x" + (numToCarry / 2).ToString(),
                                new Action(delegate
                                {
                                    item.SetForbidden(false);
