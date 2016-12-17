@@ -15,6 +15,7 @@ namespace Combat_Realism.Detours
         {
             float reqNutrition = JobDriver_InteractAnimal.RequiredNutritionPerFeed(tamee) * 2f * 4f;
             Thing thing = FoodUtility.BestFoodSourceOnMap(pawn, tamee, false, FoodPreferability.RawTasty, false, false, false, false, false, false);
+
             if (thing == null)
             {
                 return null;
@@ -39,7 +40,7 @@ namespace Combat_Realism.Detours
 
             return new Job(JobDefOf.TakeInventory, thing)
             {
-                maxNumToCarry = numToCarry
+                count = numToCarry
             };
         }
     }

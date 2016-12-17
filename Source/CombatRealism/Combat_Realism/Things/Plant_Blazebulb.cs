@@ -16,14 +16,14 @@ namespace Combat_Realism
         public override void TickLong()
         {
             base.TickLong();
-            float temperature = Position.GetTemperature();
+            float temperature = Position.GetTemperature(base.Map);
             if (temperature > ignitionTemp)
             {
                 float ignitionChance = 0.005f * Mathf.Pow((temperature - ignitionTemp), 2);
                 float rand = UnityEngine.Random.value;
                 if(UnityEngine.Random.value < ignitionChance)
                 {
-                    FireUtility.TryStartFireIn(Position, 0.1f);
+                    FireUtility.TryStartFireIn(Position, base.Map, 0.1f);
                 }
             }
         }
@@ -34,7 +34,7 @@ namespace Combat_Realism
             if(dinfo.Def != DamageDefOf.Rotting)
             {
                 // Find existing fuel puddle or spawn one if needed
-                Thing fuel = Position.GetThingList().FirstOrDefault(x => x.def == CR_ThingDefOf.Napalm_Fuel);
+                Thing fuel = Position.GetThingList(this.Map).FirstOrDefault(x => x.def == CR_ThingDefOf.Napalm_Fuel);
                 int fuelHPFromDamage = Mathf.CeilToInt(fuel.MaxHitPoints * Mathf.Clamp01(totalDamageDealt / MaxHitPoints));
                 if (fuel != null)
                 {
@@ -43,7 +43,7 @@ namespace Combat_Realism
                 else
                 {
                     fuel = ThingMaker.MakeThing(CR_ThingDefOf.Napalm_Fuel);
-                    GenSpawn.Spawn(fuel, Position);
+                    GenSpawn.Spawn(fuel, Position, this.Map);
                     fuel.HitPoints = fuelHPFromDamage;
                 }
             }

@@ -546,7 +546,7 @@ namespace Combat_Realism
             {
                 // gray out weapons not in stock
                 Color baseColor = GUI.color;
-                if (Find.ListerThings.AllThings.FindAll(x => x.def == _source[i]).Count <= 0)
+                if (Find.VisibleMap.listerThings.AllThings.FindAll(x => x.def == _source[i]).Count <= 0)
                     GUI.color = Color.gray;
 
                 Rect row = new Rect(0f, i * _rowHeight, canvas.width, _rowHeight);

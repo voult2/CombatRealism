@@ -43,7 +43,7 @@
         <verbClass>Combat_Realism.Verb_MarkForArtilleryCR</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Dummy</projectileDef>
-        <warmupTicks>600</warmupTicks>
+        <warmupTime>600</warmupTime>
         <range>107</range>
         <muzzleFlashScale>0</muzzleFlashScale>
 				<onlyManualCast>true</onlyManualCast>

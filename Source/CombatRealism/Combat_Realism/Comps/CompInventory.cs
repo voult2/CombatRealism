@@ -107,7 +107,7 @@ namespace Combat_Realism
             {
                 if (parentPawn.inventory != null)
                 {
-                    return parentPawn.inventory.container;
+                    return parentPawn.inventory.innerContainer;
                 }
                 return null;
             }
@@ -165,12 +165,12 @@ namespace Combat_Realism
             }
 
             // Add inventory items
-            if (parentPawn.inventory != null && parentPawn.inventory.container != null)
+            if (parentPawn.inventory != null && parentPawn.inventory.innerContainer != null)
             {
                 ammoListCached.Clear();
                 meleeWeaponListCached.Clear();
                 rangedWeaponListCached.Clear();
-                foreach (Thing thing in parentPawn.inventory.container)
+                foreach (Thing thing in parentPawn.inventory.innerContainer)
                 {
                     // Check for weapons
                     ThingWithComps eq = thing as ThingWithComps;
@@ -309,7 +309,7 @@ namespace Combat_Realism
                 ThingWithComps oldEq;
                 if (!parentPawn.equipment.TryTransferEquipmentToContainer(parentPawn.equipment.Primary, container, out oldEq))
                 {
-                    if (parentPawn.Position.InBounds())
+                    if (parentPawn.Position.InBounds(parentPawn.Map))
                     {
                         ThingWithComps unused;
                         parentPawn.equipment.TryDropEquipment(oldEq, out unused, parentPawn.Position);
@@ -353,7 +353,7 @@ namespace Combat_Realism
             }
             parentPawn.equipment.AddEquipment((ThingWithComps)container.Get(newEq, 1));
             if (newEq.def.soundInteract != null)
-                newEq.def.soundInteract.PlayOneShot(parent.Position);
+                newEq.def.soundInteract.PlayOneShot(new TargetInfo(parent.Position, parent.MapHeld, false));
         }
 
         public override void CompTick()

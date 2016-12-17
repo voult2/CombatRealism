@@ -23,7 +23,8 @@ namespace Combat_Realism
         public const float minSuppressionDist = 10f;        //Minimum distance to be suppressed from, so melee won't be suppressed if it closes within this distance
         private const float maxSuppression = 100f;          //Cap to prevent suppression from building indefinitely
         private const float suppressionDecayRate = 7.5f;    //How much suppression decays per second
-        private const int ticksPerMote = 150;               //How many ticks between throwing a mote
+        private int ticksPerMote = 200;               //How many ticks between throwing a mote
+        public static readonly String[] robotBodyList = { "AIRobot", "HumanoidTerminator" };
 
         // --------------- Location calculations ---------------
 
@@ -217,23 +218,22 @@ namespace Combat_Realism
                     locSuppressionAmount = 0;
                 }
             }
+
             //Throw mote at set interval
-            if (Gen.IsHashIntervalTick(parent, ticksPerMote))
+            if (Gen.IsHashIntervalTick(parent, ticksPerMote + Rand.Range(30, 300))
+                && parent.def.race.Humanlike && !robotBodyList.Contains(parent.def.race.body.defName))
             {
                 if (isHunkering || isSuppressed)
                 {
-                    // suppressed expression
-                    if (parent.def.race.Humanlike)
+                    AGAIN: string rndswearsuppressed = RulePackDef.Named("SuppressedMote").Rules.RandomElement().Generate();
+
+                    if (rndswearsuppressed == "[suppressed]" || rndswearsuppressed == "" || rndswearsuppressed == " ")
                     {
-                        AGAIN: string rndswearsuppressed = RulePackDef.Named("SuppressedMote").Rules.RandomElement().Generate();
-                        if (rndswearsuppressed == "[suppressed]" || rndswearsuppressed == "" || rndswearsuppressed == " ")
-                        {
-                            goto AGAIN;
-                        }
-                        if (Gen.IsHashIntervalTick(this.parent, 400)) MoteMaker.ThrowText(this.parent.Position.ToVector3Shifted(), rndswearsuppressed);
+                        goto AGAIN;
                     }
-                    //standart    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_SuppressedMote".Translate());
+                    MoteMaker.ThrowText(this.parent.Position.ToVector3Shifted(), Find.VisibleMap, rndswearsuppressed);
                 }
+                //standard    MoteMaker.ThrowText(parent.Position.ToVector3Shifted(), "CR_SuppressedMote".Translate());
             }
         }
     }

@@ -14,7 +14,7 @@ namespace Combat_Realism
             //    return null;
             //}
 
-            if (!pawn.Position.Standable() && !pawn.Position.ContainsStaticFire())
+            if (!pawn.Position.Standable(pawn.Map) && !pawn.Position.ContainsStaticFire(pawn.Map))
             {
                 return null;
             }

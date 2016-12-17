@@ -114,7 +114,7 @@
         <verbClass>Combat_Realism.Verb_ShootCR</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Projectile_Arrow_Stone</projectileDef>
-        <warmupTicks>60</warmupTicks>
+        <warmupTime>60</warmupTime>
         <range>23</range>
         <soundCast>BowSmall</soundCast>
       </li>
@@ -166,7 +166,7 @@
         <verbClass>Combat_Realism.Verb_ShootCROneUse</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Pilum_Thrown</projectileDef>
-        <warmupTicks>90</warmupTicks>
+        <warmupTime>90</warmupTime>
         <range>6</range>
         <!--<soundCast>Interact_BeatFire</soundCast>-->
       </li>
@@ -207,7 +207,7 @@
         <verbClass>Combat_Realism.Verb_ShootCR</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Projectile_GreatArrow_Stone</projectileDef>
-        <warmupTicks>80</warmupTicks>
+        <warmupTime>80</warmupTime>
         <range>30</range>
         <soundCast>BowLarge</soundCast>
       </li>

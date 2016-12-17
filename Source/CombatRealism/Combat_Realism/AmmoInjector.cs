@@ -32,8 +32,8 @@ namespace Combat_Realism
 
         public static void Inject()
         {
-            if (InjectAmmos()) Log.Message("Detour Core injected.");
-            else Log.Error("Detour Core failed to get injected.");
+            if (InjectAmmos()) Log.Message("Combat Realism :: Ammo injected");
+            else Log.Error("Combat Realism :: Ammo injector failed to get injected");
         }
 
         public static bool InjectAmmos()

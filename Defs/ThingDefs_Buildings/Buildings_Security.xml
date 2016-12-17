@@ -122,7 +122,7 @@
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Gun_TurretImprovised</turretGunDef>
-      <turretBurstCooldownTicks>90</turretBurstCooldownTicks>
+      <turretBurstCooldownTime>90</turretBurstCooldownTime>
       <turretTopgraphicPath>Things/Building/Security/TurretImprovised_Top</turretTopgraphicPath>
     </building>
     <designationHotKey>Misc2</designationHotKey>
@@ -178,8 +178,8 @@
     <building>
       <turretGunDef>Artillery_81mmMortar</turretGunDef>
       <turretShellDef>ArtilleryShell</turretShellDef>
-      <turretBurstWarmupTicks>300</turretBurstWarmupTicks>
-      <turretBurstCooldownTicks>300</turretBurstCooldownTicks>
+      <turretBurstwarmupTime>300</turretBurstwarmupTime>
+      <turretBurstCooldownTime>300</turretBurstCooldownTime>
       <turretTopgraphicPath>Things/Building/Security/TurretMortarBomb_Top</turretTopgraphicPath>
     </building>
     <placeWorkers>

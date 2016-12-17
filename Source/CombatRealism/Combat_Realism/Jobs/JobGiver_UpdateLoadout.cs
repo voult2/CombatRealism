@@ -59,7 +59,7 @@ namespace Combat_Realism
                     {
                         ItemPriority curPriority = ItemPriority.None;
                         Thing curThing = null;
-                        int numCarried = inventory.container.NumContained(curSlot.Def);
+                        int numCarried = inventory.container.TotalStackCountOfDef(curSlot.Def);
 
                         // Add currently equipped gun
                         if (pawn.equipment != null && pawn.equipment.Primary != null)
@@ -70,6 +70,7 @@ namespace Combat_Realism
                         {
                             curThing = GenClosest.ClosestThingReachable(
                                 pawn.Position,
+                                pawn.Map,
                                 ThingRequest.ForDef(curSlot.Def),
                                 PathEndMode.ClosestTouch,
                                 TraverseParms.For(pawn, Danger.None, TraverseMode.ByPawn),
@@ -79,7 +80,8 @@ namespace Combat_Realism
                             else
                             {
                                 curThing = GenClosest.ClosestThingReachable(
-                                    pawn.Position,
+                                    pawn.Position, 
+                                    pawn.Map,
                                     ThingRequest.ForDef(curSlot.Def),
                                     PathEndMode.ClosestTouch,
                                     TraverseParms.For(pawn, Danger.None, TraverseMode.ByPawn),
@@ -140,7 +142,7 @@ namespace Combat_Realism
                     {
                         return true;
                     }
-                    int numContained = inventory.container.NumContained(thing.def);
+                    int numContained = inventory.container.TotalStackCountOfDef(thing.def);
 
                     // Add currently equipped gun
                     if (pawn.equipment != null && pawn.equipment.Primary != null)
@@ -171,7 +173,7 @@ namespace Combat_Realism
                 // Find and drop excess items
                 foreach (LoadoutSlot slot in loadout.Slots)
                 {
-                    int numContained = inventory.container.NumContained(slot.Def);
+                    int numContained = inventory.container.TotalStackCountOfDef(slot.Def);
 
                     // Add currently equipped gun
                     if (pawn.equipment != null && pawn.equipment.Primary != null)
@@ -188,7 +190,7 @@ namespace Combat_Realism
                         if (thing != null)
                         {
                             Thing droppedThing;
-                            if (inventory.container.TryDrop(thing, pawn.Position, ThingPlaceMode.Near, numContained - slot.Count, out droppedThing))
+                            if (inventory.container.TryDrop(thing, pawn.Position, pawn.Map, ThingPlaceMode.Near, numContained - slot.Count, out droppedThing))
                             {
                                 if (droppedThing != null)
                                 {
@@ -218,7 +220,7 @@ namespace Combat_Realism
                 if (thingToRemove != null)
                 {
                     Thing droppedThing;
-                    if (inventory.container.TryDrop(thingToRemove, pawn.Position, ThingPlaceMode.Near, thingToRemove.stackCount, out droppedThing))
+                    if (inventory.container.TryDrop(thingToRemove, pawn.Position, pawn.Map, ThingPlaceMode.Near, thingToRemove.stackCount, out droppedThing))
                     {
                         return HaulAIUtility.HaulToStorageJob(pawn, droppedThing);
                     }
@@ -240,8 +242,8 @@ namespace Combat_Realism
                         return new Job(JobDefOf.Equip, closestThing);
                     }
                     // Take items into inventory if needed
-                    int numContained = inventory.container.NumContained(prioritySlot.Def);
-                    return new Job(JobDefOf.TakeInventory, closestThing) { maxNumToCarry = Mathf.Min(closestThing.stackCount, prioritySlot.Count - numContained, count) };
+                    int numContained = inventory.container.TotalStackCountOfDef(prioritySlot.Def);
+                    return new Job(JobDefOf.TakeInventory, closestThing) { count = Mathf.Min(closestThing.stackCount, prioritySlot.Count - numContained, count) };
                 }
             }
             return null;

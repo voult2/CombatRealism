@@ -143,7 +143,7 @@ namespace Combat_Realism
             currentAimModeInt = availableAimModes.ElementAt(0);
         }
 
-        public override IEnumerable<Command> CompGetGizmosExtra()
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
             if (casterPawn != null && casterPawn.Faction.Equals(Faction.OfPlayer))
             {
