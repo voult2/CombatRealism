@@ -196,7 +196,10 @@ namespace Combat_Realism
                     {
                         // Add item weight
                         newBulk += thing.GetStatValue(CR_StatDefOf.Bulk) * thing.stackCount;
-                        newWeight += thing.GetStatValue(CR_StatDefOf.Weight) * thing.stackCount;
+                        newWeight += thing.GetStatValue(StatDefOf.Mass) * thing.stackCount;
+                       //old newWeight += thing.GetStatValue(CR_StatDefOf.Weight) * thing.stackCount;
+
+
                     }
                     // Update ammo list
                     if (thing.def is AmmoDef)
@@ -237,7 +240,8 @@ namespace Combat_Realism
             }
             else
             {
-                thingWeight = thing.GetStatValue(CR_StatDefOf.Weight);
+                thingWeight = thing.GetStatValue(StatDefOf.Mass);
+              //  thingWeight = thing.GetStatValue(CR_StatDefOf.Weight);
                 thingBulk = thing.GetStatValue(CR_StatDefOf.Bulk);
             }
             // Subtract weight of currently equipped weapon
@@ -257,12 +261,14 @@ namespace Combat_Realism
 
         public static void GetEquipmentStats(ThingWithComps eq, out float weight, out float bulk)
         {
-            weight = eq.GetStatValue(CR_StatDefOf.Weight);
-            bulk = eq.GetStatValue(CR_StatDefOf.Bulk);
+                 weight = eq.GetStatValue(StatDefOf.Mass);
+            //old     weight = eq.GetStatValue(CR_StatDefOf.Weight);
+                 bulk = eq.GetStatValue(CR_StatDefOf.Bulk);
             CompAmmoUser comp = eq.TryGetComp<CompAmmoUser>();
             if (comp != null && comp.currentAmmo != null)
             {
-                weight += comp.currentAmmo.GetStatValueAbstract(CR_StatDefOf.Weight) * comp.curMagCount;
+                weight += comp.currentAmmo.GetStatValueAbstract(StatDefOf.Mass) * comp.curMagCount;
+                //old     weight += comp.currentAmmo.GetStatValueAbstract(CR_StatDefOf.Weight) * comp.curMagCount;
                 bulk += comp.currentAmmo.GetStatValueAbstract(CR_StatDefOf.Bulk) * comp.curMagCount;
             }
         }

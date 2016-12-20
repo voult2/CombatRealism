@@ -56,7 +56,7 @@
 	    <explosionDamage>40</explosionDamage>
 	    <explosionDamageDef>Thermobaric</explosionDamageDef>
 	    <explosionRadius>4.0</explosionRadius>
-	    <damageAdjacentTiles>true</damageAdjacentTiles>
+	    <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
 	    <soundExplode>MortarBomb_Explode</soundExplode>
 	  </li>
     </comps>

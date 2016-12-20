@@ -32,7 +32,7 @@
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
-      <turretBurstCooldownTicks>90</turretBurstCooldownTicks>
+      <turretBurstCooldownTime>1</turretBurstCooldownTime>
     </building>
     <tradeTags>
       <li>CR_Turret</li>
@@ -71,7 +71,7 @@
     <statBases>
       <MaxHitPoints>140</MaxHitPoints>
       <MarketValue>3335</MarketValue>
-      <Weight>20</Weight>
+      <Mass>20</Mass>
       <Bulk>25</Bulk>
     </statBases>
 		<techLevel>Spacer</techLevel>
@@ -104,7 +104,7 @@
       <MarketValue>2150</MarketValue>
       <MaxHitPoints>250</MaxHitPoints>
       <Flammability>0.05</Flammability>
-      <Weight>80</Weight>
+      <Mass>80</Mass>
       <Bulk>100</Bulk>
     </statBases>
 		<techLevel>Spacer</techLevel>
@@ -136,7 +136,7 @@
     <statBases>
       <Flammability>1.0</Flammability>
       <WorkToMake>25000</WorkToMake>
-      <Weight>16.5</Weight>
+      <Mass>16.5</Mass>
       <Bulk>20</Bulk>
     </statBases>
     <description>M240B medium machine gun mounted on a tripod.</description>
@@ -162,7 +162,7 @@
     <statBases>
       <MaxHitPoints>150</MaxHitPoints>
       <WorkToMake>30000</WorkToMake>
-      <Weight>88</Weight>
+      <Mass>88</Mass>
       <Bulk>100</Bulk>
     </statBases>
     <description>KPV heavy machine gun mounted on a tripod.</description>
@@ -191,7 +191,7 @@
     <statBases>
       <MaxHitPoints>250</MaxHitPoints>
       <WorkToMake>50000</WorkToMake>
-      <Weight>1000</Weight>
+      <Mass>1000</Mass>
       <Bulk>1000</Bulk>
     </statBases>
     <description>Old school anti-aircraft cannon. Ineffective against modern aviation but still popular on rimworlds for use against entrenched enemies and vehicles.</description>
@@ -221,7 +221,7 @@
     </graphicData>
     <statBases>
       <WorkToMake>25000</WorkToMake>
-      <Weight>16</Weight>
+      <Mass>16</Mass>
       <Bulk>20</Bulk>
     </statBases>
     <description>Lightweight automatic grenade launcher.</description>

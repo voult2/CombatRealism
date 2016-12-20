@@ -14,8 +14,7 @@ namespace Combat_Realism
 	public class DamageWorker_AddInjuryCR : DamageWorker
 	{
         private const BindingFlags UniversalBindingFlags = BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-        private static readonly PropertyInfo ForceHitPartPropertyInfo = typeof(DamageInfo).GetProperty("ForceHitPart", UniversalBindingFlags);
-
+ 
         private struct LocalInjuryResult
 		{
 			public bool wounded;
@@ -175,8 +174,7 @@ namespace Combat_Realism
                 && pawn.HealthScale <= 0.5001f)
 			{
                 DamageInfo dinfo2 = dinfo;
-                // dinfo2.SetForcedHitPartField(result.lastHitPart.parent); //vanilla
-                ForceHitPartPropertyInfo.SetValue(dinfo2, result.lastHitPart, null); // Fetch forcehitpart
+                dinfo2.SetForcedHitPart(result.lastHitPart.parent); //vanilla
                 this.ApplyDamagePartial(dinfo2, pawn, ref result);
             }
 		}

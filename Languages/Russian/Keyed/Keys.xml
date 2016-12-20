@@ -50,6 +50,6 @@
 	<CR_PutAway>Убрать [{0}]</CR_PutAway>
 	<CR_TamerInventoryFull>невозможно заняться приручением, так как инвентарь полон.</CR_TamerInventoryFull>
 	<CR_DropThingHaul>Выложить</CR_DropThingHaul>
-	
+    <CR_Eat>Съесть</CR_Eat>	
 
 </LanguageData>

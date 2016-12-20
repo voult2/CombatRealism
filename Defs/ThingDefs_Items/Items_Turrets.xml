@@ -14,7 +14,7 @@
     <defName>MinifiedTurret_Blaster</defName>
     <label>charge blaster turret</label>
     <statBases>
-			<Weight>20</Weight>
+			<Mass>20</Mass>
 			<Bulk>25</Bulk>
     </statBases>
   </ThingDef>
@@ -23,7 +23,7 @@
     <defName>MinifiedTurret_Heavy</defName>
     <label>heavy turret</label>
     <statBases>
-			<Weight>80</Weight>
+			<Mass>80</Mass>
 			<Bulk>100</Bulk>
     </statBases>
   </ThingDef>
@@ -32,7 +32,7 @@
     <defName>MinifiedTurret_M240B</defName>
     <label>M240B</label>
     <statBases>
-			<Weight>16.5</Weight>
+			<Mass>16.5</Mass>
 			<Bulk>20</Bulk>
     </statBases>
   </ThingDef>
@@ -41,7 +41,7 @@
     <defName>MinifiedTurret_KPV</defName>
     <label>KPV</label>
     <statBases>
-			<Weight>88</Weight>
+			<Mass>88</Mass>
 			<Bulk>100</Bulk>
     </statBases>
   </ThingDef>
@@ -50,7 +50,7 @@
     <defName>MinifiedTurret_Flak</defName>
     <label>90mm flak turret</label>
     <statBases>
-			<Weight>1000</Weight>
+			<Mass>1000</Mass>
 			<Bulk>1000</Bulk>
     </statBases>
   </ThingDef>
@@ -59,7 +59,7 @@
     <defName>MinifiedTurret_AGSThirty</defName>
     <label>AGS-30</label>
     <statBases>
-			<Weight>16</Weight>
+			<Mass>16</Mass>
 			<Bulk>20</Bulk>
     </statBases>
   </ThingDef>

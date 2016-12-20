@@ -174,37 +174,34 @@ namespace Combat_Realism
             {
                 return damAmountInt;
             }
-
             float damageAmount = (float)damAmountInt;
             StatDef deflectionStat = damageDef.armorCategory.DeflectionStat();
-
             // Get armor penetration value
             float pierceAmount = 0f;
-            if (dinfo.WeaponGear != null)
+            if (dinfo.Instigator != null)
             {
-                ProjectilePropertiesCR projectileProps = dinfo.WeaponGear.Verbs.Find(s => s.projectileDef != null).projectileDef.projectile as ProjectilePropertiesCR;
-                //old    ProjectilePropertiesCR projectileProps = dinfo.WeaponGear.projectile as ProjectilePropertiesCR;
-                if (projectileProps != null)
+                Pawn instigatorPawn = dinfo.Instigator as Pawn;
+                if (instigatorPawn != null && instigatorPawn.jobs.curJob.def != JobDefOf.AttackMelee && dinfo.WeaponGear != null)
                 {
-                    pierceAmount = projectileProps.armorPenetration;
-                }
-                else if (dinfo.Instigator != null)
-                {
-                    Pawn instigatorPawn = dinfo.Instigator as Pawn;
-                    if (instigatorPawn != null)
+                    ProjectilePropertiesCR projectileProps = dinfo.WeaponGear.Verbs.Find(s => s.projectileDef != null).projectileDef.projectile as ProjectilePropertiesCR;
+                    //old    ProjectilePropertiesCR projectileProps = dinfo.WeaponGear.projectile as ProjectilePropertiesCR;
+                    if (projectileProps != null && instigatorPawn != null && instigatorPawn.jobs.curJob.def != JobDefOf.AttackMelee)
                     {
-                        if (instigatorPawn.equipment != null && instigatorPawn.equipment.Primary != null)
-                        {
-                            pierceAmount = instigatorPawn.equipment.Primary.GetStatValue(StatDef.Named("ArmorPenetration"));
-                        }
-                        else
-                        {
-                            pierceAmount = instigatorPawn.GetStatValue(StatDef.Named("ArmorPenetration"));
-                        }
+                        pierceAmount = projectileProps.armorPenetration;
+                    }
+                }
+                else if (instigatorPawn != null && instigatorPawn.jobs.curJob.def == JobDefOf.AttackMelee)
+                {
+                    if (instigatorPawn.equipment != null && instigatorPawn.equipment.Primary != null)
+                    {
+                        pierceAmount = instigatorPawn.equipment.Primary.GetStatValue(StatDef.Named("ArmorPenetration"));
+                    }
+                    else
+                    {
+                        pierceAmount = instigatorPawn.GetStatValue(StatDef.Named("ArmorPenetration"));
                     }
                 }
             }
-
             // Run armor calculations on all apparel
             if (pawn.apparel != null)
             {

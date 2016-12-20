@@ -295,6 +295,12 @@ namespace Combat_Realism
                         SoundDefOf.TickHigh.PlayOneShotOnCamera();
                         InterfaceDropHaul(thing);
                     };
+                    Action eatFood = delegate
+                    {
+                        SoundDefOf.TickHigh.PlayOneShotOnCamera();
+                        InterfaceEatThis(thing);
+                    };
+                    floatOptionList.Add(new FloatMenuOption("CR_Eat".Translate(), eatFood));
                     floatOptionList.Add(new FloatMenuOption("DropThing".Translate(), dropApparel));
                     floatOptionList.Add(new FloatMenuOption("CR_DropThingHaul".Translate(), dropApparelHaul));
 
@@ -537,6 +543,22 @@ namespace Combat_Realism
             }
         }
 
+        private void InterfaceEatThis(Thing t)
+        {
+            ThingWithComps thingWithComps = t as ThingWithComps;
+            Thing food = t as Thing;
+            if (food != null && food.def.ingestible != null && food.def.ingestible.nutrition > 0)
+            {
+                Pawn selPawnForGear = SelPawn;
+                if (selPawnForGear.jobs.CanTakeOrderedJob() && selPawnForGear.RaceProps.EatsFood)
+                {
+                    Job job = new Job(JobDefOf.Ingest, food);
+                    job.count = FoodUtility.WillIngestStackCountOf(selPawnForGear, food.def);
+                    job.playerForced = true;
+                    selPawnForGear.jobs.TryTakeOrderedJob(job);
+                }
+            }
+        }
 
         #endregion Methods
     }

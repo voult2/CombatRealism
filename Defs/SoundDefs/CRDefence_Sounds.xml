@@ -3,6 +3,7 @@
 
   <SoundDef>
     <defName>HeavyMG</defName>
+    <context>MapOnly</context>
     <eventNames />
            <maxVoices>4</maxVoices>
            <maxSimultaneous>1</maxSimultaneous>
@@ -27,6 +28,7 @@
   
   <SoundDef>
     <defName>MediumMG</defName>
+    <context>MapOnly</context>
     <eventNames />
            <maxVoices>4</maxVoices>
            <maxSimultaneous>1</maxSimultaneous>
@@ -51,6 +53,7 @@
   
   <SoundDef>
     <defName>AGS</defName>
+    <context>MapOnly</context>
     <eventNames />
            <maxVoices>4</maxVoices>
            <maxSimultaneous>1</maxSimultaneous>
@@ -75,6 +78,7 @@
   
   <SoundDef>
     <defName>120mm</defName>
+    <context>MapOnly</context>
     <eventNames />
            <maxVoices>4</maxVoices>
            <maxSimultaneous>1</maxSimultaneous>
@@ -99,6 +103,7 @@
   
   <SoundDef>
     <defName>Explosion</defName>
+    <context>MapOnly</context>
     <eventNames />
            <maxVoices>4</maxVoices>
            <maxSimultaneous>1</maxSimultaneous>
@@ -123,6 +128,7 @@
   
 <SoundDef>
     <defName>50Cal_Browning</defName>  
+    <context>MapOnly</context>
     <eventNames />  
  <maxVoices>4</maxVoices>   <maxSimultaneous>1</maxSimultaneous>  
     <subSounds>

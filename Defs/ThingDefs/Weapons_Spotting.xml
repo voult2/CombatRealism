@@ -32,7 +32,7 @@
 			<AimEfficiency>1.25</AimEfficiency>
       <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
       <Bulk>1.5</Bulk>
-      <Weight>3.00</Weight>
+      <Mass>3.00</Mass>
     </statBases>
     <costList>
       <Steel>100</Steel>
@@ -43,7 +43,7 @@
         <verbClass>Combat_Realism.Verb_MarkForArtilleryCR</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Bullet_Dummy</projectileDef>
-        <warmupTime>600</warmupTime>
+        <warmupTime>5.8</warmupTime>
         <range>107</range>
         <muzzleFlashScale>0</muzzleFlashScale>
 				<onlyManualCast>true</onlyManualCast>
