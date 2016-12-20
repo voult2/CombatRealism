@@ -16,7 +16,7 @@
       <MarketValue>1200</MarketValue>
       <PersonalShieldRechargeRate>0.15</PersonalShieldRechargeRate>
       <PersonalShieldEnergyMax>1.5</PersonalShieldEnergyMax>
-	  <Weight>5</Weight>
+	  <Mass>5</Mass>
 	  <Bulk>10</Bulk>
 	  <WornWeight>5</WornWeight>
 	  <WornBulk>4</WornBulk>

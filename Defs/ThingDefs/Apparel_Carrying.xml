@@ -61,7 +61,7 @@
       <MaxHitPoints>120</MaxHitPoints>
       <MarketValue>125</MarketValue>
       <WorkToMake>8000</WorkToMake>
-      <Weight>2</Weight>
+      <Mass>2</Mass>
       <Bulk>10</Bulk>
       <WornWeight>2</WornWeight>
       <WornBulk>8</WornBulk>
@@ -115,7 +115,7 @@
       <MaxHitPoints>120</MaxHitPoints>
       <MarketValue>125</MarketValue>
       <WorkToMake>8000</WorkToMake>
-      <Weight>1</Weight>
+      <Mass>1</Mass>
       <Bulk>3</Bulk>
       <WornWeight>0</WornWeight>
     </statBases>
@@ -166,7 +166,7 @@
       <MaxHitPoints>100</MaxHitPoints>
       <MarketValue>125</MarketValue>
       <WorkToMake>8000</WorkToMake>
-      <Weight>1</Weight>
+      <Mass>1</Mass>
       <Bulk>3</Bulk>
       <WornWeight>0</WornWeight>
     </statBases>

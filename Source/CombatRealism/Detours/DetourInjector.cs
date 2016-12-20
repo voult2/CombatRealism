@@ -20,8 +20,8 @@ namespace Combat_Realism.Detours
 
         public static void Inject()
         {
-            if (InjectDetours()) Log.Message("Detour Core injected.");
-            else Log.Error("Detour Core failed to get injected.");
+            if (InjectDetours()) Log.Message("Combat Realism :: Detours successfully injected");
+            else Log.Error("Combat Realism :: Failed to inject detours");
         }
 
         public static bool InjectDetours()
@@ -47,20 +47,20 @@ namespace Combat_Realism.Detours
 
             // ThingContainer
 
-            MethodInfo tryAddSource = typeof(ThingContainer).GetMethod("TryAdd", BindingFlags.Instance | BindingFlags.Public, null, new Type[] { typeof(Thing) }, null);
+            MethodInfo tryAddSource = typeof(ThingContainer).GetMethod("TryAdd", BindingFlags.Instance | BindingFlags.Public, null, new Type[] { typeof(Thing), typeof(bool) }, null);
             if (!Detours.TryDetourFromTo(tryAddSource, typeof(Detours_ThingContainer).GetMethod("TryAdd", BindingFlags.Static | BindingFlags.NonPublic)))
                 return false;
 
             MethodInfo tryDrop2Source = typeof(ThingContainer).GetMethod("TryDrop",
                  BindingFlags.Instance | BindingFlags.Public,
                  null,
-                 new Type[] { typeof(Thing), typeof(IntVec3), typeof(ThingPlaceMode), typeof(int), typeof(Thing).MakeByRefType(), typeof(Action<Thing, int>) },
+                 new Type[] { typeof(Thing), typeof(IntVec3), typeof(Map), typeof(ThingPlaceMode), typeof(int), typeof(Thing).MakeByRefType(), typeof(Action<Thing, int>) },
                  null);
 
             MethodInfo tryDrop2Dest = typeof(Detours_ThingContainer).GetMethod("TryDrop",
                 BindingFlags.Static | BindingFlags.NonPublic,
                 null,
-                new Type[] { typeof(ThingContainer), typeof(Thing), typeof(IntVec3), typeof(ThingPlaceMode), typeof(int), typeof(Thing).MakeByRefType(), typeof(Action<Thing, int>) },
+                new Type[] { typeof(ThingContainer), typeof(Thing), typeof(IntVec3), typeof(Map), typeof(ThingPlaceMode), typeof(int), typeof(Thing).MakeByRefType(), typeof(Action<Thing, int>) },
                 null);
 
             if (!Detours.TryDetourFromTo(tryDrop2Source, tryDrop2Dest))
@@ -135,16 +135,10 @@ namespace Combat_Realism.Detours
                 typeof(Detours_WorkGiver_HunterHunt).GetMethod("HasHuntingWeapon", BindingFlags.Static | BindingFlags.NonPublic)))
                 return false;
 
-            // Tradeable
-            if (!Detours.TryDetourFromTo(typeof(Tradeable).GetMethod("PriceFor", BindingFlags.Instance | BindingFlags.Public),
-                typeof(Detours_Tradeable).GetMethod("PriceFor", BindingFlags.Static | BindingFlags.NonPublic)))
-                return false;
-
             // TradeDeal
             if (!Detours.TryDetourFromTo(typeof(TradeDeal).GetMethod("UpdateCurrencyCount", BindingFlags.Instance | BindingFlags.Public),
                 typeof(Detours_TradeDeal).GetMethod("UpdateCurrencyCount", BindingFlags.Static | BindingFlags.NonPublic)))
                 return false;
-
 
 
             // *************************************

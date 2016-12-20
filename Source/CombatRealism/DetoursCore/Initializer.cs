@@ -1,3 +1,4 @@
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -10,8 +11,7 @@ namespace Combat_Realism.Detours
 
         static Initializer()
         {
-            Log.Message("Initialized Detour Core.");
-            iconControllerObject = new GameObject("Detour Core Initializer");
+            iconControllerObject = new GameObject("Combat Realism :: Detour Core Initializer");
             iconControllerObject.AddComponent<InitializerBehaviour>();
             Object.DontDestroyOnLoad(iconControllerObject);
         }

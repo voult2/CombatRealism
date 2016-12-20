@@ -36,7 +36,7 @@
       <ArmorRating_Electric>0</ArmorRating_Electric>
       <Insulation_Cold>-3</Insulation_Cold>
       <Insulation_Heat>3</Insulation_Heat>
-	  <Weight>4</Weight>
+	  <Mass>4</Mass>
 	  <Bulk>5</Bulk>
 	  <WornWeight>0</WornWeight>
 	  <WornBulk>1</WornBulk>
@@ -107,7 +107,7 @@
       <MarketValue>260</MarketValue>
       <ArmorRating_Blunt>0.15</ArmorRating_Blunt>
       <ArmorRating_Sharp>0.45</ArmorRating_Sharp>
-	  <Weight>1.4</Weight>
+	  <Mass>1.4</Mass>
 	  <Bulk>4</Bulk>
 	  <WornWeight>1.4</WornWeight>
 	  <WornBulk>0</WornBulk>
@@ -172,7 +172,7 @@
       <MaxHitPoints>100</MaxHitPoints>
       <ArmorRating_Blunt>0.1</ArmorRating_Blunt>
       <ArmorRating_Sharp>0.30</ArmorRating_Sharp>
-			<Weight>2</Weight>
+			<Mass>2</Mass>
 			<Bulk>4</Bulk>
 			<WornWeight>2</WornWeight>
 			<WornBulk>0</WornBulk>

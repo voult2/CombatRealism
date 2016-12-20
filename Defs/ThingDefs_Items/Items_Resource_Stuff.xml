@@ -18,7 +18,7 @@
     <resourceReadoutAlwaysShow>true</resourceReadoutAlwaysShow>
     <statBases>
       <MarketValue>1</MarketValue>
-	  <Weight>0.05</Weight>
+	  <Mass>0.05</Mass>
 	  <Bulk>0.01</Bulk>
       <SharpDamageMultiplier>0.5</SharpDamageMultiplier>
       <BluntDamageMultiplier>1.1</BluntDamageMultiplier>
@@ -67,7 +67,7 @@
     <useHitPoints>false</useHitPoints>
     <statBases>
       <MarketValue>15</MarketValue>
-	  <Weight>0.1</Weight>
+	  <Mass>0.1</Mass>
 	  <Bulk>0.01</Bulk>
       <SharpDamageMultiplier>0.3</SharpDamageMultiplier>
       <BluntDamageMultiplier>1.15</BluntDamageMultiplier>
@@ -118,7 +118,7 @@
     <soundDrop>Metal_Drop</soundDrop>
     <statBases>
       <MarketValue>2.0</MarketValue>
-	  <Weight>1.0</Weight>
+	  <Mass>1.0</Mass>
 	  <Bulk>0.3</Bulk>
       <SharpDamageMultiplier>1</SharpDamageMultiplier>
       <BluntDamageMultiplier>1</BluntDamageMultiplier>
@@ -166,7 +166,7 @@
     <useHitPoints>false</useHitPoints>
     <statBases>
       <MarketValue>27</MarketValue>
-			<Weight>0.8</Weight>
+			<Mass>0.8</Mass>
 			<Bulk>0.3</Bulk>
       <BluntDamageMultiplier>1.0</BluntDamageMultiplier>
     </statBases>
@@ -198,7 +198,7 @@
         <Flammability>0.1</Flammability>
         <WorkToMake>2.0</WorkToMake>
         <MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
-        <Weight>0.8</Weight>
+        <Mass>0.8</Mass>
         <WornWeight>0.8</WornWeight>
         <ArmorRating_Blunt>1.0</ArmorRating_Blunt>
         <ArmorRating_Sharp>1.15</ArmorRating_Sharp>
@@ -229,7 +229,7 @@
       <MeleeWeapon_DamageAmount>8</MeleeWeapon_DamageAmount>
       <MeleeWeapon_Cooldown>2.2</MeleeWeapon_Cooldown>
       <BluntDamageMultiplier>0.3</BluntDamageMultiplier>
-	  <Weight>0.1</Weight>
+	  <Mass>0.1</Mass>
 	  <Bulk>0.3</Bulk>
     </statBases>
     <stuffProps>
@@ -254,7 +254,7 @@
         <WorkToMake>0.7</WorkToMake>
         <DoorOpenSpeed>1.2</DoorOpenSpeed>
         <MeleeWeapon_Cooldown>0.9</MeleeWeapon_Cooldown>
-        <Weight>0.1</Weight>
+        <Mass>0.1</Mass>
         <ArmorPenetration>0.3</ArmorPenetration>
       </statFactors>
     </stuffProps>
@@ -287,7 +287,7 @@
     <soundDrop>Metal_Drop</soundDrop>
     <statBases>
       <MarketValue>5</MarketValue>
-			<Weight>2.5</Weight>
+			<Mass>2.5</Mass>
 			<Bulk>0.3</Bulk>
       <BluntDamageMultiplier>1.4</BluntDamageMultiplier>
     </statBases>
@@ -316,7 +316,7 @@
         <DoorOpenSpeed>0.9</DoorOpenSpeed>
         <MeleeWeapon_Cooldown>1.35</MeleeWeapon_Cooldown>
         <ArmorPenetration>1.4</ArmorPenetration>
-        <Weight>2.5</Weight>
+        <Mass>2.5</Mass>
       </statFactors>
       <smeltable>true</smeltable>
     </stuffProps>
@@ -335,7 +335,7 @@
     <soundDrop>ChunkRock_Drop</soundDrop>
     <statBases>
       <MarketValue>5</MarketValue>
-	  <Weight>1.0</Weight>
+	  <Mass>1.0</Mass>
 	  <Bulk>0.3</Bulk>
       <SharpDamageMultiplier>0.8</SharpDamageMultiplier>
       <BluntDamageMultiplier>1.5</BluntDamageMultiplier>
@@ -365,7 +365,7 @@
         <Beauty>3</Beauty>
         <Flammability>0.2</Flammability>
         <MeleeWeapon_Cooldown>1.3</MeleeWeapon_Cooldown>
-        <Weight>1.3</Weight>
+        <Mass>1.3</Mass>
       </statFactors>
       <smeltable>false</smeltable>
     </stuffProps>
@@ -392,7 +392,7 @@
       <MarketValue>12</MarketValue>
       <Flammability>1.0</Flammability>
       <DeteriorationRate>3</DeteriorationRate>
-	  <Weight>0.1</Weight>
+	  <Mass>0.1</Mass>
 	  <Bulk>0.3</Bulk>
     </statBases>
     <stuffProps>
@@ -406,7 +406,7 @@
         <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
         <ArmorRating_Heat>0</ArmorRating_Heat>
         <ArmorRating_Electric>0.05</ArmorRating_Electric>
-        <Weight>0.5</Weight>
+        <Mass>0.5</Mass>
         <WornWeight>0.5</WornWeight>
         <WornBulk>0.5</WornBulk>
       </statOffsets>
@@ -416,7 +416,7 @@
         <ArmorRating_Sharp>1.8</ArmorRating_Sharp>
         <ArmorRating_Heat>1</ArmorRating_Heat>
         <ArmorRating_Electric>3</ArmorRating_Electric>
-        <Weight>1.5</Weight>
+        <Mass>1.5</Mass>
         <WornWeight>1.5</WornWeight>
         <WornBulk>1.5</WornBulk>
       </statFactors>
@@ -444,7 +444,7 @@
     <statBases>
       <MarketValue>45</MarketValue>
       <Flammability>1.0</Flammability>
-	  <Weight>0.3</Weight>
+	  <Mass>0.3</Mass>
 	  <Bulk>0.3</Bulk>
     </statBases>
     <stuffProps>
@@ -457,7 +457,7 @@
         <ArmorRating_Blunt>0.03</ArmorRating_Blunt>
         <ArmorRating_Sharp>0.03</ArmorRating_Sharp>
         <ArmorRating_Heat>0.03</ArmorRating_Heat>
-        <Weight>0.75</Weight>
+        <Mass>0.75</Mass>
         <WornWeight>0.75</WornWeight>
         <WornBulk>0.5</WornBulk>
       </statOffsets>
@@ -469,7 +469,7 @@
         <ArmorRating_Electric>0</ArmorRating_Electric>
         <Insulation_Cold>1.1</Insulation_Cold>
         <Insulation_Heat>1.1</Insulation_Heat>
-        <Weight>1.8</Weight>
+        <Mass>1.8</Mass>
         <WornWeight>1.8</WornWeight>
         <WornBulk>1.8</WornBulk>
       </statFactors>
@@ -487,7 +487,7 @@
       <color>(189,161,116)</color>
     </graphicData>
     <statBases>
-	  <Weight>0.3</Weight>
+	  <Mass>0.3</Mass>
 	  <Bulk>0.3</Bulk>
     </statBases>
     <stuffProps>

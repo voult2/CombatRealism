@@ -10,11 +10,7 @@ namespace Combat_Realism
     {
         protected abstract Job TryGiveJob(Pawn pawn);
 
-        public static readonly string[] robotBodyList =
-        {
-            "AIRobot, " +
-            "HumanoidTerminator"
-        };
+        public static readonly String[] robotBodyList = { "AIRobot", "HumanoidTerminator" };
 
 
         public override ThinkResult TryIssueJobPackage(Pawn pawn)
@@ -55,7 +51,7 @@ namespace Combat_Realism
                                 {
                                     if (job.def == JobDefOf.TendPatient)
                                     {
-                                        RightTools.EquipRigthTool(pawn, StatDef.Named("BaseHealingQuality"));
+                                        RightTools.EquipRigthTool(pawn, StatDef.Named("HealingQuality"));
                                     }
                                 }
                             }

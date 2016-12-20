@@ -78,7 +78,7 @@ namespace Combat_Realism
                         {
                             //      MoteMaker.ThrowMetaIcon(pawn.Position, ThingDefOf.Mote_Heart);
                             //     FilthMaker.MakeFilth(pawn.CurJob.targetB.Cell, CR_ThingDefOf.FilthPee, pawn.LabelIndefinite(), 1);
-                            FilthMaker.MakeFilth(pawn.Position, CR_ThingDefOf.FilthPee, pawn.LabelIndefinite(), 1);
+                            FilthMaker.MakeFilth(pawn.Position, pawn.Map, CR_ThingDefOf.FilthPee, pawn.LabelIndefinite(), 1);
                         }
                     }
                     if (ticksLeft <= 0)
@@ -103,7 +103,7 @@ namespace Combat_Realism
 
             // bug can get the willPee if it's initialized, define the bool more accessable
             if (willPee)
-                toilHunkerDown.WithEffect("Pee", TargetIndex.A);
+                toilHunkerDown.WithEffect(EffecterDef.Named("Pee"), TargetIndex.A);
 
             // Start Toil
 
@@ -116,14 +116,14 @@ namespace Combat_Realism
                     toil.initAction = delegate
                     {
                         Pawn actor = toil.actor;
-                        Find.PawnDestinationManager.ReserveDestinationFor(pawn, coverPosition);
+                        actor.Map.pawnDestinationManager.ReserveDestinationFor(pawn, coverPosition);
                         actor.pather.StartPath(coverPosition, PathEndMode.OnCell);
                     };
                     toil.defaultCompleteMode = ToilCompleteMode.PatherArrival;
 
                     // Shame, shame, shame, shame!
                     if (willPee)
-                        toil.WithEffect("Pee", TargetIndex.A);
+                        toil.WithEffect(EffecterDef.Named("Pee"), TargetIndex.A);
 
                     yield return toil;
 

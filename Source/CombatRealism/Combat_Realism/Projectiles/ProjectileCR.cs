@@ -22,6 +22,7 @@ namespace Combat_Realism
         protected int ticksToImpact;
         private Sustainer ambientSustainer;
         private static List<IntVec3> checkedCells = new List<IntVec3>();
+        public static readonly String[] robotBodyList = { "AIRobot", "HumanoidTerminator" };
 
         public Thing AssignedMissTarget
         {
@@ -139,7 +140,7 @@ namespace Combat_Realism
         }
 
         //Added new calculations for downed pawns, destination
-        public virtual void Launch(Thing launcher, Vector3 origin, TargetInfo targ, Thing equipment = null)
+        public virtual void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Thing equipment = null)
         {
             if (shotSpeed < 0)
             {
@@ -170,13 +171,13 @@ namespace Combat_Realism
             ticksToImpact = StartingTicksToImpact;
             if (!def.projectile.soundAmbient.NullOrUndefined())
             {
-                SoundInfo info = SoundInfo.InWorld(this, MaintenanceType.PerTick);
+                SoundInfo info = SoundInfo.InMap(this, MaintenanceType.PerTick);
                 ambientSustainer = def.projectile.soundAmbient.TrySpawnSustainer(info);
             }
         }
 
         //Added new method, takes Vector3 destination as argument
-        public void Launch(Thing launcher, Vector3 origin, TargetInfo targ, Vector3 target, Thing equipment = null)
+        public void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Vector3 target, Thing equipment = null)
         {
             destination = target;
             Launch(launcher, origin, targ, equipment);
@@ -191,7 +192,7 @@ namespace Combat_Realism
             {
                 return false;
             }
-            if (!lastPos.InBounds() || !newPos.InBounds())
+            if (!lastPos.InBounds(base.Map) || !newPos.InBounds(base.Map))
             {
                 return false;
             }
@@ -256,7 +257,7 @@ namespace Combat_Realism
             {
                 return false;
             }
-            List<Thing> mainThingList = new List<Thing>(Find.ThingGrid.ThingsListAt(cell));
+            List<Thing> mainThingList = new List<Thing>(base.Map.thingGrid.ThingsListAt(cell));
 
             //Find pawns in adjacent cells and append them to main list
             List<IntVec3> adjList = new List<IntVec3>();
@@ -275,9 +276,9 @@ namespace Combat_Realism
             //Iterate through adjacent cells and find all the pawns
             for (int i = 0; i < adjList.Count; i++)
             {
-                if (adjList[i].InBounds() && !adjList[i].Equals(cell))
+                if (adjList[i].InBounds(base.Map) && !adjList[i].Equals(cell))
                 {
-                    List<Thing> thingList = new List<Thing>(Find.ThingGrid.ThingsListAt(adjList[i]));
+                    List<Thing> thingList = new List<Thing>(base.Map.thingGrid.ThingsListAt(adjList[i]));
                     List<Thing> pawns =
                         thingList.Where(
                             thing => thing.def.category == ThingCategory.Pawn && !mainThingList.Contains(thing))
@@ -404,10 +405,10 @@ namespace Combat_Realism
             //Not modified, just mortar code
             if (def.projectile.flyOverhead)
             {
-                RoofDef roofDef = Find.RoofGrid.RoofAt(Position);
+                RoofDef roofDef = base.Map.roofGrid.RoofAt(base.Position);
                 if (roofDef != null && roofDef.isThickRoof)
                 {
-                    def.projectile.soundHitThickRoof.PlayOneShot(Position);
+                    def.projectile.soundHitThickRoof.PlayOneShot(new TargetInfo(base.Position, base.Map, false));
                     Destroy(DestroyMode.Vanish);
                     return;
                 }
@@ -422,14 +423,14 @@ namespace Combat_Realism
             }
             else
             {
-                Thing thing = Find.ThingGrid.ThingAt(Position, ThingCategory.Pawn);
+                Thing thing = base.Map.thingGrid.ThingAt(Position, ThingCategory.Pawn);
                 if (thing != null)
                 {
                     ImpactThroughBodySize(thing,
                         GetProjectileHeight(shotHeight, distanceFromOrigin, shotAngle, shotSpeed));
                     return;
                 }
-                List<Thing> list = Find.ThingGrid.ThingsListAt(Position);
+                List<Thing> list = base.Map.thingGrid.ThingsListAt(Position);
                 float height = list.Count > 0
                     ? GetProjectileHeight(shotHeight, distanceFromOrigin, shotAngle, shotSpeed)
                     : 0;
@@ -448,9 +449,9 @@ namespace Combat_Realism
         }
 
         //Unmodified
-        public void Launch(Thing launcher, TargetInfo targ, Thing equipment = null)
+        public void Launch(Thing launcher, LocalTargetInfo targ, Thing equipment = null)
         {
-            Launch(launcher, Position.ToVector3Shifted(), targ, null);
+            Launch(launcher, Position.ToVector3Shifted(), targ, equipment);
         }
 
         //Unmodified
@@ -463,7 +464,7 @@ namespace Combat_Realism
             }
             Vector3 exactPosition = ExactPosition;
             ticksToImpact--;
-            if (!ExactPosition.InBounds())
+            if (!ExactPosition.InBounds(base.Map))
             {
                 ticksToImpact++;
                 Position = ExactPosition.ToIntVec3();
@@ -484,7 +485,7 @@ namespace Combat_Realism
             }
             if (ticksToImpact <= 0)
             {
-                if (DestinationCell.InBounds())
+                if (DestinationCell.InBounds(base.Map))
                 {
                     Position = DestinationCell;
                 }
@@ -495,17 +496,21 @@ namespace Combat_Realism
             {
                 ambientSustainer.Maintain();
             }
-
             // attack shooting expression
-                AGAIN: string rndswear = RulePackDef.Named("AttackMote").Rules.RandomElement().Generate();
-                if (rndswear == "[swear]" || rndswear == "" || rndswear == " ")
-                {
-                    goto AGAIN;
-                }
-
-            if (Rand.Value > 0.7 && this.launcher.def.race.Humanlike && (this.assignedTarget != null && this.assignedTarget.def.race.Humanlike))
+            if (this.launcher is Building_TurretGunCR == false)
             {
-                if (Gen.IsHashIntervalTick(this.launcher, 120)) MoteMaker.ThrowText(this.launcher.Position.ToVector3Shifted(), rndswear);
+                if (Rand.Value > 0.7
+                    && this.launcher.def.race.Humanlike
+                    && !robotBodyList.Contains(this.launcher.def.race.body.defName)
+                    && Gen.IsHashIntervalTick(launcher, Rand.Range(280, 700)))
+                {
+                    AGAIN: string rndswear = RulePackDef.Named("AttackMote").Rules.RandomElement().Generate();
+                    if (rndswear == "[swear]" || rndswear == "" || rndswear == " ")
+                    {
+                        goto AGAIN;
+                    }
+                    MoteMaker.ThrowText(launcher.Position.ToVector3Shifted(), this.launcher.Map, rndswear);
+                }
             }
         }
 
@@ -522,7 +527,7 @@ namespace Combat_Realism
             CompExplosiveCR comp = this.TryGetComp<CompExplosiveCR>();
             if (comp != null)
             {
-                comp.Explode(launcher, Position);
+                comp.Explode(launcher, Position, Find.VisibleMap);
             }
             Destroy(DestroyMode.Vanish);
         }
@@ -530,7 +535,7 @@ namespace Combat_Realism
         //Unmodified
         public void ForceInstantImpact()
         {
-            if (!DestinationCell.InBounds())
+            if (!DestinationCell.InBounds(base.Map))
             {
                 Destroy(DestroyMode.Vanish);
                 return;

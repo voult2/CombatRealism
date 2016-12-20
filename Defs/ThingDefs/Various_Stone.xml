@@ -54,7 +54,7 @@
       <MarketValue>1.9</MarketValue>
       <SharpDamageMultiplier>0.6</SharpDamageMultiplier>
       <BluntDamageMultiplier>1.6</BluntDamageMultiplier>
-	  <Weight>4.0</Weight>
+	  <Mass>4.0</Mass>
 	  <Bulk>1.0</Bulk>
     </statBases>
     <thingCategories>
@@ -79,7 +79,7 @@
         <DoorOpenSpeed>0.45</DoorOpenSpeed>
         <BedRestEffectiveness>0.9</BedRestEffectiveness>
         <MeleeWeapon_Cooldown>1.35</MeleeWeapon_Cooldown>
-        <Weight>2.0</Weight>
+        <Mass>2.0</Mass>
       </statFactors>
     </stuffProps>
   </ThingDef>
