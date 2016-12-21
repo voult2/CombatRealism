@@ -16,7 +16,7 @@ namespace Combat_Realism.Detours
             if (Find.Selector.SingleSelectedThing != null)
             {
                 Verb verb = null;
-                Verb verbCR = null;
+                Verb_LaunchProjectileCR verbCR = null;
                 Pawn pawn = Find.Selector.SingleSelectedThing as Pawn;
                 if (pawn != null && pawn != target && pawn.equipment != null && pawn.equipment.Primary != null && pawn.equipment.PrimaryEq.PrimaryVerb is Verb_LaunchProjectile)
                 {
@@ -50,21 +50,21 @@ namespace Combat_Realism.Detours
                     if (pawn != null && pawn != target && pawn.equipment != null &&
                         pawn.equipment.Primary != null && pawn.equipment.PrimaryEq.PrimaryVerb is Verb_LaunchProjectileCR)
                     {
-                        verbCR = pawn.equipment.PrimaryEq.PrimaryVerb;
+                        verbCR = pawn.equipment.PrimaryEq.PrimaryVerb as Verb_LaunchProjectileCR;
                     }
                     Building_TurretGun building_TurretGun2 = Find.Selector.SingleSelectedThing as Building_TurretGun;
                     if (building_TurretGun != null && building_TurretGun != target)
                     {
-                        verbCR = building_TurretGun.AttackVerb;
+                        verbCR = building_TurretGun.AttackVerb as Verb_LaunchProjectileCR;
                     }
                     if (verbCR != null)
                     {
                         stringBuilder.AppendLine();
-                   //   stringBuilder.Append("ShotBy".Translate(new object[] { pawn.LabelShort }) + ":\n");
-                        stringBuilder.Append("Shot stat. temporarily unavailable!");
+                        stringBuilder.Append("ShotBy".Translate(new object[] { pawn.LabelShort }) + ":\n");
                         if (verbCR.CanHitTarget(target))
                         {
-                   //       stringBuilder.Append(ShiftVecReportFor(target).GetTextReadout());
+                            ShiftVecReport report = verbCR.ShiftVecReportFor(target);
+                            stringBuilder.Append(report.GetTextReadout());
                         }
                         else
                         {

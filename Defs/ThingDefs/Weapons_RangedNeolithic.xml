@@ -95,7 +95,7 @@
       <ShotSpread>1</ShotSpread>
       <SwayFactor>2</SwayFactor>
       <Bulk>3.00</Bulk>
-      <Weight>2.00</Weight>
+      <Mass>2.00</Mass>
       <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
     </statBases>
     <weaponTags>
@@ -114,7 +114,7 @@
         <verbClass>Combat_Realism.Verb_ShootCR</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Projectile_Arrow_Stone</projectileDef>
-        <warmupTicks>60</warmupTicks>
+        <warmupTime>0.8</warmupTime>
         <range>23</range>
         <soundCast>BowSmall</soundCast>
       </li>
@@ -152,7 +152,7 @@
       <ShotSpread>2.5</ShotSpread>
       <SwayFactor>2</SwayFactor>
       <Bulk>4.00</Bulk>
-      <Weight>3.00</Weight>
+      <Mass>3.00</Mass>
       <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
     </statBases>
     <equippedAngleOffset>30</equippedAngleOffset>
@@ -166,7 +166,7 @@
         <verbClass>Combat_Realism.Verb_ShootCROneUse</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Pilum_Thrown</projectileDef>
-        <warmupTicks>90</warmupTicks>
+        <warmupTime>1.0</warmupTime>
         <range>6</range>
         <!--<soundCast>Interact_BeatFire</soundCast>-->
       </li>
@@ -195,7 +195,7 @@
       <ShotSpread>1</ShotSpread>
       <SwayFactor>2</SwayFactor>
       <Bulk>5.00</Bulk>
-      <Weight>2.00</Weight>
+      <Mass>2.00</Mass>
       <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
     </statBases>
     <weaponTags>
@@ -207,7 +207,7 @@
         <verbClass>Combat_Realism.Verb_ShootCR</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <projectileDef>Projectile_GreatArrow_Stone</projectileDef>
-        <warmupTicks>80</warmupTicks>
+        <warmupTime>0.9</warmupTime>
         <range>30</range>
         <soundCast>BowLarge</soundCast>
       </li>

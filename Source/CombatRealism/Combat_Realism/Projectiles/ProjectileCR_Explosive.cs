@@ -43,6 +43,7 @@ namespace Combat_Realism
             ThingDef preExplosionSpawnThingDef = this.def.projectile.preExplosionSpawnThingDef;
             float explosionSpawnChance = this.def.projectile.explosionSpawnChance;
             GenExplosion.DoExplosion(base.Position,
+                base.Map,
                 this.def.projectile.explosionRadius,
                 this.def.projectile.damageDef,
                 this.launcher,
@@ -52,30 +53,30 @@ namespace Combat_Realism
                 this.def.projectile.postExplosionSpawnThingDef,
                 this.def.projectile.explosionSpawnChance,
                 1,
-                propsCR == null ? false : propsCR.damageAdjacentTiles,
+                false, // propsCR == null ? false : propsCR.damageAdjacentTiles,
                 preExplosionSpawnThingDef,
-                this.def.projectile.explosionSpawnChance, 
+                this.def.projectile.explosionSpawnChance,
                 1);
-                ThrowBigExplode(base.Position.ToVector3Shifted() + Gen.RandomHorizontalVector(def.projectile.explosionRadius * 0.7f), def.projectile.explosionRadius * 0.6f);
+            ThrowBigExplode(base.Position.ToVector3Shifted() + Gen.RandomHorizontalVector(def.projectile.explosionRadius * 0.5f), base.Map, def.projectile.explosionRadius * 0.4f);
             CompExplosiveCR comp = this.TryGetComp<CompExplosiveCR>();
             if (comp != null)
             {
-                comp.Explode(launcher, this.Position);
+                comp.Explode(launcher, this.Position, Find.VisibleMap);
             }
         }
 
-        public static void ThrowBigExplode(Vector3 loc, float size)
+        public static void ThrowBigExplode(Vector3 loc, Map map, float size)
         {
-            if (!loc.ShouldSpawnMotesAt())
+            if (!loc.ShouldSpawnMotesAt(map))
             {
                 return;
             }
             MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named("Mote_BigExplode"), null);
-            moteThrown.ScaleUniform = Rand.Range(5f, 6f) * size;
-            moteThrown.exactRotationRate = Rand.Range(0f, 0f);
+            moteThrown.Scale = Rand.Range(5f, 6f) * size;
+            moteThrown.exactRotation = Rand.Range(0f, 0f);
             moteThrown.exactPosition = loc;
-            moteThrown.SetVelocityAngleSpeed((float)Rand.Range(6, 8), Rand.Range(0.002f, 0.003f));
-            GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
+            moteThrown.SetVelocity((float)Rand.Range(6, 8), Rand.Range(0.002f, 0.003f));
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Combat_Realism
             marker.lightingShift = report.lightingShift;
             marker.weatherShift = report.weatherShift;
 
-            GenSpawn.Spawn(marker, this.currentTarget.Cell);
+            GenSpawn.Spawn(marker, this.currentTarget.Cell, caster.Map);
 
             // Check for something to attach marker to
             if (this.currentTarget.HasThing)

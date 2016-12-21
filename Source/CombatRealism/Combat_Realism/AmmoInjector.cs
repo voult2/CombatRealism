@@ -5,11 +5,12 @@ using System.Text;
 using RimWorld;
 using Verse;
 using UnityEngine;
-using CommunityCoreLibrary;
+using Combat_Realism.Detours;
 
 namespace Combat_Realism
 {
-    public class AmmoInjector : SpecialInjector
+    [StaticConstructorOnStartup]
+    internal static class AmmoInjector
     {
         private const string enableTradeTag = "CR_AutoEnableTrade";             // The trade tag which designates ammo defs for being automatically switched to Tradeability.Stockable
         private const string enableCraftingTag = "CR_AutoEnableCrafting";        // The trade tag which designates ammo defs for having their crafting recipes automatically added to the crafting table
@@ -24,25 +25,36 @@ namespace Combat_Realism
             }
         }
 
-        public override bool Inject()
+        static AmmoInjector()
+        {
+            LongEventHandler.QueueLongEvent(Inject, "LibraryStartup", false, null);
+        }
+
+        public static void Inject()
+        {
+            if (InjectAmmos()) Log.Message("Combat Realism :: Ammo injected");
+            else Log.Error("Combat Realism :: Ammo injector failed to get injected");
+        }
+
+        public static bool InjectAmmos()
         {
             // Initialize list of all weapons so we don't have to iterate through all the defs, all the time
-            Utility.allWeaponDefs.Clear();
+            CR_Utility.allWeaponDefs.Clear();
             foreach (ThingDef def in DefDatabase<ThingDef>.AllDefsListForReading)
             {
                 if (def.IsWeapon && (def.canBeSpawningInventory || def.tradeability == Tradeability.Stockable || def.weaponTags.Contains("TurretGun")))
-                    Utility.allWeaponDefs.Add(def);
+                    CR_Utility.allWeaponDefs.Add(def);
             }
-            if (Utility.allWeaponDefs.NullOrEmpty())
+            if (CR_Utility.allWeaponDefs.NullOrEmpty())
             {
                 Log.Warning("CR Ammo Injector found no weapon defs");
                 return true;
             }
             
             // Find all ammo using guns
-            foreach (ThingDef weaponDef in Utility.allWeaponDefs)
+            foreach (ThingDef weaponDef in CR_Utility.allWeaponDefs)
             {
-                CompProperties_AmmoUser props = weaponDef.GetCompProperty<CompProperties_AmmoUser>();
+                CompProperties_AmmoUser props = weaponDef.GetCompProperties<CompProperties_AmmoUser>();
                 if (props != null && props.ammoSet != null && !props.ammoSet.ammoTypes.NullOrEmpty())
                 {
                     foreach(ThingDef curDef in props.ammoSet.ammoTypes)

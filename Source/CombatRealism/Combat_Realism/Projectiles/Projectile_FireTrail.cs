@@ -26,7 +26,7 @@ namespace Combat_Realism
             }
             if (--TicksforAppearence == 0)
             {
-                Projectile_FireTrail.ThrowFireTrail(base.Position.ToVector3Shifted(), 0.5f);
+                Projectile_FireTrail.ThrowFireTrail(base.Position.ToVector3Shifted(), base.Map, 0.5f);
                 TicksforAppearence = 5;
             }
         }
@@ -48,6 +48,7 @@ namespace Combat_Realism
             ThingDef preExplosionSpawnThingDef = this.def.projectile.preExplosionSpawnThingDef;
             float explosionSpawnChance = this.def.projectile.explosionSpawnChance;
             GenExplosion.DoExplosion(base.Position,
+                base.Map,
                 this.def.projectile.explosionRadius,
                 this.def.projectile.damageDef,
                 this.launcher,
@@ -64,21 +65,21 @@ namespace Combat_Realism
             CompExplosiveCR comp = this.TryGetComp<CompExplosiveCR>();
             if (comp != null)
             {
-                comp.Explode(launcher, this.Position);
+                comp.Explode(launcher, this.Position, Find.VisibleMap);
             }
         }
-        public static void ThrowFireTrail(Vector3 loc, float size)
+        public static void ThrowFireTrail(Vector3 loc, Map map, float size)
         {
-            if (!loc.ShouldSpawnMotesAt() || MoteCounter.SaturatedLowPriority)
+            if (!loc.ShouldSpawnMotesAt(map))
             {
                 return;
             }
             MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named("Mote_Firetrail"), null);
-            moteThrown.ScaleUniform = Rand.Range(1.5f, 2.5f) * size;
-            moteThrown.exactRotationRate = Rand.Range(-0.5f, 0.5f);
+            moteThrown.Scale = Rand.Range(1.5f, 2.5f) * size;
+            moteThrown.exactRotation = Rand.Range(-0.5f, 0.5f);
             moteThrown.exactPosition = loc;
-            moteThrown.SetVelocityAngleSpeed((float)Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
-            GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
+            moteThrown.SetVelocity((float)Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
         }
     }
 }
