@@ -38,12 +38,13 @@ namespace Combat_Realism
         }
         protected virtual void Explode()
         {
+            Map map = base.Map;
             this.Destroy(DestroyMode.Vanish);
             ProjectilePropertiesCR propsCR = def.projectile as ProjectilePropertiesCR;
             ThingDef preExplosionSpawnThingDef = this.def.projectile.preExplosionSpawnThingDef;
             float explosionSpawnChance = this.def.projectile.explosionSpawnChance;
             GenExplosion.DoExplosion(base.Position,
-                base.Map,
+                map,
                 this.def.projectile.explosionRadius,
                 this.def.projectile.damageDef,
                 this.launcher,
