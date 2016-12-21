@@ -199,7 +199,7 @@
     <statBases>
       <MaxHitPoints>180</MaxHitPoints>
       <Flammability>1.0</Flammability>
-      <WorkToMake>2700</WorkToMake>
+      <WorkToBuild>2700</WorkToBuild>
       <Beauty>-60</Beauty>
       <Mass>200</Mass>
     </statBases>
@@ -401,7 +401,7 @@
     <tickerType>Normal</tickerType>
     <statBases>
       <MaxHitPoints>40</MaxHitPoints>
-      <WorkToMake>2000</WorkToMake>
+      <WorkToBuild>2000</WorkToBuild>
       <Beauty>-4</Beauty>
       <TrapMeleeDamage>60</TrapMeleeDamage>
       <TrapSpringChance>0.8</TrapSpringChance>
@@ -445,7 +445,7 @@
     <tickerType>Normal</tickerType>
     <statBases>
       <MaxHitPoints>40</MaxHitPoints>
-      <WorkToMake>2000</WorkToMake>
+      <WorkToBuild>2000</WorkToBuild>
       <Beauty>-4</Beauty>
       <TrapSpringChance>0.8</TrapSpringChance>
     </statBases>
@@ -492,7 +492,7 @@
     <tickerType>Normal</tickerType>
     <statBases>
       <MaxHitPoints>40</MaxHitPoints>
-      <WorkToMake>2000</WorkToMake>
+      <WorkToBuild>2000</WorkToBuild>
       <Beauty>-4</Beauty>
       <TrapSpringChance>0.8</TrapSpringChance>
     </statBases>

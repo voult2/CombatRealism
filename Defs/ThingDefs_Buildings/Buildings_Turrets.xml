@@ -16,7 +16,7 @@
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <Flammability>0.1</Flammability>
-      <WorkToMake>10000</WorkToMake>
+      <WorkToBuild>10000</WorkToBuild>
       <Beauty>-60</Beauty>
     </statBases>
     <comps>
@@ -135,7 +135,7 @@
     </graphicData>
     <statBases>
       <Flammability>1.0</Flammability>
-      <WorkToMake>25000</WorkToMake>
+      <WorkToBuild>25000</WorkToBuild>
       <Mass>16.5</Mass>
       <Bulk>20</Bulk>
     </statBases>
@@ -161,7 +161,7 @@
     </graphicData>
     <statBases>
       <MaxHitPoints>150</MaxHitPoints>
-      <WorkToMake>30000</WorkToMake>
+      <WorkToBuild>30000</WorkToBuild>
       <Mass>88</Mass>
       <Bulk>100</Bulk>
     </statBases>
@@ -190,7 +190,7 @@
     </graphicData>
     <statBases>
       <MaxHitPoints>250</MaxHitPoints>
-      <WorkToMake>50000</WorkToMake>
+      <WorkToBuild>50000</WorkToBuild>
       <Mass>1000</Mass>
       <Bulk>1000</Bulk>
     </statBases>
@@ -220,7 +220,7 @@
       <texPath>Things/Building/Turrets/AGS30Base</texPath>
     </graphicData>
     <statBases>
-      <WorkToMake>25000</WorkToMake>
+      <WorkToBuild>25000</WorkToBuild>
       <Mass>16</Mass>
       <Bulk>20</Bulk>
     </statBases>
