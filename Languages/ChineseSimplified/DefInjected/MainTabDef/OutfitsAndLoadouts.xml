@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-	<Assign.label>assign</Assign.label>
+	<Assign.label>指定</Assign.label>
 
-	<Assign.description>Configure what each colonist is allowed to wear, how they react to danger and what they carry into battle</Assign.description>
+	<Assign.description>配置每个殖民者的着装配置，遇敌反应和武器组合。</Assign.description>
 
 </LanguageData>

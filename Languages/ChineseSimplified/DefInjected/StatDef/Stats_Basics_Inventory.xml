@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-	
-
-	
-
 	<Bulk.label>体积</Bulk.label>
 
 	<Bulk.description>将这件物品拾取到背包中占用的重量。</Bulk.description>
