@@ -17,11 +17,11 @@
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <MarketValue>5</MarketValue>
+      <Mass>0.35</Mass>
+      <Bulk>1.0</Bulk>
       <Flammability>1.0</Flammability>
-      <MedicalPotency>0.75</MedicalPotency>
+      <MedicalPotency>0.40</MedicalPotency>
       <DeteriorationRate>10</DeteriorationRate>
-	  <Mass>0.2</Mass>
-	  <Bulk>1.0</Bulk>
     </statBases>
     <thingCategories>
       <li>Medicine</li>
@@ -30,6 +30,7 @@
     <comps>
       <li Class="CompProperties_Rottable">
         <daysToRotStart>150</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
       </li>
     </comps>
   </ThingDef>
@@ -49,15 +50,39 @@
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <MarketValue>18</MarketValue>
+      <Mass>0.5</Mass>
+      <Bulk>1.0</Bulk>
       <Flammability>1.0</Flammability>
-      <MedicalPotency>1.0</MedicalPotency>
+      <MedicalPotency>0.70</MedicalPotency>
       <DeteriorationRate>2</DeteriorationRate>
-	  <Mass>0.2</Mass>
-	  <Bulk>1.0</Bulk>
+      <WorkToMake>700</WorkToMake>
     </statBases>
     <thingCategories>
       <li>Medicine</li>
     </thingCategories>
+    <costList>
+      <HerbalMedicine>1</HerbalMedicine>
+      <Neutroamine>1</Neutroamine>
+      <Cloth>3</Cloth>
+    </costList>
+    <recipeMaker>
+      <workSpeedStat>DrugProductionSpeed</workSpeedStat>
+      <workSkill>Medicine</workSkill>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <researchPrerequisite>MedicineProduction</researchPrerequisite>
+      <skillRequirements>
+        <li>
+          <skill>Medicine</skill>
+          <minLevel>6</minLevel>
+        </li>
+        <li>
+          <skill>Crafting</skill>
+          <minLevel>3</minLevel>
+        </li>
+      </skillRequirements>
+    </recipeMaker>
   </ThingDef>
 
 
@@ -74,10 +99,11 @@
     <soundDrop>Standard_Drop</soundDrop>
     <statBases>
       <MarketValue>100</MarketValue>
+      <Mass>0.5</Mass>
+      <Bulk>1.0</Bulk>
       <Flammability>1.0</Flammability>
       <MedicalPotency>1.6</MedicalPotency>
-	  <Mass>0.2</Mass>
-	  <Bulk>1.0</Bulk>
+      <DeteriorationRate>2.0</DeteriorationRate>
     </statBases>
     <thingCategories>
       <li>Medicine</li>
@@ -93,9 +119,9 @@
 
 	<!--
   <ThingDef ParentName="ResourceBase">
-    <defName>ArtilleryShell</defName>
-    <label>artillery shell</label>
-    <description>Fired from artillery cannons.</description>
+    <defName>MortarShell</defName>
+    <label>mortar shell</label>
+    <description>An explosive shell to be fired from mortars. Explodes when damaged.</description>
     <graphicData>
       <texPath>Things/Item/Resource/Shell</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -107,10 +133,10 @@
     <statBases>
       <MaxHitPoints>70</MaxHitPoints>
       <MarketValue>14</MarketValue>
+      <Mass>3.5</Mass>
+      <Bulk>5</Bulk>
       <Flammability>1.0</Flammability>
       <DeteriorationRate>2</DeteriorationRate>
-	  <Mass>3.25</Mass>
-	  <Bulk>5</Bulk>
     </statBases>
     <thingCategories>
       <li>Manufactured</li>
@@ -148,8 +174,8 @@
       <MaxHitPoints>70</MaxHitPoints>
       <MarketValue>6</MarketValue>
       <Flammability>1.0</Flammability>
-	  <Mass>1.5</Mass>
-	  <Bulk>5</Bulk>
+      <Mass>1.5</Mass>
+      <Bulk>5</Bulk>
     </statBases>
     <thingCategories>
       <li>Manufactured</li>
@@ -171,8 +197,8 @@
       <MaxHitPoints>70</MaxHitPoints>
       <MarketValue>10</MarketValue>
       <Flammability>1.0</Flammability>
-	  <Mass>2</Mass>
-	  <Bulk>5</Bulk>
+      <Mass>2</Mass>
+      <Bulk>5</Bulk>
     </statBases>
     <thingCategories>
       <li>Manufactured</li>
@@ -195,12 +221,14 @@
     <statBases>
       <MaxHitPoints>70</MaxHitPoints>
       <MarketValue>21</MarketValue>
+      <Mass>0.6</Mass>
       <Flammability>1.0</Flammability>
+      <DeteriorationRate>1.0</DeteriorationRate>
     </statBases>
     <intricate>true</intricate>
     <thingCategories>
       <li>Manufactured</li>
     </thingCategories>
   </ThingDef>
-  
+
 </Defs>
