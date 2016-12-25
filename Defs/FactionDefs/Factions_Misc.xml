@@ -3,7 +3,7 @@
 
   <FactionDef>
     <defName>Outlander</defName>
-    <label>outlander town</label>
+    <label>outlander union</label>
     <description>A small community of survivors.\n\nThese people have lived here for decades or centuries, and have lost most of the technology that brought them to this world. They usually work with simple mechanical tools and defend themselves with advanced gunpowder weapons.\n\nThey are concerned with the practical matters of trade, trust, and survival.</description>
     <pawnsPlural>outlanders</pawnsPlural>
     <factionBaseSelectionWeight>1</factionBaseSelectionWeight>
@@ -12,7 +12,7 @@
     <raidCommonality>100</raidCommonality>
     <canSiege>true</canSiege>
     <canStageAttacks>true</canStageAttacks>
-    <leaderTitle>Mayor</leaderTitle>
+    <leaderTitle>mayor</leaderTitle>
     <expandingIconTexture>World/WorldObjects/Expanding/Town</expandingIconTexture>
     <colorSpectrum>
       <li>(0.64, 0.42, 0.36)</li>
@@ -76,7 +76,7 @@
         </guards>
       </li>
       <li>
-        <kindDef>Normal</kindDef>
+        <kindDef>FactionBase</kindDef>
         <options>
           <Villager>50</Villager>
           <TownGuard>250</TownGuard>
@@ -163,7 +163,7 @@
         </guards>
       </li>
       <li>
-        <kindDef>Normal</kindDef>
+        <kindDef>FactionBase</kindDef>
         <options>
           <TribalWarrior>60</TribalWarrior>
           <TribalArcher>100</TribalArcher>
