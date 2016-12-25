@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <!--=============== Pure stuffs: Basics ====================-->
@@ -18,8 +18,8 @@
     <resourceReadoutAlwaysShow>true</resourceReadoutAlwaysShow>
     <statBases>
       <MarketValue>1</MarketValue>
-	  <Mass>0.05</Mass>
-	  <Bulk>0.01</Bulk>
+      <Mass>0.05</Mass>
+      <Bulk>0.01</Bulk>
       <SharpDamageMultiplier>0.5</SharpDamageMultiplier>
       <BluntDamageMultiplier>1.1</BluntDamageMultiplier>
     </statBases>
@@ -53,7 +53,6 @@
     </stuffProps>
   </ThingDef>
 
-
   <ThingDef ParentName="ResourceBase">
     <defName>Gold</defName>
     <label>gold</label>
@@ -67,8 +66,8 @@
     <useHitPoints>false</useHitPoints>
     <statBases>
       <MarketValue>15</MarketValue>
-	  <Mass>0.1</Mass>
-	  <Bulk>0.01</Bulk>
+      <Mass>0.1</Mass>
+      <Bulk>0.01</Bulk>
       <SharpDamageMultiplier>0.3</SharpDamageMultiplier>
       <BluntDamageMultiplier>1.15</BluntDamageMultiplier>
     </statBases>
@@ -103,8 +102,6 @@
     </stuffProps>
   </ThingDef>
 
-
-
   <ThingDef ParentName="ResourceBase">
     <defName>Steel</defName>
     <label>steel</label>
@@ -118,8 +115,8 @@
     <soundDrop>Metal_Drop</soundDrop>
     <statBases>
       <MarketValue>2.0</MarketValue>
-	  <Mass>1.0</Mass>
-	  <Bulk>0.3</Bulk>
+      <Mass>1.0</Mass>
+      <Bulk>0.3</Bulk>
       <SharpDamageMultiplier>1</SharpDamageMultiplier>
       <BluntDamageMultiplier>1</BluntDamageMultiplier>
     </statBases>
@@ -151,8 +148,6 @@
     </stuffProps>
   </ThingDef>
 
-
-
   <ThingDef ParentName="ResourceBase">
     <defName>Plasteel</defName>
     <label>plasteel</label>
@@ -166,8 +161,8 @@
     <useHitPoints>false</useHitPoints>
     <statBases>
       <MarketValue>27</MarketValue>
-			<Mass>0.8</Mass>
-			<Bulk>0.3</Bulk>
+      <Mass>0.8</Mass>
+      <Bulk>0.3</Bulk>
       <BluntDamageMultiplier>1.0</BluntDamageMultiplier>
     </statBases>
     <thingCategories>
@@ -208,8 +203,6 @@
     </stuffProps>
   </ThingDef>
 
-
-
   <ThingDef ParentName="ResourceVerbBase">
     <defName>WoodLog</defName>
     <label>wood</label>
@@ -229,8 +222,8 @@
       <MeleeWeapon_DamageAmount>8</MeleeWeapon_DamageAmount>
       <MeleeWeapon_Cooldown>2.2</MeleeWeapon_Cooldown>
       <BluntDamageMultiplier>0.3</BluntDamageMultiplier>
-	  <Mass>0.1</Mass>
-	  <Bulk>0.3</Bulk>
+      <Mass>0.1</Mass>
+      <Bulk>0.3</Bulk>
     </statBases>
     <stuffProps>
       <stuffAdjective>wooden</stuffAdjective>
@@ -274,7 +267,6 @@
     </verbs>
   </ThingDef>
 
-
   <ThingDef ParentName="ResourceBase">
     <defName>Uranium</defName>
     <label>uranium</label>
@@ -287,8 +279,8 @@
     <soundDrop>Metal_Drop</soundDrop>
     <statBases>
       <MarketValue>5</MarketValue>
-			<Mass>2.5</Mass>
-			<Bulk>0.3</Bulk>
+      <Mass>2.5</Mass>
+      <Bulk>0.3</Bulk>
       <BluntDamageMultiplier>1.4</BluntDamageMultiplier>
     </statBases>
     <thingCategories>
@@ -322,7 +314,6 @@
     </stuffProps>
   </ThingDef>
 
-
   <ThingDef ParentName="ResourceBase">
     <defName>Jade</defName>
     <label>jade</label>
@@ -335,8 +326,8 @@
     <soundDrop>ChunkRock_Drop</soundDrop>
     <statBases>
       <MarketValue>5</MarketValue>
-	  <Mass>1.0</Mass>
-	  <Bulk>0.3</Bulk>
+      <Mass>1.0</Mass>
+      <Bulk>0.3</Bulk>
       <SharpDamageMultiplier>0.8</SharpDamageMultiplier>
       <BluntDamageMultiplier>1.5</BluntDamageMultiplier>
     </statBases>
@@ -371,11 +362,6 @@
     </stuffProps>
   </ThingDef>
 
-
-
-
-  
-  
   <!--=============== Pure stuffs: Fabric, leather, etc  ====================-->
 
   <ThingDef ParentName="ResourceBase">
@@ -392,8 +378,8 @@
       <MarketValue>12</MarketValue>
       <Flammability>1.0</Flammability>
       <DeteriorationRate>3</DeteriorationRate>
-	  <Mass>0.1</Mass>
-	  <Bulk>0.3</Bulk>
+      <Mass>0.1</Mass>
+      <Bulk>0.3</Bulk>
     </statBases>
     <stuffProps>
       <categories>
@@ -431,8 +417,6 @@
     </comps>
   </ThingDef>
 
-
-
   <ThingDef ParentName="ResourceBase">
     <defName>Hyperweave</defName>
     <label>hyperweave</label>
@@ -444,8 +428,8 @@
     <statBases>
       <MarketValue>45</MarketValue>
       <Flammability>1.0</Flammability>
-	  <Mass>0.3</Mass>
-	  <Bulk>0.3</Bulk>
+      <Mass>0.3</Mass>
+      <Bulk>0.3</Bulk>
     </statBases>
     <stuffProps>
       <categories>
@@ -478,7 +462,7 @@
       <li>Textiles</li>
     </thingCategories>
   </ThingDef>
-  
+
   <ThingDef ParentName="WoolBase">
     <defName>MegatheriumWool</defName>
     <label>megatherium wool</label>
@@ -487,8 +471,8 @@
       <color>(189,161,116)</color>
     </graphicData>
     <statBases>
-	  <Mass>0.3</Mass>
-	  <Bulk>0.3</Bulk>
+      <Mass>0.3</Mass>
+      <Bulk>0.3</Bulk>
     </statBases>
     <stuffProps>
       <color>(189,161,116)</color>
@@ -505,5 +489,5 @@
       </statFactors>
     </stuffProps>
   </ThingDef>
-  
+
 </Defs>
