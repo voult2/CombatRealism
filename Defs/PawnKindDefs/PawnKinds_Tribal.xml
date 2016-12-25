@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <PawnKindDefs>
 
-  <PawnKindDef Name="TribalWarrior">
+  <PawnKindDef Name="TribalBase" Abstract="True">
+    <race>Human</race>
+    <defaultFactionType>Tribe</defaultFactionType>
+    <backstoryCategory>Tribal</backstoryCategory>
+    <baseRecruitDifficulty>0.65</baseRecruitDifficulty>
+    <chemicalAddictionChance>0.05</chemicalAddictionChance>
+    <invNutrition>2.55</invNutrition>
+    <invFoodDef>Pemmican</invFoodDef>
+  </PawnKindDef>
+
+  <PawnKindDef Name="TribalWarrior" ParentName="TribalBase">
     <defName>TribalWarrior</defName>
     <label>warrior</label>
-    <race>Human</race>
     <combatPower>38</combatPower>
-    <defaultFactionType>Tribe</defaultFactionType>
-    <baseRecruitDifficulty>0.90</baseRecruitDifficulty>
-    <backstoryCategory>Tribal</backstoryCategory>
-    <invNutrition>1.5</invNutrition>
-    <invFoodDef>Pemmican</invFoodDef>
-    <backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
     <maxGenerationAge>40</maxGenerationAge>
     <gearHealthRange>
       <min>0.5</min>
@@ -33,16 +36,16 @@
     </weaponTags>
   </PawnKindDef>
 
-  <PawnKindDef Name="TribalArcherBase" Abstract="true">
+  <PawnKindDef ParentName="TribalWarrior">
+    <defName>TribalTrader</defName>
+    <label>trader</label>
+    <trader>true</trader>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="TribalBase">
+    <defName>TribalArcher</defName>
     <label>archer</label>
-    <race>Human</race>
     <combatPower>48</combatPower>
-    <defaultFactionType>Tribe</defaultFactionType>
-    <baseRecruitDifficulty>0.90</baseRecruitDifficulty>
-    <backstoryCategory>Tribal</backstoryCategory>
-    <invNutrition>1.5</invNutrition>
-    <invFoodDef>Pemmican</invFoodDef>
-    <backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
     <maxGenerationAge>40</maxGenerationAge>
     <gearHealthRange>
       <min>0.5</min>
@@ -59,10 +62,6 @@
       <min>400</min>
       <max>400</max>
     </weaponMoney>
-  </PawnKindDef>
-
-  <PawnKindDef ParentName="TribalArcherBase">
-    <defName>TribalArcher</defName>
     <weaponTags>
       <li>CR_Bow</li>
     </weaponTags>
@@ -72,29 +71,12 @@
     </fixedInventory>
   </PawnKindDef>
 
-  <PawnKindDef ParentName="TribalArcherBase">
-    <defName>TribalArcherPila</defName>
-    <weaponTags>
-      <li>CR_Pila</li>
-    </weaponTags>
-    <fixedInventory>
-      <LoadoutGen_TribalSidearm>1</LoadoutGen_TribalSidearm>
-      <LoadoutGen_TribalPila>1</LoadoutGen_TribalPila>
-    </fixedInventory>
-  </PawnKindDef>
-
-  <PawnKindDef>
+  <PawnKindDef ParentName="TribalBase">
     <defName>TribalChief</defName>
     <label>chief</label>
-    <race>Human</race>
     <combatPower>70</combatPower>
-    <defaultFactionType>Tribe</defaultFactionType>
-    <baseRecruitDifficulty>0.95</baseRecruitDifficulty>
-    <backstoryCategory>Tribal</backstoryCategory>
-    <invNutrition>1.5</invNutrition>
-    <invFoodDef>Pemmican</invFoodDef>
+    <baseRecruitDifficulty>0.90</baseRecruitDifficulty>
     <itemQuality>Superior</itemQuality>
-    <backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
     <minGenerationAge>35</minGenerationAge>
     <factionLeader>true</factionLeader>
     <gearHealthRange>
@@ -120,12 +102,6 @@
       <LoadoutGen_TribalSidearm>1</LoadoutGen_TribalSidearm>
       <LoadoutGen_TribalPila>1</LoadoutGen_TribalPila>
     </fixedInventory>
-  </PawnKindDef>
-
-  <PawnKindDef ParentName="TribalWarrior">
-    <defName>TribalTrader</defName>
-    <label>trader</label>
-    <trader>true</trader>
   </PawnKindDef>
 
 </PawnKindDefs>
