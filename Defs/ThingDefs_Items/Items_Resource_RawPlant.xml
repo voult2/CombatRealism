@@ -11,7 +11,6 @@
       <Flammability>1.0</Flammability>
       <DeteriorationRate>10</DeteriorationRate>
       <Mass>0.03</Mass>
-      <Mass>0.1</Mass>
       <Bulk>0.5</Bulk>
     </statBases>
     <tickerType>Rare</tickerType>
@@ -208,7 +207,7 @@
       <texPath>Things/Item/Resource/PlantFoodRaw/PsychoidLeaves</texPath>
     </graphicData>
     <statBases>
-      <MarketValue>2.8</MarketValue>
+      <MarketValue>2.4</MarketValue>
     </statBases>
     <comps>
       <li Class="CompProperties_Rottable">
@@ -229,7 +228,7 @@
       <texPath>Things/Item/Resource/PlantFoodRaw/SmokeleafLeaves</texPath>
     </graphicData>
     <statBases>
-      <MarketValue>2.6</MarketValue>
+      <MarketValue>2.4</MarketValue>
     </statBases>
     <comps>
       <li Class="CompProperties_Rottable">
