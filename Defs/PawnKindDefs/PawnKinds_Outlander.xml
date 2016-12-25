@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <PawnKindDefs>
 
   <PawnKindDef Name="Villager">
@@ -41,11 +41,11 @@
     </techHediffsTags>
     <techHediffsChance>0.001</techHediffsChance>
     <invNutrition>1.5</invNutrition>
-	<fixedInventory>
-	  <LoadoutGen_OutlanderAmmoPrimary>1</LoadoutGen_OutlanderAmmoPrimary>
-	  <LoadoutGen_OutlanderSidearmMelee>1</LoadoutGen_OutlanderSidearmMelee>
-	  <LoadoutGen_OutlanderSilver>1</LoadoutGen_OutlanderSilver>
-	</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_OutlanderAmmoPrimary>1</LoadoutGen_OutlanderAmmoPrimary>
+      <LoadoutGen_OutlanderSidearmMelee>1</LoadoutGen_OutlanderSidearmMelee>
+      <LoadoutGen_OutlanderSilver>1</LoadoutGen_OutlanderSilver>
+    </fixedInventory>
   </PawnKindDef>
 
   <PawnKindDef ParentName="Villager">
@@ -55,13 +55,13 @@
     <minGenerationAge>40</minGenerationAge>
     <maxGenerationAge>100</maxGenerationAge>
   </PawnKindDef>
-  
+
   <PawnKindDef ParentName="Villager">
     <defName>TownTrader</defName>
     <label>town trader</label>
     <trader>true</trader>
   </PawnKindDef>
-  
+
   <PawnKindDef>
     <defName>TownGuard</defName>
     <label>town guard</label>
@@ -100,11 +100,11 @@
     </techHediffsTags>
     <techHediffsChance>0.001</techHediffsChance>
     <invNutrition>1.5</invNutrition>
-	<fixedInventory>
-	  <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
-	  <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
-	  <LoadoutGen_OutlanderSilver>1</LoadoutGen_OutlanderSilver>
-	</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
+      <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
+      <LoadoutGen_OutlanderSilver>1</LoadoutGen_OutlanderSilver>
+    </fixedInventory>
   </PawnKindDef>
 
 </PawnKindDefs>

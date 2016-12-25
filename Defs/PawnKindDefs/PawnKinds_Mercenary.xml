@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <PawnKindDefs>
-
 
   <PawnKindDef>
     <defName>MercenaryGunner</defName>
@@ -42,12 +41,11 @@
       <li>Advanced</li>
     </techHediffsTags>
     <techHediffsChance>0.003</techHediffsChance>
-	<fixedInventory>
-	  <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
-	  <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
-	</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
+      <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
+    </fixedInventory>
   </PawnKindDef>
-
 
   <PawnKindDef>
     <defName>MercenarySniper</defName>
@@ -89,16 +87,14 @@
       <li>Advanced</li>
     </techHediffsTags>
     <techHediffsChance>0.003</techHediffsChance>
-	<fixedInventory>
-	  <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
-	  <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
-	  <LoadoutGen_MercSidearm>1</LoadoutGen_MercSidearm>
-	  <LoadoutGen_MercSidearmAmmo>1</LoadoutGen_MercSidearmAmmo>
-	</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
+      <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
+      <LoadoutGen_MercSidearm>1</LoadoutGen_MercSidearm>
+      <LoadoutGen_MercSidearmAmmo>1</LoadoutGen_MercSidearmAmmo>
+    </fixedInventory>
   </PawnKindDef>
-  
-  
-  
+
   <PawnKindDef>
     <defName>MercenarySlasher</defName>
     <label>mercenary slasher</label>
@@ -143,9 +139,6 @@
     <techHediffsChance>0.08</techHediffsChance>
   </PawnKindDef>
 
-
-
-
   <PawnKindDef>
     <defName>MercenaryHeavy</defName>
     <label>heavy mercenary</label>
@@ -185,15 +178,12 @@
       <li>Advanced</li>
     </techHediffsTags>
     <techHediffsChance>0.08</techHediffsChance>
-	<fixedInventory>
-	  <LoadoutGen_MercSidearmSMG>1</LoadoutGen_MercSidearmSMG>
-	  <LoadoutGen_MercSidearmSMGAmmo>1</LoadoutGen_MercSidearmSMGAmmo>
-	  <LoadoutGen_MercHeavyAmmoPrimary>1</LoadoutGen_MercHeavyAmmoPrimary>
-	</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_MercSidearmSMG>1</LoadoutGen_MercSidearmSMG>
+      <LoadoutGen_MercSidearmSMGAmmo>1</LoadoutGen_MercSidearmSMGAmmo>
+      <LoadoutGen_MercHeavyAmmoPrimary>1</LoadoutGen_MercHeavyAmmoPrimary>
+    </fixedInventory>
   </PawnKindDef>
-
-
-
 
   <PawnKindDef Abstract="True" Name="EliteBase" >
     <race>Human</race>
@@ -243,14 +233,13 @@
       <min>10000</min>
       <max>16800</max>
     </apparelMoney>
-		<fixedInventory>
-			<LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
-			<LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
-			<LoadoutGen_MercSidearm>1</LoadoutGen_MercSidearm>
-			<LoadoutGen_MercSidearmAmmo>1</LoadoutGen_MercSidearmAmmo>
-		</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
+      <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
+      <LoadoutGen_MercSidearm>1</LoadoutGen_MercSidearm>
+      <LoadoutGen_MercSidearmAmmo>1</LoadoutGen_MercSidearmAmmo>
+    </fixedInventory>
   </PawnKindDef>
-
 
   <PawnKindDef ParentName="EliteBase">
     <defName>MercenaryElite</defName>
@@ -259,14 +248,13 @@
     <weaponTags>
       <li>AdvancedGun</li>
     </weaponTags>
-		<fixedInventory>
-			<LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
-			<LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
-			<LoadoutGen_MercSidearm>1</LoadoutGen_MercSidearm>
-			<LoadoutGen_MercSidearmAmmo>1</LoadoutGen_MercSidearmAmmo>
-		</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
+      <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
+      <LoadoutGen_MercSidearm>1</LoadoutGen_MercSidearm>
+      <LoadoutGen_MercSidearmAmmo>1</LoadoutGen_MercSidearmAmmo>
+    </fixedInventory>
   </PawnKindDef>
-
 
   <PawnKindDef ParentName="EliteBase">
     <defName>MercenaryMachineGunner</defName>
@@ -279,16 +267,10 @@
       <min>1200</min>
       <max>2000</max>
     </weaponMoney>
-		<fixedInventory>
-			<LoadoutGen_MercAmmoPrimaryDouble>1</LoadoutGen_MercAmmoPrimaryDouble>
-			<LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
-		</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_MercAmmoPrimaryDouble>1</LoadoutGen_MercAmmoPrimaryDouble>
+      <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
+    </fixedInventory>
   </PawnKindDef>
-
-
-
-
-
-
 
 </PawnKindDefs>

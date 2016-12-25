@@ -1,7 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <PawnKindDefs>
-
-
 
   <PawnKindDef>
     <defName>Drifter</defName>
@@ -41,13 +39,10 @@
       <li>Poor</li>
     </techHediffsTags>
     <techHediffsChance>0.1</techHediffsChance>
-	<fixedInventory>
-	  <LoadoutGen_PirateAmmoPrimary>1</LoadoutGen_PirateAmmoPrimary>
-	</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_PirateAmmoPrimary>1</LoadoutGen_PirateAmmoPrimary>
+    </fixedInventory>
   </PawnKindDef>
-
-
-
 
   <PawnKindDef>
     <defName>Scavenger</defName>
@@ -87,12 +82,10 @@
       <li>Poor</li>
     </techHediffsTags>
     <techHediffsChance>0.1</techHediffsChance>
-	<fixedInventory>
-	  <LoadoutGen_PirateAmmoPrimary>1</LoadoutGen_PirateAmmoPrimary>
-	</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_PirateAmmoPrimary>1</LoadoutGen_PirateAmmoPrimary>
+    </fixedInventory>
   </PawnKindDef>
-
-
 
   <PawnKindDef>
     <defName>Thrasher</defName>
@@ -137,11 +130,6 @@
     <techHediffsChance>0.1</techHediffsChance>
   </PawnKindDef>
 
-
-
-
-
-
   <PawnKindDef>
     <defName>Pirate</defName>
     <label>pirate</label>
@@ -181,13 +169,10 @@
       <li>Poor</li>
     </techHediffsTags>
     <techHediffsChance>0.1</techHediffsChance>
-	<fixedInventory>
-	  <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
-	  <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
-	</fixedInventory>
+    <fixedInventory>
+      <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
+      <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>
+    </fixedInventory>
   </PawnKindDef>
-
-
-
 
 </PawnKindDefs>
