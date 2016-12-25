@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
   <ThingDef Name="HatBase" ParentName="ApparelBase" Abstract="True">
@@ -36,19 +36,19 @@
       <ArmorRating_Electric>0</ArmorRating_Electric>
       <Insulation_Cold>-3</Insulation_Cold>
       <Insulation_Heat>3</Insulation_Heat>
-	  <Mass>4</Mass>
-	  <Bulk>5</Bulk>
-	  <WornWeight>0</WornWeight>
-	  <WornBulk>1</WornBulk>
+      <Mass>4</Mass>
+      <Bulk>5</Bulk>
+      <WornWeight>0</WornWeight>
+      <WornBulk>1</WornBulk>
     </statBases>
     <equippedStatOffsets>
       <PsychicSensitivity>-0.15</PsychicSensitivity>
-	  <AimingAccuracy>1.15</AimingAccuracy>
+      <AimingAccuracy>1.15</AimingAccuracy>
     </equippedStatOffsets>
     <costList>
       <Component>7</Component>
       <Plasteel>50</Plasteel>
-	  <DevilstrandCloth>20</DevilstrandCloth>
+      <DevilstrandCloth>20</DevilstrandCloth>
     </costList>
     <apparel>
       <bodyPartGroups>
@@ -107,10 +107,10 @@
       <MarketValue>260</MarketValue>
       <ArmorRating_Blunt>0.15</ArmorRating_Blunt>
       <ArmorRating_Sharp>0.45</ArmorRating_Sharp>
-	  <Mass>1.4</Mass>
-	  <Bulk>4</Bulk>
-	  <WornWeight>1.4</WornWeight>
-	  <WornBulk>0</WornBulk>
+      <Mass>1.4</Mass>
+      <Bulk>4</Bulk>
+      <WornWeight>1.4</WornWeight>
+      <WornBulk>0</WornBulk>
     </statBases>
     <costList>
       <Steel>20</Steel>
@@ -172,10 +172,10 @@
       <MaxHitPoints>100</MaxHitPoints>
       <ArmorRating_Blunt>0.1</ArmorRating_Blunt>
       <ArmorRating_Sharp>0.30</ArmorRating_Sharp>
-			<Mass>2</Mass>
-			<Bulk>4</Bulk>
-			<WornWeight>2</WornWeight>
-			<WornBulk>0</WornBulk>
+            <Mass>2</Mass>
+            <Bulk>4</Bulk>
+            <WornWeight>2</WornWeight>
+            <WornBulk>0</WornBulk>
     </statBases>
     <equippedStatOffsets>
       <PsychicSensitivity>-0.10</PsychicSensitivity>
@@ -197,9 +197,5 @@
       </defaultOutfitTags>
     </apparel>
   </ThingDef>
-
-
-
-
 
 </ThingDefs>

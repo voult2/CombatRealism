@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <!-- =========== bases =========== -->
@@ -40,7 +40,6 @@
     </damageMultipliers>
   </ThingDef>
 
-
   <ThingDef ParentName="ResourceBase" Name="StoneBlocksBase" Abstract="True">
     <description>Blocks of stone. Mostly useful for building long-lasting, simple structures.</description>
     <graphicData>
@@ -54,8 +53,8 @@
       <MarketValue>1.9</MarketValue>
       <SharpDamageMultiplier>0.6</SharpDamageMultiplier>
       <BluntDamageMultiplier>1.6</BluntDamageMultiplier>
-	  <Mass>4.0</Mass>
-	  <Bulk>1.0</Bulk>
+      <Mass>4.0</Mass>
+      <Bulk>1.0</Bulk>
     </statBases>
     <thingCategories>
       <li>StoneBlocks</li>
@@ -91,11 +90,8 @@
     </statBases>
   </ThingDef>
 
-
-
-
   <!-- =========== Misc chunks =========== -->
-  
+
   <ThingDef ParentName="ChunkBase">
     <defName>ChunkSlagSteel</defName>
     <label>steel slag chunk</label>
@@ -112,14 +108,8 @@
     </smeltProducts>
   </ThingDef>
 
-
-
-
   <!-- =========== Stone solids, chunks, and blocks =========== -->
 
-  
-  
-  
   <ThingDef ParentName="UglyRockBase">
     <defName>Sandstone</defName>
     <label>sandstone</label>
@@ -135,7 +125,7 @@
       <mineableDropChance>0.25</mineableDropChance>
     </building>
   </ThingDef>
-  
+
   <ThingDef ParentName="ChunkBase">
     <defName>ChunkSandstone</defName>
     <label>sandstone chunk</label>
@@ -152,7 +142,7 @@
       <BlocksSandstone>20</BlocksSandstone>
     </butcherProducts>
   </ThingDef>
-  
+
   <ThingDef ParentName="StoneBlocksBase">
     <defName>BlocksSandstone</defName>
     <label>sandstone blocks</label>
@@ -171,15 +161,12 @@
       <soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
       <stuffAdjective>sandstone</stuffAdjective>
       <statFactors>
-        <Beauty>1.1</Beauty>  
+        <Beauty>1.1</Beauty>
         <MarketValue>0.4</MarketValue>
         <MaxHitPoints>1.4</MaxHitPoints>
       </statFactors>
     </stuffProps>
   </ThingDef>
-
-
-
 
   <ThingDef ParentName="UglyRockBase">
     <defName>Granite</defName>
@@ -210,7 +197,7 @@
       <li>StoneChunks</li>
     </thingCategories>
     <butcherProducts>
-      <BlocksGranite>20</BlocksGranite>  
+      <BlocksGranite>20</BlocksGranite>
     </butcherProducts>
   </ThingDef>
 
@@ -237,11 +224,6 @@
       </statFactors>
     </stuffProps>
   </ThingDef>
-
-
-
-
-
 
   <ThingDef ParentName="UglyRockBase">
     <defName>Limestone</defName>
@@ -298,9 +280,6 @@
       </statFactors>
     </stuffProps>
   </ThingDef>
-
-
-
 
   <ThingDef ParentName="UglyRockBase">
     <defName>Slate</defName>
@@ -359,9 +338,6 @@
     </stuffProps>
   </ThingDef>
 
-
-
-
   <ThingDef ParentName="UglyRockBase">
     <defName>Marble</defName>
     <label>marble</label>
@@ -419,6 +395,5 @@
       </statFactors>
     </stuffProps>
   </ThingDef>
-
 
 </Defs>

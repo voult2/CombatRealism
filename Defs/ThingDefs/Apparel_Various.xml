@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
   <ThingDef Name="ApparelBase" Abstract="True">
@@ -44,7 +44,7 @@
       <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
     </recipeMaker>
   </ThingDef>
-  
+
   <ThingDef Name="ArmorMakeableBase" ParentName="ApparelBase" Abstract="True">
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -57,8 +57,8 @@
       <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
     </recipeMaker>
   </ThingDef>
-  
-  
+
+
   <ThingDef ParentName="ApparelMakeableBase">
     <defName>Apparel_Parka</defName>
     <label>parka</label>
@@ -82,10 +82,10 @@
       <ArmorRating_Heat>0.03</ArmorRating_Heat>
       <Insulation_Cold>-40</Insulation_Cold>
       <Insulation_Heat>-3</Insulation_Heat>
-			<Mass>1</Mass>
-			<Bulk>10</Bulk>
-			<WornWeight>1</WornWeight>
-			<WornBulk>3</WornBulk>
+            <Mass>1</Mass>
+            <Bulk>10</Bulk>
+            <WornWeight>1</WornWeight>
+            <WornBulk>3</WornBulk>
     </statBases>
     <apparel>
       <bodyPartGroups>
@@ -136,7 +136,7 @@
   </ThingDef>
 
   <!-- ============= Stuff-less apparel =================-->
-  
+
   <ThingDef ParentName="ArmorMakeableBase">
     <defName>Apparel_VestPlate</defName>
     <label>armor vest</label>
@@ -155,10 +155,10 @@
       <MaxHitPoints>200</MaxHitPoints>
       <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
       <ArmorRating_Sharp>0.55</ArmorRating_Sharp>
-			<Mass>13</Mass>
-			<Bulk>5</Bulk>
-			<WornWeight>13</WornWeight>
-			<WornBulk>5</WornBulk>
+            <Mass>13</Mass>
+            <Bulk>5</Bulk>
+            <WornWeight>13</WornWeight>
+            <WornBulk>5</WornBulk>
     </statBases>
     <thingCategories>
       <li>Apparel</li>
@@ -181,7 +181,7 @@
       </defaultOutfitTags>
     </apparel>
   </ThingDef>
-  
+
   <ThingDef ParentName="ArmorMakeableBase">
     <defName>Apparel_CompositeVest</defName>
     <label>composite vest</label>
@@ -200,10 +200,10 @@
       <MarketValue>430</MarketValue>
       <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
       <ArmorRating_Sharp>0.7</ArmorRating_Sharp>
-	  <Mass>12</Mass>
-	  <Bulk>5</Bulk>
-	  <WornWeight>12</WornWeight>
-	  <WornBulk>5</WornBulk>
+      <Mass>12</Mass>
+      <Bulk>5</Bulk>
+      <WornWeight>12</WornWeight>
+      <WornBulk>5</WornBulk>
     </statBases>
     <thingCategories>
       <li>Apparel</li>
@@ -271,15 +271,15 @@
       <ArmorRating_Heat>0.30</ArmorRating_Heat>
       <Insulation_Cold>-45</Insulation_Cold>
       <Insulation_Heat>25</Insulation_Heat>
-	  <Mass>60</Mass>
-	  <Bulk>100</Bulk>
-	  <WornWeight>60</WornWeight>
-	  <WornBulk>15</WornBulk>
+      <Mass>60</Mass>
+      <Bulk>100</Bulk>
+      <WornWeight>60</WornWeight>
+      <WornBulk>15</WornBulk>
     </statBases>
     <equippedStatOffsets>
-	  <CarryWeight>80</CarryWeight>
-	  <CarryBulk>10</CarryBulk>
-	  <ShootingAccuracy>1.15</ShootingAccuracy>
+      <CarryWeight>80</CarryWeight>
+      <CarryBulk>10</CarryBulk>
+      <ShootingAccuracy>1.15</ShootingAccuracy>
     </equippedStatOffsets>
     <thingCategories>
       <li>Apparel</li>
