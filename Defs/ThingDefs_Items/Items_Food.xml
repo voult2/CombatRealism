@@ -195,7 +195,7 @@
       <MarketValue>3.0</MarketValue>
       <Mass>0.018</Mass>
       <WorkToMake>700</WorkToMake>
-      <Bulk>0.2</Bulk>
+      <Bulk>0.036</Bulk>
     </statBases>
     <ingestible>
       <foodType>Meal</foodType>
