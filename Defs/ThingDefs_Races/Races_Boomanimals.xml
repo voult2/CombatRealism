@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
   <!-- ====================================================== -->
 
@@ -12,13 +12,13 @@
       <MarketValue>290</MarketValue>
     </statBases>
     <comps>
-        <li Class="Combat_Realism.CompProperties_ShearableRenameable">
-          <compClass>Combat_Realism.CompShearableRenameable</compClass>
-          <growthLabel>Chemical fullness</growthLabel>
-          <shearIntervalDays>5</shearIntervalDays>
-          <woolAmount>5</woolAmount>
-          <woolDef>FSX</woolDef>
-		</li>
+      <li Class="Combat_Realism.CompProperties_ShearableRenameable">
+        <compClass>Combat_Realism.CompShearableRenameable</compClass>
+        <growthLabel>Chemical fullness</growthLabel>
+        <shearIntervalDays>5</shearIntervalDays>
+        <woolAmount>5</woolAmount>
+        <woolDef>FSX</woolDef>
+      </li>
     </comps>
     <verbs>
       <li>
@@ -71,7 +71,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-  
+
   <!-- =============================================================== -->
 
   <ThingDef ParentName="AnimalThingBase">
@@ -84,13 +84,13 @@
       <MarketValue>130</MarketValue>
     </statBases>
     <comps>
-        <li Class="Combat_Realism.CompProperties_ShearableRenameable">
-          <compClass>Combat_Realism.CompShearableRenameable</compClass>
-          <growthLabel>Chemical fullness</growthLabel>
-          <shearIntervalDays>5</shearIntervalDays>
-          <woolAmount>1</woolAmount>
-          <woolDef>FSX</woolDef>
-		</li>
+      <li Class="Combat_Realism.CompProperties_ShearableRenameable">
+        <compClass>Combat_Realism.CompShearableRenameable</compClass>
+        <growthLabel>Chemical fullness</growthLabel>
+        <shearIntervalDays>5</shearIntervalDays>
+        <woolAmount>1</woolAmount>
+        <woolDef>FSX</woolDef>
+      </li>
     </comps>
     <verbs>
       <li>
