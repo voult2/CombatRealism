@@ -190,7 +190,7 @@
       </damageData>
     </graphicData>
     <minifiedDef>MinifiedFurniture</minifiedDef>
-    <AltitudeLayer>Building</AltitudeLayer>
+    <altitudeLayer>Building</altitudeLayer>
     <hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <stealable>false</stealable>
@@ -391,10 +391,11 @@
         <rect>(0,0,1,0.15)</rect>
       </damageData>
     </graphicData>
-    <AltitudeLayer>Building</AltitudeLayer>
+    <altitudeLayer>Building</altitudeLayer>
     <drawerType>RealtimeOnly</drawerType>
     <rotatable>false</rotatable>
     <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
     <statBases>
       <MaxHitPoints>40</MaxHitPoints>
       <WorkToBuild>2000</WorkToBuild>
@@ -433,10 +434,11 @@
         <rect>(0.1,0,0.8,0.3)</rect>
       </damageData>
     </graphicData>
-    <AltitudeLayer>Building</AltitudeLayer>
+    <altitudeLayer>Building</altitudeLayer>
     <drawerType>RealtimeOnly</drawerType>
     <rotatable>false</rotatable>
     <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
     <statBases>
       <MaxHitPoints>40</MaxHitPoints>
       <WorkToBuild>2000</WorkToBuild>
@@ -478,10 +480,11 @@
         <rect>(0.1,0,0.8,0.3)</rect>
       </damageData>
     </graphicData>
-    <AltitudeLayer>Building</AltitudeLayer>
+    <altitudeLayer>Building</altitudeLayer>
     <drawerType>RealtimeOnly</drawerType>
     <rotatable>false</rotatable>
     <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
     <statBases>
       <MaxHitPoints>40</MaxHitPoints>
       <WorkToBuild>2000</WorkToBuild>

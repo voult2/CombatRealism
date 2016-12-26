@@ -6,6 +6,7 @@
     <selectable>true</selectable>
     <drawerType>MapMeshOnly</drawerType>
     <filthLeaving>RockRubble</filthLeaving>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
     <damageMultipliers>
       <li>
         <damageDef>Bomb</damageDef>
@@ -280,6 +281,7 @@
       <drawSize>(4,4)</drawSize>
     </graphicData>
     <altitudeLayer>Floor</altitudeLayer>
+    <rotatable>false</rotatable>
     <destroyable>false</destroyable>
     <useHitPoints>false</useHitPoints>
     <tickerType>Normal</tickerType>
