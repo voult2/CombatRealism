@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <DefPackage-TraderKindDef>
 
   <TraderKindDef>
@@ -129,7 +129,7 @@
           <min>-700</min>
           <max>2000</max>
         </totalPriceRange>
-      </li>      
+      </li>
       <li Class="StockGenerator_SingleDef">
         <thingDef>Medicine</thingDef>
         <price>Expensive</price>
@@ -188,30 +188,26 @@
           <li>Pemmican</li>
         </thingDefs>
       </li>
-	  
-	  
-	  
-          <li Class="StockGenerator_Tag">
-            <tradeTag>CR_Ammo</tradeTag>
-            <countRange>
-              <min>200</min>
-              <max>5000</max>
-            </countRange>
-            <thingDefCountRange>
-							<min>-1</min>
-							<max>4</max>
-            </thingDefCountRange>
-          </li>
-					<li Class="StockGenerator_Category">
-						<categoryDef>Ammo</categoryDef>
-						<thingDefCountRange>
-							<min>0</min>
-							<max>0</max>
-						</thingDefCountRange>
-					</li>
+      <li Class="StockGenerator_Tag">
+        <tradeTag>CR_Ammo</tradeTag>
+        <countRange>
+          <min>200</min>
+          <max>5000</max>
+        </countRange>
+        <thingDefCountRange>
+          <min>-1</min>
+          <max>4</max>
+        </thingDefCountRange>
+      </li>
+      <li Class="StockGenerator_Category">
+        <categoryDef>Ammo</categoryDef>
+        <thingDefCountRange>
+          <min>0</min>
+          <max>0</max>
+        </thingDefCountRange>
+      </li>
     </stockGenerators>
   </TraderKindDef>
-
 
   <TraderKindDef>
     <defName>Orbital_CombatSupplier</defName>
@@ -291,49 +287,45 @@
         <categoryDef>Drugs</categoryDef>
       </li>
       <li Class="StockGenerator_BuyWeirdOrganic" />
-	  
-	  
-	  
-          <li Class="StockGenerator_Tag">
-            <tradeTag>CR_Ammo</tradeTag>
-            <countRange>
-              <min>500</min>
-              <max>2000</max>
-            </countRange>
-            <price>Cheap</price>
-            <thingDefCountRange>
-							<min>3</min>
-							<max>9</max>
-            </thingDefCountRange>
-          </li>
-					<li Class="StockGenerator_Category">
-						<categoryDef>Ammo</categoryDef>
-						<thingDefCountRange>
-							<min>0</min>
-							<max>0</max>
-						</thingDefCountRange>
-					</li>
-					<li Class="StockGenerator_Tag">
-						<tradeTag>CR_Turret</tradeTag>
-						<thingDefCountRange>
-							<min>-2</min>
-							<max>4</max>
-						</thingDefCountRange>
-						<countRange>
-							<min>1</min>
-							<max>2</max>
-						</countRange>
-					</li>
-					<li Class="StockGenerator_Category">
-						<categoryDef>WeaponsTurrets</categoryDef>
-						<thingDefCountRange>
-							<min>0</min>
-							<max>0</max>
-						</thingDefCountRange>
-					</li>
+      <li Class="StockGenerator_Tag">
+        <tradeTag>CR_Ammo</tradeTag>
+        <countRange>
+          <min>500</min>
+          <max>2000</max>
+        </countRange>
+        <price>Cheap</price>
+        <thingDefCountRange>
+          <min>3</min>
+          <max>9</max>
+        </thingDefCountRange>
+      </li>
+      <li Class="StockGenerator_Category">
+        <categoryDef>Ammo</categoryDef>
+        <thingDefCountRange>
+          <min>0</min>
+          <max>0</max>
+        </thingDefCountRange>
+      </li>
+      <li Class="StockGenerator_Tag">
+        <tradeTag>CR_Turret</tradeTag>
+        <thingDefCountRange>
+          <min>-2</min>
+          <max>4</max>
+        </thingDefCountRange>
+        <countRange>
+          <min>1</min>
+          <max>2</max>
+        </countRange>
+      </li>
+      <li Class="StockGenerator_Category">
+        <categoryDef>WeaponsTurrets</categoryDef>
+        <thingDefCountRange>
+          <min>0</min>
+          <max>0</max>
+        </thingDefCountRange>
+      </li>
     </stockGenerators>
   </TraderKindDef>
-
 
   <TraderKindDef>
     <defName>Orbital_Exotic</defName>
@@ -500,7 +492,6 @@
     </stockGenerators>
   </TraderKindDef>
 
-
   <TraderKindDef>
     <defName>Orbital_PirateMerchant</defName>
     <label>pirate merchant</label>
@@ -613,28 +604,25 @@
           <li>Chocolate</li>
         </thingDefs>
       </li>
-	  
-	  
-          <li Class="StockGenerator_Tag">
-            <tradeTag>CR_Ammo</tradeTag>
-            <countRange>
-              <min>200</min>
-              <max>5000</max>
-            </countRange>
-            <thingDefCountRange>
-							<min>-1</min>
-							<max>4</max>
-            </thingDefCountRange>
-          </li>
-					<li Class="StockGenerator_Category">
-						<categoryDef>Ammo</categoryDef>
-						<thingDefCountRange>
-							<min>0</min>
-							<max>0</max>
-						</thingDefCountRange>
-					</li> 
+      <li Class="StockGenerator_Tag">
+        <tradeTag>CR_Ammo</tradeTag>
+        <countRange>
+          <min>200</min>
+          <max>5000</max>
+        </countRange>
+        <thingDefCountRange>
+          <min>-1</min>
+          <max>4</max>
+        </thingDefCountRange>
+      </li>
+      <li Class="StockGenerator_Category">
+        <categoryDef>Ammo</categoryDef>
+        <thingDefCountRange>
+          <min>0</min>
+          <max>0</max>
+        </thingDefCountRange>
+      </li>
     </stockGenerators>
   </TraderKindDef>
-
 
 </DefPackage-TraderKindDef>
