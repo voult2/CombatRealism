@@ -542,7 +542,11 @@ namespace Combat_Realism
             viewRect.height = _source.Count * _rowHeight;
 
             Widgets.BeginScrollView(canvas, ref _availableScrollPosition, viewRect.AtZero());
-            for (int i = 0; i < _source.Count; i++)
+            int startRow = (int)Math.Floor((decimal)(_availableScrollPosition.y / _rowHeight));
+            startRow = (startRow < 0) ? 0 : startRow;
+            int endRow = startRow + (int)(Math.Ceiling((decimal)(canvas.height / _rowHeight)));
+            endRow = (endRow > _source.Count) ? _source.Count : endRow;
+            for (int i = startRow; i < endRow; i++)
             {
                 // gray out weapons not in stock
                 Color baseColor = GUI.color;
