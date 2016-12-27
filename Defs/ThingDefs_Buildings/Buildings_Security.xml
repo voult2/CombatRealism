@@ -223,7 +223,7 @@
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <building>
       <turretGunDef>Artillery_MortarBomb</turretGunDef>
-      <turretShellDef>ArtilleryShell</turretShellDef>
+      <turretShellDef>MortarShell</turretShellDef>
       <turretBurstwarmupTime>4.5</turretBurstwarmupTime>
       <turretBurstCooldownTime>20.0</turretBurstCooldownTime>
       <turretTopgraphicPath>Things/Building/Security/TurretMortarBomb_Top</turretTopgraphicPath>
@@ -447,7 +447,7 @@
     </statBases>
     <description>An artillery shell connected to a homemade trigger. When someone disturbs the trigger, the shell explodes. The improvised trigger has a random delay that might allow a nimble enemy to escape.</description>
     <costList>
-      <ArtilleryShell>1</ArtilleryShell>
+      <MortarShell>1</MortarShell>
       <Component>1</Component>
     </costList>
     <designationCategory>Security</designationCategory>

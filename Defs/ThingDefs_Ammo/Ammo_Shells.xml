@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <!-- ==================== 81mm mortar shells ========================== -->
@@ -13,7 +13,7 @@
   </ThingDef>
 
   <ThingDef Class="Combat_Realism.AmmoDef" ParentName="81mmMortarShellBase">
-    <defName>ArtilleryShell</defName>
+    <defName>MortarShell</defName>
     <label>81mm mortar shell (HE)</label>
     <graphicData>
       <texPath>Things/Ammo/Mortar/HE</texPath>

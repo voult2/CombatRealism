@@ -266,7 +266,7 @@
         </countRange>
       </li>
       <li Class="StockGenerator_SingleDef">
-        <thingDef>ArtilleryShell</thingDef>
+        <thingDef>MortarShell</thingDef>
         <countRange>
           <min>4</min>
           <max>10</max>
@@ -595,7 +595,7 @@
         </countRange>
       </li>
       <li Class="StockGenerator_SingleDef">
-        <thingDef>ArtilleryShell</thingDef>
+        <thingDef>MortarShell</thingDef>
         <countRange>
           <min>-4</min>
           <max>7</max>
