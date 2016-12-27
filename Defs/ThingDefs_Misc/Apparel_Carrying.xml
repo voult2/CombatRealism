@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
   <ThingDef Name="ApparelCarryGearBase" Abstract="True">
@@ -27,7 +27,7 @@
       <li>
         <compClass>CompColorable</compClass>
       </li>
-	  -->
+      -->
     </comps>
     <recipeMaker>
       <workSpeedStat>TailoringSpeed</workSpeedStat>
@@ -46,7 +46,6 @@
   </ThingDef>
 
   <!-- ============= Stuffed apparel =================-->
-
 
   <ThingDef ParentName="ApparelCarryGearBase">
     <defName>Apparel_TacVest</defName>
@@ -98,9 +97,8 @@
         </li>
       </options>
     </colorGenerator>
-	-->
+    -->
   </ThingDef>
-
 
   <ThingDef ParentName="ApparelCarryGearBase">
     <defName>Apparel_Backpack</defName>
@@ -150,7 +148,7 @@
         </li>
       </options>
     </colorGenerator>
-	-->
+    -->
   </ThingDef>
 
   <ThingDef ParentName="ApparelCarryGearBase">
@@ -201,9 +199,7 @@
         </li>
       </options>
     </colorGenerator>
-	-->
+    -->
   </ThingDef>
-
-
 
 </ThingDefs>

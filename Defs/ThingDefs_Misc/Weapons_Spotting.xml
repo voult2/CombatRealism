@@ -29,7 +29,7 @@
     <statBases>
       <WorkToMake>10500</WorkToMake>
       <MarketValue>650</MarketValue>
-			<AimEfficiency>1.25</AimEfficiency>
+      <AimEfficiency>1.25</AimEfficiency>
       <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
       <Bulk>1.5</Bulk>
       <Mass>3.00</Mass>
@@ -46,10 +46,10 @@
         <warmupTime>5.8</warmupTime>
         <range>107</range>
         <muzzleFlashScale>0</muzzleFlashScale>
-				<onlyManualCast>true</onlyManualCast>
-				<targetParams>
-					<canTargetLocations>true</canTargetLocations>
-				</targetParams>
+        <onlyManualCast>true</onlyManualCast>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
       </li>
     </verbs>
   </ThingDef>

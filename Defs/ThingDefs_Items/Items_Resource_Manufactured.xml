@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <!--=============== Medicine ====================-->
@@ -16,7 +16,7 @@
     <soundDrop>Standard_Drop</soundDrop>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
-      <MarketValue>5</MarketValue>
+      <MarketValue>12</MarketValue>
       <Mass>0.35</Mass>
       <Bulk>1.0</Bulk>
       <Flammability>1.0</Flammability>
@@ -34,7 +34,6 @@
       </li>
     </comps>
   </ThingDef>
-
 
   <ThingDef ParentName="ResourceBase">
     <defName>Medicine</defName>
@@ -85,7 +84,6 @@
     </recipeMaker>
   </ThingDef>
 
-
   <ThingDef ParentName="ResourceBase">
     <defName>GlitterworldMedicine</defName>
     <label>glitterworld medicine</label>
@@ -112,8 +110,6 @@
       <li>Exotic</li>
     </tradeTags>
   </ThingDef>
-
-
 
   <!--=============== Shells ====================-->
 
@@ -156,9 +152,8 @@
   </ThingDef>
 	-->
 
-
   <!--=============== Ammo resources ====================-->
-  
+
   <ThingDef ParentName="ResourceBase">
     <defName>Prometheum</defName>
     <label>prometheum</label>
@@ -181,7 +176,7 @@
       <li>Manufactured</li>
     </thingCategories>
   </ThingDef>
-  
+
   <ThingDef ParentName="ResourceBase">
     <defName>FSX</defName>
     <label>FSX</label>
@@ -204,9 +199,9 @@
       <li>Manufactured</li>
     </thingCategories>
   </ThingDef>
-  
+
   <!--=============== Component ====================-->
-  
+
   <ThingDef ParentName="ResourceBase">
     <defName>Component</defName>
     <label>component</label>

@@ -58,20 +58,18 @@
     </inspectorTabs>
   </ThingDef>
 
-
-
   <ThingDef Name="BaseMeleeWeapon_Sharp" ParentName="BaseMeleeWeapon" Abstract="True">
     <recipeMaker>
-    <defaultIngredientFilter>
-      <categories>
-        <li>Root</li>
-      </categories>
-      <exceptedThingDefs>
-        <li>Silver</li>
-        <li>Gold</li>
-        <li>WoodLog</li>
-      </exceptedThingDefs>
-    </defaultIngredientFilter>
+      <defaultIngredientFilter>
+        <categories>
+          <li>Root</li>
+        </categories>
+        <exceptedThingDefs>
+          <li>Silver</li>
+          <li>Gold</li>
+          <li>WoodLog</li>
+        </exceptedThingDefs>
+      </defaultIngredientFilter>
     </recipeMaker>
   </ThingDef>
 
@@ -88,12 +86,7 @@
       </defaultIngredientFilter>
     </recipeMaker>
   </ThingDef>
-  
-  
-  
-  
-  
-  
+
   <!-- ============================================================== -->
 
   <ThingDef ParentName="BaseMeleeWeapon_Sharp">
@@ -110,7 +103,7 @@
       <WorkToMake>20000</WorkToMake>
       <MeleeWeapon_DamageAmount>14</MeleeWeapon_DamageAmount>
       <MeleeWeapon_Cooldown>0.975</MeleeWeapon_Cooldown>
-			<ArmorPenetration>0.2</ArmorPenetration>
+      <ArmorPenetration>0.2</ArmorPenetration>
       <Bulk>3.5</Bulk>
       <Mass>1</Mass>
     </statBases>
@@ -128,8 +121,6 @@
     </verbs>
   </ThingDef>
 
-
-
   <ThingDef ParentName="BaseMeleeWeapon_Sharp">
     <defName>MeleeWeapon_LongSword</defName>
     <label>longsword</label>
@@ -144,7 +135,7 @@
       <WorkToMake>40000</WorkToMake>
       <MeleeWeapon_DamageAmount>16</MeleeWeapon_DamageAmount>
       <MeleeWeapon_Cooldown>1.25</MeleeWeapon_Cooldown>
-			<ArmorPenetration>0.225</ArmorPenetration>
+      <ArmorPenetration>0.225</ArmorPenetration>
       <Bulk>8</Bulk>
       <Mass>1.6</Mass>
     </statBases>
@@ -161,9 +152,6 @@
       </li>
     </verbs>
   </ThingDef>
-
-
-
 
   <ThingDef ParentName="BaseMeleeWeapon_Sharp">
     <defName>MeleeWeapon_Knife</defName>
@@ -182,7 +170,7 @@
       <WorkToMake>6000</WorkToMake>
       <MeleeWeapon_DamageAmount>12</MeleeWeapon_DamageAmount>
       <MeleeWeapon_Cooldown>0.83</MeleeWeapon_Cooldown>
-			<ArmorPenetration>0.175</ArmorPenetration>
+      <ArmorPenetration>0.175</ArmorPenetration>
       <Bulk>1</Bulk>
       <Mass>0.3</Mass>
     </statBases>
@@ -218,7 +206,7 @@
       <MeleeWeapon_DamageAmount>10</MeleeWeapon_DamageAmount>
       <DeteriorationRate>0.5</DeteriorationRate>
       <MeleeWeapon_Cooldown>0.83</MeleeWeapon_Cooldown>
-			<ArmorPenetration>0.125</ArmorPenetration>
+      <ArmorPenetration>0.125</ArmorPenetration>
       <Bulk>1</Bulk>
       <Mass>0.3</Mass>
     </statBases>
@@ -262,7 +250,7 @@
       <WorkToMake>25000</WorkToMake>
       <MeleeWeapon_DamageAmount>18</MeleeWeapon_DamageAmount>
       <MeleeWeapon_Cooldown>1.15</MeleeWeapon_Cooldown>
-			<ArmorPenetration>0.275</ArmorPenetration>
+      <ArmorPenetration>0.275</ArmorPenetration>
       <Bulk>10</Bulk>
       <Mass>2.5</Mass>
     </statBases>
@@ -279,7 +267,6 @@
       </li>
     </verbs>
   </ThingDef>
-
 
   <ThingDef ParentName="BaseMeleeWeapon_Blunt">
     <defName>MeleeWeapon_Mace</defName>
@@ -308,8 +295,6 @@
       </li>
     </verbs>
   </ThingDef>
-
-
 
   <ThingDef ParentName="BaseMeleeWeapon_Blunt">
     <defName>MeleeWeapon_Club</defName>
@@ -354,7 +339,5 @@
       </li>
     </verbs>
   </ThingDef>
-
-
 
 </ThingDefs>

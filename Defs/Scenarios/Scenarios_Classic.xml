@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <ScenarioDef>
@@ -39,7 +39,7 @@
             <max>1</max>
           </severityRange>
         </li>
-        
+
         <!-- Player starting things -->
         <li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>
@@ -74,15 +74,15 @@
           <thingDef>MeleeWeapon_Knife</thingDef>
           <stuff>Plasteel</stuff>
         </li>
-		<li Class="ScenPart_StartingThing_Defined">
+        <li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>
           <thingDef>Ammo_45ACP_FMJ</thingDef>
-		  <count>150</count>
+          <count>150</count>
         </li>
-		<li Class="ScenPart_StartingThing_Defined">
+        <li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>
           <thingDef>Ammo_303British_FMJ</thingDef>
-		  <count>200</count>
+          <count>200</count>
         </li>
         <li Class="ScenPart_StartingAnimal">
           <def>StartingAnimal</def>
@@ -100,7 +100,7 @@
           <def>ScatterThingsNearPlayerStart</def>
           <thingDef>WoodLog</thingDef>
           <count>300</count>
-        </li>      
+        </li>
 
         <!-- Scatter some things anywhere -->
         <li Class="ScenPart_ScatterThingsAnywhere">
@@ -118,16 +118,16 @@
           <thingDef>MealSurvivalPack</thingDef>
           <count>7</count>
         </li>
-        
+
         <!-- Game start dialog -->
         <li Class="ScenPart_GameStartDialog">
           <def>GameStartDialog</def>
           <textKey>GameStartDialog</textKey>
           <closeSound>GameStartSting</closeSound>
         </li>
-        
+
       </parts>
     </scenario>
   </ScenarioDef>
-  
+
 </Defs>
