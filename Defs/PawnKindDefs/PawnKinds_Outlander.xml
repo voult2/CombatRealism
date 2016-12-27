@@ -12,7 +12,7 @@
     </apparelTags>
   </PawnKindDef>
 
-  <PawnKindDef Name="Villager">
+  <PawnKindDef Name="Villager" ParentName="OutlanderBase">
     <defName>Villager</defName>
     <label>villager</label>
     <race>Human</race>
