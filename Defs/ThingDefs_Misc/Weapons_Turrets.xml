@@ -11,6 +11,7 @@
     <destroyOnDrop>True</destroyOnDrop>
     <menuHidden>True</menuHidden>
     <canBeSpawningInventory>false</canBeSpawningInventory>
+    <smeltable>false</smeltable>
   </ThingDef>
 
   <ThingDef Name="BaseAutoTurretGun" ParentName="BaseTurretGun" Abstract="True">

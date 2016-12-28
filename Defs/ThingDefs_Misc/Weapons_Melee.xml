@@ -22,6 +22,7 @@
     <alwaysHaulable>True</alwaysHaulable>
     <tickerType>Never</tickerType>
     <techLevel>Industrial</techLevel>
+    <smeltable>true</smeltable>
     <weaponTags>
       <li>Melee</li>
     </weaponTags>
