@@ -119,9 +119,6 @@
         <onlyManualCast>true</onlyManualCast>
       </li>
     </verbs>
-    <smeltProducts>
-      <Steel>2</Steel>
-    </smeltProducts>
   </ThingDef>
 
 
@@ -252,9 +249,6 @@
         <onlyManualCast>true</onlyManualCast>
       </li>
     </verbs>
-    <smeltProducts>
-      <Steel>2</Steel>
-    </smeltProducts>
   </ThingDef>
 
   <!-- ==================== Flashbang grenade ========================== -->
@@ -316,9 +310,6 @@
         <onlyManualCast>true</onlyManualCast>
       </li>
     </verbs>
-    <smeltProducts>
-      <Steel>2</Steel>
-    </smeltProducts>
   </ThingDef>
 
 </ThingDefs>
