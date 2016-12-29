@@ -23,6 +23,7 @@
     <alwaysHaulable>True</alwaysHaulable>
     <tickerType>Never</tickerType>
     <techLevel>Industrial</techLevel>
+    <smeltable>true</smeltable>
     <thingCategories>
       <li>WeaponsRanged</li>
     </thingCategories>
@@ -43,9 +44,6 @@
         <minQualityForArtistic>Excellent</minQualityForArtistic>
       </li>
     </comps>
-    <smeltProducts>
-      <Steel>20</Steel>
-    </smeltProducts>
   </ThingDef>
 
   <ThingDef Name="BaseMakeableGun" ParentName="BaseGun" Abstract="True">
