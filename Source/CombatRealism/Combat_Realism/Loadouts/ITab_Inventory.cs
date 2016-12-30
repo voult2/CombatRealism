@@ -213,6 +213,20 @@ namespace Combat_Realism
                 }
                 rect.width -= 24f;
             }
+            if (this.CanControl && thing.def.IsNutritionGivingIngestible && thing.IngestibleNow && base.SelPawn.RaceProps.CanEverEat(thing))
+            {
+                Rect rect3 = new Rect(rect.width - 24f, y, 24f, 24f);
+                TooltipHandler.TipRegion(rect3, "ConsumeThing".Translate(new object[]
+                {
+                    thing.LabelNoCount
+                }));
+                if (Widgets.ButtonImage(rect3, TexButton.Ingest))
+                {
+                    SoundDefOf.TickHigh.PlayOneShotOnCamera();
+                    this.InterfaceEatThis(thing);
+                }
+                rect.width -= 24f;
+            }
             if (Mouse.IsOver(rect))
             {
                 GUI.color = _highlightColor;
