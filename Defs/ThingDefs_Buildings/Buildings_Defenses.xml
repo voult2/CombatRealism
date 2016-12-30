@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
   <ThingDef Name="BuildingBase" Abstract="True">
@@ -38,7 +38,7 @@
       </li>
     </damageMultipliers>
   </ThingDef>
-  
+
   <!--========================= Barbed Wire =============================-->
 
   <ThingDef ParentName="BuildingBase">
@@ -88,9 +88,9 @@
     <repairEffect>ConstructDirt</repairEffect>
     <staticSunShadowHeight>0.0</staticSunShadowHeight>
   </ThingDef>
-  
+
   <!--========================= Embrasures =============================-->
-  
+
   <ThingDef ParentName="BuildingBase">
     <defName>Embrasure</defName>
     <label>embrasure</label>
@@ -150,6 +150,7 @@
     <building>
       <isInert>true</isInert>
       <ignoreNeedsPower>true</ignoreNeedsPower>
+      <canPlaceOverWall>true</canPlaceOverWall>
     </building>
   </ThingDef>
 

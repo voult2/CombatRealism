@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
   <ThingDef Name="BasePawn" Abstract="True">
@@ -18,7 +18,7 @@
       <li>ITab_Pawn_Needs</li>
       <li>ITab_Pawn_Character</li>
       <li>ITab_Pawn_Training</li>
-	  <li>Combat_Realism.ITab_Inventory</li>
+      <li>Combat_Realism.ITab_Inventory</li>
       <li>ITab_Pawn_Guest</li>
       <li>ITab_Pawn_Prisoner</li>
       <li>ITab_Pawn_Social</li>
@@ -26,22 +26,19 @@
     <comps>
       <li>
         <compClass>CompAttachBase</compClass>
-	 </li>
+      </li>
       <li>
         <compClass>Combat_Realism.CompPawnGizmo</compClass>
-	 </li>
+      </li>
       <li>
-        <compClass>Combat_Realism.CompSuppressable</compClass>	
-	 </li>
+        <compClass>Combat_Realism.CompSuppressable</compClass>
+      </li>
       <li>
         <compClass>Combat_Realism.CompInventory</compClass>
-	 </li>
+      </li>
     </comps>
     <drawGUIOverlay>true</drawGUIOverlay>
   </ThingDef>
-
-
-
 
   <!-- ============================ Mechanoids ========================== -->
 
@@ -61,8 +58,6 @@
       <foodType>None</foodType>
     </race>
   </ThingDef>
-
-
 
   <!-- Centipede -->
   <ThingDef ParentName="BaseMechanoid">
@@ -184,8 +179,5 @@
       <Component>1</Component>
     </butcherProducts>
   </ThingDef>
-
-
-
 
 </ThingDefs>

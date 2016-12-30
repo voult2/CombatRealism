@@ -29,7 +29,6 @@ namespace Combat_Realism
         /// <param name="instigator">Launcher of the projectile calling the method</param>
 		public virtual void Explode(Thing instigator, IntVec3 pos, Map map)
         {
-            Log.Message("1");
             // Regular explosion stuff
             if (Props.explosionRadius > 0 && Props.explosionDamage > 0)
             {
@@ -50,7 +49,6 @@ namespace Combat_Realism
                     Props.explosionSpawnChance,
                     1);
             }
-            Log.Message("2");
             // Fragmentation stuff
             if (!Props.fragments.NullOrEmpty())
             {
@@ -64,7 +62,6 @@ namespace Combat_Realism
                     Vector3 exactOrigin = new Vector3(0, 0, 0);
                     exactOrigin.x = parent.DrawPos.x;
                     exactOrigin.z = parent.DrawPos.z;
-                    Log.Message("3");
                     foreach (ThingCountClass fragment in Props.fragments)
                     {
                         for (int i = 0; i < fragment.count; i++)
@@ -78,9 +75,7 @@ namespace Combat_Realism
                         }
                     }
                 }
-                Log.Message("3.5");
             }
-            Log.Message("4");
         }
     }
 }

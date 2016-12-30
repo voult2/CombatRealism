@@ -11,8 +11,8 @@
       <drawSize>(3,3)</drawSize>
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
-		<tradeability>Stockable</tradeability>
-		<techLevel>Industrial</techLevel>
+    <tradeability>Stockable</tradeability>
+    <techLevel>Industrial</techLevel>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <Flammability>0.1</Flammability>
@@ -40,8 +40,8 @@
   </ThingDef>
 
   <ThingDef Name="TurretMannedBase" ParentName="TurretBase" Abstract="True">
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <comps>
       <li Class="CompProperties_Mannable">
         <manWorkType>Violent</manWorkType>
@@ -59,7 +59,6 @@
     </recipeMaker>
   </ThingDef>
 
-
   <!--=============== Blaster Turret ===============-->
 
   <ThingDef ParentName="TurretBase">
@@ -74,7 +73,7 @@
       <Mass>20</Mass>
       <Bulk>25</Bulk>
     </statBases>
-		<techLevel>Spacer</techLevel>
+    <techLevel>Spacer</techLevel>
     <comps>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
@@ -107,7 +106,7 @@
       <Mass>80</Mass>
       <Bulk>100</Bulk>
     </statBases>
-		<techLevel>Spacer</techLevel>
+    <techLevel>Spacer</techLevel>
     <description>Plated automatic turret with large caliber machine gun. Very resistant to damage.</description>
     <building>
       <turretGunDef>Gun_HeavyTurret</turretGunDef>
@@ -175,13 +174,13 @@
       <turretTopgraphicPath>Things/Building/Turrets/KPVT_Top</turretTopgraphicPath>
     </building>
     <recipeMaker>
-			<researchPrerequisite>CR_TurretHeavyWeapons</researchPrerequisite>
+      <researchPrerequisite>CR_TurretHeavyWeapons</researchPrerequisite>
     </recipeMaker>
     <minifiedDef>MinifiedTurret_KPV</minifiedDef>
   </ThingDef>
 
-	<!--=============== Flak cannon ===============-->
-  
+  <!--=============== Flak cannon ===============-->
+
   <ThingDef ParentName="TurretMannedBase">
     <defName>Turret_Flak</defName>
     <label>90mm flak turret</label>
@@ -199,18 +198,18 @@
       <Steel>1000</Steel>
       <Component>15</Component>
     </costList>
-		<specialDisplayRadius>16</specialDisplayRadius>
+    <specialDisplayRadius>16</specialDisplayRadius>
     <building>
       <turretGunDef>Gun_FlakTurret</turretGunDef>
       <turretTopgraphicPath>Things/Building/Turrets/FlakTurret_Top</turretTopgraphicPath>
     </building>
     <size>(2,2)</size>
     <recipeMaker>
-			<researchPrerequisite>CR_TurretHeavyWeapons</researchPrerequisite>
+      <researchPrerequisite>CR_TurretHeavyWeapons</researchPrerequisite>
     </recipeMaker>
     <minifiedDef>MinifiedTurret_Flak</minifiedDef>
   </ThingDef>
-	
+
   <!--=============== AGS-30 ===============-->
 
   <ThingDef ParentName="TurretMannedBase">
@@ -229,16 +228,15 @@
       <Steel>400</Steel>
       <Component>6</Component>
     </costList>
-		<specialDisplayRadius>8</specialDisplayRadius>
+    <specialDisplayRadius>8</specialDisplayRadius>
     <building>
       <turretGunDef>Gun_AGSThirty</turretGunDef>
       <turretTopgraphicPath>Things/Building/Turrets/TurretGun_AGS30</turretTopgraphicPath>
     </building>
     <recipeMaker>
-			<researchPrerequisite>CR_TurretHeavyWeapons</researchPrerequisite>
+      <researchPrerequisite>CR_TurretHeavyWeapons</researchPrerequisite>
     </recipeMaker>
     <minifiedDef>MinifiedTurret_AGSThirty</minifiedDef>
   </ThingDef>
-
 
 </ThingDefs>

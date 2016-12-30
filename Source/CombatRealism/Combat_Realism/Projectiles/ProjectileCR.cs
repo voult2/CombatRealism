@@ -308,9 +308,21 @@ namespace Combat_Realism
                         Impact(thing);
                         return true;
                     }
+
                     //Checking for pawns/cover
-                    if (thing.def.category == ThingCategory.Pawn ||
-                        (ticksToImpact < StartingTicksToImpact / 2 && thing.def.fillPercent > 0)) //Need to check for fillPercent here or else will be impacting things like motes, etc.
+                    if (thing.def.category == ThingCategory.Pawn)
+                    {
+                        // Decrease chance to hit friendly target
+                        Pawn pawn = thing as Pawn;
+                        if (this.launcher != null && pawn.Faction != null && this.launcher.Faction != null && !pawn.Faction.HostileTo(this.launcher.Faction) && Rand.Value > 0.3)
+                        {
+                            return false;
+                        }
+                        else return ImpactThroughBodySize(thing, height);
+                    }
+
+                    //Checking for pawns/cover
+                    if (ticksToImpact < StartingTicksToImpact / 2 && thing.def.fillPercent > 0) //Need to check for fillPercent here or else will be impacting things like motes, etc.
                     {
                         return ImpactThroughBodySize(thing, height);
                     }

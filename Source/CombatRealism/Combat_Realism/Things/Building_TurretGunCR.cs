@@ -372,16 +372,16 @@ namespace Combat_Realism
             }
             if (this.currentTargetInt.IsValid)
             {
-                /*
-                if (AttackVerb.verbProps.warmupTicks > 0)
+                if (AttackVerb.verbProps.warmupTime > 0)
                 {
-                    this.burstWarmupTicksLeft = AttackVerb.verbProps.warmupTicks;
+                    this.burstWarmupTicksLeft = AttackVerb.verbProps.warmupTime.SecondsToTicks();
                 }
-                */
+                /*
                 if (this.def.building.turretBurstWarmupTime > 0f)
                 {
                     this.burstWarmupTicksLeft = this.def.building.turretBurstWarmupTime.SecondsToTicks();
                 }
+                */
                 else
                 {
                     this.BeginBurst();
