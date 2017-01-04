@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
-
 
   <!--========================= Doors =============================-->
 
@@ -47,8 +46,6 @@
     </comps>
   </ThingDef>
 
-
-
   <ThingDef ParentName="DoorBase">
     <defName>Door</defName>
     <label>door</label>
@@ -61,7 +58,7 @@
       <graphicClass>Graphic_Single</graphicClass>
       <damageData>
         <!--  no damage marks because they don't move with the door
-        <rect>(0,0.12,1,0.76)</rect>-->
+             <rect>(0,0.12,1,0.76)</rect>-->
         <enabled>false</enabled>
       </damageData>
     </graphicData>
@@ -69,7 +66,6 @@
     <costStuffCount>25</costStuffCount>
     <designationHotKey>Misc1</designationHotKey>
   </ThingDef>
-
 
   <ThingDef ParentName="DoorBase">
     <defName>Autodoor</defName>
@@ -82,8 +78,8 @@
       <texPath>Things/Building/Door/Autodoor_Mover</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <damageData>
-      <!--  no damage marks because they don't move with the door
-        <rect>(0,0.12,1,0.76)</rect>-->
+        <!--  no damage marks because they don't move with the door
+             <rect>(0,0.12,1,0.76)</rect>-->
         <enabled>false</enabled>
       </damageData>
     </graphicData>
@@ -106,13 +102,7 @@
     </researchPrerequisites>
   </ThingDef>
 
-
-
-
-
   <!--========================= Walls =============================-->
-
-
 
   <ThingDef ParentName="BuildingBase" Name="Wall">
     <defName>Wall</defName>
@@ -152,6 +142,7 @@
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <altitudeLayer>Building</altitudeLayer>
     <passability>Impassable</passability>
+    <blockWind>true</blockWind>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>1</fillPercent>
     <coversFloor>true</coversFloor>

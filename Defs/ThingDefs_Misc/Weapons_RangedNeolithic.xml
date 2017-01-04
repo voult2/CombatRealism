@@ -71,10 +71,7 @@
     <projectile Class="Combat_Realism.ProjectilePropertiesCR" />
   </ThingDef>
 
-
   <!-- ========================== SPECIFICS ============================== -->
-
-
 
   <ThingDef ParentName="BaseWeaponBow">
     <defName>Bow_Short</defName>
@@ -119,17 +116,16 @@
         <soundCast>BowSmall</soundCast>
       </li>
     </verbs>
-	<comps>
-	  <li Class="Combat_Realism.CompProperties_AmmoUser">
-		<ammoSet>AmmoSet_Arrow</ammoSet>
-	  </li>
-	  <li Class="Combat_Realism.CompProperties_FireModes">
-		<aiUseBurstMode>false</aiUseBurstMode>
-		<aiUseAimMode>false</aiUseAimMode>
-	  </li>
-	</comps>
+    <comps>
+      <li Class="Combat_Realism.CompProperties_AmmoUser">
+        <ammoSet>AmmoSet_Arrow</ammoSet>
+      </li>
+      <li Class="Combat_Realism.CompProperties_FireModes">
+        <aiUseBurstMode>false</aiUseBurstMode>
+        <aiUseAimMode>false</aiUseAimMode>
+      </li>
+    </comps>
   </ThingDef>
-
 
   <ThingDef ParentName="BaseWeaponNeolithic">
     <defName>Pila</defName>
@@ -159,7 +155,7 @@
     <stackLimit>75</stackLimit>
     <weaponTags>
       <li>NeolithicRanged</li>
-	  <li>CR_Pila</li>
+      <li>CR_Pila</li>
     </weaponTags>
     <verbs>
       <li Class="Combat_Realism.VerbPropertiesCR">
@@ -172,10 +168,7 @@
       </li>
     </verbs>
   </ThingDef>
-	
-	
-	
-	
+
   <ThingDef ParentName="BaseWeaponBow">
     <defName>Bow_Great</defName>
     <label>great bow</label>
@@ -212,15 +205,15 @@
         <soundCast>BowLarge</soundCast>
       </li>
     </verbs>
-	<comps>
-	  <li Class="Combat_Realism.CompProperties_AmmoUser">
-			<ammoSet>AmmoSet_GreatArrow</ammoSet>
-	  </li>
-	  <li Class="Combat_Realism.CompProperties_FireModes">
-			<aiUseBurstMode>false</aiUseBurstMode>
-			<aiUseAimMode>false</aiUseAimMode>
-	  </li>
-	</comps>
+    <comps>
+      <li Class="Combat_Realism.CompProperties_AmmoUser">
+        <ammoSet>AmmoSet_GreatArrow</ammoSet>
+      </li>
+      <li Class="Combat_Realism.CompProperties_FireModes">
+        <aiUseBurstMode>false</aiUseBurstMode>
+        <aiUseAimMode>false</aiUseAimMode>
+      </li>
+    </comps>
   </ThingDef>
 
 </ThingDefs>

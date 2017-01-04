@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <ScenarioDef>
@@ -25,13 +25,13 @@
           <visible>false</visible>
           <method>DropPods</method>
         </li>
-        
+
         <!-- Starting research -->
         <li Class="ScenPart_StartingResearch">
           <def>StartingResearch</def>
           <project>GunTurrets</project>
         </li>
-        
+
         <!-- Player starting things -->
         <li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>
@@ -62,10 +62,10 @@
           <def>StartingThing_Defined</def>
           <thingDef>Gun_ChargeRifle</thingDef>
         </li>
-		<li Class="ScenPart_StartingThing_Defined">
+        <li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>
           <thingDef>Ammo_6x24mmCharged</thingDef>
-		  <count>400</count>
+          <count>400</count>
         </li>
         <li Class="ScenPart_StartingAnimal">
           <def>StartingAnimal</def>
@@ -91,14 +91,14 @@
           <text>The neurosimulations, holo-games, and free-orgies were never enough for you. You wanted more - the grit and consequence of real life, like they talk about in the history books. You wanted to know what real challenge and consequence feel like.\n\nNow, after a journey of decades in cryptosleep, you're landing on this unknown rimworld. Real consequences await you.</text>
           <closeSound>GameStartSting</closeSound>
         </li>
-        
+
       </parts>
     </scenario>
   </ScenarioDef>
 
-  
-  
-  
+
+
+
   <ScenarioDef>
     <defName>LostTribe</defName>
     <label>Lost Tribe</label>
@@ -206,11 +206,11 @@
           <text>The gods were very angry. The blood machines came at night. They swept through your village, cutting and burning your people with their blades and devil-fire.\n\nOnly a few of you escaped. Now, after a harrowing journey on foot, with no close friends to turn to, you must build a new home in the wilderness, like your ancestors did.</text>
           <closeSound>GameStartSting</closeSound>
         </li>
-        
+
       </parts>
     </scenario>
   </ScenarioDef>
-    
 
-  
+
+
 </Defs>
