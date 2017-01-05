@@ -36,7 +36,7 @@ namespace Combat_Realism
                 ProjectilePropertiesCR propsCR = def.projectile as ProjectilePropertiesCR;
                 if (propsCR != null && !propsCR.secondaryDamage.NullOrEmpty())
                 {
-                    Log.Message("propsCR: " + propsCR.ToString());
+                   // Log.Message("propsCR: " + propsCR.ToString());
                     // Get the correct body part
                     Pawn pawn = hitThing as Pawn;
                     if (pawn != null && def.projectile.damageDef.workerClass == typeof(DamageWorker_AddInjuryCR))
