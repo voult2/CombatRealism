@@ -179,6 +179,9 @@
     <Compile Include="Combat_Realism\Jobs\ExternalPawnDrafter.cs" />
     <Compile Include="Combat_Realism\Jobs\JobDriver_Reload.cs" />
     <Compile Include="Combat_Realism\SecondaryDamage.cs" />
+    <Compile Include="Combat_Realism\MassBulkUtility.cs" />
+    <Compile Include="Combat_Realism\StatWorkers\StatWorker_CarryBulk.cs" />
+    <Compile Include="Combat_Realism\StatWorkers\StatWorker_CarryWeight.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_DLLs\" />
