@@ -101,7 +101,7 @@ namespace Combat_Realism
         public static string GetBulkTip(this Loadout loadout)
         {
             float baseBulkCapacity = ThingDefOf.Human.GetStatValueAbstract(CR_StatDefOf.CarryBulk);
-            float workSpeedFactor = Mathf.Lerp(1f, 0.75f, loadout.Bulk / baseBulkCapacity);
+            float workSpeedFactor = MassBulkUtility.WorkSpeedFactor(loadout.Bulk, baseBulkCapacity);
 
             return "CR.DetailedBaseBulkTip".Translate(
                 CR_StatDefOf.CarryBulk.ValueToString(baseBulkCapacity, CR_StatDefOf.CarryBulk.toStringNumberSense),
@@ -184,10 +184,8 @@ namespace Combat_Realism
         public static string GetWeightTip(this Loadout loadout)
         {
             float baseWeightCapacity = ThingDefOf.Human.GetStatValueAbstract(CR_StatDefOf.CarryWeight);
-            float moveSpeedFactor = Mathf.Lerp(1f, 0.75f, loadout.Weight / baseWeightCapacity);
-            float encumberPenalty = loadout.Weight > baseWeightCapacity ?
-                loadout.Weight / baseWeightCapacity - 1 :
-                0f;
+            float moveSpeedFactor = MassBulkUtility.MoveSpeedFactor(loadout.Weight, baseWeightCapacity);
+            float encumberPenalty = MassBulkUtility.EncumberPenalty(loadout.Weight, baseWeightCapacity);
 
             return "CR.DetailedBaseWeightTip".Translate(CR_StatDefOf.CarryWeight.ValueToString(baseWeightCapacity, CR_StatDefOf.CarryWeight.toStringNumberSense), CR_StatDefOf.CarryWeight.ValueToString(loadout.Weight, CR_StatDefOf.CarryWeight.toStringNumberSense),
                                                  moveSpeedFactor.ToStringPercent(),
