@@ -65,6 +65,7 @@ namespace Combat_Realism
             doCloseX = true;
             closeOnClickedOutside = true;
             closeOnEscapeKey = true;
+            Utility_Loadouts.UpdateColonistCapacities();
         }
 
         #endregion Constructors
@@ -234,8 +235,8 @@ namespace Combat_Realism
             // bars
             if (CurrentLoadout != null)
             {
-                Utility_Loadouts.DrawBar(weightBarRect, CurrentLoadout.Weight, CR_StatDefOf.CarryWeight.defaultBaseValue, "CR.Weight".Translate(), CurrentLoadout.GetWeightTip());
-                Utility_Loadouts.DrawBar(bulkBarRect, CurrentLoadout.Bulk, CR_StatDefOf.CarryBulk.defaultBaseValue, "CR.Bulk".Translate(), CurrentLoadout.GetBulkTip());
+                Utility_Loadouts.DrawBar(weightBarRect, CurrentLoadout.Weight, Utility_Loadouts.medianWeightCapacity, "CR.Weight".Translate(), CurrentLoadout.GetWeightTip());
+                Utility_Loadouts.DrawBar(bulkBarRect, CurrentLoadout.Bulk, Utility_Loadouts.medianBulkCapacity, "CR.Bulk".Translate(), CurrentLoadout.GetBulkTip());
             }
 
             // done!
