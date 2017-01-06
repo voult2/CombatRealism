@@ -121,6 +121,11 @@ namespace Combat_Realism.Detours
                 typeof(Detours_Pawn_EquipmentTracker).GetMethod("TryStartAttack", BindingFlags.Static | BindingFlags.NonPublic)))
                 return false;
 
+            // MassUtility
+            if (!Detours.TryDetourFromTo(typeof(MassUtility).GetMethod("Capacity", BindingFlags.Static | BindingFlags.Public),
+                typeof(Detours_MassUtility).GetMethod("Capacity", BindingFlags.Static | BindingFlags.NonPublic)))
+                return false;
+
             // *************************************
             // *** Detour inventory-related methods ***
             // *************************************
