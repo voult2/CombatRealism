@@ -39,7 +39,7 @@ namespace Combat_Realism
         {
             get
             {
-                return parentPawn.GetStatValue(CR_StatDefOf.CarryWeight) - currentWeight;
+                return capacityWeight - currentWeight;
             }
         }
         private float availableBulk
@@ -79,26 +79,21 @@ namespace Combat_Realism
         {
             get
             {
-                return Mathf.Lerp(1f, 0.75f, currentWeight / parentPawn.GetStatValue(CR_StatDefOf.CarryWeight));
+                return MassBulkUtility.MoveSpeedFactor(currentWeight, capacityWeight);
             }
         }
         public float workSpeedFactor
         {
             get
             {
-                return Mathf.Lerp(1f, 0.75f, currentBulk / 40f);
+                return MassBulkUtility.WorkSpeedFactor(currentBulk, capacityBulk);
             }
         }
         public float encumberPenalty
         {
             get
             {
-                float penalty = 0f;
-                if (availableWeight < 0)
-                {
-                    penalty = currentWeight / parentPawn.GetStatValue(CR_StatDefOf.CarryWeight) - 1;
-                }
-                return penalty;
+                return MassBulkUtility.EncumberPenalty(currentWeight, capacityWeight);
             }
         }
         public ThingContainer container

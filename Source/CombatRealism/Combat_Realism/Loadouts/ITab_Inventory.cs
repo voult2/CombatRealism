@@ -508,25 +508,18 @@ namespace Combat_Realism
         {
             ThingWithComps thingWithComps = t as ThingWithComps;
             Apparel apparel = t as Apparel;
-            if (apparel != null)
+            if (apparel != null && this.SelPawnForGear.apparel != null && this.SelPawnForGear.apparel.WornApparel.Contains(apparel))
             {
-                Pawn selPawnForGear = SelPawnForGear;
-                if (selPawnForGear.jobs.CanTakeOrderedJob())
-                {
-                    Job job = new Job(JobDefOf.RemoveApparel, apparel);
-                    job.playerForced = true;
-                    selPawnForGear.jobs.TryTakeOrderedJob(job);
-                }
+                this.SelPawnForGear.jobs.TryTakeOrderedJob(new Job(JobDefOf.RemoveApparel, apparel));
             }
-            else if (thingWithComps != null && SelPawnForGear.equipment.AllEquipment.Contains(thingWithComps))
+            else if (thingWithComps != null && this.SelPawnForGear.equipment != null && this.SelPawnForGear.equipment.AllEquipment.Contains(thingWithComps))
             {
-                ThingWithComps thingWithComps2;
-                SelPawnForGear.equipment.TryDropEquipment(thingWithComps, out thingWithComps2, SelPawnForGear.Position, true);
+                this.SelPawnForGear.jobs.TryTakeOrderedJob(new Job(JobDefOf.DropEquipment, thingWithComps));
             }
             else if (!t.def.destroyOnDrop)
             {
                 Thing thing;
-                SelPawnForGear.inventory.innerContainer.TryDrop(t, SelPawnForGear.Position, SelPawn.Map, ThingPlaceMode.Near, out thing, null);
+                this.SelPawnForGear.inventory.innerContainer.TryDrop(t, this.SelPawnForGear.Position, this.SelPawnForGear.Map, ThingPlaceMode.Near, out thing, null);
             }
         }
 
@@ -534,21 +527,13 @@ namespace Combat_Realism
         {
             ThingWithComps thingWithComps = t as ThingWithComps;
             Apparel apparel = t as Apparel;
-            if (apparel != null)
+            if (apparel != null && this.SelPawnForGear.apparel != null && this.SelPawnForGear.apparel.WornApparel.Contains(apparel))
             {
-                Pawn selPawnForGear = SelPawn;
-                if (selPawnForGear.jobs.CanTakeOrderedJob())
-                {
-                    Job job = new Job(JobDefOf.RemoveApparel, apparel);
-                    job.playerForced = true;
-                    job.haulDroppedApparel = true;
-                    selPawnForGear.jobs.TryTakeOrderedJob(job);
-                }
+                this.SelPawnForGear.jobs.TryTakeOrderedJob(new Job(JobDefOf.RemoveApparel, apparel) { haulDroppedApparel = true });
             }
-            else if (thingWithComps != null && SelPawn.equipment.AllEquipment.Contains(thingWithComps))
+            else if (thingWithComps != null && this.SelPawnForGear.equipment != null && this.SelPawnForGear.equipment.AllEquipment.Contains(thingWithComps))
             {
-                ThingWithComps thingWithComps2;
-                SelPawn.equipment.TryDropEquipment(thingWithComps, out thingWithComps2, SelPawn.Position);
+                this.SelPawnForGear.jobs.TryTakeOrderedJob(new Job(JobDefOf.DropEquipment, thingWithComps));
             }
             else if (!t.def.destroyOnDrop)
             {
