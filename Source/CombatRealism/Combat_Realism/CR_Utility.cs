@@ -234,11 +234,18 @@ namespace Combat_Realism
                     }
                 }
             }
+
             float pawnArmorAmount = 0f;
+
             BodyPartRecord outerPart = part;
             while (outerPart.parent != null && outerPart.depth != BodyPartDepth.Outside)
             {
                 outerPart = outerPart.parent;
+            }
+
+            if (outerPart.IsInGroup(DefDatabase<BodyPartGroupDef>.GetNamed("CoveredByNaturalArmor")))
+            {
+                pawnArmorAmount = pawn.GetStatValue(deflectionStat);
             }
 
             if (pawnArmorAmount > 0 && ApplyArmor(ref damageAmount, ref pierceAmount, pawnArmorAmount, null, damageDef))
