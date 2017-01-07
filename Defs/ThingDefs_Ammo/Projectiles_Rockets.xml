@@ -26,14 +26,14 @@
 		</graphicData>
     <projectile>
       <damageDef>Bullet</damageDef>
-      <damageAmountBase>50</damageAmountBase>
-	  <armorPenetration>1.0</armorPenetration>
+      <damageAmountBase>150</damageAmountBase>
+	  <armorPenetration>3.0</armorPenetration>
     </projectile>
     <comps>
       <li Class="Combat_Realism.CompProperties_ExplosiveCR">
-        <explosionDamage>35</explosionDamage>
+        <explosionDamage>30</explosionDamage>
         <explosionDamageDef>Bomb</explosionDamageDef>
-        <explosionRadius>3</explosionRadius>
+        <explosionRadius>1</explosionRadius>
         <soundExplode>MortarBomb_Explode</soundExplode>
       </li>
     </comps>
