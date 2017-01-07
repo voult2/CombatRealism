@@ -18,6 +18,12 @@ namespace Combat_Realism
         private static float _margin = 6f;
         private static Texture2D _overburdenedTex;
 
+        // Base values for WeightCapacity and BulkCapacity are no longer meaningful,
+        // instead the median values are calculated from the colonists themselves
+        // via UpdateColonistCapacities
+        public static float medianWeightCapacity = 0f;
+        public static float medianBulkCapacity = 0f;
+
         #endregion Fields
 
         #region Properties
@@ -100,11 +106,10 @@ namespace Combat_Realism
 
         public static string GetBulkTip(this Loadout loadout)
         {
-            float baseBulkCapacity = ThingDefOf.Human.GetStatValueAbstract(CR_StatDefOf.CarryBulk);
-            float workSpeedFactor = Mathf.Lerp(1f, 0.75f, loadout.Bulk / baseBulkCapacity);
+            float workSpeedFactor = MassBulkUtility.WorkSpeedFactor(loadout.Bulk, medianBulkCapacity);
 
             return "CR.DetailedBaseBulkTip".Translate(
-                CR_StatDefOf.CarryBulk.ValueToString(baseBulkCapacity, CR_StatDefOf.CarryBulk.toStringNumberSense),
+                CR_StatDefOf.CarryBulk.ValueToString(medianBulkCapacity, CR_StatDefOf.CarryBulk.toStringNumberSense),
                 CR_StatDefOf.CarryBulk.ValueToString(loadout.Bulk, CR_StatDefOf.CarryBulk.toStringNumberSense),
                 workSpeedFactor.ToStringPercent());
         }
@@ -183,13 +188,10 @@ namespace Combat_Realism
 
         public static string GetWeightTip(this Loadout loadout)
         {
-            float baseWeightCapacity = ThingDefOf.Human.GetStatValueAbstract(CR_StatDefOf.CarryWeight);
-            float moveSpeedFactor = Mathf.Lerp(1f, 0.75f, loadout.Weight / baseWeightCapacity);
-            float encumberPenalty = loadout.Weight > baseWeightCapacity ?
-                loadout.Weight / baseWeightCapacity - 1 :
-                0f;
+            float moveSpeedFactor = MassBulkUtility.MoveSpeedFactor(loadout.Weight, medianWeightCapacity);
+            float encumberPenalty = MassBulkUtility.EncumberPenalty(loadout.Weight, medianWeightCapacity);
 
-            return "CR.DetailedBaseWeightTip".Translate(CR_StatDefOf.CarryWeight.ValueToString(baseWeightCapacity, CR_StatDefOf.CarryWeight.toStringNumberSense), CR_StatDefOf.CarryWeight.ValueToString(loadout.Weight, CR_StatDefOf.CarryWeight.toStringNumberSense),
+            return "CR.DetailedBaseWeightTip".Translate(CR_StatDefOf.CarryWeight.ValueToString(medianWeightCapacity, CR_StatDefOf.CarryWeight.toStringNumberSense), CR_StatDefOf.CarryWeight.ValueToString(loadout.Weight, CR_StatDefOf.CarryWeight.toStringNumberSense),
                                                  moveSpeedFactor.ToStringPercent(),
                                                  encumberPenalty.ToStringPercent());
         }
@@ -215,6 +217,41 @@ namespace Combat_Realism
             else
                 LoadoutManager.AssignedLoadouts.Add(pawn, loadout);
         }
+
+        public static void UpdateColonistCapacities()
+        {
+            Pawn[] colonists = PawnsFinder.AllMaps_FreeColonists.ToArray();
+
+            if (colonists.Length > 0)
+            {
+                // The median calculation is O(n log n) but it could be made O(n) with a little effort
+                // Due to the small number of colonists, and because the values only need to be updated occasionally,
+                // this shouldn't be a problem.
+                medianWeightCapacity = Median(colonists.Select(c => c.GetStatValue(CR_StatDefOf.CarryWeight)).ToArray());
+                medianBulkCapacity = Median(colonists.Select(c => c.GetStatValue(CR_StatDefOf.CarryBulk)).ToArray());
+            }
+            else
+            {
+                // Use the base values
+                medianWeightCapacity = ThingDefOf.Human.GetStatValueAbstract(CR_StatDefOf.CarryWeight);
+                medianBulkCapacity = ThingDefOf.Human.GetStatValueAbstract(CR_StatDefOf.CarryBulk);
+            }
+        }
+
+        private static float Median(float[] xs)
+        {
+            var ys = xs.OrderBy(x => x).ToArray();
+            if (ys.Length == 0)
+            {
+                Log.Error("CR :: Utility_Loadouts :: Median: Nonzero-length array");
+                return 0;
+            }
+            else if (ys.Length % 2 == 0)
+                return (ys[(int)(ys.Length / 2) - 1] + ys[(int)(ys.Length / 2)])/2;
+            else
+                return ys[Mathf.FloorToInt(ys.Length / 2)];
+        }
+
 
         #endregion Methods
     }
