@@ -20,8 +20,8 @@ namespace Combat_Realism
             Map map = base.Map;
             if (--Burnticks == 0)
             {
-                ThrowSmokeForRocketsandMortars(base.Position.ToVector3Shifted(), map, 1f);
-                ThrowRocketExhaustFlame(base.Position.ToVector3Shifted(), map, 2f);
+                ThrowSmokeForRocketsandMortars(base.Position.ToVector3Shifted(), 1f);
+                ThrowRocketExhaustFlame(base.Position.ToVector3Shifted(), 2f);
                 Burnticks = 3;
             }
             if (this.ticksToDetonation > 0)
@@ -37,8 +37,8 @@ namespace Combat_Realism
         public override void SpawnSetup(Map map)
         {
             base.SpawnSetup(map);
-            ThrowSmokeForRocketsandMortars(base.Position.ToVector3Shifted(), map, 4f);
-            ThrowRocketExhaustFlame(base.Position.ToVector3Shifted(), map, 1f);
+            ThrowSmokeForRocketsandMortars(base.Position.ToVector3Shifted(), 4f);
+            ThrowRocketExhaustFlame(base.Position.ToVector3Shifted(), 1f);
         }
 
         protected override void Impact(Thing hitThing)
@@ -96,10 +96,10 @@ namespace Combat_Realism
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
         }
 
-        public static void ThrowRocketExhaustFlame(Vector3 loc, Map map, float size)
+        public static void ThrowRocketExhaustFlame(Vector3 loc, float size)
         {
             IntVec3 intVec = loc.ToIntVec3();
-            if (!intVec.InBounds(map))
+            if (!intVec.InBounds(Find.VisibleMap))
             {
                 return;
             }
@@ -108,12 +108,12 @@ namespace Combat_Realism
             moteThrown.exactRotation = Rand.Range(-0.5f, 0.5f);
             moteThrown.exactPosition = loc;
             moteThrown.SetVelocity((float)Rand.Range(30, 40), Rand.Range(0.08f, 0.12f));
-            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), Find.VisibleMap);
         }
-        public static void ThrowSmokeForRocketsandMortars(Vector3 loc, Map map, float size)
+        public static void ThrowSmokeForRocketsandMortars(Vector3 loc, float size)
         {
             IntVec3 intVec = loc.ToIntVec3();
-            if (!intVec.InBounds(map))
+            if (!intVec.InBounds(Find.VisibleMap))
             {
                 return;
             }
@@ -122,7 +122,7 @@ namespace Combat_Realism
             moteThrown.exactRotation = Rand.Range(-0.5f, 0.5f);
             moteThrown.exactPosition = loc;
             moteThrown.SetVelocity((float)Rand.Range(30, 40), Rand.Range(0.08f, 0.12f));
-            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), Find.VisibleMap);
         }
     }
 }

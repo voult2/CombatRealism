@@ -31,7 +31,7 @@ namespace Combat_Realism
                     null,
                     equipmentDef);
 
-                if (damDefCR != null && damDefCR.harmOnlyOutsideLayers) dinfo.ForceHitPart.depth = BodyPartDepth.Outside;
+              //  if (damDefCR != null && damDefCR.harmOnlyOutsideLayers) dinfo.ForceHitPart.depth = BodyPartDepth.Outside;
 
                 ProjectilePropertiesCR propsCR = def.projectile as ProjectilePropertiesCR;
                 if (propsCR != null && !propsCR.secondaryDamage.NullOrEmpty())

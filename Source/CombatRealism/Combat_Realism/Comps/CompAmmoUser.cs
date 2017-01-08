@@ -188,7 +188,7 @@ namespace Combat_Realism
             {
                 compInventory.UpdateInventory();
             }
-            if (curMagCountInt <= 0) TryStartReload();
+            if (curMagCountInt < 0) TryStartReload();
             return true;
         }
 
