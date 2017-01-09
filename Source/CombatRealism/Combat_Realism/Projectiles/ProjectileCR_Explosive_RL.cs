@@ -17,10 +17,11 @@ namespace Combat_Realism
         public override void Tick()
         {
             base.Tick();
+            Map map = base.Map;
             if (--Burnticks == 0)
             {
-                ExhaustFlames.ThrowSmokeForRocketsandMortars(base.Position.ToVector3Shifted(), base.Map, 1f);
-                ExhaustFlames.ThrowRocketExhaustFlame(base.Position.ToVector3Shifted(), base.Map, 2f);
+                ThrowSmokeForRocketsandMortars(base.Position.ToVector3Shifted(), 1f);
+                ThrowRocketExhaustFlame(base.Position.ToVector3Shifted(), 2f);
                 Burnticks = 3;
             }
             if (this.ticksToDetonation > 0)
@@ -36,8 +37,8 @@ namespace Combat_Realism
         public override void SpawnSetup(Map map)
         {
             base.SpawnSetup(map);
-            ExhaustFlames.ThrowSmokeForRocketsandMortars(base.Position.ToVector3Shifted(), map, 4f);
-            ExhaustFlames.ThrowRocketExhaustFlame(base.Position.ToVector3Shifted(), map, 1f);
+            ThrowSmokeForRocketsandMortars(base.Position.ToVector3Shifted(), 4f);
+            ThrowRocketExhaustFlame(base.Position.ToVector3Shifted(), 1f);
         }
 
         protected override void Impact(Thing hitThing)
@@ -71,9 +72,9 @@ namespace Combat_Realism
                 1,
                 false, // propsCR == null ? false : propsCR.damageAdjacentTiles,
                 preExplosionSpawnThingDef,
-                this.def.projectile.explosionSpawnChance, 
+                this.def.projectile.explosionSpawnChance,
                 1);
-                ThrowBigExplode(base.Position.ToVector3Shifted() + Gen.RandomHorizontalVector(def.projectile.explosionRadius * 0.5f), map, def.projectile.explosionRadius * 0.4f);
+            ThrowBigExplode(base.Position.ToVector3Shifted() + Gen.RandomHorizontalVector(def.projectile.explosionRadius * 0.5f), map, def.projectile.explosionRadius * 0.4f);
             CompExplosiveCR comp = this.TryGetComp<CompExplosiveCR>();
             if (comp != null)
             {
@@ -94,14 +95,11 @@ namespace Combat_Realism
             moteThrown.SetVelocity((float)Rand.Range(6, 8), Rand.Range(0.002f, 0.003f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
         }
-    }
 
-    public class ExhaustFlames
-    {
-        public static void ThrowRocketExhaustFlame(Vector3 loc, Map map, float size)
+        public static void ThrowRocketExhaustFlame(Vector3 loc, float size)
         {
             IntVec3 intVec = loc.ToIntVec3();
-            if (!intVec.InBounds(map))
+            if (!intVec.InBounds(Find.VisibleMap))
             {
                 return;
             }
@@ -109,13 +107,13 @@ namespace Combat_Realism
             moteThrown.Scale = Rand.Range(1.5f, 2.5f) * size;
             moteThrown.exactRotation = Rand.Range(-0.5f, 0.5f);
             moteThrown.exactPosition = loc;
-            moteThrown.SetVelocity((float)Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
-            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
+            moteThrown.SetVelocity((float)Rand.Range(30, 40), Rand.Range(0.08f, 0.12f));
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), Find.VisibleMap);
         }
-        public static void ThrowSmokeForRocketsandMortars(Vector3 loc, Map map, float size)
+        public static void ThrowSmokeForRocketsandMortars(Vector3 loc, float size)
         {
             IntVec3 intVec = loc.ToIntVec3();
-            if (!intVec.InBounds(map))
+            if (!intVec.InBounds(Find.VisibleMap))
             {
                 return;
             }
@@ -123,8 +121,8 @@ namespace Combat_Realism
             moteThrown.Scale = Rand.Range(1.5f, 2.5f) * size;
             moteThrown.exactRotation = Rand.Range(-0.5f, 0.5f);
             moteThrown.exactPosition = loc;
-            moteThrown.SetVelocity((float)Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
-            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
+            moteThrown.SetVelocity((float)Rand.Range(30, 40), Rand.Range(0.08f, 0.12f));
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), Find.VisibleMap);
         }
     }
 }

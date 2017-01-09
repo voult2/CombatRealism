@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -77,7 +77,7 @@
     <Compile Include="Combat_Realism\Projectiles\Projectile_FireTrail.cs" />
     <Compile Include="Combat_Realism\RecoilPattern.cs" />
     <Compile Include="Combat_Realism\AimMode.cs" />
-    <Compile Include="Combat_Realism\AmmoInjector.cs" />
+    <Compile Include="Detours\AmmoInjector.cs" />
     <Compile Include="Combat_Realism\DamageWorkers\DamageWorker_FlameCR.cs" />
     <Compile Include="Combat_Realism\Defs\DamageDef_CR.cs" />
     <Compile Include="Combat_Realism\Defs\LoadoutGeneratorDef.cs" />
@@ -125,13 +125,13 @@
     <None Include="Combat_Realism\ThinkNodes\ThinkNode_ConditionalNoJob.cs" />
     <Compile Include="Combat_Realism\Tools\Tools.cs" />
     <Compile Include="Combat_Realism\TurretTop.cs" />
-    <Compile Include="DetoursCore\Comps\CompMilkableRenameable.cs" />
-    <Compile Include="DetoursCore\Comps\CompRangedGizmoGiver.cs" />
-    <Compile Include="DetoursCore\Comps\CompPawnGizmo.cs" />
-    <Compile Include="DetoursCore\Comps\CompProperties_MilkableRenameable.cs" />
-    <Compile Include="DetoursCore\Comps\CompProperties_ShearableRenameable.cs" />
-    <Compile Include="DetoursCore\Comps\Def_Extensions.cs" />
-    <Compile Include="DetoursCore\Comps\CompShearableRenameable.cs" />
+    <Compile Include="Combat_Realism\Comps_CCL\CompMilkableRenameable.cs" />
+    <Compile Include="Combat_Realism\Comps_CCL\CompRangedGizmoGiver.cs" />
+    <Compile Include="Combat_Realism\Comps_CCL\CompPawnGizmo.cs" />
+    <Compile Include="Combat_Realism\Comps_CCL\CompProperties_MilkableRenameable.cs" />
+    <Compile Include="Combat_Realism\Comps_CCL\CompProperties_ShearableRenameable.cs" />
+    <Compile Include="Combat_Realism\Comps_CCL\Def_Extensions.cs" />
+    <Compile Include="Combat_Realism\Comps_CCL\CompShearableRenameable.cs" />
     <Compile Include="DetoursCore\SpecialInjector.cs" />
     <Compile Include="DetoursCore\Detours.cs" />
     <Compile Include="DetoursCore\Initializer.cs" />
