@@ -38,11 +38,11 @@
 				<explosionDamageDef>Bomb</explosionDamageDef>
 				<explosionRadius>2.5</explosionRadius>
 				<fragments>
-					<Fragment_MortarSmall>100</Fragment_MortarSmall>
-					<Fragment_MortarMedium>60</Fragment_MortarMedium>
-					<Fragment_MortarLarge>20</Fragment_MortarLarge>
+					<Fragment_MortarSmall>200</Fragment_MortarSmall>
+					<Fragment_MortarMedium>100</Fragment_MortarMedium>
+					<Fragment_MortarLarge>40</Fragment_MortarLarge>
 				</fragments>
-	    <fragRange>10</fragRange>
+				<fragRange>10</fragRange>
 	  </li>
 	</comps>
   </ThingDef>
@@ -111,6 +111,7 @@
       <damageDef>Bullet</damageDef>
       <damageAmountBase>200</damageAmountBase>
 	  <soundExplode>MortarBomb_Explode</soundExplode>
+	  <armorPenetration>5.0</armorPenetration>
     </projectile>
 		<comps>
 			<li Class="Combat_Realism.CompProperties_ExplosiveCR">
@@ -138,7 +139,7 @@
     <projectile>
       <damageDef>Bomb</damageDef>
       <damageAmountBase>150</damageAmountBase>
-      <explosionRadius>1</explosionRadius>
+      <explosionRadius>1.7</explosionRadius>
 		<soundExplode>MortarBomb_Explode</soundExplode>
     </projectile>
 		<comps>
@@ -147,9 +148,9 @@
 				<explosionDamageDef>Bomb</explosionDamageDef>
 				<explosionRadius>2.5</explosionRadius>
 				<fragments>
-					<Fragment_MortarSmall>130</Fragment_MortarSmall>
-					<Fragment_MortarMedium>75</Fragment_MortarMedium>
-					<Fragment_MortarLarge>30</Fragment_MortarLarge>
+					<Fragment_MortarSmall>240</Fragment_MortarSmall>
+					<Fragment_MortarMedium>120</Fragment_MortarMedium>
+					<Fragment_MortarLarge>45</Fragment_MortarLarge>
 				</fragments>
 				<fragRange>10</fragRange>
 			</li>
@@ -180,3 +181,4 @@
   </ThingDef>
 
 </ThingDefs>
+

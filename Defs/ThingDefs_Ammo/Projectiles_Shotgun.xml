@@ -92,6 +92,7 @@
 		<projectile>
 			<damageDef>Beanbag</damageDef>
 			<damageAmountBase>6</damageAmountBase>
+			<armorPenetration>0.15</armorPenetration>
 		</projectile>
 	</ThingDef>
 
