@@ -131,7 +131,7 @@
     <description>An improvised turret that automatically fires at nearby enemies. Explodes when damaged. Its hacked-together AI brain isn't very smart, and can't be directly controlled, so beware of friendly fire.</description>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
-    <fillPercent>0.4</fillPercent>
+    <fillPercent>0.85</fillPercent>
     <castEdgeShadows>true</castEdgeShadows>
     <hasTooltip>true</hasTooltip>
     <stuffCategories>

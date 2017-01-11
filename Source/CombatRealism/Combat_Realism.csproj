@@ -71,6 +71,7 @@
     <Compile Include="Combat_Realism\DefOfs\CR_TaleDefOf.cs" />
     <Compile Include="Combat_Realism\DefOfs\CR_ThingDefOf.cs" />
     <Compile Include="Combat_Realism\Jobs\JobGiver_ConfigurableHostilityResponse.cs" />
+    <Compile Include="Combat_Realism\Jobs\JobGiver_TakeAndEquip.cs" />
     <Compile Include="Combat_Realism\Projectiles\ProjectileCR_Explosive_RL.cs" />
     <Compile Include="Combat_Realism\TexButton.cs" />
     <Compile Include="Combat_Realism\Projectiles\ProjectileCR_Explosive.cs" />
