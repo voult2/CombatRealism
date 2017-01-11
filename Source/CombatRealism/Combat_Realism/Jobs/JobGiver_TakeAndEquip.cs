@@ -60,9 +60,9 @@ namespace Combat_Realism
             }
 
             if (!pawn.Faction.IsPlayer && pawn.equipment.Primary != null
-                && (!pawn.apparel.BodyPartGroupIsCovered(BodyPartGroupDefOf.Torso)
-                || !pawn.apparel.BodyPartGroupIsCovered(BodyPartGroupDefOf.Legs)
-                || !pawn.apparel.BodyPartGroupIsCovered(BodyPartGroupDefOf.FullHead)))
+                && PawnUtility.EnemiesAreNearby(pawn, 30, true)
+                || (!pawn.apparel.BodyPartGroupIsCovered(BodyPartGroupDefOf.Torso)
+                || !pawn.apparel.BodyPartGroupIsCovered(BodyPartGroupDefOf.Legs)))
             {
                 return WorkPriority.Apparel;
             }
@@ -82,12 +82,14 @@ namespace Combat_Realism
                 }
             }
 
-            if (GetPriorityWork(pawn) == WorkPriority.Unloading) return 9.2f;
-            else if (GetPriorityWork(pawn) == WorkPriority.LowAmmo) return 9f;
-            else if (GetPriorityWork(pawn) == WorkPriority.Weapon) return 8f;
-            else if (GetPriorityWork(pawn) == WorkPriority.Ammo) return 6f;
-            else if (GetPriorityWork(pawn) == WorkPriority.Apparel) return 5f;
-            else if(GetPriorityWork(pawn) == WorkPriority.None) return 0f;
+            var priority = GetPriorityWork(pawn);
+
+            if (priority == WorkPriority.Unloading) return 9.2f;
+            else if (priority == WorkPriority.LowAmmo) return 9f;
+            else if (priority == WorkPriority.Weapon) return 8f;
+            else if (priority == WorkPriority.Ammo) return 6f;
+            else if (priority == WorkPriority.Apparel) return 5f;
+            else if(priority == WorkPriority.None) return 0f;
 
             TimeAssignmentDef assignment = (pawn.timetable != null) ? pawn.timetable.CurrentAssignment : TimeAssignmentDefOf.Anything;
             if (assignment == TimeAssignmentDefOf.Sleep) return 0f;
@@ -342,6 +344,7 @@ namespace Combat_Realism
                             }
                         }
                     }
+                    /*
                     if (!pawn.apparel.BodyPartGroupIsCovered(BodyPartGroupDefOf.FullHead))
                     {
                         Apparel apparel3 = this.FindGarmentCoveringPart(pawn, BodyPartGroupDefOf.FullHead);
@@ -358,6 +361,7 @@ namespace Combat_Realism
                             }
                         }
                     }
+                    */
                 }
                 return null;
             }
