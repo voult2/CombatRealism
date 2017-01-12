@@ -25,9 +25,14 @@ namespace Combat_Realism
 
         private WorkPriority GetPriorityWork(Pawn pawn)
         {
+            if (pawn.kindDef.trader)
+            {
+                return WorkPriority.None;
+            }
+
             if (pawn.TryGetComp<CompInventory>() != null
-                && ((pawn.TryGetComp<CompInventory>().capacityWeight / 2 <= pawn.TryGetComp<CompInventory>().currentWeight)
-                || (pawn.TryGetComp<CompInventory>().capacityBulk / 2 <= pawn.TryGetComp<CompInventory>().currentBulk)))
+                && ((pawn.TryGetComp<CompInventory>().currentWeight >= pawn.TryGetComp<CompInventory>().capacityWeight / 2f)
+                || (pawn.TryGetComp<CompInventory>().currentBulk >= pawn.TryGetComp<CompInventory>().capacityBulk / 2f)))
             {
                 return WorkPriority.Unloading;
             }
