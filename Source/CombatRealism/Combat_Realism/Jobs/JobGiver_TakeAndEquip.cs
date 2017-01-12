@@ -290,22 +290,52 @@ namespace Combat_Realism
                                     //Defence from low count loot spam
                                     if (th.stackCount > pawn.equipment.Primary.TryGetComp<CompAmmoUser>().Props.magazineSize)
                                     {
-                                        if (th.Position == pawn.Position || th.Position.AdjacentToCardinal(pawn.Position))
+                                        if (pawn.Faction.IsPlayer)
                                         {
-                                            int numToCarry = 0;
-                                            if (inventory.CanFitInInventory(th, out numToCarry))
+                                            int SearchRadius = 0;
+                                            if (GetPriorityWork(pawn) == WorkPriority.LowAmmo) SearchRadius = 70;
+                                            else SearchRadius = 30;
+
+                                            Thing closestThing = GenClosest.ClosestThingReachable(
+                                            pawn.Position,
+                                            pawn.Map,
+                                            ThingRequest.ForDef(th.def),
+                                            PathEndMode.ClosestTouch,
+                                            TraverseParms.For(pawn, Danger.None, TraverseMode.ByPawn),
+                                            SearchRadius,
+                                            x => !x.IsForbidden(pawn) && pawn.CanReserve(x));
+
+                                            if (closestThing != null)
                                             {
-                                                return new Job(JobDefOf.TakeInventory, th)
+                                                int numToCarry = 0;
+                                                if (inventory.CanFitInInventory(th, out numToCarry))
                                                 {
-                                                    count = numToCarry,
-                                                    expiryInterval = 150,
-                                                    checkOverrideOnExpire = true,
-                                                    canBash = true,
-                                                    locomotionUrgency = LocomotionUrgency.Sprint
-                                                };
+                                                    return new Job(JobDefOf.TakeInventory, th)
+                                                    {
+                                                        count = numToCarry
+                                                    };
+                                                }
                                             }
                                         }
-                                        return GotoForce(pawn, th, PathEndMode.Touch);
+                                        else
+                                        {
+                                            if (th.Position == pawn.Position || th.Position.AdjacentToCardinal(pawn.Position))
+                                            {
+                                                int numToCarry = 0;
+                                                if (inventory.CanFitInInventory(th, out numToCarry))
+                                                {
+                                                    return new Job(JobDefOf.TakeInventory, th)
+                                                    {
+                                                        count = numToCarry,
+                                                        expiryInterval = 150,
+                                                        checkOverrideOnExpire = true,
+                                                        canBash = true,
+                                                        locomotionUrgency = LocomotionUrgency.Sprint
+                                                    };
+                                                }
+                                            }
+                                            return GotoForce(pawn, th, PathEndMode.Touch);
+                                        }
                                     }
                                 }
                             }
