@@ -29,6 +29,10 @@ namespace Combat_Realism
             {
                 return WorkPriority.None;
             }
+            if (pawn.jobs.curJob != null && pawn.jobs.curJob.def == JobDefOf.Tame)
+            {
+                return WorkPriority.None;
+            }
 
             if (pawn.TryGetComp<CompInventory>() != null
                 && ((pawn.TryGetComp<CompInventory>().currentWeight >= pawn.TryGetComp<CompInventory>().capacityWeight / 2f)
