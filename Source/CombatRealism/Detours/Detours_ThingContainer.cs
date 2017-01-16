@@ -54,7 +54,9 @@ namespace Combat_Realism.Detours
 					}
 					if (item.Destroyed)
 					{
-						return true;
+                        //CR PART!!!
+                        CR_Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Item has been added, notify CompInventory
+                        return true;
 					}
 				}
 			}
@@ -101,7 +103,7 @@ namespace Combat_Realism.Detours
                 if (GenDrop.TryDropSpawn(thing, dropLoc, map , mode, out resultingThing, placedAction))
                 {
                     _this.Remove(thing);
-                    //Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Thing dropped, update inventory
+                    CR_Utility.TryUpdateInventory(_this.owner as Pawn_InventoryTracker);   // Thing dropped, update inventory
                     return true;
                 }
                 return false;
