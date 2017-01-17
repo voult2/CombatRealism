@@ -18,7 +18,7 @@ namespace Combat_Realism
 
         private const int proximitySearchRadius = 20;
         private const int maximumSearchRadius = 80;
-        private const int ticksBeforeDropRaw = 7200;
+        private const int ticksBeforeDropRaw = 40000;
 
         public override float GetPriority(Pawn pawn)
         {
@@ -135,7 +135,7 @@ namespace Combat_Realism
             bool allowDropRaw = Find.TickManager.TicksGame > pawn.mindState?.lastInventoryRawFoodUseTick + ticksBeforeDropRaw;
             foreach (Thing thing in inventory.container)
             {
-                if(allowDropRaw || !thing.def.IsNutritionGivingIngestible || thing.def.ingestible.preferability > FoodPreferability.RawBad)
+                if(allowDropRaw || !thing.def.IsNutritionGivingIngestible || thing.def.ingestible.preferability > FoodPreferability.RawTasty)
                 {
                     LoadoutSlot slot = loadout.Slots.FirstOrDefault(x => x.Def == thing.def);
                     if (slot == null)
@@ -215,7 +215,7 @@ namespace Combat_Realism
                 // Find excess items in inventory that are not part of our loadout
                 bool allowDropRaw = Find.TickManager.TicksGame > pawn.mindState?.lastInventoryRawFoodUseTick + ticksBeforeDropRaw;
                 Thing thingToRemove = inventory.container.FirstOrDefault(t => 
-                    (allowDropRaw || !t.def.IsNutritionGivingIngestible || t.def.ingestible.preferability > FoodPreferability.RawBad)
+                    (allowDropRaw || !t.def.IsNutritionGivingIngestible || t.def.ingestible.preferability > FoodPreferability.RawTasty)
                     && !loadout.Slots.Any(s => s.Def == t.def));
                 if (thingToRemove != null)
                 {
