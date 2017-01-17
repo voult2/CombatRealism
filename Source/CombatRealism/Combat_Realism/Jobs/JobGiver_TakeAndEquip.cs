@@ -58,11 +58,12 @@ namespace Combat_Realism
                         ammocount += ammoThing.stackCount;
                     }
                 }
-                if (ammocount < pawn.equipment.Primary.TryGetComp<CompAmmoUser>().Props.magazineSize)
+                float atw = pawn.equipment.Primary.TryGetComp<CompAmmoUser>().currentAmmo.GetStatValueAbstract(CR_StatDefOf.Bulk);
+                if ((ammocount < (2f / atw)) && ((1.5f / atw) > 3))
                 {
                     return WorkPriority.LowAmmo;
                 }
-                if (ammocount < pawn.equipment.Primary.TryGetComp<CompAmmoUser>().Props.magazineSize * 3)
+                if ((ammocount < (3.5f / atw)) && ((3f / atw) > 4))
                 {
                     return WorkPriority.Ammo;
                 }
@@ -292,7 +293,8 @@ namespace Combat_Realism
                                 if (thd == th.def)
                                 {
                                     //Defence from low count loot spam
-                                    if (th.stackCount > pawn.equipment.Primary.TryGetComp<CompAmmoUser>().Props.magazineSize)
+                                    float thw = (th.GetStatValue(CR_StatDefOf.Bulk)) * th.stackCount;
+                                    if (thw > 0.5f)
                                     {
                                         if (pawn.Faction.IsPlayer)
                                         {
@@ -330,7 +332,7 @@ namespace Combat_Realism
                                                 {
                                                     return new Job(JobDefOf.TakeInventory, th)
                                                     {
-                                                        count = numToCarry,
+                                                        count = Mathf.RoundToInt(numToCarry * 0.8f),
                                                         expiryInterval = 150,
                                                         checkOverrideOnExpire = true,
                                                         canBash = true,
