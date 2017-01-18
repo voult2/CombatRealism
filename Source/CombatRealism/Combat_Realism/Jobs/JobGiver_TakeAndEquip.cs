@@ -456,8 +456,8 @@ namespace Combat_Realism
             if (inv != null
             && !pawn.Faction.IsPlayer
             && (pawn.jobs.curJob != null && pawn.jobs.curJob.def != JobDefOf.Steal)
-            && ((inv.capacityWeight - inv.currentWeight > 3f)
-            || (inv.capacityBulk - inv.currentBulk > 4f)))
+            && ((inv.capacityWeight - inv.currentWeight < 3f)
+            || (inv.capacityBulk - inv.currentBulk < 4f)))
             {
                 return true;
             }
