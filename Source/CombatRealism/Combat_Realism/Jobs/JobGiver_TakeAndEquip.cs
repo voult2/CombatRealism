@@ -34,16 +34,13 @@ namespace Combat_Realism
                 return WorkPriority.None;
             }
 
-            if (pawn.TryGetComp<CompInventory>() != null
-                && ((pawn.TryGetComp<CompInventory>().currentWeight >= pawn.TryGetComp<CompInventory>().capacityWeight / 2f)
-                || (pawn.TryGetComp<CompInventory>().currentBulk >= pawn.TryGetComp<CompInventory>().capacityBulk / 2f)))
-            {
-                return WorkPriority.Unloading;
-            }
-
             if (!pawn.Faction.IsPlayer && pawn.equipment.Primary == null)
             {
-                return WorkPriority.Weapon;
+                if (Unload(pawn))
+                {
+                    return WorkPriority.Unloading;
+                }
+                else return WorkPriority.Weapon;
             }
 
             if (pawn.equipment.Primary != null && pawn.equipment.Primary.TryGetComp<CompAmmoUser>() != null)
@@ -59,13 +56,21 @@ namespace Combat_Realism
                     }
                 }
                 float atw = pawn.equipment.Primary.TryGetComp<CompAmmoUser>().currentAmmo.GetStatValueAbstract(CR_StatDefOf.Bulk);
-                if ((ammocount < (2f / atw)) && ((1.5f / atw) > 3))
+                if ((ammocount < (2f / atw)) && ((2f / atw) > 3))
                 {
-                    return WorkPriority.LowAmmo;
+                    if (Unload(pawn))
+                    {
+                        return WorkPriority.Unloading;
+                    }
+                    else return WorkPriority.LowAmmo;
                 }
-                if ((ammocount < (3.5f / atw)) && ((3f / atw) > 4))
+                if ((ammocount < (3.5f / atw)) && ((3.5f / atw) > 4))
                 {
-                    return WorkPriority.Ammo;
+                    if (Unload(pawn))
+                    {
+                        return WorkPriority.Unloading;
+                    }
+                    else return WorkPriority.Ammo;
                 }
             }
 
@@ -442,6 +447,17 @@ namespace Combat_Realism
                 }
                 return MeleeOrWaitJob(pawn, thing, cellBeforeBlocker);
             }
+        }
+
+        private static bool Unload(Pawn pawn)
+        {
+            if (pawn.TryGetComp<CompInventory>() != null
+            && ((pawn.TryGetComp<CompInventory>().currentWeight >= pawn.TryGetComp<CompInventory>().capacityWeight / 1.5f)
+            || (pawn.TryGetComp<CompInventory>().currentBulk >= pawn.TryGetComp<CompInventory>().capacityBulk / 1.5f)))
+            {
+                return true;
+            }
+            else return false;
         }
 
         private static Job MeleeOrWaitJob(Pawn pawn, Thing blocker, IntVec3 cellBeforeBlocker)
